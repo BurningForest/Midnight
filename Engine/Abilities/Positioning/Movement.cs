@@ -10,7 +10,7 @@ using Midnight.Engine.Actions;
 
 namespace Midnight.Engine.Abilities.Positioning
 {
-	public abstract class Movement : CardActiveAbility<FieldCard>
+	public abstract class Movement : CardActiveAbility<FieldCard>, IListener<Before<BeginTurn>>
 	{
 		public int GetRunMoveCost    () { return 4; }
 		public int GetCornerMoveCost () { return 3; }
@@ -115,8 +115,7 @@ namespace Midnight.Engine.Abilities.Positioning
 
 			return Status.Success;
 		}
-
-		[Subscribe]
+        
 		public void On(Before<BeginTurn> ev)
 		{
 			if (card.IsControlledBy(ev.action.chief)) {

@@ -12,6 +12,8 @@ namespace Midnight.Engine.Abilities
 		protected Chief chief;
 		protected Engine engine;
 
+        public void On (IEvent ev) { }
+
 		public void Configure (Card card, Chief chief, Engine engine)
 		{
 			if (!IsValidCard(card)) {
