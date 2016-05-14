@@ -10,6 +10,7 @@ namespace Midnight.Engine.Cards.Props
 		public static Toughness toughness = new Toughness();
 		public static Increase  increase  = new Increase();
 		public static Cost      cost      = new Cost();
+		public static Damage    damage    = new Damage();
 
 		public abstract int GetProtoValue (Proto proto);
 
@@ -56,6 +57,15 @@ namespace Midnight.Engine.Cards.Props
 			public override int GetProtoValue (Proto proto)
 			{
 				return proto.cost;
+			}
+		}
+		public class Damage : Property
+		{
+			internal Damage () { }
+
+			public override int GetProtoValue (Proto proto)
+			{
+				return 0;
 			}
 		}
 	}

@@ -9,7 +9,7 @@ namespace Midnight.Engine.Cards
 	public abstract class Card
 	{
 		//todo: spotted
-		
+
 		private int id;
 		private Chief chief;
 		public Abilities abilities { get; private set; }
@@ -69,10 +69,22 @@ namespace Midnight.Engine.Cards
 			modifiers.Add(modifier);
 		}
 
+		private const int MAX_PROP_VALUE = 99;
+
+		private int Limit (int num, int max)
+		{
+			return num > max ? max : Limit(num);
+		}
+
+		private int Limit (int num)
+		{
+			return num < 0 ? 0 : num;
+		}
+
 		public int GetPropertyValue<TProperty> (TProperty property)
 			where TProperty : Property
 		{
-			return property.GetProtoValue(GetProto()) + modifiers.GetPropertySum(property);
+			return Limit(property.GetProtoValue(GetProto()) + modifiers.GetPropertySum(property), MAX_PROP_VALUE);
 		}
 
 		public int GetCost ()
@@ -98,6 +110,16 @@ namespace Midnight.Engine.Cards
 		public int GetDefense ()
 		{
 			return GetPropertyValue(Property.defense);
+		}
+
+		public int GetDamage ()
+		{
+			return modifiers.GetPropertySum(Property.damage);
+		}
+
+		public int GetLives ()
+		{
+			return Limit(GetToughness() - GetDamage());
 		}
 
 		public virtual bool IsActive ()

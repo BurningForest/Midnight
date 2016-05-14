@@ -12,14 +12,16 @@ namespace Midnight.Engine.Cards.Props
 			modifiers.Add(modifier);
 		}
 
-		public List<Modifier> GetPropertyModifiers (Property property)
+		public List<Modifier> GetPropertyModifiers<TProperty> (TProperty property)
+			where TProperty : Property
 		{
 			return modifiers
 				.Where(m => m.GetProperty() == property)
 				.ToList();
 		}
 
-		public int GetPropertySum (Property property)
+		public int GetPropertySum<TProperty> (TProperty property)
+			where TProperty : Property
 		{
 			return GetPropertyModifiers(property)
 				.Sum(m => m.GetValue());
