@@ -4,7 +4,7 @@ using Midnight.Engine.Core;
 
 namespace Midnight.Engine.Actions
 {
-	public class StartGame : Action<StartGame>
+	public class StartGame : GameAction<StartGame>
 	{
 		public readonly Chief chief;
 

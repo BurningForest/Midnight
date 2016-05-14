@@ -1,11 +1,10 @@
-﻿using Midnight.Engine.Abilities;
+﻿using Midnight.Engine.Abilities.Positioning;
 using Midnight.Engine.Cards.Enums;
 
 namespace Midnight.Engine.Cards.Types
 {
 	public abstract class Platoon : ForefrontCard
 	{
-
 		public abstract class AttackPlatoon : Platoon { }
 		public abstract class DefensePlatoon : Platoon { }
 
@@ -20,6 +19,10 @@ namespace Midnight.Engine.Cards.Types
 		public override void InitAbilities ()
 		{
 			base.InitAbilities();
+
+			abilities.Add(
+				new Deployment()
+			);
 		}
 	}
 }

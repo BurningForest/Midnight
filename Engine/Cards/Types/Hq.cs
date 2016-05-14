@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Midnight.Engine.Battlefield;
-using Midnight.Engine.Abilities;
+using Midnight.Engine.Abilities.Aggression;
 
 namespace Midnight.Engine.Cards.Types
 {
@@ -20,6 +19,11 @@ namespace Midnight.Engine.Cards.Types
 		public override void InitAbilities ()
 		{
 			base.InitAbilities();
+
+			abilities.Add(
+				new WeaponArtillery(),
+				new Attack()
+			);
 		}
 	}
 }

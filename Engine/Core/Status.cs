@@ -10,6 +10,9 @@
 		PointsAreUsed,
 		CellIsNotAllowed,
 		NoMovementAbility,
-		NoDeploymentAbility
+		NoDeploymentAbility,
+		NoAttackAbility,
+		FightRoundIsEmpty,
+		NoCounterAttackAbility
 	}
 }
