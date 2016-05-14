@@ -1,5 +1,5 @@
 ﻿using Midnight.Engine.Cards;
-using Midnight.Engine.Cards.Prototype;
+using Midnight.Engine.Cards.Enums;
 
 namespace Midnight.Engine.Instances.Usa.Vehicle.Light
 {

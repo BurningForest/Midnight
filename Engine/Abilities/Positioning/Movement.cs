@@ -7,6 +7,7 @@ using System.Linq;
 using Midnight.Engine.Core;
 using Midnight.Engine.ActionManager.Events;
 using Midnight.Engine.Actions;
+using Midnight.Engine.Cards.Types;
 
 namespace Midnight.Engine.Abilities.Positioning
 {

@@ -1,4 +1,5 @@
 ﻿using Midnight.Engine.Cards;
+using Midnight.Engine.Cards.Types;
 using System;
 
 namespace Midnight.Engine.ChiefOperations

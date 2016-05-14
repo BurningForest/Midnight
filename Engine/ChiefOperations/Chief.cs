@@ -3,6 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using Midnight.Engine.Cards;
 using Midnight.Engine.Battlefield;
+using Midnight.Engine.Cards.Types;
+using Midnight.Engine.Cards.Enums;
 
 namespace Midnight.Engine.ChiefOperations
 {

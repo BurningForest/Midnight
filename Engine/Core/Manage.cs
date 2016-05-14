@@ -1,6 +1,7 @@
 ﻿using Midnight.Engine.Actions;
 using Midnight.Engine.Battlefield;
 using Midnight.Engine.Cards;
+using Midnight.Engine.Cards.Types;
 using Midnight.Engine.ChiefOperations;
 using System;
 using System.Collections.Generic;

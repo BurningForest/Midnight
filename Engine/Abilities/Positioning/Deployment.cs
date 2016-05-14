@@ -4,6 +4,7 @@ using Midnight.Engine.Core;
 using Midnight.Engine.Battlefield;
 using System.Collections.Generic;
 using System.Linq;
+using Midnight.Engine.Cards.Types;
 
 namespace Midnight.Engine.Abilities.Positioning
 {

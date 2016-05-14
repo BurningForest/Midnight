@@ -1,6 +1,7 @@
 ﻿using System;
 using Midnight.Engine.Cards;
 using System.Collections.Generic;
+using Midnight.Engine.Cards.Types;
 
 namespace Midnight.Engine.Battlefield
 {

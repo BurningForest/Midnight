@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Midnight.Engine.Battlefield;
 using Midnight.Engine.Abilities;
 
-namespace Midnight.Engine.Cards
+namespace Midnight.Engine.Cards.Types
 {
 	public abstract class Hq : FieldCard
 	{

@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Engine.Cards;
+using Midnight.Engine.Cards.Enums;
+using Midnight.Engine.Cards.Types;
 using Midnight.Engine.Cards.Vehicles;
 using Midnight.Tests.Instances;
 

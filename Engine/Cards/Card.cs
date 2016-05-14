@@ -1,6 +1,5 @@
 ﻿using Midnight.Engine.Abilities;
-using Midnight.Engine.Battlefield;
-using Midnight.Engine.Cards.Prototype;
+using Midnight.Engine.Cards.Enums;
 using Midnight.Engine.ChiefOperations;
 using System.Collections.Generic;
 

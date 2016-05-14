@@ -1,7 +1,8 @@
 ﻿using Midnight.Engine.Battlefield;
+using Midnight.Engine.Cards.Enums;
 using System;
 
-namespace Midnight.Engine.Cards
+namespace Midnight.Engine.Cards.Types
 {
 	public abstract class FieldCard : ForefrontCard
 	{

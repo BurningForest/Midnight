@@ -2,6 +2,7 @@
 using Midnight.Engine.ActionManager;
 using Midnight.Engine.Battlefield;
 using Midnight.Engine.Cards;
+using Midnight.Engine.Cards.Types;
 
 namespace Midnight.Engine.Actions
 {

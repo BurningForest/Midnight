@@ -1,5 +1,5 @@
 ﻿using Midnight.Engine.Cards;
-using Midnight.Engine.Cards.Prototype;
+using Midnight.Engine.Cards.Enums;
 using Midnight.Engine.Cards.Vehicles;
 
 namespace Midnight.Tests.Instances

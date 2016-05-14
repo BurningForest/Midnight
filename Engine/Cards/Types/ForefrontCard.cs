@@ -1,4 +1,4 @@
-﻿namespace Midnight.Engine.Cards
+﻿namespace Midnight.Engine.Cards.Types
 {
 	public abstract class ForefrontCard : Card
 	{

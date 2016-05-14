@@ -1,5 +1,6 @@
 ﻿using Midnight.Engine.Abilities;
 using Midnight.Engine.Abilities.Positioning;
+using Midnight.Engine.Cards.Types;
 
 namespace Midnight.Engine.Cards.Vehicles
 {
