@@ -4,7 +4,7 @@ using Midnight.Engine.Core;
 
 namespace Midnight.Engine.Actions
 {
-	public class BeginTurn : Action
+	public class BeginTurn : Action<BeginTurn>
 	{
 		public readonly Chief chief;
 		public readonly EndTurn turnEnd;

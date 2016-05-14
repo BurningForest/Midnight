@@ -4,7 +4,7 @@ using Midnight.Engine.Cards.Vehicles;
 
 namespace Midnight.Tests.Instances
 {
-	public class HeavyTank : Heavy
+	public class HeavyTank : HeavyVehicle
 	{
 		public static readonly Proto proto = new Proto() {
 			id = "tv_medium_tank",

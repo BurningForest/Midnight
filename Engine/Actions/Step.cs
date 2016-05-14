@@ -5,7 +5,7 @@ using Midnight.Engine.Cards;
 
 namespace Midnight.Engine.Actions
 {
-	public class Step : Action
+	public class Step : Action<Step>
 	{
 		private FieldCard card;
 		private Cell cell;

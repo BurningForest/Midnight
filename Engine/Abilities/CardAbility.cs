@@ -14,15 +14,15 @@ namespace Midnight.Engine.Abilities
 
         public void On (IEvent ev) { }
 
-		public void Configure (Card card, Chief chief, Engine engine)
+		internal void SetOwner (Card owner)
 		{
-			if (!IsValidCard(card)) {
+			if (!IsValidCard(owner)) {
 				throw new ArgumentException("Ability does not support this card");
 			}
 
-			this.card = card;
-			this.chief = chief;
-			this.engine = engine;
+			card = owner;
+			chief = card.GetChief();
+			engine = chief.GetEngine();
 
 			engine.emitter.Subscribe(this);
 		}

@@ -3,7 +3,7 @@ using Midnight.Engine.Cards.Prototype;
 
 namespace Midnight.Engine.Instances.Usa.Vehicle.Light
 {
-	public class T1Lt : Cards.Vehicles.Light
+	public class T1Lt : Cards.Vehicles.LightVehicle
 	{
 		public static readonly Proto proto = new Proto() {
 			id = "uv_t1lt",

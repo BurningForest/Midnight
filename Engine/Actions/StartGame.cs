@@ -4,7 +4,7 @@ using Midnight.Engine.Core;
 
 namespace Midnight.Engine.Actions
 {
-	public class StartGame : Action
+	public class StartGame : Action<StartGame>
 	{
 		public readonly Chief chief;
 
@@ -15,6 +15,7 @@ namespace Midnight.Engine.Actions
 
 		public override void Configure ()
 		{
+            GetEngine().turn.StartWith(chief);
 			AddChild(new BeginTurn(chief));
 		}
 	}

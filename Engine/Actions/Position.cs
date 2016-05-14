@@ -6,7 +6,7 @@ using Midnight.Engine.Abilities.Positioning;
 
 namespace Midnight.Engine.Actions
 {
-	public class Position : Action
+	public class Position : Action<Position>
 	{
 		private FieldCard card;
 		private Cell cell;

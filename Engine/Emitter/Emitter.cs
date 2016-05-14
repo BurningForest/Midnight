@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Midnight.Engine.ActionManager.Events;
+using Midnight.Engine.Actions;
+using System.Collections.Generic;
 
 namespace Midnight.Engine.Emitter
 {
@@ -14,6 +16,10 @@ namespace Midnight.Engine.Emitter
 		public void Publish<TEvent> (TEvent e)
             where TEvent : IEvent
         {
+            if (e is Before<BeginTurn>) {
+                var type = typeof(TEvent);
+            }
+
             foreach (var l in listeners) {
                 if (l is IListener<TEvent>) {
                     (l as IListener<TEvent>).On(e);

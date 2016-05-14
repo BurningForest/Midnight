@@ -17,7 +17,8 @@ namespace Midnight.Engine.ChiefOperations
 		{
 			var card = new TCard();
 			chief.AddCard(card);
-			card.ToDeck();
+            card.InitAbilities();
+            card.ToDeck();
 			return card;
 		}
 
@@ -30,7 +31,8 @@ namespace Midnight.Engine.ChiefOperations
 
 			var card = new TCard();
 			chief.AddCard(card);
-			card.ToCell(chief.GetStartCell());
+            card.InitAbilities();
+            card.ToCell(chief.GetStartCell());
 			return card;
 		}
 

@@ -6,7 +6,7 @@ using Midnight.Engine.Abilities.Positioning;
 
 namespace Midnight.Engine.Actions
 {
-	public class Deploy : Action
+	public class Deploy : Action<Deploy>
 	{
 		private ForefrontCard card;
 		private Cell cell;

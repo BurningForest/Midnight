@@ -15,6 +15,7 @@ namespace Midnight.Engine.ChiefOperations
 		public readonly List<Card> cards = new List<Card>();
 		public readonly CardFactory cardFactory;
 
+        private Random random = new Random();
 		private int resources = 0;
 		private int ownIncrease = 0;
 
@@ -49,6 +50,13 @@ namespace Midnight.Engine.ChiefOperations
 		{
 			return engine;
 		}
+
+        public Chief GetOpponent ()
+        {
+            return engine.chiefs[1] == this
+                ? engine.chiefs[0]
+                : engine.chiefs[1];
+        }
 
 		public void PayResources(int value)
 		{
@@ -97,24 +105,30 @@ namespace Midnight.Engine.ChiefOperations
 			ownIncrease = increase;
 		}
 
-		private List<Card> GetLocationCards (Location location)
+		public List<Card> GetLocationCards (Location location)
 		{
-			return (List<Card>) cards.Where(card => card.IsAt(location));
+			return cards.Where(card => card.IsAt(location)).ToList();
 		}
 
-		public void AddToLocation (Card card, Location location)
-		{
-			GetLocationCards(location).Add(card);
-		}
+        public List<Card> GetShuffledDeck ()
+        {
+            var deck = GetLocationCards(Location.deck);
 
-		public void RemoveFromLocation (Card card, Location location)
-		{
-			GetLocationCards(location).Remove(card);
-		}
+            for (int i = 0; i < deck.Count; i++) {
+                int r = random.Next(i, deck.Count);
+
+                // Swap cards
+                Card temp = deck[i];
+                deck[i] = deck[r];
+                deck[r] = temp;
+            }
+
+            return deck;
+        }
 
 		public Platoon GetPlatoonBySubtype (Subtype subtype)
 		{
-			return (Platoon) cards.First(card => card.IsActivePlatoon() && card.Is(subtype));
+			return cards.First(card => card.IsActivePlatoon() && card.Is(subtype)) as Platoon;
 		}
 
 		public List<Platoon> GetOrderedPlatoons ()
@@ -132,16 +146,6 @@ namespace Midnight.Engine.ChiefOperations
 			return platoons;
 		}
 
-		public Chief GetOpponent ()
-		{
-			throw new NotImplementedException();
-		}
-
-		public void ShuffleDeck ()
-		{
-			throw new NotImplementedException();
-		}
-
 		public Cell GetStartCell ()
 		{
 			return engine.field.GetCornerCell(index == 1);
@@ -153,7 +157,7 @@ namespace Midnight.Engine.ChiefOperations
 				.Where(card => card.IsActiveHq())
 				.Cast<Hq>();
 
-			return (List<Hq>)hqs;
+			return hqs.ToList();
 		}
 
 		public Hq GetHq ()
@@ -190,7 +194,7 @@ namespace Midnight.Engine.ChiefOperations
 		public bool IsTurnOwner ()
 		{
 
-			throw new NotImplementedException();
+            return engine.turn.GetOwner() == this; // todo
 		}
 
 		public bool HasHq (Country country)

@@ -1,10 +1,12 @@
-﻿namespace Midnight.Engine.Cards
+﻿using Midnight.Engine.Abilities;
+
+namespace Midnight.Engine.Cards
 {
 	public abstract class Order : Card
 	{
-		public override bool IsOrder ()
-		{
-			return true;
-		}
-	}
+        public override CardAbility[] CreateAbilities ()
+        {
+            return new CardAbility[] { };
+        }
+    }
 }

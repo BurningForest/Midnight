@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using Midnight.Engine.Battlefield;
+using Midnight.Engine.Abilities;
 
 namespace Midnight.Engine.Cards
 {
 	public abstract class Hq : FieldCard
 	{
-		public override bool IsHq()
+		public List<Cell> GetFootholdCells ()
 		{
-			return true;
+            return GetCell().GetAdjoiningCells();
 		}
 
-		internal List<Cell> GetFootholdCells ()
-		{
-			throw new NotImplementedException();
-		}
+        public override bool IsActiveHq ()
+        {
+            return IsAtBattlefield();
+        }
+
+        public override CardAbility[] CreateAbilities ()
+        {
+            return new CardAbility[] { };
+        }
 	}
 }

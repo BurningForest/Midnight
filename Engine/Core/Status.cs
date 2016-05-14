@@ -6,9 +6,9 @@
 		Idle,
 
 		NotTurnOfSource,
-		NotAtBattlefield,
+		NotAtReserve,
 		PointsAreUsed,
-		PointsNotEnough,
+		CellIsNotAllowed,
 		NoMovementAbility,
 		NoDeploymentAbility
 	}

@@ -1,39 +1,34 @@
-﻿namespace Midnight.Engine.Cards
+﻿using Midnight.Engine.Abilities;
+
+namespace Midnight.Engine.Cards
 {
-	public abstract class Platoon : ForefrontCard
-	{
-		public void ToSupport ()
-		{
-			ToLocation(Location.support);
-		}
+    public abstract class Platoon : ForefrontCard
+    {
 
-		public override bool IsPlatoon ()
-		{
-			return true;
-		}
+        public abstract class AttackPlatoon  : Platoon { }
+        public abstract class DefensePlatoon : Platoon { }
 
-		public static Subtype[] subtypeOrder = {
-			Subtype.scout,
-			Subtype.communications,
-			Subtype.artillery,
-			Subtype.medic,
-			Subtype.intendancy,
-		};
+        public void ToSupport ()
+        {
+            ToLocation(Location.support);
+        }
 
-		public abstract class Defense : Platoon
-		{
-			public override bool IsDefense ()
-			{
-				return true;
-			}
-		}
+        public override bool IsActivePlatoon ()
+        {
+            return IsAtSupport();
+        }
 
-		public abstract class Attack : Platoon
-		{
-			public override bool IsAttack ()
-			{
-				return true;
-			}
-		}
-	}
+        public static Subtype[] subtypeOrder = {
+            Subtype.scout,
+            Subtype.communications,
+            Subtype.artillery,
+            Subtype.medic,
+            Subtype.intendancy,
+        };
+
+        public override CardAbility[] CreateAbilities ()
+        {
+            return new CardAbility[] { };
+        }
+    }
 }

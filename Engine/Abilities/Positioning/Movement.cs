@@ -78,39 +78,33 @@ namespace Midnight.Engine.Abilities.Positioning
 
 		public List<Cell> GetAllowedCells ()
 		{
-			return (List<Cell>) GetCard()
+			return GetCard()
 				.GetCell()
 				.GetRunCells()
-				.Where(CanMoveTo);
+				.Where(CanMoveTo) as List<Cell>;
 		}
 
 		public override Status Validate ()
 		{
-			if (!chief.IsTurnOwner()) {
-				return Status.NotTurnOfSource;
-			}
-
-			if (!card.IsAtBattlefield()) {
-				return Status.NotAtBattlefield;
-			}
-
-			if (IsUsed()) {
-				return Status.PointsAreUsed;
-			}
-
-			return Status.Success;
+			return Validate(null);
 		}
 
 		public Status Validate (Cell cell)
-		{
-			var status = Validate();
+        {
+            if (!chief.IsTurnOwner()) {
+                return Status.NotTurnOfSource;
+            }
 
-			if (status != Status.Success) {
-				return status;
-			}
+            if (!card.IsAtBattlefield()) {
+                return Status.NotAtReserve;
+            }
 
-			if (cell != null && !CanMoveTo(cell)) {
-				return Status.PointsNotEnough;
+            if (IsUsed()) {
+                return Status.PointsAreUsed;
+            }
+
+            if (cell != null && !CanMoveTo(cell)) {
+				return Status.CellIsNotAllowed;
 			}
 
 			return Status.Success;
@@ -122,5 +116,5 @@ namespace Midnight.Engine.Abilities.Positioning
 				quantity = 0;
 			}
 		}
-	}
+    }
 }

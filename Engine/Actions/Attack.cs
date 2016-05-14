@@ -2,7 +2,7 @@
 
 namespace Midnight.Engine.Actions
 {
-	public class Attack : Action
+	public class Attack : Action<Attack>
 	{
 	}
 }

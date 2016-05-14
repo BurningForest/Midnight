@@ -2,6 +2,7 @@
 using Midnight.Engine.Battlefield;
 using Midnight.Engine.Cards.Prototype;
 using Midnight.Engine.ChiefOperations;
+using System.Collections.Generic;
 
 namespace Midnight.Engine.Cards
 {
@@ -12,8 +13,9 @@ namespace Midnight.Engine.Cards
 		private Location location = null;
 		private int id;
 		private Chief chief;
+        private List<CardAbility> abilities;
 
-		public abstract Proto GetProto ();
+        public abstract Proto GetProto ();
 		
 		public Location GetLocation ()
 		{
@@ -45,15 +47,21 @@ namespace Midnight.Engine.Cards
 		public bool IsAtDeck        () { return IsAt(Location.deck); }
 		public bool IsNowhere       () { return IsAt(null); }
 
-		public bool IsActiveHq () { return IsHq() && IsAtBattlefield(); }
-		public bool IsActiveVehicle () { return IsVehicle() && IsAtBattlefield(); }
-		public bool IsActivePlatoon () { return IsPlatoon() && IsAtSupport(); }
+		public virtual bool IsActiveHq () { return false; }
+		public virtual bool IsActiveVehicle () { return false; }
+		public virtual bool IsActivePlatoon () { return false; }
 
 		public TAbility GetActiveAbility<TAbility> ()
 			where TAbility : CardAbility
 		{
-			return null;
-		}
+			foreach (var ability in abilities) {
+                if (ability is TAbility) {
+                    return (TAbility) ability;
+                }
+            }
+
+            return null;
+        }
 
 		public bool HasActiveAbility<TAbility> ()
 			where TAbility : CardAbility
@@ -81,7 +89,24 @@ namespace Midnight.Engine.Cards
 			return chief;
 		}
 
-		public bool IsControlledBy (Chief chief)
+        public abstract CardAbility[] CreateAbilities ();
+
+        public void AddAbility (CardAbility ability)
+        {
+            ability.SetOwner(this);
+            abilities.Add(ability);
+        }
+
+        public void InitAbilities ()
+        {
+            abilities = new List<CardAbility>();
+
+            foreach (var ability in CreateAbilities()) {
+                AddAbility(ability);
+            }
+        }
+
+        public bool IsControlledBy (Chief chief)
 		{
 			return this.chief == chief;
 		}
@@ -105,19 +130,7 @@ namespace Midnight.Engine.Cards
 		{
 			return GetProto().type == type;
 		}
-
-		public virtual bool IsHq      () { return false; }
-		public virtual bool IsPlatoon () { return false; }
-		public virtual bool IsOrder   () { return false; }
-		public virtual bool IsAttack  () { return false; }
-		public virtual bool IsDefense () { return false; }
-		public virtual bool IsVehicle () { return false; }
-		public virtual bool IsLight   () { return false; }
-		public virtual bool IsMedium  () { return false; }
-		public virtual bool IsHeavy   () { return false; }
-		public virtual bool IsSpatg   () { return false; }
-		public virtual bool IsSpg     () { return false; }
-
+        
 		public int GetCost      () { return GetProto().cost; }
 		public int GetIncrease  () { return GetProto().increase; }
 		public int GetToughness () { return GetProto().toughness; }

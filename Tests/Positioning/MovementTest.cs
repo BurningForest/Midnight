@@ -3,27 +3,37 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Tests.Instances;
 using Midnight.Engine.ChiefOperations;
 using Midnight.Engine.Core;
+using Midnight.Engine.Abilities.Positioning;
+using Midnight.Engine.Actions;
+using Midnight.Engine.ActionManager.Events;
+using Midnight.Engine.Emitter;
 
 namespace Midnight.Tests.Positioning
 {
 	[TestClass]
 	public class MovementTest
 	{
-		//[TestMethod]
+		[TestMethod]
 		public void Movement ()
 		{
 			Engine.Engine engine = new Engine.Engine();
-			var field = engine.field;
-			var chief = engine.chiefs[0];
+			var field  = engine.field;
+            var player = engine.chiefs[0];
+            var enemy  = engine.chiefs[1];
 
-			var light  = chief.cardFactory.Create<LightTank>();
-			var medium = chief.cardFactory.Create<MediumTank>();
-			var heavy  = chief.cardFactory.Create<HeavyTank>();
-			var spg    = chief.cardFactory.Create<SpgTank>();
+            var light  = player.cardFactory.Create<LightTank>();
+			var medium = player.cardFactory.Create<MediumTank>();
+			var heavy  = player.cardFactory.Create<HeavyTank>();
+			var spg    = player.cardFactory.Create<SpgTank>();
 
 			var manage = new Manage(engine.actions);
 
-			manage.StartGame(chief);
+            light.ToReserve();
+            medium.ToReserve();
+            heavy.ToReserve();
+            spg.ToReserve();
+
+			manage.StartGame(player);
 
 			// Light
 			manage.Deploy(light, field.GetCell(0, 0));
@@ -53,10 +63,11 @@ namespace Midnight.Tests.Positioning
 			Assert.IsFalse(spgMove.IsValid());
 			Assert.IsTrue(spg.IsAtReserve());
 
-			manage.EndTurn(chief);
+			manage.EndTurn(player);
+            manage.EndTurn(enemy);
 
-			// Light can jump
-			var lightJump = manage.Move(light, field.GetCell(3, 0));
+            // Light can jump
+            var lightJump = manage.Move(light, field.GetCell(3, 0));
 			Assert.IsTrue(lightJump.IsValid());
 			Assert.AreEqual(field.GetCell(3, 0), light.GetCell());
 

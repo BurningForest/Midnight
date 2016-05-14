@@ -4,7 +4,7 @@ using Midnight.Engine.Cards.Vehicles;
 
 namespace Midnight.Tests.Instances
 {
-	public class SpgTank : Spg
+	public class SpgTank : SpgVehicle
 	{
 		public static readonly Proto proto = new Proto() {
 			id = "tv_spg_tank",
