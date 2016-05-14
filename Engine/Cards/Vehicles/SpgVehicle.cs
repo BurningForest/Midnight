@@ -1,4 +1,4 @@
-﻿using Midnight.Engine.Abilities;
+﻿using Midnight.Engine.Abilities.Aggression;
 using Midnight.Engine.Abilities.Positioning;
 using Midnight.Engine.Cards.Types;
 
@@ -12,7 +12,9 @@ namespace Midnight.Engine.Cards.Vehicles
 
 			abilities.Add(
 				new Deployment(),
-				new MovementMedium()
+				new MovementMedium(),
+				new WeaponArtillery(),
+				new Attack()
 			);
 		}
 	}

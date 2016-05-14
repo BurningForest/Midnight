@@ -10,6 +10,13 @@
 		PointsAreUsed,
 		CellIsNotAllowed,
 		NoMovementAbility,
-		NoDeploymentAbility
+		NoDeploymentAbility,
+		NoAttackAbility,
+		FightRoundIsEmpty,
+		NoCounterAttackAbility,
+		AbilityIsUsed,
+		NotAtBattlefield,
+		TargetIsFriendly,
+		TargetIsNotAdjoining
 	}
 }

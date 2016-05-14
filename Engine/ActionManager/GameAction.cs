@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 namespace Midnight.Engine.ActionManager
 {
-	public abstract class Action
+	public abstract class GameAction
 	{
 		private Status status = Status.Idle;
-		private List<Action> children = new List<Action>();
+		private List<GameAction> children = new List<GameAction>();
 		private bool isClosed = false;
-		private Action parent = null;
+		private GameAction parent = null;
 
 		private Manager manager;
 		private Engine engine;
@@ -37,12 +37,12 @@ namespace Midnight.Engine.ActionManager
 			return status;
 		}
 
-		public List<Action> GetChildren ()
+		public List<GameAction> GetChildren ()
 		{
 			return children;
 		}
 
-		public Action AddChild (Action action)
+		public GameAction AddChild (GameAction action)
 		{
 			if (isClosed) {
 				throw new Exception("Cannot add child action to closed action");
@@ -54,7 +54,7 @@ namespace Midnight.Engine.ActionManager
 			return this;
 		}
 
-		private void SetParent (Action action)
+		private void SetParent (GameAction action)
 		{
 			if (parent != null) {
 				throw new Exception("Parent is already set");
@@ -63,7 +63,7 @@ namespace Midnight.Engine.ActionManager
 			parent = action;
 		}
 
-		public Action GetParent ()
+		public GameAction GetParent ()
 		{
 			return parent;
 		}
@@ -73,13 +73,13 @@ namespace Midnight.Engine.ActionManager
 			return parent == null;
 		}
 
-		public Action GetTop ()
+		public GameAction GetTop ()
 		{
 			return IsTop() ? this : parent.GetTop();
 		}
 
 		public bool IsChildOf<TAction> ()
-			where TAction : Action
+			where TAction : GameAction
 		{
 			var action = this;
 
@@ -93,9 +93,9 @@ namespace Midnight.Engine.ActionManager
 			return false;
 		}
 
-		public Action AddChildren (IEnumerable<Action> actions)
+		public GameAction AddChildren (IEnumerable<GameAction> actions)
 		{
-			foreach (Action action in actions) {
+			foreach (GameAction action in actions) {
 				AddChild(action);
 			}
 			return this;
@@ -136,38 +136,38 @@ namespace Midnight.Engine.ActionManager
 
 	}
 
-	public abstract class Action<TAction> : Action
-		where TAction : Action<TAction>
+	public abstract class GameAction<TAction> : GameAction
+		where TAction : GameAction<TAction>
 	{
 
 		internal override void NotifyBefore (EventEmitter emitter)
 		{
 			emitter.Publish(new Before<TAction>(this as TAction));
-			emitter.Publish(new Before<Action>(this));
+			emitter.Publish(new Before<GameAction>(this));
 		}
 
 		internal override void NotifyInside (EventEmitter emitter)
 		{
 			emitter.Publish(new Inside<TAction>(this as TAction));
-			emitter.Publish(new Inside<Action>(this));
+			emitter.Publish(new Inside<GameAction>(this));
 		}
 
 		internal override void NotifyAfter (EventEmitter emitter)
 		{
 			emitter.Publish(new After<TAction>(this as TAction));
-			emitter.Publish(new After<Action>(this));
+			emitter.Publish(new After<GameAction>(this));
 		}
 
 		internal override void NotifyFailure (EventEmitter emitter)
 		{
 			emitter.Publish(new Failure<TAction>(this as TAction));
-			emitter.Publish(new Failure<Action>(this));
+			emitter.Publish(new Failure<GameAction>(this));
 		}
 
 		internal override void NotifyFinish (EventEmitter emitter)
 		{
 			emitter.Publish(new Finish<TAction>(this as TAction));
-			emitter.Publish(new Finish<Action>(this));
+			emitter.Publish(new Finish<GameAction>(this));
 		}
 	}
 

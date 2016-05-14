@@ -1,8 +1,6 @@
-﻿using Midnight.Engine.Abilities;
-using Midnight.Engine.Cards.Enums;
+﻿using Midnight.Engine.Cards.Enums;
 using Midnight.Engine.Cards.Props;
 using Midnight.Engine.ChiefOperations;
-using System.Collections.Generic;
 
 namespace Midnight.Engine.Cards
 {

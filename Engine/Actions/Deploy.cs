@@ -7,7 +7,7 @@ using Midnight.Engine.Cards.Types;
 
 namespace Midnight.Engine.Actions
 {
-	public class Deploy : Action<Deploy>
+	public class Deploy : GameAction<Deploy>
 	{
 		private ForefrontCard card;
 		private Cell cell;

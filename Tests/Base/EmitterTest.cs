@@ -8,7 +8,7 @@ namespace Midnight.Tests.Base
 	[TestClass]
 	public class ActionManager
 	{
-		private class FooAction : Action<FooAction>
+		private class FooAction : GameAction<FooAction>
 		{
 			public static int value = 42;
 
@@ -17,7 +17,7 @@ namespace Midnight.Tests.Base
 				return value;
 			}
 		}
-		private class BarAction : Action<BarAction>
+		private class BarAction : GameAction<BarAction>
 		{
 			public static int value = 113;
 

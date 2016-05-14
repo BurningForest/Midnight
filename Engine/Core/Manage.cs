@@ -27,9 +27,9 @@ namespace Midnight.Engine.Core
 			return Launch(new EndTurn(chief));
 		}
 
-		public void Fight (Card card1, Card card2)
+		public Fight Fight (FieldCard source, FieldCard target)
 		{
-			throw new NotImplementedException();
+			return Launch(new Fight(source, target));
 		}
 
 		public void Position (Card card, Cell cell)
@@ -67,9 +67,9 @@ namespace Midnight.Engine.Core
 			throw new NotImplementedException();
 		}
 
-		public void Damage (int v, Card target, Card source)
+		public DealDamage Damage (int value, FieldCard target, FieldCard source)
 		{
-			throw new NotImplementedException();
+			return Launch(new DealDamage(value, source, target));
 		}
 
 		public void Order (Order order, Card card)
@@ -78,7 +78,7 @@ namespace Midnight.Engine.Core
 		}
 
 		private TAction Launch<TAction> (TAction action)
-			where TAction : ActionManager.Action
+			where TAction : ActionManager.GameAction
 		{
 			manager.Launch(action);
 			return action;

@@ -7,8 +7,8 @@ namespace Midnight.Engine.ActionManager
 {
 	public class Manager
 	{
-		private List<Action> activeActions = new List<Action>();
-		private List<Action> delayedActions = new List<Action>();
+		private List<GameAction> activeActions = new List<GameAction>();
+		private List<GameAction> delayedActions = new List<GameAction>();
 		public readonly EventEmitter emitter;
 		private readonly Engine engine;
 
@@ -19,7 +19,7 @@ namespace Midnight.Engine.ActionManager
 		}
 
 		public void Delay<TAction> (TAction action)
-			where TAction : Action
+			where TAction : GameAction
 		{
 			if (IsIdle()) {
 				Launch(action);
@@ -28,14 +28,14 @@ namespace Midnight.Engine.ActionManager
 			}
 		}
 
-		internal void Register (Action action)
+		internal void Register (GameAction action)
 		{
 			action.SetActionManager(this);
 			action.SetEngine(engine);
 		}
 
 		public bool Launch<TAction> (TAction action)
-			where TAction : Action
+			where TAction : GameAction
 		{
 			if (IsIdle()) {
 				return ForceLaunch(action);
@@ -45,7 +45,7 @@ namespace Midnight.Engine.ActionManager
 		}
 
 		private bool ForceLaunch<TAction> (TAction action)
-			where TAction : Action
+			where TAction : GameAction
 		{
 			Register(action);
 			action.Validate();
@@ -66,7 +66,7 @@ namespace Midnight.Engine.ActionManager
 		}
 
 		private void LaunchRec<TAction> (TAction action)
-			where TAction : Action
+			where TAction : GameAction
 		{
 			action.NotifyBefore(emitter);
 
@@ -76,7 +76,7 @@ namespace Midnight.Engine.ActionManager
 
 			action.Close();
 
-			foreach (Action child in action.GetChildren()) {
+			foreach (GameAction child in action.GetChildren()) {
 				ForceLaunch(child);
 			}
 
@@ -90,7 +90,7 @@ namespace Midnight.Engine.ActionManager
 		}
 
 		private void CheckFinish<TAction> (TAction action)
-			where TAction : Action
+			where TAction : GameAction
 		{
 			if (!IsIdle()) {
 				return;

@@ -7,7 +7,7 @@ using Midnight.Engine.Cards.Types;
 
 namespace Midnight.Engine.Actions
 {
-	public class Move : Action<Move>
+	public class Move : GameAction<Move>
 	{
 		private FieldCard card;
 		private Cell cell;
