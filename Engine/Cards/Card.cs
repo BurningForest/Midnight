@@ -1,5 +1,6 @@
 ﻿using Midnight.Engine.Abilities;
 using Midnight.Engine.Cards.Enums;
+using Midnight.Engine.Cards.Props;
 using Midnight.Engine.ChiefOperations;
 using System.Collections.Generic;
 
@@ -13,6 +14,7 @@ namespace Midnight.Engine.Cards
 		private int id;
 		private Chief chief;
 		private List<CardAbility> abilities;
+		private ModifierContainer modifiers;
 
 		public abstract Proto GetProto ();
 
@@ -130,10 +132,39 @@ namespace Midnight.Engine.Cards
 			return GetProto().type == type;
 		}
 
-		public int GetCost () { return GetProto().cost; }
-		public int GetIncrease () { return GetProto().increase; }
-		public int GetToughness () { return GetProto().toughness; }
-		public int GetPower () { return GetProto().power; }
-		public int GetDefense () { return GetProto().defense; }
+		public void Modify (Modifier modifier)
+		{
+			modifiers.Add(modifier);
+		}
+
+		public int GetPropertyValue (Property property)
+		{
+			return property.GetProtoValue(GetProto()) + modifiers.GetPropertySum(property);
+		}
+
+		public int GetCost ()
+		{
+			return GetPropertyValue(Property.cost);
+		}
+
+		public int GetIncrease ()
+		{
+			return GetPropertyValue(Property.increase);
+		}
+
+		public int GetToughness ()
+		{
+			return GetPropertyValue(Property.toughness);
+		}
+
+		public int GetPower ()
+		{
+			return GetPropertyValue(Property.power);
+		}
+
+		public int GetDefense ()
+		{
+			return GetPropertyValue(Property.defense);
+		}
 	}
 }
