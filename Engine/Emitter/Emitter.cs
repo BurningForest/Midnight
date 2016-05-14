@@ -10,21 +10,17 @@ namespace Midnight.Engine.Emitter
 
 		public void Subscribe (IListener listener)
 		{
-            listeners.Add(listener);
+			listeners.Add(listener);
 		}
 
 		public void Publish<TEvent> (TEvent e)
-            where TEvent : IEvent
-        {
-            if (e is Before<BeginTurn>) {
-                var type = typeof(TEvent);
-            }
-
-            foreach (var l in listeners) {
-                if (l is IListener<TEvent>) {
-                    (l as IListener<TEvent>).On(e);
-                }
-            }
+			where TEvent : IEvent
+		{
+			foreach (var l in listeners) {
+				if (l is IListener<TEvent>) {
+					(l as IListener<TEvent>).On(e);
+				}
+			}
 		}
 	}
 }

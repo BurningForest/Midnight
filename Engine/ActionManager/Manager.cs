@@ -19,7 +19,7 @@ namespace Midnight.Engine.ActionManager
 		}
 
 		public void Delay<TAction> (TAction action)
-            where TAction : Action
+			where TAction : Action
 		{
 			if (IsIdle()) {
 				Launch(action);
@@ -55,7 +55,7 @@ namespace Midnight.Engine.ActionManager
 				LaunchRec(action);
 				return true;
 			} else {
-                action.NotifyFailure(emitter);
+				action.NotifyFailure(emitter);
 				return false;
 			}
 		}
@@ -68,13 +68,13 @@ namespace Midnight.Engine.ActionManager
 		private void LaunchRec<TAction> (TAction action)
 			where TAction : Action
 		{
-            action.NotifyBefore(emitter);
+			action.NotifyBefore(emitter);
 
 			action.Configure();
 
-            action.NotifyInside(emitter);
+			action.NotifyInside(emitter);
 
-            action.Close();
+			action.Close();
 
 			foreach (Action child in action.GetChildren()) {
 				ForceLaunch(child);
@@ -82,11 +82,11 @@ namespace Midnight.Engine.ActionManager
 
 			action.Complete();
 
-            action.NotifyAfter(emitter);
+			action.NotifyAfter(emitter);
 
-            activeActions.Remove(action);
+			activeActions.Remove(action);
 
-            CheckFinish(action);
+			CheckFinish(action);
 		}
 
 		private void CheckFinish<TAction> (TAction action)
@@ -100,8 +100,8 @@ namespace Midnight.Engine.ActionManager
 				delayedActions.Remove(first);
 				Launch(first);
 			} else {
-                action.NotifyFinish(emitter);
-            }
+				action.NotifyFinish(emitter);
+			}
 		}
 	}
 }

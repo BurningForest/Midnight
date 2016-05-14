@@ -27,7 +27,7 @@ namespace Midnight.Engine.Battlefield
 			return this;
 		}
 
-		public List<Cell> GetCells()
+		public List<Cell> GetCells ()
 		{
 			return cells;
 		}
@@ -36,7 +36,7 @@ namespace Midnight.Engine.Battlefield
 		{
 			return x + y * width;
 		}
-		
+
 		public bool IsSuitable (int x, int y)
 		{
 			return x >= 0 && x < this.width
@@ -96,7 +96,7 @@ namespace Midnight.Engine.Battlefield
 			return column;
 		}
 
-		public List<Card> GetAllCards()
+		public List<Card> GetAllCards ()
 		{
 			return GetCardsOf(cells);
 		}

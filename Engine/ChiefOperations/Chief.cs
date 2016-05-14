@@ -15,7 +15,7 @@ namespace Midnight.Engine.ChiefOperations
 		public readonly List<Card> cards = new List<Card>();
 		public readonly CardFactory cardFactory;
 
-        private Random random = new Random();
+		private Random random = new Random();
 		private int resources = 0;
 		private int ownIncrease = 0;
 
@@ -51,14 +51,14 @@ namespace Midnight.Engine.ChiefOperations
 			return engine;
 		}
 
-        public Chief GetOpponent ()
-        {
-            return engine.chiefs[1] == this
-                ? engine.chiefs[0]
-                : engine.chiefs[1];
-        }
+		public Chief GetOpponent ()
+		{
+			return engine.chiefs[1] == this
+				? engine.chiefs[0]
+				: engine.chiefs[1];
+		}
 
-		public void PayResources(int value)
+		public void PayResources (int value)
 		{
 			if (value > resources) {
 				resources = 0;
@@ -67,7 +67,7 @@ namespace Midnight.Engine.ChiefOperations
 			}
 		}
 
-		public void GiveResources(int value)
+		public void GiveResources (int value)
 		{
 			resources += value;
 		}
@@ -77,12 +77,12 @@ namespace Midnight.Engine.ChiefOperations
 			return resources;
 		}
 
-		public void SetResources(int value)
+		public void SetResources (int value)
 		{
 			resources = value;
 		}
-		
-		public int GetTotalIncrease()
+
+		public int GetTotalIncrease ()
 		{
 			int increase = ownIncrease;
 
@@ -110,21 +110,21 @@ namespace Midnight.Engine.ChiefOperations
 			return cards.Where(card => card.IsAt(location)).ToList();
 		}
 
-        public List<Card> GetShuffledDeck ()
-        {
-            var deck = GetLocationCards(Location.deck);
+		public List<Card> GetShuffledDeck ()
+		{
+			var deck = GetLocationCards(Location.deck);
 
-            for (int i = 0; i < deck.Count; i++) {
-                int r = random.Next(i, deck.Count);
+			for (int i = 0; i < deck.Count; i++) {
+				int r = random.Next(i, deck.Count);
 
-                // Swap cards
-                Card temp = deck[i];
-                deck[i] = deck[r];
-                deck[r] = temp;
-            }
+				// Swap cards
+				Card temp = deck[i];
+				deck[i] = deck[r];
+				deck[r] = temp;
+			}
 
-            return deck;
-        }
+			return deck;
+		}
 
 		public Platoon GetPlatoonBySubtype (Subtype subtype)
 		{
@@ -134,7 +134,7 @@ namespace Midnight.Engine.ChiefOperations
 		public List<Platoon> GetOrderedPlatoons ()
 		{
 			var platoons = new List<Platoon>();
-			
+
 			foreach (var subtype in Platoon.subtypeOrder) {
 				var item = GetPlatoonBySubtype(subtype);
 
@@ -194,7 +194,7 @@ namespace Midnight.Engine.ChiefOperations
 		public bool IsTurnOwner ()
 		{
 
-            return engine.turn.GetOwner() == this; // todo
+			return engine.turn.GetOwner() == this; // todo
 		}
 
 		public bool HasHq (Country country)

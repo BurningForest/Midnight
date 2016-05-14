@@ -5,48 +5,48 @@ using Midnight.Engine.Actions;
 
 namespace Midnight.Engine.ChiefOperations
 {
-    public class Turn : IListener<After<EndTurn>>
-    {
-        private readonly Engine engine;
-        private int number = 0;
-        private Chief owner;
+	public class Turn : IListener<After<EndTurn>>
+	{
+		private readonly Engine engine;
+		private int number = 0;
+		private Chief owner;
 
-        public Turn (Engine engine)
-        {
-            this.engine = engine;
+		public Turn (Engine engine)
+		{
+			this.engine = engine;
 
-            engine.emitter.Subscribe(this);
-        }
+			engine.emitter.Subscribe(this);
+		}
 
-        public int GetNumber ()
-        {
-            return number;
-        }
+		public int GetNumber ()
+		{
+			return number;
+		}
 
-        public void StartWith (Chief chief)
-        {
-            if (owner != null) {
-                throw new Exception("Already started");
-            }
+		public void StartWith (Chief chief)
+		{
+			if (owner != null) {
+				throw new Exception("Already started");
+			}
 
-            owner = chief;
-        }
+			owner = chief;
+		}
 
-        private void ChangeOwner ()
-        {
-            owner = owner.GetOpponent();
-            ++number;
-        }
+		private void ChangeOwner ()
+		{
+			owner = owner.GetOpponent();
+			++number;
+		}
 
-        public Chief GetOwner ()
-        {
-            return owner;
-        }
+		public Chief GetOwner ()
+		{
+			return owner;
+		}
 
-        public void On (After<EndTurn> ev)
-        {
-            ChangeOwner();
-            engine.actions.Delay(new BeginTurn(GetOwner(), ev.action));
-        }
-    }
+		public void On (After<EndTurn> ev)
+		{
+			ChangeOwner();
+			engine.actions.Delay(new BeginTurn(GetOwner(), ev.action));
+		}
+	}
 }

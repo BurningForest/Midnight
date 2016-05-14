@@ -49,7 +49,7 @@ namespace Midnight.Engine.Battlefield
 		}
 
 		// check for neighbors
-		public Offset DistanceTo(Cell cell)
+		public Offset DistanceTo (Cell cell)
 		{
 			return new Offset() {
 				x = Math.Abs(cell.x - x),
@@ -62,7 +62,7 @@ namespace Midnight.Engine.Battlefield
 			return cell != this
 				&& DistanceTo(cell).IsEquals(1, 1);
 		}
-		
+
 		public bool IsCloseTo (Cell cell)
 		{
 			var distance = DistanceTo(cell);
@@ -71,7 +71,7 @@ namespace Midnight.Engine.Battlefield
 				distance.IsEquals(1, 0) || distance.IsEquals(0, 1)
 			);
 		}
-		
+
 		public bool IsRunTo (Cell cell)
 		{
 			var distance = DistanceTo(cell);
@@ -97,7 +97,7 @@ namespace Midnight.Engine.Battlefield
 			public int x;
 			public int y;
 
-			public bool IsEquals(int x, int y)
+			public bool IsEquals (int x, int y)
 			{
 				return this.x == x && this.y == y;
 			}

@@ -14,10 +14,10 @@ namespace Midnight.Tests.Base
 		{
 			var card = new LightTank();
 
-            Assert.IsTrue(card is Vehicle);
-            Assert.IsTrue(card is LightVehicle);
+			Assert.IsTrue(card is Vehicle);
+			Assert.IsTrue(card is LightVehicle);
 
-            Assert.IsTrue(card.Is(Country.usa));
+			Assert.IsTrue(card.Is(Country.usa));
 			Assert.IsTrue(card.Is(Type.vehicle));
 			Assert.IsTrue(card.Is(Subtype.light));
 

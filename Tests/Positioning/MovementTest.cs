@@ -17,21 +17,21 @@ namespace Midnight.Tests.Positioning
 		public void Movement ()
 		{
 			Engine.Engine engine = new Engine.Engine();
-			var field  = engine.field;
-            var player = engine.chiefs[0];
-            var enemy  = engine.chiefs[1];
+			var field = engine.field;
+			var player = engine.chiefs[0];
+			var enemy = engine.chiefs[1];
 
-            var light  = player.cardFactory.Create<LightTank>();
+			var light = player.cardFactory.Create<LightTank>();
 			var medium = player.cardFactory.Create<MediumTank>();
-			var heavy  = player.cardFactory.Create<HeavyTank>();
-			var spg    = player.cardFactory.Create<SpgTank>();
+			var heavy = player.cardFactory.Create<HeavyTank>();
+			var spg = player.cardFactory.Create<SpgTank>();
 
 			var manage = new Manage(engine.actions);
 
-            light.ToReserve();
-            medium.ToReserve();
-            heavy.ToReserve();
-            spg.ToReserve();
+			light.ToReserve();
+			medium.ToReserve();
+			heavy.ToReserve();
+			spg.ToReserve();
 
 			manage.StartGame(player);
 
@@ -64,10 +64,10 @@ namespace Midnight.Tests.Positioning
 			Assert.IsTrue(spg.IsAtReserve());
 
 			manage.EndTurn(player);
-            manage.EndTurn(enemy);
+			manage.EndTurn(enemy);
 
-            // Light can jump
-            var lightJump = manage.Move(light, field.GetCell(3, 0));
+			// Light can jump
+			var lightJump = manage.Move(light, field.GetCell(3, 0));
 			Assert.IsTrue(lightJump.IsValid());
 			Assert.AreEqual(field.GetCell(3, 0), light.GetCell());
 

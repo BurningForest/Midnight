@@ -19,7 +19,7 @@ namespace Midnight.Engine.Instances.Usa.Vehicle.Light
 			cost = 3,
 		};
 
-		public override Proto GetProto()
+		public override Proto GetProto ()
 		{
 			return proto;
 		}

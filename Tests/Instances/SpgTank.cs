@@ -20,7 +20,7 @@ namespace Midnight.Tests.Instances
 			cost = 0,
 		};
 
-		public override Proto GetProto()
+		public override Proto GetProto ()
 		{
 			return proto;
 		}

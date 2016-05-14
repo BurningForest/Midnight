@@ -6,7 +6,8 @@ using System.Collections.Generic;
 
 namespace Midnight.Engine.ActionManager
 {
-	public abstract class Action {
+	public abstract class Action
+	{
 		private Status status = Status.Idle;
 		private List<Action> children = new List<Action>();
 		private bool isClosed = false;
@@ -25,13 +26,13 @@ namespace Midnight.Engine.ActionManager
 			return engine;
 		}
 
-        internal abstract void NotifyBefore  (EventEmitter emitter);
-        internal abstract void NotifyInside  (EventEmitter emitter);
-        internal abstract void NotifyAfter   (EventEmitter emitter);
-        internal abstract void NotifyFailure (EventEmitter emitter);
-        internal abstract void NotifyFinish  (EventEmitter emitter);
+		internal abstract void NotifyBefore (EventEmitter emitter);
+		internal abstract void NotifyInside (EventEmitter emitter);
+		internal abstract void NotifyAfter (EventEmitter emitter);
+		internal abstract void NotifyFailure (EventEmitter emitter);
+		internal abstract void NotifyFinish (EventEmitter emitter);
 
-        public Status GetStatus ()
+		public Status GetStatus ()
 		{
 			return status;
 		}
@@ -103,7 +104,8 @@ namespace Midnight.Engine.ActionManager
 
 		public virtual void Complete () { }
 		public virtual void Configure () { }
-		public virtual Status Validation () {
+		public virtual Status Validation ()
+		{
 			return Status.Success;
 		}
 
@@ -134,39 +136,39 @@ namespace Midnight.Engine.ActionManager
 
 	}
 
-    public abstract class Action<TAction> : Action 
-        where TAction : Action<TAction>
-    {
+	public abstract class Action<TAction> : Action
+		where TAction : Action<TAction>
+	{
 
-        internal override void NotifyBefore (EventEmitter emitter)
-        {
-            emitter.Publish(new Before<TAction>(this as TAction));
-            emitter.Publish(new Before<Action>(this));
-        }
+		internal override void NotifyBefore (EventEmitter emitter)
+		{
+			emitter.Publish(new Before<TAction>(this as TAction));
+			emitter.Publish(new Before<Action>(this));
+		}
 
-        internal override void NotifyInside (EventEmitter emitter)
-        {
-            emitter.Publish(new Inside<TAction>(this as TAction));
-            emitter.Publish(new Inside<Action>(this));
-        }
+		internal override void NotifyInside (EventEmitter emitter)
+		{
+			emitter.Publish(new Inside<TAction>(this as TAction));
+			emitter.Publish(new Inside<Action>(this));
+		}
 
-        internal override void NotifyAfter (EventEmitter emitter)
-        {
-            emitter.Publish(new After<TAction>(this as TAction));
-            emitter.Publish(new After<Action>(this));
-        }
+		internal override void NotifyAfter (EventEmitter emitter)
+		{
+			emitter.Publish(new After<TAction>(this as TAction));
+			emitter.Publish(new After<Action>(this));
+		}
 
-        internal override void NotifyFailure (EventEmitter emitter)
-        {
-            emitter.Publish(new Failure<TAction>(this as TAction));
-            emitter.Publish(new Failure<Action>(this));
-        }
+		internal override void NotifyFailure (EventEmitter emitter)
+		{
+			emitter.Publish(new Failure<TAction>(this as TAction));
+			emitter.Publish(new Failure<Action>(this));
+		}
 
-        internal override void NotifyFinish (EventEmitter emitter)
-        {
-            emitter.Publish(new Finish<TAction>(this as TAction));
-            emitter.Publish(new Finish<Action>(this));
-        }
-    }
+		internal override void NotifyFinish (EventEmitter emitter)
+		{
+			emitter.Publish(new Finish<TAction>(this as TAction));
+			emitter.Publish(new Finish<Action>(this));
+		}
+	}
 
 }

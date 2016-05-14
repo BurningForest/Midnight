@@ -10,9 +10,9 @@ namespace Midnight.Engine
 		public readonly Battlefield.Field field;
 		public readonly Chief[] chiefs;
 		public readonly Logger logger;
-        public readonly Turn turn;
+		public readonly Turn turn;
 
-        public Engine ()
+		public Engine ()
 		{
 			emitter = new Emitter.EventEmitter();
 			actions = new ActionManager.Manager(this);
@@ -26,7 +26,7 @@ namespace Midnight.Engine
 				new Chief(1).SetEngine(this),
 			};
 
-            turn = new Turn(this);
+			turn = new Turn(this);
 		}
 
 	}

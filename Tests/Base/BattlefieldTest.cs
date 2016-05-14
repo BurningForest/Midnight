@@ -5,7 +5,8 @@ namespace Midnight.Tests.Base
 	[TestClass]
 	public class BattlefieldTest
 	{
-		public static Engine.Battlefield.Field CreateField () {
+		public static Engine.Battlefield.Field CreateField ()
+		{
 			var field = new Engine.Battlefield.Field();
 			field.SetSize(5, 3);
 			return field;

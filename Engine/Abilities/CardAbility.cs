@@ -12,7 +12,7 @@ namespace Midnight.Engine.Abilities
 		protected Chief chief;
 		protected Engine engine;
 
-        public void On (IEvent ev) { }
+		public void On (IEvent ev) { }
 
 		internal void SetOwner (Card owner)
 		{

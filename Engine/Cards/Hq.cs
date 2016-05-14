@@ -9,17 +9,17 @@ namespace Midnight.Engine.Cards
 	{
 		public List<Cell> GetFootholdCells ()
 		{
-            return GetCell().GetAdjoiningCells();
+			return GetCell().GetAdjoiningCells();
 		}
 
-        public override bool IsActiveHq ()
-        {
-            return IsAtBattlefield();
-        }
+		public override bool IsActiveHq ()
+		{
+			return IsAtBattlefield();
+		}
 
-        public override CardAbility[] CreateAbilities ()
-        {
-            return new CardAbility[] { };
-        }
+		public override CardAbility[] CreateAbilities ()
+		{
+			return new CardAbility[] { };
+		}
 	}
 }

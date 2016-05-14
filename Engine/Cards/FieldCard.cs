@@ -28,12 +28,12 @@ namespace Midnight.Engine.Cards
 			base.ToLocation(target);
 		}
 
-		public Cell GetCell()
+		public Cell GetCell ()
 		{
 			return cell;
 		}
 
-		public void RemoveCell()
+		public void RemoveCell ()
 		{
 			if (cell == null) {
 				return;

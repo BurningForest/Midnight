@@ -13,10 +13,10 @@ namespace Midnight.Engine.Cards
 		private Location location = null;
 		private int id;
 		private Chief chief;
-        private List<CardAbility> abilities;
+		private List<CardAbility> abilities;
 
-        public abstract Proto GetProto ();
-		
+		public abstract Proto GetProto ();
+
 		public Location GetLocation ()
 		{
 			return location;
@@ -32,20 +32,20 @@ namespace Midnight.Engine.Cards
 			if (location == target) {
 				return;
 			}
-			
+
 			location = target;
 		}
 
-		public void ToReserve   () { ToLocation(Location.reserve); } 
-		public void ToGraveyard () { ToLocation(Location.graveyard); } 
-		public void ToDeck      () { ToLocation(Location.deck); }
+		public void ToReserve () { ToLocation(Location.reserve); }
+		public void ToGraveyard () { ToLocation(Location.graveyard); }
+		public void ToDeck () { ToLocation(Location.deck); }
 
 		public bool IsAtBattlefield () { return IsAt(Location.battlefield); }
-		public bool IsAtSupport     () { return IsAt(Location.support); }
-		public bool IsAtReserve     () { return IsAt(Location.reserve); }
-		public bool IsAtGraveyard   () { return IsAt(Location.graveyard); }
-		public bool IsAtDeck        () { return IsAt(Location.deck); }
-		public bool IsNowhere       () { return IsAt(null); }
+		public bool IsAtSupport () { return IsAt(Location.support); }
+		public bool IsAtReserve () { return IsAt(Location.reserve); }
+		public bool IsAtGraveyard () { return IsAt(Location.graveyard); }
+		public bool IsAtDeck () { return IsAt(Location.deck); }
+		public bool IsNowhere () { return IsAt(null); }
 
 		public virtual bool IsActiveHq () { return false; }
 		public virtual bool IsActiveVehicle () { return false; }
@@ -55,13 +55,13 @@ namespace Midnight.Engine.Cards
 			where TAbility : CardAbility
 		{
 			foreach (var ability in abilities) {
-                if (ability is TAbility) {
-                    return (TAbility) ability;
-                }
-            }
+				if (ability is TAbility) {
+					return (TAbility)ability;
+				}
+			}
 
-            return null;
-        }
+			return null;
+		}
 
 		public bool HasActiveAbility<TAbility> ()
 			where TAbility : CardAbility
@@ -89,24 +89,24 @@ namespace Midnight.Engine.Cards
 			return chief;
 		}
 
-        public abstract CardAbility[] CreateAbilities ();
+		public abstract CardAbility[] CreateAbilities ();
 
-        public void AddAbility (CardAbility ability)
-        {
-            ability.SetOwner(this);
-            abilities.Add(ability);
-        }
+		public void AddAbility (CardAbility ability)
+		{
+			ability.SetOwner(this);
+			abilities.Add(ability);
+		}
 
-        public void InitAbilities ()
-        {
-            abilities = new List<CardAbility>();
+		public void InitAbilities ()
+		{
+			abilities = new List<CardAbility>();
 
-            foreach (var ability in CreateAbilities()) {
-                AddAbility(ability);
-            }
-        }
+			foreach (var ability in CreateAbilities()) {
+				AddAbility(ability);
+			}
+		}
 
-        public bool IsControlledBy (Chief chief)
+		public bool IsControlledBy (Chief chief)
 		{
 			return this.chief == chief;
 		}
@@ -130,11 +130,11 @@ namespace Midnight.Engine.Cards
 		{
 			return GetProto().type == type;
 		}
-        
-		public int GetCost      () { return GetProto().cost; }
-		public int GetIncrease  () { return GetProto().increase; }
+
+		public int GetCost () { return GetProto().cost; }
+		public int GetIncrease () { return GetProto().increase; }
 		public int GetToughness () { return GetProto().toughness; }
-		public int GetPower     () { return GetProto().power; }
-		public int GetDefense   () { return GetProto().defense; }
+		public int GetPower () { return GetProto().power; }
+		public int GetDefense () { return GetProto().defense; }
 	}
 }

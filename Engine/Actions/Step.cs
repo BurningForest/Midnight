@@ -20,7 +20,7 @@ namespace Midnight.Engine.Actions
 		{
 			card.GetActiveAbility<Movement>().Activate(cell);
 			card.ToCell(cell);
-			
+
 			// todo: spotted
 		}
 	}

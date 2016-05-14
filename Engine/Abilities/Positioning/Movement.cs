@@ -12,9 +12,9 @@ namespace Midnight.Engine.Abilities.Positioning
 {
 	public abstract class Movement : CardActiveAbility<FieldCard>, IListener<Before<BeginTurn>>
 	{
-		public int GetRunMoveCost    () { return 4; }
+		public int GetRunMoveCost () { return 4; }
 		public int GetCornerMoveCost () { return 3; }
-		public int GetCloseMoveCost  () { return 2; }
+		public int GetCloseMoveCost () { return 2; }
 
 		public int GetMinimalMoveCost ()
 		{
@@ -73,7 +73,7 @@ namespace Midnight.Engine.Abilities.Positioning
 
 		public virtual Cell[] GetMovesTo (Cell cell)
 		{
-			return new Cell[]{ cell };
+			return new Cell[] { cell };
 		}
 
 		public List<Cell> GetAllowedCells ()
@@ -90,31 +90,31 @@ namespace Midnight.Engine.Abilities.Positioning
 		}
 
 		public Status Validate (Cell cell)
-        {
-            if (!chief.IsTurnOwner()) {
-                return Status.NotTurnOfSource;
-            }
+		{
+			if (!chief.IsTurnOwner()) {
+				return Status.NotTurnOfSource;
+			}
 
-            if (!card.IsAtBattlefield()) {
-                return Status.NotAtReserve;
-            }
+			if (!card.IsAtBattlefield()) {
+				return Status.NotAtReserve;
+			}
 
-            if (IsUsed()) {
-                return Status.PointsAreUsed;
-            }
+			if (IsUsed()) {
+				return Status.PointsAreUsed;
+			}
 
-            if (cell != null && !CanMoveTo(cell)) {
+			if (cell != null && !CanMoveTo(cell)) {
 				return Status.CellIsNotAllowed;
 			}
 
 			return Status.Success;
 		}
-        
-		public void On(Before<BeginTurn> ev)
+
+		public void On (Before<BeginTurn> ev)
 		{
 			if (card.IsControlledBy(ev.action.chief)) {
 				quantity = 0;
 			}
 		}
-    }
+	}
 }
