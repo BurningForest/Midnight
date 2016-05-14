@@ -7,7 +7,7 @@ namespace Midnight.Engine.Abilities.Aggression
 	{
 		public override Status ValidateRange (FieldCard target)
 		{
-			if (!GetCard().GetCell().IsAdjoiningTo(target.GetCell()) {
+			if (!GetCard().GetCell().IsAdjoiningTo(target.GetCell())) {
 				return Status.TargetIsNotAdjoining;
 			}
 
