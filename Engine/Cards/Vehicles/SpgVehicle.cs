@@ -6,12 +6,14 @@ namespace Midnight.Engine.Cards.Vehicles
 {
 	public abstract class SpgVehicle : Vehicle
 	{
-		public override CardAbility[] CreateAbilities ()
+		public override void InitAbilities ()
 		{
-			return new CardAbility[] {
+			base.InitAbilities();
+
+			abilities.Add(
 				new Deployment(),
 				new MovementMedium()
-			};
+			);
 		}
 	}
 }

@@ -45,23 +45,23 @@ namespace Midnight.Tests.Base
 		{
 			var card = new LightTank();
 
-			Assert.IsTrue(card.IsNowhere());
-			Assert.IsFalse(card.IsInForefront());
+			Assert.IsTrue(card.location.IsNowhere());
+			Assert.IsFalse(card.location.IsForefront());
 
-			card.ToDeck();
-			Assert.IsFalse(card.IsNowhere());
-			Assert.IsFalse(card.IsInForefront());
-			Assert.IsTrue(card.IsAtDeck());
+			card.location.ToDeck();
+			Assert.IsFalse(card.location.IsNowhere());
+			Assert.IsFalse(card.location.IsForefront());
+			Assert.IsTrue(card.location.IsDeck());
 
-			card.ToReserve();
-			Assert.IsFalse(card.IsAtDeck());
-			Assert.IsFalse(card.IsInForefront());
-			Assert.IsTrue(card.IsAtReserve());
+			card.location.ToReserve();
+			Assert.IsFalse(card.location.IsDeck());
+			Assert.IsFalse(card.location.IsForefront());
+			Assert.IsTrue(card.location.IsReserve());
 
-			card.ToGraveyard();
-			Assert.IsFalse(card.IsAtReserve());
-			Assert.IsFalse(card.IsInForefront());
-			Assert.IsTrue(card.IsAtGraveyard());
+			card.location.ToGraveyard();
+			Assert.IsFalse(card.location.IsReserve());
+			Assert.IsFalse(card.location.IsForefront());
+			Assert.IsTrue(card.location.IsGraveyard());
 			Assert.IsTrue(card.IsDead());
 		}
 
@@ -71,16 +71,16 @@ namespace Midnight.Tests.Base
 			var field = BattlefieldTest.CreateField();
 			var card = new LightTank();
 
-			Assert.IsTrue(card.IsNowhere());
-			Assert.IsFalse(card.IsInForefront());
-			Assert.IsFalse(card.IsAtBattlefield());
+			Assert.IsTrue(card.location.IsNowhere());
+			Assert.IsFalse(card.location.IsForefront());
+			Assert.IsFalse(card.location.IsBattlefield());
 			Assert.AreEqual(null, card.GetCell());
 
 			card.ToCell(field.GetCell(2, 1));
 			Assert.AreEqual(field.GetCell(2, 1), card.GetCell());
-			Assert.IsFalse(card.IsNowhere());
-			Assert.IsTrue(card.IsInForefront());
-			Assert.IsTrue(card.IsAtBattlefield());
+			Assert.IsFalse(card.location.IsNowhere());
+			Assert.IsTrue(card.location.IsForefront());
+			Assert.IsTrue(card.location.IsBattlefield());
 
 			card.ToCell(field.GetCell(3, 2));
 			Assert.AreEqual(field.GetCell(3, 2), card.GetCell());

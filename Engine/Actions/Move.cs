@@ -20,7 +20,7 @@ namespace Midnight.Engine.Actions
 
 		public override void Configure ()
 		{
-			var moves = card.GetActiveAbility<Movement>().GetMovesTo(cell);
+			var moves = card.abilities.Get<Movement>().GetMovesTo(cell);
 
 			foreach (var move in moves) {
 				AddChild(new Step(card, move));
@@ -29,7 +29,7 @@ namespace Midnight.Engine.Actions
 
 		public override Status Validation ()
 		{
-			var ability = card.GetActiveAbility<Movement>();
+			var ability = card.abilities.Get<Movement>();
 
 			if (ability == null) {
 				return Status.NoMovementAbility;

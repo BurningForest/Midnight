@@ -20,10 +20,10 @@ namespace Midnight.Engine.Actions
 
 		public override void Configure ()
 		{
-			card.GetActiveAbility<Deployment>().Activate();
+			card.abilities.Get<Deployment>().Activate();
 
 			if (card is Platoon) {
-				((Platoon)card).ToSupport();
+				((Platoon)card).location.ToSupport();
 			} else {
 				((FieldCard)card).ToCell(cell);
 			}

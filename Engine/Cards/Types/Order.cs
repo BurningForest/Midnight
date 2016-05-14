@@ -4,9 +4,9 @@ namespace Midnight.Engine.Cards.Types
 {
 	public abstract class Order : Card
 	{
-		public override CardAbility[] CreateAbilities ()
+		public override void InitAbilities ()
 		{
-			return new CardAbility[] { };
+			base.InitAbilities();
 		}
 	}
 }

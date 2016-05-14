@@ -32,7 +32,7 @@ namespace Midnight.Engine.Abilities.Positioning
 				return Status.NotTurnOfSource;
 			}
 
-			if (!card.IsAtReserve()) {
+			if (!card.location.IsReserve()) {
 				return Status.NotAtReserve;
 			}
 
@@ -45,7 +45,7 @@ namespace Midnight.Engine.Abilities.Positioning
 
 		public void Activate ()
 		{
-			var moveAbility = card.GetActiveAbility<Movement>();
+			var moveAbility = card.abilities.Get<Movement>();
 
 			if (moveAbility != null) {
 				moveAbility.Activate(false);

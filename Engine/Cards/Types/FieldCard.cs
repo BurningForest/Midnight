@@ -1,6 +1,4 @@
 ﻿using Midnight.Engine.Battlefield;
-using Midnight.Engine.Cards.Enums;
-using System;
 
 namespace Midnight.Engine.Cards.Types
 {
@@ -13,20 +11,7 @@ namespace Midnight.Engine.Cards.Types
 			RemoveCell();
 			cell.SetCard(this);
 			this.cell = cell;
-			ToLocation(Location.battlefield);
-		}
-
-		public override void ToLocation (Location target)
-		{
-			if (target == Location.battlefield && cell == null) {
-				throw new Exception("Use `ToCell` to position card on battlefield");
-			}
-
-			if (target != Location.battlefield) {
-				RemoveCell();
-			}
-
-			base.ToLocation(target);
+			location.ToBattefield();
 		}
 
 		public Cell GetCell ()

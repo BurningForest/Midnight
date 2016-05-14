@@ -28,10 +28,10 @@ namespace Midnight.Tests.Positioning
 
 			var manage = new Manage(engine.actions);
 
-			light.ToReserve();
-			medium.ToReserve();
-			heavy.ToReserve();
-			spg.ToReserve();
+			light.location.ToReserve();
+			medium.location.ToReserve();
+			heavy.location.ToReserve();
+			spg.location.ToReserve();
 
 			manage.StartGame(player);
 
@@ -39,7 +39,7 @@ namespace Midnight.Tests.Positioning
 			manage.Deploy(light, field.GetCell(0, 0));
 			var firstLightMove = manage.Move(light, field.GetCell(1, 0));
 			Assert.IsTrue(firstLightMove.IsValid());
-			Assert.IsTrue(light.IsAtBattlefield());
+			Assert.IsTrue(light.location.IsBattlefield());
 			Assert.AreEqual(field.GetCell(1, 0), light.GetCell());
 
 			var secondLightMove = manage.Move(light, field.GetCell(2, 0));
@@ -61,7 +61,7 @@ namespace Midnight.Tests.Positioning
 			// Move without deploy
 			var spgMove = manage.Move(spg, field.GetCell(0, 0));
 			Assert.IsFalse(spgMove.IsValid());
-			Assert.IsTrue(spg.IsAtReserve());
+			Assert.IsTrue(spg.location.IsReserve());
 
 			manage.EndTurn(player);
 			manage.EndTurn(enemy);

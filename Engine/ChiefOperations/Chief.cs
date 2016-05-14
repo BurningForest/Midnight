@@ -89,7 +89,7 @@ namespace Midnight.Engine.ChiefOperations
 			int increase = ownIncrease;
 
 			foreach (Card card in cards) {
-				if (card.IsInForefront()) {
+				if (card.location.IsForefront()) {
 					increase += card.GetIncrease();
 				}
 			}
@@ -109,7 +109,7 @@ namespace Midnight.Engine.ChiefOperations
 
 		public List<Card> GetLocationCards (Location location)
 		{
-			return cards.Where(card => card.IsAt(location)).ToList();
+			return cards.Where(card => card.location.Is(location)).ToList();
 		}
 
 		public List<Card> GetShuffledDeck ()
@@ -130,7 +130,7 @@ namespace Midnight.Engine.ChiefOperations
 
 		public Platoon GetPlatoonBySubtype (Subtype subtype)
 		{
-			return cards.First(card => card.IsActivePlatoon() && card.Is(subtype)) as Platoon;
+			return cards.First(card => card is Platoon && card.IsActive() && card.Is(subtype)) as Platoon;
 		}
 
 		public List<Platoon> GetOrderedPlatoons ()
@@ -156,7 +156,7 @@ namespace Midnight.Engine.ChiefOperations
 		public List<Hq> GetAliveHqs ()
 		{
 			var hqs = cards
-				.Where(card => card.IsActiveHq())
+				.Where(card => card is Hq && card.IsActive())
 				.Cast<Hq>();
 
 			return hqs.ToList();
@@ -164,7 +164,7 @@ namespace Midnight.Engine.ChiefOperations
 
 		public Hq GetHq ()
 		{
-			Card hq = cards.First(card => card.IsActiveHq());
+			Card hq = cards.First(card => card is Hq && card.IsActive());
 
 			return hq == null ? null : (Hq)hq;
 		}

@@ -9,16 +9,6 @@ namespace Midnight.Engine.Cards.Types
 		public abstract class AttackPlatoon : Platoon { }
 		public abstract class DefensePlatoon : Platoon { }
 
-		public void ToSupport ()
-		{
-			ToLocation(Location.support);
-		}
-
-		public override bool IsActivePlatoon ()
-		{
-			return IsAtSupport();
-		}
-
 		public static Subtype[] subtypeOrder = {
 			Subtype.scout,
 			Subtype.communications,
@@ -27,9 +17,9 @@ namespace Midnight.Engine.Cards.Types
 			Subtype.intendancy,
 		};
 
-		public override CardAbility[] CreateAbilities ()
+		public override void InitAbilities ()
 		{
-			return new CardAbility[] { };
+			base.InitAbilities();
 		}
 	}
 }

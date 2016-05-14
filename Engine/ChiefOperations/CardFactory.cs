@@ -19,7 +19,7 @@ namespace Midnight.Engine.ChiefOperations
 			var card = new TCard();
 			chief.AddCard(card);
 			card.InitAbilities();
-			card.ToDeck();
+			card.location.ToDeck();
 			return card;
 		}
 

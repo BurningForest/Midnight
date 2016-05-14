@@ -31,7 +31,7 @@ namespace Midnight.Engine.Actions
 
 		public override Status Validation ()
 		{
-			var ability = card.GetActiveAbility<Deployment>();
+			var ability = card.abilities.Get<Deployment>();
 
 			if (ability == null) {
 				return Status.NoDeploymentAbility;

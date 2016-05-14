@@ -12,14 +12,14 @@ namespace Midnight.Engine.Cards.Types
 			return GetCell().GetAdjoiningCells();
 		}
 
-		public override bool IsActiveHq ()
+		public override bool IsActive ()
 		{
-			return IsAtBattlefield();
+			return location.IsBattlefield();
 		}
 
-		public override CardAbility[] CreateAbilities ()
+		public override void InitAbilities ()
 		{
-			return new CardAbility[] { };
+			base.InitAbilities();
 		}
 	}
 }

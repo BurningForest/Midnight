@@ -96,7 +96,7 @@ namespace Midnight.Engine.Abilities.Positioning
 				return Status.NotTurnOfSource;
 			}
 
-			if (!card.IsAtBattlefield()) {
+			if (!card.location.IsBattlefield()) {
 				return Status.NotAtReserve;
 			}
 
