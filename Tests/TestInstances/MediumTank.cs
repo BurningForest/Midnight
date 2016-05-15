@@ -2,22 +2,22 @@
 using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
 
-namespace Midnight.Tests.Instances
+namespace Midnight.Tests.TestInstances
 {
-	public class SpgTank : SpgVehicle
+	public class MediumTank : MediumVehicle
 	{
 		public static readonly Proto proto = new Proto() {
-			id = "tv_spg_tank",
+			id = "tv_medium_tank",
 			level = 1,
 			type = Type.vehicle,
-			subtype = Subtype.spg,
-			country = Country.usa,
+			subtype = Subtype.medium,
+			country = Country.germany,
 
-			power = 1,
+			power = 2,
 			defense = 0,
-			toughness = 3,
-			increase = 0,
-			cost = 0,
+			toughness = 5,
+			increase = 1,
+			cost = 2,
 		};
 
 		public override Proto GetProto ()

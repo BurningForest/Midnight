@@ -1,8 +1,7 @@
-﻿using Midnight.Cards;
-using Midnight.Cards.Enums;
+﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
 
-namespace Midnight.Tests.Instances
+namespace Midnight.Tests.TestInstances
 {
 	public class HeavyTank : HeavyVehicle
 	{

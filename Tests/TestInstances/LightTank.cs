@@ -2,7 +2,7 @@
 using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
 
-namespace Midnight.Tests.Instances
+namespace Midnight.Tests.TestInstances
 {
 	public class LightTank : LightVehicle
 	{

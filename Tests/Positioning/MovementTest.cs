@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Midnight.Tests.Instances;
+using Midnight.Tests.TestInstances;
 using Midnight.Core;
 using Midnight.Triggers;
 

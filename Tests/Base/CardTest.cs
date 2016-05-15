@@ -3,7 +3,7 @@ using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
 using Midnight.Cards.Vehicles;
-using Midnight.Tests.Instances;
+using Midnight.Tests.TestInstances;
 
 namespace Midnight.Tests.Base
 {
