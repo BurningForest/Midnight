@@ -86,7 +86,7 @@ namespace Midnight.Engine.ChiefOperations
 
 		public int GetTotalIncrease ()
 		{
-			int increase = ownIncrease;
+			int increase = GetOwnIncrease();
 
 			foreach (Card card in cards) {
 				if (card.GetLocation().IsForefront()) {

@@ -34,7 +34,7 @@ namespace Midnight.Engine.Battlefield
 		public void SetCard (FieldCard card)
 		{
 			if (IsBusy()) {
-				throw new Exception("Cell is not empty");
+				throw new ArgumentException("Cell is not empty");
 			}
 
 			this.card = card;
@@ -153,7 +153,7 @@ namespace Midnight.Engine.Battlefield
 			return AppendCellsTo(GetClosestCells(), CORNER_OFFSETS);
 		}
 
-		public List<Cell> GetRunCells () // 8 adjoining cells
+		public List<Cell> GetRunCells () // 8 adjoining cells + 4 run cells
 		{
 			return AppendCellsTo(GetAdjoiningCells(), RUN_OFFSETS);
 		}

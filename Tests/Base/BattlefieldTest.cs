@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Midnight.Tests.Instances;
+using System;
 
 namespace Midnight.Tests.Base
 {
@@ -41,6 +43,16 @@ namespace Midnight.Tests.Base
 			var adjoining = field.GetCell(3, 1).GetAdjoiningCells();
 
 			Assert.AreEqual(8, adjoining.Count);
+		}
+
+		[TestMethod]
+		public void GettingRun ()
+		{
+			var field = CreateField();
+			var adjoining = field.GetCell(3, 1).GetRunCells();
+
+			Assert.AreEqual(9, adjoining.Count);
+			Assert.IsTrue(adjoining.Contains(field.GetCell(1, 1)));
 		}
 
 		[TestMethod]
@@ -100,6 +112,81 @@ namespace Midnight.Tests.Base
 			Assert.IsTrue(row.Contains(field.GetCell(4, 0)));
 			Assert.IsTrue(row.Contains(field.GetCell(4, 1)));
 			Assert.IsTrue(row.Contains(field.GetCell(4, 2)));
+		}
+
+		[TestMethod]
+		public void GettingSoftCell ()
+		{
+			var field = CreateField();
+
+			Assert.AreEqual(field.GetCellSoft(-1, -1), field.GetCell(4, 2));
+			Assert.AreEqual(field.GetCellSoft(-2, 1), field.GetCell(3, 1));
+		}
+
+		[TestMethod]
+		public void GettingeEmptyCards ()
+		{
+			var field = CreateField();
+
+			Assert.AreEqual(0, field.GetAllCards().Count);
+		}
+
+		[TestMethod]
+		public void GettingAllCards ()
+		{
+			var field = CreateField();
+			var light = new LightTank();
+			var spatg = new SpatgTank();
+			var heavy = new HeavyTank();
+
+			light.GetFieldLocation().ToCell(field.GetCell(1, 1));
+			spatg.GetFieldLocation().ToCell(field.GetCell(2, 1));
+
+			var allCards = field.GetAllCards();
+
+			Assert.AreEqual(2, allCards.Count);
+			Assert.IsTrue(allCards.Contains(light));
+			Assert.IsTrue(allCards.Contains(spatg));
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentException))]
+		public void MoveToBusyCell ()
+		{
+			var field = CreateField();
+			var cell = field.GetCell(1, 1);
+			var light = new LightTank();
+			var spatg = new SpatgTank();
+
+			light.GetFieldLocation().ToCell(cell);
+			spatg.GetFieldLocation().ToCell(cell);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentException))]
+		public void RemoveFromWrongCell ()
+		{
+			var field = CreateField();
+			var cell = field.GetCell(1, 1);
+			var light = new LightTank();
+			var spatg = new SpatgTank();
+
+			light.GetFieldLocation().ToCell(cell);
+			cell.RemoveCard(spatg);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentOutOfRangeException))]
+		public void GettingWrongRow ()
+		{
+			CreateField().GetCellsByRow(7);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentOutOfRangeException))]
+		public void GettingWrongColumn ()
+		{
+			CreateField().GetCellsByColumn(7);
 		}
 	}
 }
