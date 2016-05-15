@@ -1,4 +1,9 @@
 ﻿bin
 obj
 Properties
-Midnight.csproj
+.vs
+.idea
+*.csproj
+*.user
+*.sln
+*.config
