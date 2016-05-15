@@ -22,7 +22,7 @@ namespace Midnight.Tests.Base
 			Assert.IsTrue(card.Is(Country.usa));
 			Assert.IsTrue(card.Is(Type.vehicle));
 			Assert.IsTrue(card.Is(Subtype.light));
-
+			
 			Assert.IsFalse(card.Is(Country.germany));
 			Assert.IsFalse(card.Is(Type.order));
 			Assert.IsFalse(card.Is(Subtype.heavy));
@@ -45,23 +45,23 @@ namespace Midnight.Tests.Base
 		{
 			var card = new LightTank();
 
-			Assert.IsTrue(card.location.IsNowhere());
-			Assert.IsFalse(card.location.IsForefront());
+			Assert.IsTrue(card.GetLocation().IsNowhere());
+			Assert.IsFalse(card.GetLocation().IsForefront());
 
-			card.location.ToDeck();
-			Assert.IsFalse(card.location.IsNowhere());
-			Assert.IsFalse(card.location.IsForefront());
-			Assert.IsTrue(card.location.IsDeck());
+			card.GetLocation().ToDeck();
+			Assert.IsFalse(card.GetLocation().IsNowhere());
+			Assert.IsFalse(card.GetLocation().IsForefront());
+			Assert.IsTrue(card.GetLocation().IsDeck());
 
-			card.location.ToReserve();
-			Assert.IsFalse(card.location.IsDeck());
-			Assert.IsFalse(card.location.IsForefront());
-			Assert.IsTrue(card.location.IsReserve());
+			card.GetLocation().ToReserve();
+			Assert.IsFalse(card.GetLocation().IsDeck());
+			Assert.IsFalse(card.GetLocation().IsForefront());
+			Assert.IsTrue(card.GetLocation().IsReserve());
 
-			card.location.ToGraveyard();
-			Assert.IsFalse(card.location.IsReserve());
-			Assert.IsFalse(card.location.IsForefront());
-			Assert.IsTrue(card.location.IsGraveyard());
+			card.GetLocation().ToGraveyard();
+			Assert.IsFalse(card.GetLocation().IsReserve());
+			Assert.IsFalse(card.GetLocation().IsForefront());
+			Assert.IsTrue(card.GetLocation().IsGraveyard());
 			Assert.IsTrue(card.IsDead());
 		}
 
@@ -71,19 +71,20 @@ namespace Midnight.Tests.Base
 			var field = BattlefieldTest.CreateField();
 			var card = new LightTank();
 
-			Assert.IsTrue(card.location.IsNowhere());
-			Assert.IsFalse(card.location.IsForefront());
-			Assert.IsFalse(card.location.IsBattlefield());
-			Assert.AreEqual(null, card.GetCell());
+			Assert.IsTrue(card.GetLocation().IsNowhere());
+			Assert.IsFalse(card.GetLocation().IsForefront());
+			Assert.IsFalse(card.GetLocation().IsBattlefield());
+			Assert.AreEqual(null, card.GetFieldLocation().GetCell());
 
-			card.ToCell(field.GetCell(2, 1));
-			Assert.AreEqual(field.GetCell(2, 1), card.GetCell());
-			Assert.IsFalse(card.location.IsNowhere());
-			Assert.IsTrue(card.location.IsForefront());
-			Assert.IsTrue(card.location.IsBattlefield());
+			card.GetFieldLocation().ToCell(field.GetCell(2, 1));
+			Assert.AreEqual(field.GetCell(2, 1), card.GetFieldLocation().GetCell());
+			Assert.IsFalse(card.GetLocation().IsNowhere());
+			Assert.IsTrue(card.GetLocation().IsForefront());
+			Assert.IsTrue(card.GetLocation().IsBattlefield());
 
-			card.ToCell(field.GetCell(3, 2));
-			Assert.AreEqual(field.GetCell(3, 2), card.GetCell());
+			card.GetFieldLocation().ToCell(field.GetCell(3, 2));
+			Assert.AreEqual(field.GetCell(3, 2), card.GetFieldLocation().GetCell());
+			Assert.AreEqual(card, field.GetCell(3, 2).GetCard());
 		}
 	}
 }

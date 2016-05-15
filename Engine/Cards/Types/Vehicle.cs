@@ -4,7 +4,7 @@
 	{
 		public override bool IsActive ()
 		{
-			return location.IsBattlefield();
+			return GetFieldLocation().IsBattlefield();
 		}
 	}
 }

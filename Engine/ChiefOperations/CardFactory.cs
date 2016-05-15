@@ -19,7 +19,7 @@ namespace Midnight.Engine.ChiefOperations
 			var card = new TCard();
 			chief.AddCard(card);
 			card.InitAbilities();
-			card.location.ToDeck();
+			card.GetLocation().ToDeck();
 			return card;
 		}
 
@@ -33,7 +33,7 @@ namespace Midnight.Engine.ChiefOperations
 			var card = new TCard();
 			chief.AddCard(card);
 			card.InitAbilities();
-			card.ToCell(chief.GetStartCell());
+			card.GetFieldLocation().ToCell(chief.GetStartCell());
 			return card;
 		}
 

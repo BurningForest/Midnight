@@ -10,11 +10,16 @@ namespace Midnight.Engine.Core
 {
 	public class Manage
 	{
-		public readonly ActionManager.Manager manager;
+		public readonly Engine engine;
 
-		public Manage (ActionManager.Manager manager)
+		public Manage (Engine engine)
 		{
-			this.manager = manager;
+			this.engine = engine;
+		}
+
+		public StartGame StartGame ()
+		{
+			return StartGame(engine.chiefs[0]);
 		}
 
 		public StartGame StartGame (Chief chief)
@@ -32,9 +37,9 @@ namespace Midnight.Engine.Core
 			return Launch(new Fight(source, target));
 		}
 
-		public void Position (Card card, Cell cell)
+		public Position Position (FieldCard card, Cell cell)
 		{
-			throw new NotImplementedException();
+			return Launch(new Position(card, cell));
 		}
 
 		public Move Move (FieldCard card, Cell cell)
@@ -80,7 +85,7 @@ namespace Midnight.Engine.Core
 		private TAction Launch<TAction> (TAction action)
 			where TAction : ActionManager.GameAction
 		{
-			manager.Launch(action);
+			engine.actions.Launch(action);
 			return action;
 		}
 	}

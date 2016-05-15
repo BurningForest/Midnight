@@ -1,7 +1,8 @@
-﻿using System;
-using Midnight.Engine.ActionManager;
+﻿using Midnight.Engine.ActionManager;
 using Midnight.Engine.Cards.Types;
 using Midnight.Engine.Core;
+using Midnight.Engine.Abilities.Passive;
+using Midnight.Engine.Abilities.Aggression;
 using AttackAbility = Midnight.Engine.Abilities.Aggression.Attack;
 
 namespace Midnight.Engine.Actions
@@ -36,17 +37,18 @@ namespace Midnight.Engine.Actions
 
 		private FightRound GetRoundFor (FieldCard card)
 		{
-			return rounds[HasFirstStrike(card) ? 0 : 1]; // todo : add FirstStrike
+			return rounds[HasFirstStrike(card) ? 0 : 1];
 		}
 
 		private bool HasFirstStrike (FieldCard card)
 		{
-			return false;
+			return card.abilities.Has<FirstStrike>();
 		}
 
 		private bool CanPreventCounter (FieldCard source)
 		{
-			return false;
+			return source.abilities.Has<WeaponArtillery>()
+				|| source.abilities.Has<Cover>();
 		}
 
 		public override Status Validation ()
@@ -55,7 +57,7 @@ namespace Midnight.Engine.Actions
 				return Status.NoAttackAbility;
 			}
 
-			return source.abilities.Get<AttackAbility>().Validate();
+			return source.abilities.Get<AttackAbility>().Validate(target);
 		}
 	}
 }

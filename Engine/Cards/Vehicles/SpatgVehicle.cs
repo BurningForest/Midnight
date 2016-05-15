@@ -1,4 +1,5 @@
 ﻿using Midnight.Engine.Abilities.Aggression;
+using Midnight.Engine.Abilities.Passive;
 using Midnight.Engine.Abilities.Positioning;
 using Midnight.Engine.Cards.Types;
 
@@ -15,8 +16,8 @@ namespace Midnight.Engine.Cards.Vehicles
 				new MovementMedium(),
 				new WeaponCannon(),
 				new Attack(),
-				new CounterAttack()
-				// todo: FirstStrike
+				new CounterAttack(),
+				new FirstStrike()
 			);
 		}
 	}

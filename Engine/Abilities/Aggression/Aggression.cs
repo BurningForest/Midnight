@@ -26,13 +26,16 @@ namespace Midnight.Engine.Abilities.Aggression
 				return status;
 			}
 
-			if (!card.location.IsForefront() || !target.location.IsForefront()) {
+			return ValidateTarget(target);
+		}
+
+		public Status ValidateTarget (FieldCard target)
+		{
+			if (!card.GetLocation().IsForefront() || !target.GetFieldLocation().IsForefront()) {
 				return Status.NotAtBattlefield;
 			}
 
-			// todo: weapon;
-
-			return Status.Success;
+			return card.abilities.Get<Weapon>().Validate(target);
 		}
 
 		internal void Activate ()

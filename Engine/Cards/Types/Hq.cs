@@ -8,12 +8,12 @@ namespace Midnight.Engine.Cards.Types
 	{
 		public List<Cell> GetFootholdCells ()
 		{
-			return GetCell().GetAdjoiningCells();
+			return GetFieldLocation().GetCell().GetAdjoiningCells();
 		}
 
 		public override bool IsActive ()
 		{
-			return location.IsBattlefield();
+			return GetFieldLocation().IsBattlefield();
 		}
 
 		public override void InitAbilities ()

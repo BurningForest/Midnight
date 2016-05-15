@@ -1,4 +1,5 @@
-﻿using Midnight.Engine.Cards.Types;
+﻿using Midnight.Engine.Abilities.Passive;
+using Midnight.Engine.Cards.Types;
 using Midnight.Engine.Core;
 
 namespace Midnight.Engine.Abilities.Aggression
@@ -7,7 +8,9 @@ namespace Midnight.Engine.Abilities.Aggression
 	{
 		public override Status ValidateRange (FieldCard target)
 		{
-			// todo: Camouflage
+			if (target.abilities.Has<Camouflage>()) {
+				return Status.TargetIsUnderCamouflage;
+			}
 
 			// todo: spotted
 

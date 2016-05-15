@@ -89,7 +89,7 @@ namespace Midnight.Engine.ChiefOperations
 			int increase = ownIncrease;
 
 			foreach (Card card in cards) {
-				if (card.location.IsForefront()) {
+				if (card.GetLocation().IsForefront()) {
 					increase += card.GetIncrease();
 				}
 			}
@@ -109,7 +109,7 @@ namespace Midnight.Engine.ChiefOperations
 
 		public List<Card> GetLocationCards (Location location)
 		{
-			return cards.Where(card => card.location.Is(location)).ToList();
+			return cards.Where(card => card.GetLocation().Is(location)).ToList();
 		}
 
 		public List<Card> GetShuffledDeck ()

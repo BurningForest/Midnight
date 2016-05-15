@@ -32,7 +32,7 @@ namespace Midnight.Engine.Abilities.Positioning
 				return Status.NotTurnOfSource;
 			}
 
-			if (!card.location.IsReserve()) {
+			if (!card.GetLocation().IsReserve()) {
 				return Status.NotAtReserve;
 			}
 

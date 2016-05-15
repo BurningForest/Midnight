@@ -1,6 +1,7 @@
 ﻿using Midnight.Engine.ActionManager;
 using Midnight.Engine.ActionManager.Events;
 using Midnight.Engine.Emitter;
+using System;
 using System.Collections.Generic;
 
 namespace Midnight.Engine.Core
@@ -12,9 +13,9 @@ namespace Midnight.Engine.Core
 		private List<GameAction> actions = new List<GameAction>();
 		private List<GameAction> failures = new List<GameAction>();
 
-		public Logger (EventEmitter emitter)
+		public Logger (Engine engine)
 		{
-			emitter.Subscribe(this);
+			engine.emitter.Subscribe(this);
 		}
 
 		public void On (Before<GameAction> e)
@@ -22,11 +23,49 @@ namespace Midnight.Engine.Core
 			if (e.action.IsTop()) {
 				actions.Add(e.action);
 			}
+
+			Log(e.action);
+		}
+
+		private void Log (GameAction action)
+		{
+			var prefix = Repeat("| ", CountDepth(action));
+			var name = action.GetType().Name;
+			var status = "";
+
+			if (action.GetStatus() != Status.Success) {
+				name = "[" + name + "]";
+				status = " (" + action.GetStatus() + ")";
+			}
+
+			Console.WriteLine(prefix + name + status); 
+		}
+
+		private string Repeat (string str, int count)
+		{
+			var result = "";
+
+			while (count-- > 0) result += str;
+
+			return result;
+		}
+
+		private int CountDepth (GameAction action)
+		{
+			int num = 0;
+
+			while (!action.IsTop()) {
+				++num;
+				action = action.GetParent();
+			}
+
+			return num;
 		}
 
 		public void On (Failure<GameAction> e)
 		{
 			failures.Add(e.action);
+			Log(e.action);
 		}
 	}
 }

@@ -5,30 +5,20 @@ namespace Midnight.Engine.Cards.Types
 	public abstract class FieldCard : ForefrontCard
 	{
 		private Cell cell;
+		private CardFieldLocation location;
 
-		public void ToCell (Cell cell)
+		public override CardLocation GetLocation ()
 		{
-			RemoveCell();
-			cell.SetCard(this);
-			this.cell = cell;
-			location.ToBattefield();
+			return GetFieldLocation();
 		}
 
-		public Cell GetCell ()
+		public CardFieldLocation GetFieldLocation ()
 		{
-			return cell;
-		}
-
-		public void RemoveCell ()
-		{
-			if (cell == null) {
-				return;
+			if (location == null) {
+				location = new CardFieldLocation(this);
 			}
 
-			cell.RemoveCard(this);
-			cell = null;
+			return location;
 		}
-
-
 	}
 }

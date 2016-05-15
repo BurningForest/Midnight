@@ -54,7 +54,7 @@ namespace Midnight.Engine.Cards.Props
 			return value;
 		}
 
-		public Modifier GetValue (int value)
+		public Modifier SetValue (int value)
 		{
 			this.value = value;
 			return this;

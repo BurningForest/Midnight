@@ -1,7 +1,5 @@
 ﻿using Midnight.Engine.ActionManager;
 using Midnight.Engine.Battlefield;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Core;
 using Midnight.Engine.Abilities.Positioning;
 using Midnight.Engine.Cards.Types;
 
@@ -23,9 +21,9 @@ namespace Midnight.Engine.Actions
 			card.abilities.Get<Deployment>().Activate();
 
 			if (card is Platoon) {
-				((Platoon)card).location.ToSupport();
+				((Platoon)card).GetLocation().ToSupport();
 			} else {
-				((FieldCard)card).ToCell(cell);
+				((FieldCard)card).GetFieldLocation().ToCell(cell);
 			}
 
 			// todo: Add PayResoures action

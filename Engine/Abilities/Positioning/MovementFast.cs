@@ -25,7 +25,7 @@ namespace Midnight.Engine.Abilities.Positioning
 
 		private bool HasMiddleCell (Cell cell)
 		{
-			return GetCard().GetCell().IsRunTo(cell);
+			return GetCard().GetFieldLocation().GetCell().IsRunTo(cell);
 		}
 
 		private Cell GetMiddleCell (Cell cell)
@@ -34,7 +34,7 @@ namespace Midnight.Engine.Abilities.Positioning
 				return null;
 			}
 
-			var current = GetCard().GetCell();
+			var current = GetCard().GetFieldLocation().GetCell();
 
 			return engine.field.GetCell(
 				(current.x + cell.x) / 2,

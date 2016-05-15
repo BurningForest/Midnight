@@ -1,6 +1,5 @@
 ﻿using Midnight.Engine.ActionManager;
 using Midnight.Engine.Battlefield;
-using Midnight.Engine.Cards;
 using Midnight.Engine.Core;
 using Midnight.Engine.Abilities.Positioning;
 using Midnight.Engine.Cards.Types;
@@ -23,7 +22,9 @@ namespace Midnight.Engine.Actions
 			if (card is Platoon) {
 				var previous = card.GetChief().GetPlatoonBySubtype(card.GetProto().subtype);
 
-				// todo: destroy previous platoon
+				if (previous != null) {
+					AddChild(new Death(previous));
+				}
 			}
 
 			AddChild(new Deployed(card, cell));

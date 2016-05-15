@@ -17,6 +17,10 @@
 		AbilityIsUsed,
 		NotAtBattlefield,
 		TargetIsFriendly,
-		TargetIsNotAdjoining
+		TargetIsTooFar,
+		NotAtForefront,
+		TargetIsDead,
+		CardHasLives,
+		TargetIsUnderCamouflage
 	}
 }

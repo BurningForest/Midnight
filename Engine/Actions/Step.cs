@@ -20,7 +20,7 @@ namespace Midnight.Engine.Actions
 		public override void Configure ()
 		{
 			card.abilities.Get<Movement>().Activate(cell);
-			card.ToCell(cell);
+			card.GetFieldLocation().ToCell(cell);
 
 			// todo: spotted
 		}

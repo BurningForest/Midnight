@@ -48,7 +48,7 @@ namespace Midnight.Engine.Abilities.Positioning
 
 		private int GetMoveCost (Cell cell)
 		{
-			var current = GetCard().GetCell();
+			var current = GetCard().GetFieldLocation().GetCell();
 
 			if (current.IsRunTo(cell)) {
 				return GetRunMoveCost();
@@ -80,6 +80,7 @@ namespace Midnight.Engine.Abilities.Positioning
 		public List<Cell> GetAllowedCells ()
 		{
 			return GetCard()
+				.GetFieldLocation()
 				.GetCell()
 				.GetRunCells()
 				.Where(CanMoveTo) as List<Cell>;
@@ -96,8 +97,8 @@ namespace Midnight.Engine.Abilities.Positioning
 				return Status.NotTurnOfSource;
 			}
 
-			if (!card.location.IsBattlefield()) {
-				return Status.NotAtReserve;
+			if (!card.GetLocation().IsBattlefield()) {
+				return Status.NotAtBattlefield;
 			}
 
 			if (IsUsed()) {

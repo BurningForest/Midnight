@@ -2,12 +2,17 @@
 {
 	public class Location
 	{
-		public static readonly Location battlefield = new Location();
-		public static readonly Location graveyard = new Location();
-		public static readonly Location support = new Location();
-		public static readonly Location reserve = new Location();
-		public static readonly Location deck = new Location();
+		public static readonly Location battlefield = new Location("battlefield");
+		public static readonly Location graveyard = new Location("graveyard");
+		public static readonly Location support = new Location("support");
+		public static readonly Location reserve = new Location("reserve");
+		public static readonly Location deck = new Location("deck");
 
-		private Location () { }
+		public readonly string title;
+
+		private Location (string title)
+		{
+			this.title = title;
+		}
 	}
 }

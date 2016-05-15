@@ -13,13 +13,22 @@ namespace Midnight.Engine.Cards
 		public Abilities abilities { get; private set; }
 
 		private readonly ModifierContainer modifiers = new ModifierContainer();
-		public readonly CardLocation location = new CardLocation();
+		private CardLocation location;
+		
+		public virtual CardLocation GetLocation ()
+		{
+			if (location == null) {
+				location = new CardLocation(this);
+			}
+
+			return location;
+		}
 
 		public abstract Proto GetProto ();
 
 		public bool IsDead ()
 		{
-			return location.IsGraveyard();
+			return GetLocation().IsGraveyard();
 		}
 
 		public void SetChief (Chief chief)
@@ -69,12 +78,12 @@ namespace Midnight.Engine.Cards
 
 		private const int MAX_PROP_VALUE = 99;
 
-		private int Limit (int num, int max)
+		public static int Limit (int num, int max)
 		{
 			return num > max ? max : Limit(num);
 		}
 
-		private int Limit (int num)
+		public static int Limit (int num)
 		{
 			return num < 0 ? 0 : num;
 		}

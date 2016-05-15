@@ -5,9 +5,15 @@ namespace Midnight.Engine.Cards
 {
 	public class CardLocation
 	{
-		private Location location = null;
+		protected Location location = null;
+		protected readonly Card card;
 
 		internal CardLocation () { }
+
+		public CardLocation (Card card)
+		{
+			this.card = card;
+		}
 
 		public void ToReserve ()
 		{
@@ -29,38 +35,33 @@ namespace Midnight.Engine.Cards
 			location = Location.support;
 		}
 
-		public void ToBattefield ()
-		{
-			location = Location.battlefield;
-		}
-
 		public bool Is (Location location)
 		{
 			return this.location == location;
 		}
 
 		public bool IsBattlefield () {
-			return location == Location.battlefield;
+			return Is(Location.battlefield);
 		}
 
 		public bool IsSupport () {
-			return location == Location.support;
+			return Is(Location.support);
 		}
 
 		public bool IsReserve () {
-			return location == Location.reserve;
+			return Is(Location.reserve);
 		}
 
 		public bool IsGraveyard () {
-			return location == Location.graveyard;
+			return Is(Location.graveyard);
 		}
 
 		public bool IsDeck () {
-			return location == Location.deck;
+			return Is(Location.deck);
 		}
 
 		public bool IsNowhere () {
-			return location == null;
+			return Is(null);
 		}
 
 		public bool IsForefront ()
