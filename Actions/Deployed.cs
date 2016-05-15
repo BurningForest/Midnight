@@ -26,7 +26,7 @@ namespace Midnight.Actions
 				((FieldCard)card).GetFieldLocation().ToCell(cell);
 			}
 
-			// todo: Add PayResoures action
+			AddChild(PayResources.ForCard(card));
 			// add spotted
 		}
 	}

@@ -5,6 +5,9 @@ namespace Midnight
 {
 	public class Engine
 	{
+
+		public static void Main (string[] args) { }
+
 		public readonly Emitter.EventEmitter emitter;
 		public readonly ActionManager.Manager actions;
 		public readonly Battlefield.Field field;

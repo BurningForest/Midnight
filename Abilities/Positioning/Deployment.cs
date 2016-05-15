@@ -5,6 +5,7 @@ using Midnight.Battlefield;
 using System.Collections.Generic;
 using System.Linq;
 using Midnight.Cards.Types;
+using Midnight.Actions;
 
 namespace Midnight.Abilities.Positioning
 {
@@ -40,7 +41,7 @@ namespace Midnight.Abilities.Positioning
 				return Status.CellIsNotAllowed;
 			}
 
-			return Status.Success; // Validate cost
+			return PayResources.ForCard(card).Validation();
 		}
 
 		public void Activate ()

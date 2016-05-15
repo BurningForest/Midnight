@@ -21,6 +21,7 @@
 		NotAtForefront,
 		TargetIsDead,
 		CardHasLives,
-		TargetIsUnderCamouflage
+		TargetIsUnderCamouflage,
+		NotEnoughResources
 	}
 }

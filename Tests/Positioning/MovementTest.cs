@@ -1,12 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Tests.Instances;
-using Midnight.ChiefOperations;
 using Midnight.Core;
-using Midnight.Abilities.Positioning;
-using Midnight.Actions;
-using Midnight.ActionManager.Events;
-using Midnight.Emitter;
+using Midnight.Triggers;
 
 namespace Midnight.Tests.Positioning
 {
@@ -19,9 +14,14 @@ namespace Midnight.Tests.Positioning
 			Engine engine = new Engine();
 			var logger = new Logger(engine);
 
+			new TurnAddResources(engine);
+
 			var field = engine.field;
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
+
+			player.SetOwnIncrease(50);
+			enemy.SetOwnIncrease(50);
 
 			var light = player.cardFactory.Create<LightTank>();
 			var medium = player.cardFactory.Create<MediumTank>();
