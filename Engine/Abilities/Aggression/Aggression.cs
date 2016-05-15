@@ -1,11 +1,11 @@
 ﻿using System;
-using Midnight.Engine.Core;
-using Midnight.Engine.Cards.Types;
-using Midnight.Engine.Emitter;
-using Midnight.Engine.Actions;
-using Midnight.Engine.ActionManager.Events;
+using Midnight.Core;
+using Midnight.Cards.Types;
+using Midnight.Emitter;
+using Midnight.Actions;
+using Midnight.ActionManager.Events;
 
-namespace Midnight.Engine.Abilities.Aggression
+namespace Midnight.Abilities.Aggression
 {
 	public abstract class Aggression : CardActiveAbility<FieldCard>, IListener<Before<BeginTurn>>
 	{

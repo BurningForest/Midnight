@@ -1,7 +1,7 @@
-﻿using Midnight.Engine.Abilities;
+﻿using Midnight.Abilities;
 using System.Collections.Generic;
 
-namespace Midnight.Engine.Cards
+namespace Midnight.Cards
 {
 	public class Abilities
 	{

@@ -1,4 +1,4 @@
-﻿namespace Midnight.Engine.Abilities.Passive
+﻿namespace Midnight.Abilities.Passive
 {
 	public class FirstStrike : CardAbility {}
 }

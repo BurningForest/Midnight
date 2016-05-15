@@ -1,7 +1,7 @@
-﻿using Midnight.Engine.ChiefOperations;
-using Midnight.Engine.Core;
+﻿using Midnight.ChiefOperations;
+using Midnight.Core;
 
-namespace Midnight.Engine
+namespace Midnight
 {
 	public class Engine
 	{

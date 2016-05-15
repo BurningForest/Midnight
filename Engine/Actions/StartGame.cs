@@ -1,8 +1,8 @@
-﻿using Midnight.Engine.ActionManager;
-using Midnight.Engine.ChiefOperations;
-using Midnight.Engine.Core;
+﻿using Midnight.ActionManager;
+using Midnight.ChiefOperations;
+using Midnight.Core;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class StartGame : GameAction<StartGame>
 	{

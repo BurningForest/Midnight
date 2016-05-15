@@ -1,8 +1,8 @@
-﻿using Midnight.Engine.Cards;
-using Midnight.Engine.Core;
-using Midnight.Engine.Emitter;
+﻿using Midnight.Cards;
+using Midnight.Core;
+using Midnight.Emitter;
 
-namespace Midnight.Engine.Abilities
+namespace Midnight.Abilities
 {
 	public abstract class CardActiveAbility<TCard> : CardAbility<TCard>
 		where TCard : Card

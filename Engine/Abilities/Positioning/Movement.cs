@@ -1,15 +1,15 @@
 ﻿using System;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Emitter;
-using Midnight.Engine.Battlefield;
+using Midnight.Cards;
+using Midnight.Emitter;
+using Midnight.Battlefield;
 using System.Collections.Generic;
 using System.Linq;
-using Midnight.Engine.Core;
-using Midnight.Engine.ActionManager.Events;
-using Midnight.Engine.Actions;
-using Midnight.Engine.Cards.Types;
+using Midnight.Core;
+using Midnight.ActionManager.Events;
+using Midnight.Actions;
+using Midnight.Cards.Types;
 
-namespace Midnight.Engine.Abilities.Positioning
+namespace Midnight.Abilities.Positioning
 {
 	public abstract class Movement : CardActiveAbility<FieldCard>, IListener<Before<BeginTurn>>
 	{

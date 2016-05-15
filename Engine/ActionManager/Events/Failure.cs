@@ -1,4 +1,4 @@
-﻿namespace Midnight.Engine.ActionManager.Events
+﻿namespace Midnight.ActionManager.Events
 {
 	public class Failure<TAction> : Event<Failure<TAction>, TAction>
 		where TAction : GameAction

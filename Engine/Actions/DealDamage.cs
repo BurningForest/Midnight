@@ -1,10 +1,10 @@
-﻿using Midnight.Engine.ActionManager;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Cards.Props;
-using Midnight.Engine.Cards.Types;
-using Midnight.Engine.Core;
+﻿using Midnight.ActionManager;
+using Midnight.Cards;
+using Midnight.Cards.Props;
+using Midnight.Cards.Types;
+using Midnight.Core;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class DealDamage : GameAction<DealDamage>
 	{

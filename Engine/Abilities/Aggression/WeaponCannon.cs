@@ -1,7 +1,7 @@
-﻿using Midnight.Engine.Cards.Types;
-using Midnight.Engine.Core;
+﻿using Midnight.Cards.Types;
+using Midnight.Core;
 
-namespace Midnight.Engine.Abilities.Aggression
+namespace Midnight.Abilities.Aggression
 {
 	public class WeaponCannon : Weapon
 	{

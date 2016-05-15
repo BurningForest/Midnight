@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Tests.Instances;
-using Midnight.Engine.ChiefOperations;
-using Midnight.Engine.Core;
-using Midnight.Engine.Abilities.Positioning;
-using Midnight.Engine.Actions;
-using Midnight.Engine.ActionManager.Events;
-using Midnight.Engine.Emitter;
+using Midnight.ChiefOperations;
+using Midnight.Core;
+using Midnight.Abilities.Positioning;
+using Midnight.Actions;
+using Midnight.ActionManager.Events;
+using Midnight.Emitter;
 
 namespace Midnight.Tests.Positioning
 {
@@ -16,7 +16,7 @@ namespace Midnight.Tests.Positioning
 		[TestMethod]
 		public void Movement ()
 		{
-			Engine.Engine engine = new Engine.Engine();
+			Engine engine = new Engine();
 			var logger = new Logger(engine);
 
 			var field = engine.field;

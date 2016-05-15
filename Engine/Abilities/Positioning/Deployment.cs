@@ -1,12 +1,12 @@
 ﻿using System;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Core;
-using Midnight.Engine.Battlefield;
+using Midnight.Cards;
+using Midnight.Core;
+using Midnight.Battlefield;
 using System.Collections.Generic;
 using System.Linq;
-using Midnight.Engine.Cards.Types;
+using Midnight.Cards.Types;
 
-namespace Midnight.Engine.Abilities.Positioning
+namespace Midnight.Abilities.Positioning
 {
 	public class Deployment : CardActiveAbility<ForefrontCard>
 	{

@@ -1,6 +1,6 @@
-﻿using Midnight.Engine.Abilities;
+﻿using Midnight.Abilities;
 
-namespace Midnight.Engine.Cards.Types
+namespace Midnight.Cards.Types
 {
 	public abstract class Order : Card
 	{

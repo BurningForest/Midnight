@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Battlefield;
-using Midnight.Engine.Cards.Types;
-using Midnight.Engine.Cards.Enums;
+using Midnight.Cards;
+using Midnight.Battlefield;
+using Midnight.Cards.Types;
+using Midnight.Cards.Enums;
 
-namespace Midnight.Engine.ChiefOperations
+namespace Midnight.ChiefOperations
 {
 	public class Chief
 	{

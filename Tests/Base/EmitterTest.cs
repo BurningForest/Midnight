@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Midnight.Engine.ActionManager;
-using Midnight.Engine.ActionManager.Events;
-using Midnight.Engine.Emitter;
+using Midnight.ActionManager;
+using Midnight.ActionManager.Events;
+using Midnight.Emitter;
 
 namespace Midnight.Tests.Base
 {

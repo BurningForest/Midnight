@@ -1,6 +1,6 @@
-﻿using Midnight.Engine.Cards;
-using Midnight.Engine.Cards.Enums;
-using Midnight.Engine.Cards.Vehicles;
+﻿using Midnight.Cards;
+using Midnight.Cards.Enums;
+using Midnight.Cards.Vehicles;
 
 namespace Midnight.Tests.Instances
 {

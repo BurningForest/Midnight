@@ -1,8 +1,8 @@
-﻿using Midnight.Engine.Battlefield;
-using Midnight.Engine.Cards.Enums;
-using Midnight.Engine.Cards.Types;
+﻿using Midnight.Battlefield;
+using Midnight.Cards.Enums;
+using Midnight.Cards.Types;
 
-namespace Midnight.Engine.Cards
+namespace Midnight.Cards
 {
 	public class CardFieldLocation : CardLocation
 	{

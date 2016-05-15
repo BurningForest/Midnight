@@ -1,9 +1,9 @@
 ﻿using System;
-using Midnight.Engine.Cards;
+using Midnight.Cards;
 using System.Collections.Generic;
-using Midnight.Engine.Cards.Types;
+using Midnight.Cards.Types;
 
-namespace Midnight.Engine.Battlefield
+namespace Midnight.Battlefield
 {
 	public class Cell
 	{

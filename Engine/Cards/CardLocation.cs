@@ -1,7 +1,7 @@
 ﻿using System;
-using Midnight.Engine.Cards.Enums;
+using Midnight.Cards.Enums;
 
-namespace Midnight.Engine.Cards
+namespace Midnight.Cards
 {
 	public class CardLocation
 	{

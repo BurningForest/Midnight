@@ -1,8 +1,8 @@
-﻿using Midnight.Engine.ActionManager;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Core;
+﻿using Midnight.ActionManager;
+using Midnight.Cards;
+using Midnight.Core;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class Death : GameAction<Death>
 	{

@@ -1,10 +1,10 @@
-﻿using Midnight.Engine.ActionManager.Events;
-using Midnight.Engine.Core;
-using Midnight.Engine.Emitter;
+﻿using Midnight.ActionManager.Events;
+using Midnight.Core;
+using Midnight.Emitter;
 using System;
 using System.Collections.Generic;
 
-namespace Midnight.Engine.ActionManager
+namespace Midnight.ActionManager
 {
 	public abstract class GameAction
 	{

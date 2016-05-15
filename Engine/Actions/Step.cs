@@ -1,10 +1,10 @@
-﻿using Midnight.Engine.Abilities.Positioning;
-using Midnight.Engine.ActionManager;
-using Midnight.Engine.Battlefield;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Cards.Types;
+﻿using Midnight.Abilities.Positioning;
+using Midnight.ActionManager;
+using Midnight.Battlefield;
+using Midnight.Cards;
+using Midnight.Cards.Types;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class Step : GameAction<Step>
 	{

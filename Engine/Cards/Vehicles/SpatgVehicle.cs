@@ -1,9 +1,9 @@
-﻿using Midnight.Engine.Abilities.Aggression;
-using Midnight.Engine.Abilities.Passive;
-using Midnight.Engine.Abilities.Positioning;
-using Midnight.Engine.Cards.Types;
+﻿using Midnight.Abilities.Aggression;
+using Midnight.Abilities.Passive;
+using Midnight.Abilities.Positioning;
+using Midnight.Cards.Types;
 
-namespace Midnight.Engine.Cards.Vehicles
+namespace Midnight.Cards.Vehicles
 {
 	public abstract class SpatgVehicle : Vehicle
 	{

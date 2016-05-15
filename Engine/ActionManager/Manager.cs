@@ -1,9 +1,9 @@
-﻿using Midnight.Engine.Emitter;
+﻿using Midnight.Emitter;
 using System.Collections.Generic;
-using Midnight.Engine.ActionManager.Events;
-using Midnight.Engine.Actions;
+using Midnight.ActionManager.Events;
+using Midnight.Actions;
 
-namespace Midnight.Engine.ActionManager
+namespace Midnight.ActionManager
 {
 	public class Manager
 	{

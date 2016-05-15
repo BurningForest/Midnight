@@ -1,9 +1,9 @@
-﻿using AttackAbility = Midnight.Engine.Abilities.Aggression.Attack;
-using Midnight.Engine.ActionManager;
-using Midnight.Engine.Cards.Types;
-using Midnight.Engine.Core;
+﻿using AttackAbility = Midnight.Abilities.Aggression.Attack;
+using Midnight.ActionManager;
+using Midnight.Cards.Types;
+using Midnight.Core;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class Attack : FightAction<Attack>
 	{

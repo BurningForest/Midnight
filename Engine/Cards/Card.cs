@@ -1,8 +1,8 @@
-﻿using Midnight.Engine.Cards.Enums;
-using Midnight.Engine.Cards.Props;
-using Midnight.Engine.ChiefOperations;
+﻿using Midnight.Cards.Enums;
+using Midnight.Cards.Props;
+using Midnight.ChiefOperations;
 
-namespace Midnight.Engine.Cards
+namespace Midnight.Cards
 {
 	public abstract class Card
 	{

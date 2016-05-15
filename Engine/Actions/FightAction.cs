@@ -1,8 +1,8 @@
 ﻿using System;
-using Midnight.Engine.ActionManager;
-using Midnight.Engine.Cards.Types;
+using Midnight.ActionManager;
+using Midnight.Cards.Types;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public abstract class FightAction<TAction> : GameAction<TAction>
 		where TAction : FightAction<TAction>

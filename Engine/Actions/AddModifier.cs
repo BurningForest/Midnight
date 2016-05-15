@@ -1,8 +1,8 @@
-﻿using Midnight.Engine.ActionManager;
-using Midnight.Engine.Cards.Props;
-using Midnight.Engine.Core;
+﻿using Midnight.ActionManager;
+using Midnight.Cards.Props;
+using Midnight.Core;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class AddModifier : GameAction<AddModifier>
 	{

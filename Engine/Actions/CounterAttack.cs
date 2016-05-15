@@ -1,8 +1,8 @@
-﻿using CounterAttackAbility = Midnight.Engine.Abilities.Aggression.CounterAttack;
-using Midnight.Engine.Cards.Types;
-using Midnight.Engine.Core;
+﻿using CounterAttackAbility = Midnight.Abilities.Aggression.CounterAttack;
+using Midnight.Cards.Types;
+using Midnight.Core;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class CounterAttack : FightAction<CounterAttack>
 	{

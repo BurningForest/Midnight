@@ -1,11 +1,11 @@
-﻿using Midnight.Engine.ActionManager;
-using Midnight.Engine.Cards.Types;
-using Midnight.Engine.Core;
-using Midnight.Engine.Abilities.Passive;
-using Midnight.Engine.Abilities.Aggression;
-using AttackAbility = Midnight.Engine.Abilities.Aggression.Attack;
+﻿using Midnight.ActionManager;
+using Midnight.Cards.Types;
+using Midnight.Core;
+using Midnight.Abilities.Passive;
+using Midnight.Abilities.Aggression;
+using AttackAbility = Midnight.Abilities.Aggression.Attack;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class Fight : GameAction<Fight>
 	{

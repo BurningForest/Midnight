@@ -1,8 +1,8 @@
-﻿using Midnight.Engine.ActionManager.Events;
-using Midnight.Engine.Actions;
+﻿using Midnight.ActionManager.Events;
+using Midnight.Actions;
 using System.Collections.Generic;
 
-namespace Midnight.Engine.Emitter
+namespace Midnight.Emitter
 {
 	public class EventEmitter
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Midnight.Engine.Cards.Props
+namespace Midnight.Cards.Props
 {
 	public class Modifier
 	{

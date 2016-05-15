@@ -1,7 +1,7 @@
 ﻿using System;
-using Midnight.Engine.Battlefield;
+using Midnight.Battlefield;
 
-namespace Midnight.Engine.Abilities.Positioning
+namespace Midnight.Abilities.Positioning
 {
 	public class MovementSlow : Movement
 	{

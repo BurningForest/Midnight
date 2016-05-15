@@ -1,4 +1,4 @@
-﻿namespace Midnight.Engine.Emitter
+﻿namespace Midnight.Emitter
 {
 	public interface IListener { }
 

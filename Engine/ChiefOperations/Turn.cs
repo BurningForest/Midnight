@@ -1,9 +1,9 @@
 ﻿using System;
-using Midnight.Engine.ActionManager.Events;
-using Midnight.Engine.Emitter;
-using Midnight.Engine.Actions;
+using Midnight.ActionManager.Events;
+using Midnight.Emitter;
+using Midnight.Actions;
 
-namespace Midnight.Engine.ChiefOperations
+namespace Midnight.ChiefOperations
 {
 	public class Turn : IListener<After<EndTurn>>
 	{

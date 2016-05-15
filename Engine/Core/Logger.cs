@@ -1,10 +1,10 @@
-﻿using Midnight.Engine.ActionManager;
-using Midnight.Engine.ActionManager.Events;
-using Midnight.Engine.Emitter;
+﻿using Midnight.ActionManager;
+using Midnight.ActionManager.Events;
+using Midnight.Emitter;
 using System;
 using System.Collections.Generic;
 
-namespace Midnight.Engine.Core
+namespace Midnight.Core
 {
 	public class Logger :
 		IListener<Before<GameAction>>,

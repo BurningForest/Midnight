@@ -1,7 +1,7 @@
-﻿using Midnight.Engine.Abilities.Positioning;
-using Midnight.Engine.Cards.Enums;
+﻿using Midnight.Abilities.Positioning;
+using Midnight.Cards.Enums;
 
-namespace Midnight.Engine.Cards.Types
+namespace Midnight.Cards.Types
 {
 	public abstract class Platoon : ForefrontCard
 	{

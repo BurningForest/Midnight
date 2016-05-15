@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Midnight.Engine.Core;
+using Midnight.Core;
 using Midnight.Tests.Instances;
 using System;
 
@@ -11,7 +11,7 @@ namespace Midnight.Tests.Fight
 		[TestMethod]
 		public void NoFarFire ()
 		{
-			var engine = new Engine.Engine();
+			var engine = new Engine();
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 

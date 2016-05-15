@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Midnight.Engine.Battlefield;
-using Midnight.Engine.Abilities.Aggression;
+using Midnight.Battlefield;
+using Midnight.Abilities.Aggression;
 
-namespace Midnight.Engine.Cards.Types
+namespace Midnight.Cards.Types
 {
 	public abstract class Hq : FieldCard
 	{

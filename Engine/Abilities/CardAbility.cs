@@ -1,9 +1,9 @@
-﻿using Midnight.Engine.Cards;
-using Midnight.Engine.ChiefOperations;
-using Midnight.Engine.Emitter;
+﻿using Midnight.Cards;
+using Midnight.ChiefOperations;
+using Midnight.Emitter;
 using System;
 
-namespace Midnight.Engine.Abilities
+namespace Midnight.Abilities
 {
 
 	public abstract class CardAbility : IListener

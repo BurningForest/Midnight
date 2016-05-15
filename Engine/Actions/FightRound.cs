@@ -1,9 +1,9 @@
 ﻿using System;
-using Midnight.Engine.ActionManager;
+using Midnight.ActionManager;
 using System.Collections.Generic;
-using Midnight.Engine.Core;
+using Midnight.Core;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class FightRound : GameAction<FightRound>
 	{

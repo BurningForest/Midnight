@@ -1,9 +1,9 @@
-﻿using Midnight.Engine.ActionManager;
-using Midnight.Engine.Battlefield;
-using Midnight.Engine.Abilities.Positioning;
-using Midnight.Engine.Cards.Types;
+﻿using Midnight.ActionManager;
+using Midnight.Battlefield;
+using Midnight.Abilities.Positioning;
+using Midnight.Cards.Types;
 
-namespace Midnight.Engine.Actions
+namespace Midnight.Actions
 {
 	public class Deployed : GameAction<Deployed>
 	{

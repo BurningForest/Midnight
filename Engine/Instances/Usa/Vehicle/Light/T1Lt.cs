@@ -1,7 +1,7 @@
-﻿using Midnight.Engine.Cards;
-using Midnight.Engine.Cards.Enums;
+﻿using Midnight.Cards;
+using Midnight.Cards.Enums;
 
-namespace Midnight.Engine.Instances.Usa.Vehicle.Light
+namespace Midnight.Instances.Usa.Vehicle.Light
 {
 	public class T1Lt : Cards.Vehicles.LightVehicle
 	{

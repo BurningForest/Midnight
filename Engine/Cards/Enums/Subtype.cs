@@ -1,4 +1,4 @@
-﻿namespace Midnight.Engine.Cards.Enums
+﻿namespace Midnight.Cards.Enums
 {
 	public class Subtype
 	{

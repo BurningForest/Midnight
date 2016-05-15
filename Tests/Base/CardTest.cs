@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Cards.Enums;
-using Midnight.Engine.Cards.Types;
-using Midnight.Engine.Cards.Vehicles;
+using Midnight.Cards;
+using Midnight.Cards.Enums;
+using Midnight.Cards.Types;
+using Midnight.Cards.Vehicles;
 using Midnight.Tests.Instances;
 
 namespace Midnight.Tests.Base

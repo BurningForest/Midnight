@@ -1,4 +1,4 @@
-﻿namespace Midnight.Engine.Core
+﻿namespace Midnight.Core
 {
 	public enum Status
 	{

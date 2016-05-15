@@ -1,6 +1,6 @@
-﻿using Midnight.Engine.Emitter;
+﻿using Midnight.Emitter;
 
-namespace Midnight.Engine.ActionManager
+namespace Midnight.ActionManager
 {
 	public abstract class Event<TEvent, TAction> : IEvent
 		where TEvent : Event<TEvent, TAction>

@@ -1,6 +1,6 @@
-﻿using Midnight.Engine.Battlefield;
+﻿using Midnight.Battlefield;
 
-namespace Midnight.Engine.Cards.Types
+namespace Midnight.Cards.Types
 {
 	public abstract class FieldCard : ForefrontCard
 	{

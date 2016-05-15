@@ -1,4 +1,4 @@
-﻿namespace Midnight.Engine.ActionManager.Events
+﻿namespace Midnight.ActionManager.Events
 {
 	public class Finish<TAction> : Event<Finish<TAction>, TAction>
 		where TAction : GameAction

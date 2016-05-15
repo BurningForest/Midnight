@@ -1,4 +1,4 @@
-﻿namespace Midnight.Engine.Cards.Types
+﻿namespace Midnight.Cards.Types
 {
 	public abstract class Vehicle : FieldCard
 	{

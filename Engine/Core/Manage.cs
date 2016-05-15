@@ -1,12 +1,12 @@
-﻿using Midnight.Engine.Actions;
-using Midnight.Engine.Battlefield;
-using Midnight.Engine.Cards;
-using Midnight.Engine.Cards.Types;
-using Midnight.Engine.ChiefOperations;
+﻿using Midnight.Actions;
+using Midnight.Battlefield;
+using Midnight.Cards;
+using Midnight.Cards.Types;
+using Midnight.ChiefOperations;
 using System;
 using System.Collections.Generic;
 
-namespace Midnight.Engine.Core
+namespace Midnight.Core
 {
 	public class Manage
 	{
