@@ -11,7 +11,7 @@ namespace Midnight.Actions
 
 		public class NonLethal : DealDamage
 		{
-			public NonLethal (int value, FieldCard source, FieldCard target) : base(value, source, target)
+			public NonLethal (int value, ForefrontCard source, ForefrontCard target) : base(value, source, target)
 			{
 			}
 
@@ -23,11 +23,11 @@ namespace Midnight.Actions
 		} 
 
 		public readonly Modifier modifier;
-		public readonly FieldCard source;
-		public readonly FieldCard target;
+		public readonly ForefrontCard source;
+		public readonly ForefrontCard target;
 		public int value { get; private set; }
 
-		public DealDamage (int value, FieldCard source, FieldCard target)
+		public DealDamage (int value, ForefrontCard source, ForefrontCard target)
 		{
 			this.value = value;
 			this.source = source;
@@ -63,7 +63,7 @@ namespace Midnight.Actions
 
 		public override Status Validation ()
 		{
-			if (!target.GetFieldLocation().IsForefront()) {
+			if (!target.GetLocation().IsForefront()) {
 				return Status.NotAtForefront;
 			}
 

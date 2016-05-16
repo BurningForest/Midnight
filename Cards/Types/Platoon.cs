@@ -5,8 +5,8 @@ namespace Midnight.Cards.Types
 {
 	public abstract class Platoon : ForefrontCard
 	{
-		public abstract class AttackPlatoon : Platoon { }
-		public abstract class DefensePlatoon : Platoon { }
+		public abstract class Enforce : Platoon { }
+		public abstract class Protect : Platoon { }
 
 		public static Subtype[] subtypeOrder = {
 			Subtype.scout,

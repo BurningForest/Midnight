@@ -2,5 +2,5 @@
 
 namespace Midnight.Abilities.Passive
 {
-	public class Cover : CardAbility<FieldCard> { }
+	public class PlatoonProtected : CardAbility<FieldCard> {}
 }

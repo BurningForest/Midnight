@@ -10,7 +10,7 @@ namespace Midnight.Cards
 
 		public int id { get; private set; }
 		private Chief chief;
-		public Abilities abilities { get; private set; }
+		public Abilities abilities { get; protected set; }
 
 		private readonly ModifierContainer modifiers = new ModifierContainer();
 		private CardLocation location;

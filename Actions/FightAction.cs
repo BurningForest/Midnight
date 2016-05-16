@@ -1,6 +1,8 @@
 ﻿using System;
 using Midnight.ActionManager;
 using Midnight.Cards.Types;
+using Midnight.Abilities.Passive;
+using static Midnight.Cards.Types.Platoon;
 
 namespace Midnight.Actions
 {
@@ -21,11 +23,38 @@ namespace Midnight.Actions
 		{
 			damage = new DealDamage(source.GetPower(), source, target);
 
+
+			if (source.abilities.Has<PlatoonEnforced>()) {
+				PlatoonsEnforce();
+			}
+			if (source.abilities.Has<PlatoonProtected>()) {
+				PlatoonsProtect();
+			}
+
 			AddChild(damage);
-
-			// todo: add platoon influence
-
 			return damage;
+		}
+
+		private void PlatoonsEnforce ()
+		{
+			foreach (var platoon in source.GetChief().cards.GetOrderedPlatoons()) {
+				if (platoon is Enforce) {
+					damage.ModifyDamage(platoon.GetPower());
+					AddChild(new ActivatePlatoon(platoon, platoon.GetPower()));
+				}
+			}
+		}
+
+		private void PlatoonsProtect ()
+		{
+			foreach (var platoon in target.GetChief().cards.GetOrderedPlatoons()) {
+				if (platoon is Protect && damage.GetDamage() > 0) {
+					var value = Math.Min(damage.GetDamage(), platoon.GetDefense());
+
+					damage.ModifyDamage(-value);
+					AddChild(new ActivatePlatoon(platoon, value));
+				}
+			}
 		}
 	}
 }

@@ -23,7 +23,7 @@ namespace Midnight.Actions
 				var previous = card.GetChief().cards.GetPlatoonBySubtype(card.GetProto().subtype);
 
 				if (previous != null) {
-					AddChild(new Death(previous));
+					AddChild(new Death.Forced(previous));
 				}
 			}
 

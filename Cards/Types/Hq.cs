@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Midnight.Battlefield;
 using Midnight.Abilities.Aggression;
+using Midnight.Abilities.Passive;
 
 namespace Midnight.Cards.Types
 {
@@ -22,7 +23,9 @@ namespace Midnight.Cards.Types
 
 			abilities.Add(
 				new WeaponArtillery(),
-				new Attack()
+				new Attack(),
+				new PlatoonEnforced(),
+				new PlatoonProtected()
 			);
 		}
 	}

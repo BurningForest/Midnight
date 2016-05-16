@@ -1,4 +1,6 @@
-﻿namespace Midnight.Abilities.Passive
+﻿using Midnight.Cards.Types;
+
+namespace Midnight.Abilities.Passive
 {
-	public class Camouflage : CardAbility {}
+	public class Camouflage : CardAbility<FieldCard> { }
 }

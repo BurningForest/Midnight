@@ -1,4 +1,6 @@
-﻿namespace Midnight.Abilities.Passive
+﻿using Midnight.Cards.Types;
+
+namespace Midnight.Abilities.Passive
 {
-	public class FirstStrike : CardAbility {}
+	public class FirstStrike : CardAbility<FieldCard> { }
 }
