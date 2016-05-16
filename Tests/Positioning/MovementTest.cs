@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Tests.TestInstances;
 using Midnight.Core;
-using Midnight.Triggers;
+using Midnight.Utils;
 
 namespace Midnight.Tests.Positioning
 {
@@ -14,14 +14,9 @@ namespace Midnight.Tests.Positioning
 			Engine engine = new Engine();
 			var logger = new Logger(engine);
 
-			new TurnAddResources(engine);
-
 			var field = engine.field;
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
-
-			player.SetOwnIncrease(50);
-			enemy.SetOwnIncrease(50);
 
 			var light = player.cardFactory.Create<LightTank>();
 			var medium = player.cardFactory.Create<MediumTank>();
@@ -30,11 +25,11 @@ namespace Midnight.Tests.Positioning
 
 			var manage = new Manage(engine);
 
-			light.GetLocation().ToReserve();
-			medium.GetLocation().ToReserve();
-			heavy.GetLocation().ToReserve();
-			spg.GetLocation().ToReserve();
+			foreach (var tank in player.cards) {
+				tank.GetLocation().ToReserve();
+			}
 
+			manage.SetResources(player, 50);
 			manage.StartGame(player);
 
 			// Light

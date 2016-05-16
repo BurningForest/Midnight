@@ -8,8 +8,8 @@ namespace Midnight.Actions
 {
 	public class Step : GameAction<Step>
 	{
-		private FieldCard card;
-		private Cell cell;
+		public readonly FieldCard card;
+		public readonly Cell cell;
 
 		public Step (FieldCard card, Cell cell)
 		{

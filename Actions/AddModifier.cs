@@ -6,7 +6,7 @@ namespace Midnight.Actions
 {
 	public class AddModifier : GameAction<AddModifier>
 	{
-		private readonly Modifier modifier;
+		public readonly Modifier modifier;
 
 		public AddModifier (Modifier modifier) {
 			this.modifier = modifier;

@@ -1,12 +1,19 @@
 ﻿using Midnight.ChiefOperations;
 using Midnight.Core;
+using Midnight.Tests.Fight;
+using System;
 
 namespace Midnight
 {
 	public class Engine
 	{
 
-		public static void Main (string[] args) { }
+		public static void Main (string[] args)
+		{
+			Console.ReadLine();
+			new SeveralAttacksTest().SeveralAttacks();
+			Console.ReadLine();
+		}
 
 		public readonly Emitter.EventEmitter emitter;
 		public readonly ActionManager.Manager actions;

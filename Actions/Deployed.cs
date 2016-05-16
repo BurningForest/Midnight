@@ -7,8 +7,8 @@ namespace Midnight.Actions
 {
 	public class Deployed : GameAction<Deployed>
 	{
-		private ForefrontCard card;
-		private Cell cell;
+		public readonly ForefrontCard card;
+		public readonly Cell cell;
 
 		public Deployed (ForefrontCard card, Cell cell)
 		{

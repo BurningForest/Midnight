@@ -22,6 +22,11 @@ namespace Midnight.Cards.Props
 			{
 				return proto.power;
 			}
+
+			public override string ToString ()
+			{
+				return "power";
+			}
 		}
 		public class Defense : Property
 		{
@@ -30,6 +35,11 @@ namespace Midnight.Cards.Props
 			public override int GetProtoValue (Proto proto)
 			{
 				return proto.defense;
+			}
+
+			public override string ToString ()
+			{
+				return "defense";
 			}
 		}
 		public class Toughness : Property
@@ -40,6 +50,11 @@ namespace Midnight.Cards.Props
 			{
 				return proto.toughness;
 			}
+
+			public override string ToString ()
+			{
+				return "toughness";
+			}
 		}
 		public class Increase : Property
 		{
@@ -48,6 +63,11 @@ namespace Midnight.Cards.Props
 			public override int GetProtoValue (Proto proto)
 			{
 				return proto.increase;
+			}
+
+			public override string ToString ()
+			{
+				return "increase";
 			}
 		}
 		public class Cost : Property
@@ -58,6 +78,11 @@ namespace Midnight.Cards.Props
 			{
 				return proto.cost;
 			}
+
+			public override string ToString ()
+			{
+				return "cost";
+			}
 		}
 		public class Damage : Property
 		{
@@ -66,6 +91,11 @@ namespace Midnight.Cards.Props
 			public override int GetProtoValue (Proto proto)
 			{
 				return 0;
+			}
+
+			public override string ToString ()
+			{
+				return "damage";
 			}
 		}
 	}

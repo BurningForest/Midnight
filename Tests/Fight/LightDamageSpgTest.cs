@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Core;
 using Midnight.Tests.TestInstances;
+using Midnight.Utils;
 
 namespace Midnight.Tests.Fight
 {

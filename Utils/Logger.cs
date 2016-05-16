@@ -1,10 +1,11 @@
 ﻿using Midnight.ActionManager;
 using Midnight.ActionManager.Events;
+using Midnight.Core;
 using Midnight.Emitter;
 using System;
 using System.Collections.Generic;
 
-namespace Midnight.Core
+namespace Midnight.Utils
 {
 	public class Logger :
 		IListener<Before<GameAction>>,
@@ -12,6 +13,7 @@ namespace Midnight.Core
 	{
 		private List<GameAction> actions = new List<GameAction>();
 		private List<GameAction> failures = new List<GameAction>();
+		private ActionsStringifier stringifier = new ActionsStringifier();
 
 		public Logger (Engine engine)
 		{
@@ -29,16 +31,20 @@ namespace Midnight.Core
 
 		private void Log (GameAction action)
 		{
-			var prefix = Repeat("| ", CountDepth(action));
-			var name = action.GetType().Name;
-			var status = "";
+			Console.Write(GetPrefix(action));
+			Console.Write(stringifier.GetName(action));
+			Console.Write("(" + string.Join(", ", stringifier.GetArgs(action)) + ")");
 
-			if (action.GetStatus() != Status.Success) {
-				name = "[" + name + "]";
-				status = " (" + action.GetStatus() + ")";
+			if (!action.IsValid()) {
+				Console.Write(":" + action.GetStatus());
 			}
 
-			Console.WriteLine(prefix + name + status); 
+			Console.WriteLine();
+		}
+
+		private string GetPrefix (GameAction action)
+		{
+			return Repeat("| ", CountDepth(action)); ;
 		}
 
 		private string Repeat (string str, int count)

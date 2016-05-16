@@ -8,7 +8,7 @@ namespace Midnight.Cards
 	{
 		//todo: spotted
 
-		private int id;
+		public int id { get; private set; }
 		private Chief chief;
 		public Abilities abilities { get; private set; }
 

@@ -1,6 +1,5 @@
 ﻿using Midnight.ActionManager;
 using Midnight.Battlefield;
-using Midnight.Cards;
 using Midnight.Core;
 using Midnight.Abilities.Positioning;
 using Midnight.Cards.Types;
@@ -9,8 +8,8 @@ namespace Midnight.Actions
 {
 	public class Move : GameAction<Move>
 	{
-		private FieldCard card;
-		private Cell cell;
+		public readonly FieldCard card;
+		public readonly Cell cell;
 
 		public Move (FieldCard card, Cell cell)
 		{

@@ -77,6 +77,11 @@ namespace Midnight.Core
 			return Launch(new DealDamage(value, source, target));
 		}
 
+		public SetResources SetResources (Chief chief, int value)
+		{
+			return Launch(new SetResources(chief, value));
+		}
+
 		public void Order (Order order, Card card)
 		{
 			throw new NotImplementedException();

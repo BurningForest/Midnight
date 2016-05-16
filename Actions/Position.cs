@@ -9,8 +9,8 @@ namespace Midnight.Actions
 {
 	public class Position : GameAction<Position>
 	{
-		private FieldCard card;
-		private Cell cell;
+		public readonly FieldCard card;
+		public readonly Cell cell;
 
 		public Position (FieldCard card, Cell cell)
 		{

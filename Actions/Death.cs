@@ -16,7 +16,7 @@ namespace Midnight.Actions
 			}
 		}
 
-		private Card card;
+		public readonly Card card;
 
 		public Death (Card card)
 		{

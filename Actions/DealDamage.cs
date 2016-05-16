@@ -22,10 +22,10 @@ namespace Midnight.Actions
 			}
 		} 
 
-		private readonly Modifier modifier;
-		private FieldCard source;
-		private FieldCard target;
-		private int value;
+		public readonly Modifier modifier;
+		public readonly FieldCard source;
+		public readonly FieldCard target;
+		public int value { get; private set; }
 
 		public DealDamage (int value, FieldCard source, FieldCard target)
 		{
