@@ -17,7 +17,7 @@ namespace Midnight.ChiefOperations
 			where TCard : Card, new()
 		{
 			var card = new TCard();
-			chief.AddCard(card);
+			chief.cards.Add(card);
 			card.InitAbilities();
 			card.GetLocation().ToDeck();
 			return card;
@@ -31,7 +31,7 @@ namespace Midnight.ChiefOperations
 			}
 
 			var card = new TCard();
-			chief.AddCard(card);
+			chief.cards.Add(card);
 			card.InitAbilities();
 			card.GetFieldLocation().ToCell(chief.GetStartCell());
 			return card;

@@ -13,33 +13,16 @@ namespace Midnight.ChiefOperations
 		private Engine engine;
 
 		public readonly int index;
+		
+		public readonly CardsContainer cards;
 
-		public readonly List<Card> cards = new List<Card>();
-		public readonly CardFactory cardFactory;
-
-		private Random random = new Random();
 		private int resources = 0;
 		private int ownIncrease = 0;
 
 		public Chief (int index)
 		{
 			this.index = index;
-			cardFactory = new CardFactory(this);
-		}
-
-		public Chief AddCard (Card card)
-		{
-			cards.Add(card);
-			card.SetChief(this);
-			return this;
-		}
-
-		public Chief AddCards (Card[] cards)
-		{
-			foreach (var card in cards) {
-				AddCard(card);
-			}
-			return this;
+			cards = new CardsContainer(this);
 		}
 
 		public Chief SetEngine (Engine engine)
@@ -88,7 +71,7 @@ namespace Midnight.ChiefOperations
 		{
 			int increase = GetOwnIncrease();
 
-			foreach (Card card in cards) {
+			foreach (Card card in cards.GetAll()) {
 				if (card.GetLocation().IsForefront()) {
 					increase += card.GetIncrease();
 				}
@@ -107,71 +90,14 @@ namespace Midnight.ChiefOperations
 			ownIncrease = increase;
 		}
 
-		public List<Card> GetLocationCards (Location location)
-		{
-			return cards.Where(card => card.GetLocation().Is(location)).ToList();
-		}
-
-		public List<Card> GetShuffledDeck ()
-		{
-			var deck = GetLocationCards(Location.deck);
-
-			for (int i = 0; i < deck.Count; i++) {
-				int r = random.Next(i, deck.Count);
-
-				// Swap cards
-				Card temp = deck[i];
-				deck[i] = deck[r];
-				deck[r] = temp;
-			}
-
-			return deck;
-		}
-
-		public Platoon GetPlatoonBySubtype (Subtype subtype)
-		{
-			return cards.First(card => card is Platoon && card.IsActive() && card.Is(subtype)) as Platoon;
-		}
-
-		public List<Platoon> GetOrderedPlatoons ()
-		{
-			var platoons = new List<Platoon>();
-
-			foreach (var subtype in Platoon.subtypeOrder) {
-				var item = GetPlatoonBySubtype(subtype);
-
-				if (item != null) {
-					platoons.Add(item);
-				}
-			}
-
-			return platoons;
-		}
-
 		public Cell GetStartCell ()
 		{
 			return engine.field.GetCornerCell(index == 1);
 		}
 
-		public List<Hq> GetAliveHqs ()
-		{
-			var hqs = cards
-				.Where(card => card is Hq && card.IsActive())
-				.Cast<Hq>();
-
-			return hqs.ToList();
-		}
-
-		public Hq GetHq ()
-		{
-			Card hq = cards.First(card => card is Hq && card.IsActive());
-
-			return hq == null ? null : (Hq)hq;
-		}
-
 		public List<Cell> GetFootholdCells ()
 		{
-			var hqs = GetAliveHqs();
+			var hqs = cards.GetAliveHqs();
 
 			if (hqs.Count == 0) {
 				return engine.field.GetCellsByColumn(GetStartCell().x);
@@ -196,22 +122,7 @@ namespace Midnight.ChiefOperations
 		public bool IsTurnOwner ()
 		{
 
-			return engine.turn.GetOwner() == this; // todo
-		}
-
-		public bool HasHq (Country country)
-		{
-			return null != GetAliveHqs().First(hq => hq.Is(country));
-		}
-
-		public bool HasHq (Subtype subtype)
-		{
-			return null != GetAliveHqs().First(hq => hq.Is(subtype));
-		}
-
-		public bool HasHq (Country country, Subtype subtype)
-		{
-			return null != GetAliveHqs().First(hq => hq.Is(country) && hq.Is(subtype));
+			return engine.turn.GetOwner() == this;
 		}
 	}
 }

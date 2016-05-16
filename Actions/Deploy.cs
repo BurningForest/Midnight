@@ -20,7 +20,7 @@ namespace Midnight.Actions
 		public override void Configure ()
 		{
 			if (card is Platoon) {
-				var previous = card.GetChief().GetPlatoonBySubtype(card.GetProto().subtype);
+				var previous = card.GetChief().cards.GetPlatoonBySubtype(card.GetProto().subtype);
 
 				if (previous != null) {
 					AddChild(new Death(previous));

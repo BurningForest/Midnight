@@ -18,14 +18,14 @@ namespace Midnight.Tests.Positioning
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
 
-			var light = player.cardFactory.Create<LightTank>();
-			var medium = player.cardFactory.Create<MediumTank>();
-			var heavy = player.cardFactory.Create<HeavyTank>();
-			var spg = player.cardFactory.Create<SpgTank>();
+			var light  = player.cards.factory.Create<LightTank>();
+			var medium = player.cards.factory.Create<MediumTank>();
+			var heavy  = player.cards.factory.Create<HeavyTank>();
+			var spg    = player.cards.factory.Create<SpgTank>();
 
 			var manage = new Manage(engine);
 
-			foreach (var tank in player.cards) {
+			foreach (var tank in player.cards.GetAll()) {
 				tank.GetLocation().ToReserve();
 			}
 
