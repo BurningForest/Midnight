@@ -66,6 +66,10 @@ namespace Midnight.ChiefOperations
 		{
 			var deck = FromLocation(Location.deck);
 
+			if (deck.Count == 0) {
+				return null;
+			}
+
 			return IsShuffleOn()
 				? deck[random.Next(0, deck.Count)]
 				: deck[0];

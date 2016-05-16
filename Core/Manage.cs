@@ -57,14 +57,24 @@ namespace Midnight.Core
 			return Launch(new Deploy(card, cell));
 		}
 
-		public void DrawList (List<Card> cards)
+		public Draw Draw (Card card)
 		{
-			throw new NotImplementedException();
+			return Launch(new Draw(card));
 		}
 
-		public void Draw (int v, Chief chief)
+		public DrawList Draw (IEnumerable<Card> cards)
 		{
-			throw new NotImplementedException();
+			return Launch(new DrawList(cards));
+		}
+
+		public DrawCount Draw (Chief chief, int v)
+		{
+			return Launch(new DrawCount(chief, v));
+		}
+
+		public DrawCount Draw (Chief chief)
+		{
+			return Draw(chief, 1);
 		}
 
 		public void Heal (int v, Card target, Card source)

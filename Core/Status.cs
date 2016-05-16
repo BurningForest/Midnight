@@ -22,6 +22,9 @@
 		TargetIsDead,
 		CardHasLives,
 		TargetIsUnderCamouflage,
-		NotEnoughResources
+		NotEnoughResources,
+		NotInDeck,
+		DeckIsEmpty,
+		NoCard
 	}
 }

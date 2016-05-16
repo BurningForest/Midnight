@@ -14,7 +14,7 @@ namespace Midnight.Tests.TestInstances
 
 			power = 3,
 			toughness = 20,
-			increase = 5,
+			increase = 4,
 		};
 
 		public override Proto GetProto ()

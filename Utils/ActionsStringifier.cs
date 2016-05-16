@@ -119,7 +119,27 @@ namespace Midnight.Utils
 
 		public string[] GetDynamicArgs (SetResources action)
 		{
-			return Group( action.chief.index, action.value );
+			return Group(action.chief.index, action.value);
+		}
+
+		public string[] GetDynamicArgs (Draw action)
+		{
+			return Group(LogCard(action.card));
+		}
+
+		public string[] GetDynamicArgs (DrawRandom action)
+		{
+			return Group(action.chief.index);
+		}
+
+		public string[] GetDynamicArgs (DrawCount action)
+		{
+			return Group(action.chief.index, action.count);
+		}
+
+		public string[] GetDynamicArgs (DrawList action)
+		{
+			return Group(action.cards.Count());
 		}
 	}
 }
