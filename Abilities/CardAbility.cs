@@ -29,6 +29,11 @@ namespace Midnight.Abilities
 
 		protected abstract bool IsValidCard (Card card);
 
+		protected virtual bool IsActive ()
+		{
+			return true;
+		}
+
 	}
 
 	public abstract class CardAbility<TCard> : CardAbility
