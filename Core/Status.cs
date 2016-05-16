@@ -26,6 +26,10 @@
 		NotInDeck,
 		DeckIsEmpty,
 		NoCard,
-		TargetIsNotSpotted
+		TargetIsNotSpotted,
+		NoSpecificAbility,
+		NoValidTargets,
+		TargetIsInvalid,
+		NoOrderingAbility
 	}
 }

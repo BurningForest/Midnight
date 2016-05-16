@@ -11,7 +11,7 @@ namespace Midnight.Actions
 
 		public class NonLethal : DealDamage
 		{
-			public NonLethal (int value, ForefrontCard source, ForefrontCard target) : base(value, source, target)
+			public NonLethal (int value, Card source, ForefrontCard target) : base(value, source, target)
 			{
 			}
 
@@ -23,11 +23,11 @@ namespace Midnight.Actions
 		} 
 
 		public readonly Modifier modifier;
-		public readonly ForefrontCard source;
+		public readonly Card source;
 		public readonly ForefrontCard target;
 		public int value { get; private set; }
 
-		public DealDamage (int value, ForefrontCard source, ForefrontCard target)
+		public DealDamage (int value, Card source, ForefrontCard target)
 		{
 			this.value = value;
 			this.source = source;

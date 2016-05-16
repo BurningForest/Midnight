@@ -97,9 +97,14 @@ namespace Midnight.Core
 			return Launch(new SetResources(chief, value));
 		}
 
-		public void Order (Order order, Card card)
+		public GiveOrder Order (Order order, FieldCard target)
 		{
-			throw new NotImplementedException();
+			return Launch(new GiveOrder(order, target));
+		}
+
+		public GiveOrder Order (Order order)
+		{
+			return Launch(new GiveOrder(order));
 		}
 
 		private TAction Launch<TAction> (TAction action)

@@ -1,4 +1,4 @@
-﻿using Midnight.Abilities;
+﻿using Midnight.Abilities.Activating;
 
 namespace Midnight.Cards.Types
 {
@@ -7,6 +7,8 @@ namespace Midnight.Cards.Types
 		public override void InitAbilities ()
 		{
 			base.InitAbilities();
+			
+			abilities.Add(new Ordering());
 		}
 	}
 }

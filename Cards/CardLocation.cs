@@ -60,6 +60,11 @@ namespace Midnight.Cards
 			return Is(Location.deck);
 		}
 
+		public Location GetCurrent ()
+		{
+			return location;
+		}
+
 		public bool IsNowhere () {
 			return Is(null);
 		}
