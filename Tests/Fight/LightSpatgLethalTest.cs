@@ -17,8 +17,8 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 
-			var light = engine.chiefs[0].cards.factory.Create<LightTank>();
-			var spatg = engine.chiefs[1].cards.factory.Create<SpatgTank>();
+			var light = engine.chiefs[0].cards.factory.Create<TankLight>();
+			var spatg = engine.chiefs[1].cards.factory.Create<TankSpatg>();
 
 			manage.Position(light, engine.field.GetCell(1, 1));
 			manage.Position(spatg, engine.field.GetCell(2, 1));

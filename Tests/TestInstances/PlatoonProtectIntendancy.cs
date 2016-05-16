@@ -1,23 +1,22 @@
-﻿using Midnight.Cards;
-using Midnight.Cards.Enums;
-using Midnight.Cards.Vehicles;
+﻿using Midnight.Cards.Enums;
+using Midnight.Cards.Types;
 
 namespace Midnight.Tests.TestInstances
 {
-	public class TankSpatg : SpatgVehicle
+	public class PlatoonProtectIntendancy : Platoon.Protect
 	{
 		public static readonly Proto proto = new Proto() {
-			id = "tv_spatg_tank",
+			id = "tp_protect_intendancy",
 			level = 1,
-			type = Type.vehicle,
-			subtype = Subtype.spatg,
+			type = Type.platoon,
+			subtype = Subtype.intendancy,
 			country = Country.germany,
 
-			power = 2,
-			defense = 0,
+			power = 0,
+			defense = 3,
 			toughness = 3,
 			increase = 0,
-			cost = 2,
+			cost = 1,
 		};
 
 		public override Proto GetProto ()

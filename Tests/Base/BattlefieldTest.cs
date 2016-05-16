@@ -135,9 +135,9 @@ namespace Midnight.Tests.Base
 		public void GettingAllCards ()
 		{
 			var field = CreateField();
-			var light = new LightTank();
-			var spatg = new SpatgTank();
-			var heavy = new HeavyTank();
+			var light = new TankLight();
+			var spatg = new TankSpatg();
+			var heavy = new TankHeavy();
 
 			light.GetFieldLocation().ToCell(field.GetCell(1, 1));
 			spatg.GetFieldLocation().ToCell(field.GetCell(2, 1));
@@ -155,8 +155,8 @@ namespace Midnight.Tests.Base
 		{
 			var field = CreateField();
 			var cell = field.GetCell(1, 1);
-			var light = new LightTank();
-			var spatg = new SpatgTank();
+			var light = new TankLight();
+			var spatg = new TankSpatg();
 
 			light.GetFieldLocation().ToCell(cell);
 			spatg.GetFieldLocation().ToCell(cell);
@@ -168,8 +168,8 @@ namespace Midnight.Tests.Base
 		{
 			var field = CreateField();
 			var cell = field.GetCell(1, 1);
-			var light = new LightTank();
-			var spatg = new SpatgTank();
+			var light = new TankLight();
+			var spatg = new TankSpatg();
 
 			light.GetFieldLocation().ToCell(cell);
 			cell.RemoveCard(spatg);

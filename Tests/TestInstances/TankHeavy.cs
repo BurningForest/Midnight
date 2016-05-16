@@ -3,7 +3,7 @@ using Midnight.Cards.Vehicles;
 
 namespace Midnight.Tests.TestInstances
 {
-	public class HeavyTank : HeavyVehicle
+	public class TankHeavy : HeavyVehicle
 	{
 		public static readonly Proto proto = new Proto() {
 			id = "tv_medium_tank",

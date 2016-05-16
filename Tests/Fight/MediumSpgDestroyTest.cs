@@ -17,9 +17,9 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 
-			var medium1 = engine.chiefs[0].cards.factory.Create<MediumTank>();
-			var medium2 = engine.chiefs[0].cards.factory.Create<MediumTank>();
-			var spg     = engine.chiefs[1].cards.factory.Create<SpgTank>();
+			var medium1 = engine.chiefs[0].cards.factory.Create<TankMedium>();
+			var medium2 = engine.chiefs[0].cards.factory.Create<TankMedium>();
+			var spg     = engine.chiefs[1].cards.factory.Create<TankSpg>();
 
 			manage.Position(medium1, engine.field.GetCell(2, 1));
 			manage.Position(spg    , engine.field.GetCell(3, 1));

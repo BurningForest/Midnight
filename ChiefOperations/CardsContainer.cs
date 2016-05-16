@@ -34,14 +34,6 @@ namespace Midnight.ChiefOperations
 			return this;
 		}
 
-		public CardsContainer AddCards (Card[] cards)
-		{
-			foreach (var card in cards) {
-				Add(card);
-			}
-			return this;
-		}
-
 		public void SetShuffleOn ()
 		{
 			isShuffle = true;
@@ -88,7 +80,13 @@ namespace Midnight.ChiefOperations
 
 		public Platoon GetPlatoonBySubtype (Subtype subtype)
 		{
-			return cards.First(card => card is Platoon && card.IsActive() && card.Is(subtype)) as Platoon;
+			foreach (var card in cards) {
+				if (card is Platoon && card.IsActive() && card.Is(subtype)) {
+					return (Platoon)card;
+				}
+			}
+
+			return null;
 		}
 
 		public List<Platoon> GetOrderedPlatoons ()
@@ -116,24 +114,24 @@ namespace Midnight.ChiefOperations
 
 		public Hq GetHq ()
 		{
-			Card hq = cards.First(card => card is Hq && card.IsActive());
+			Card hq = cards.FirstOrDefault(card => card is Hq && card.IsActive());
 
 			return hq == null ? null : (Hq)hq;
 		}
 
 		public bool HasHq (Country country)
 		{
-			return null != GetAliveHqs().First(hq => hq.Is(country));
+			return GetAliveHqs().Any(hq => hq.Is(country));
 		}
 
 		public bool HasHq (Subtype subtype)
 		{
-			return null != GetAliveHqs().First(hq => hq.Is(subtype));
+			return GetAliveHqs().Any(hq => hq.Is(subtype));
 		}
 
 		public bool HasHq (Country country, Subtype subtype)
 		{
-			return null != GetAliveHqs().First(hq => hq.Is(country) && hq.Is(subtype));
+			return GetAliveHqs().Any(hq => hq.Is(country) && hq.Is(subtype));
 		}
 
 		private void Shuffle<T> (List<T> list)

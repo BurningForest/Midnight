@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Cards;
 using Midnight.Cards.Enums;
+using Midnight.Cards.Props;
 using Midnight.Cards.Types;
 using Midnight.Cards.Vehicles;
 using Midnight.Tests.TestInstances;
@@ -14,7 +15,7 @@ namespace Midnight.Tests.Base
 		[TestMethod]
 		public void CardIs ()
 		{
-			var card = new LightTank();
+			var card = new TankLight();
 
 			Assert.IsTrue(card is Vehicle);
 			Assert.IsTrue(card is LightVehicle);
@@ -31,19 +32,31 @@ namespace Midnight.Tests.Base
 		[TestMethod]
 		public void CardValues ()
 		{
-			var card = new LightTank();
+			var card = new TankLight();
 
 			Assert.AreEqual(2, card.GetCost());
 			Assert.AreEqual(1, card.GetIncrease());
 			Assert.AreEqual(2, card.GetToughness());
 			Assert.AreEqual(1, card.GetPower());
 			Assert.AreEqual(0, card.GetDefense());
+			Assert.AreEqual(0, card.GetDamage());
+		}
+
+		[TestMethod]
+		public void CardPropertiesToString ()
+		{
+			Assert.AreEqual("cost", Property.cost.ToString());
+			Assert.AreEqual("increase", Property.increase.ToString());
+			Assert.AreEqual("toughness", Property.toughness.ToString());
+			Assert.AreEqual("power", Property.power.ToString());
+			Assert.AreEqual("defense", Property.defense.ToString());
+			Assert.AreEqual("damage", Property.damage.ToString());
 		}
 
 		[TestMethod]
 		public void CardBaseLocation ()
 		{
-			var card = new LightTank();
+			var card = new TankLight();
 
 			Assert.IsTrue(card.GetLocation().IsNowhere());
 			Assert.IsFalse(card.GetLocation().IsForefront());
@@ -69,7 +82,7 @@ namespace Midnight.Tests.Base
 		public void CardFieldLocation ()
 		{
 			var field = BattlefieldTest.CreateField();
-			var card = new LightTank();
+			var card = new TankLight();
 
 			Assert.IsTrue(card.GetLocation().IsNowhere());
 			Assert.IsFalse(card.GetLocation().IsForefront());

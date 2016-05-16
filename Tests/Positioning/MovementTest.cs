@@ -18,10 +18,10 @@ namespace Midnight.Tests.Positioning
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
 
-			var light  = player.cards.factory.Create<LightTank>();
-			var medium = player.cards.factory.Create<MediumTank>();
-			var heavy  = player.cards.factory.Create<HeavyTank>();
-			var spg    = player.cards.factory.Create<SpgTank>();
+			var light  = player.cards.factory.Create<TankLight>();
+			var medium = player.cards.factory.Create<TankMedium>();
+			var heavy  = player.cards.factory.Create<TankHeavy>();
+			var spg    = player.cards.factory.Create<TankSpg>();
 
 			var manage = new Manage(engine);
 

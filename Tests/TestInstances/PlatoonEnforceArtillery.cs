@@ -3,10 +3,10 @@ using Midnight.Cards.Types;
 
 namespace Midnight.Tests.TestInstances
 {
-	public class PlatoonEnforce : Platoon.Enforce
+	public class PlatoonEnforceArtillery : Platoon.Enforce
 	{
 		public static readonly Proto proto = new Proto() {
-			id = "tp_attack",
+			id = "tp_enforce_artillery",
 			level = 1,
 			type = Type.platoon,
 			subtype = Subtype.artillery,

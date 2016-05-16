@@ -26,21 +26,22 @@ namespace Midnight.Tests.Positioning
 			player.cards.factory.AddDefaultHq<HqConsol>();
 			enemy .cards.factory.AddDefaultHq<HqStrike>();
 
-			var medium = player.cards.factory.Create<MediumTank>();
-			var heavy  = player.cards.factory.Create<HeavyTank>();
+			var medium = player.cards.factory.Create<TankMedium>();
+			var heavy  = player.cards.factory.Create<TankHeavy>();
 
 			var light = new[] {
-				enemy.cards.factory.Create<LightTank>(),
-				enemy.cards.factory.Create<LightTank>(),
-				enemy.cards.factory.Create<LightTank>()
+				enemy.cards.factory.Create<TankLight>(),
+				enemy.cards.factory.Create<TankLight>(),
+				enemy.cards.factory.Create<TankLight>()
 			};
 
 			manage.Draw(medium);
 			manage.Draw(heavy);
-			manage.Draw(light);
+			manage.Draw(enemy, 3);
 
 			manage.StartGame(player);
 
+			Assert.AreEqual(3, enemy.cards.FromLocation(Location.reserve).Count);
 			Assert.AreEqual(5, player.GetTotalIncrease());
 			Assert.AreEqual(5, player.GetResources());
 			Assert.AreEqual(4, enemy.GetTotalIncrease());

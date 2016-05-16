@@ -3,20 +3,20 @@ using Midnight.Cards.Types;
 
 namespace Midnight.Tests.TestInstances
 {
-	public class PlatoonProtect : Platoon.Protect
+	public class PlatoonEnforceScout : Platoon.Enforce
 	{
 		public static readonly Proto proto = new Proto() {
-			id = "tp_defense",
+			id = "tp_enforce_scout",
 			level = 1,
 			type = Type.platoon,
-			subtype = Subtype.communications,
-			country = Country.germany,
+			subtype = Subtype.scout,
+			country = Country.ussr,
 
-			power = 0,
-			defense = 2,
-			toughness = 7,
+			power = 2,
+			defense = 0,
+			toughness = 4,
 			increase = 0,
-			cost = 4,
+			cost = 2,
 		};
 
 		public override Proto GetProto ()

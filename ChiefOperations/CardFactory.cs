@@ -27,7 +27,7 @@ namespace Midnight.ChiefOperations
 			where TCard : Hq, new()
 		{
 			if (chief.GetStartCell().IsBusy()) {
-				throw new Exception("Cell is busy");
+				throw new Exception("Start cell is busy for Hq");
 			}
 
 			var card = new TCard();

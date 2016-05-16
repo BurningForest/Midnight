@@ -4,20 +4,20 @@ using Midnight.Cards.Vehicles;
 
 namespace Midnight.Tests.TestInstances
 {
-	public class TankSpg : SpgVehicle
+	public class TankBigSpg : SpgVehicle
 	{
 		public static readonly Proto proto = new Proto() {
-			id = "tv_spg_tank",
-			level = 1,
+			id = "tv_big_spg_tank",
+			level = 5,
 			type = Type.vehicle,
 			subtype = Subtype.spg,
-			country = Country.usa,
+			country = Country.germany,
 
-			power = 1,
+			power = 8,
 			defense = 0,
-			toughness = 3,
+			toughness = 4,
 			increase = 0,
-			cost = 0,
+			cost = 4,
 		};
 
 		public override Proto GetProto ()

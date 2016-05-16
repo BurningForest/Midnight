@@ -27,10 +27,7 @@ namespace Midnight.Abilities
 			engine.emitter.Subscribe(this);
 		}
 
-		protected virtual bool IsValidCard (Card card)
-		{
-			return true;
-		}
+		protected abstract bool IsValidCard (Card card);
 
 	}
 

@@ -12,11 +12,6 @@ namespace Midnight.Cards.Types
 			return GetFieldLocation().GetCell().GetAdjoiningCells();
 		}
 
-		public override bool IsActive ()
-		{
-			return GetFieldLocation().IsBattlefield();
-		}
-
 		public override void InitAbilities ()
 		{
 			base.InitAbilities();

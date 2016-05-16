@@ -17,7 +17,6 @@ namespace Midnight.ChiefOperations
 		public readonly CardsContainer cards;
 
 		private int resources = 0;
-		private int ownIncrease = 0;
 
 		public Chief (int index)
 		{
@@ -69,7 +68,7 @@ namespace Midnight.ChiefOperations
 
 		public int GetTotalIncrease ()
 		{
-			int increase = GetOwnIncrease();
+			int increase = 0;
 
 			foreach (Card card in cards.GetAll()) {
 				if (card.GetLocation().IsForefront()) {
@@ -78,16 +77,6 @@ namespace Midnight.ChiefOperations
 			}
 
 			return increase;
-		}
-
-		public int GetOwnIncrease ()
-		{
-			return ownIncrease;
-		}
-
-		public void SetOwnIncrease (int increase)
-		{
-			ownIncrease = increase;
 		}
 
 		public Cell GetStartCell ()
