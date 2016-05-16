@@ -33,7 +33,7 @@ namespace Midnight.Tests.Base
 		{
 			var card = new LightTank();
 
-			Assert.AreEqual(1, card.GetCost());
+			Assert.AreEqual(2, card.GetCost());
 			Assert.AreEqual(1, card.GetIncrease());
 			Assert.AreEqual(2, card.GetToughness());
 			Assert.AreEqual(1, card.GetPower());
