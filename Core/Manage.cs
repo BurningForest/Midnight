@@ -87,6 +87,11 @@ namespace Midnight.Core
 			return Launch(new DealDamage(value, source, target));
 		}
 
+		public Death Kill (Card target)
+		{
+			return Launch(new Death.Forced(target));
+		}
+
 		public SetResources SetResources (Chief chief, int value)
 		{
 			return Launch(new SetResources(chief, value));

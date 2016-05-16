@@ -133,5 +133,10 @@ namespace Midnight.Cards
 		{
 			return false;
 		}
+
+		public bool IsActive<Type> ()
+		{
+			return this is Type && IsActive();
+		}
 	}
 }

@@ -24,11 +24,12 @@ namespace Midnight.Tests.Headquarters
 
 			var guards = player.cards.factory.CreateDefaultHq<HqGuards>();
 			var artill = player.cards.factory.Create<PlatoonEnforceArtillery>();
-			var scout  = player.cards.factory.Create<PlatoonEnforceScout>();
+			var scout1 = player.cards.factory.Create<PlatoonEnforceScout>();
+			var scout2 = player.cards.factory.Create<PlatoonEnforceScout>();
 
 			var consol = enemy.cards.factory.CreateDefaultHq<HqConsol>();
 
-			manage.Draw(player, 2);
+			manage.Draw(player, 3);
 			manage.StartGame(player);
 
 			Assert.IsTrue(manage.Deploy(artill).IsValid());
@@ -42,13 +43,17 @@ namespace Midnight.Tests.Headquarters
 
 			manage.EndTurn(player);
 			manage.EndTurn(enemy);
-			
-			Assert.IsTrue(manage.Deploy(scout).IsValid());
+
+			Assert.IsTrue(manage.Deploy(scout1).IsValid());
+			Assert.IsFalse(artill.IsDead());
+
+			Assert.IsTrue(manage.Deploy(scout2).IsValid());
+			Assert.IsTrue(scout1.IsDead());
 			Assert.IsFalse(artill.IsDead());
 
 			Assert.IsTrue(manage.Fight(guards, consol).IsValid());
 			Assert.AreEqual(2, artill.GetDamage());
-			Assert.AreEqual(2, scout.GetDamage());
+			Assert.AreEqual(2, scout2.GetDamage());
 			Assert.AreEqual(6, consol.GetDamage());
 		}
 	}

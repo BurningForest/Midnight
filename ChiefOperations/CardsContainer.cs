@@ -81,7 +81,7 @@ namespace Midnight.ChiefOperations
 		public Platoon GetPlatoonBySubtype (Subtype subtype)
 		{
 			foreach (var card in cards) {
-				if (card is Platoon && card.IsActive() && card.Is(subtype)) {
+				if (card.IsActive<Platoon>() && card.Is(subtype)) {
 					return (Platoon)card;
 				}
 			}
@@ -107,16 +107,20 @@ namespace Midnight.ChiefOperations
 		public List<Hq> GetAliveHqs ()
 		{
 			return cards
-				.Where(card => card is Hq && card.IsActive())
+				.Where(card => card.IsActive<Hq>())
 				.Cast<Hq>()
 				.ToList();
 		}
 
 		public Hq GetHq ()
 		{
-			Card hq = cards.FirstOrDefault(card => card is Hq && card.IsActive());
+			foreach (var card in cards) {
+				if (card.IsActive<Hq>()) {
+					return (Hq)card;
+				}
+			}
 
-			return hq == null ? null : (Hq)hq;
+			return null;
 		}
 
 		public bool HasHq (Country country)

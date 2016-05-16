@@ -78,7 +78,7 @@ namespace Midnight.ActionManager
 			return IsTop() ? this : parent.GetTop();
 		}
 
-		public bool IsChildOf<TAction> ()
+		public bool HasAncestor<TAction> ()
 			where TAction : GameAction
 		{
 			var action = this;

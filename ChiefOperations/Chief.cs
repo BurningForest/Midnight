@@ -99,13 +99,13 @@ namespace Midnight.ChiefOperations
 
 		private List<Cell> CompileFootholdCells (List<Hq> hqs)
 		{
-			var cells = new List<Cell>();
+			IEnumerable<Cell> cells = new List<Cell>();
 
 			foreach (Hq hq in hqs) {
-				cells.AddRange(hq.GetFootholdCells());
+				cells = cells.Union(hq.GetFootholdCells());
 			}
 
-			return cells;
+			return cells.ToList();
 		}
 
 		public bool IsTurnOwner ()

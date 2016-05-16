@@ -7,10 +7,10 @@ using Midnight.Utils;
 namespace Midnight.Tests.Headquarters
 {
 	[TestClass]
-	public class MobileTest
+	public class MobileHqTest
 	{
 		[TestMethod]
-		public void Mobile ()
+		public void MobileHq ()
 		{
 			var engine = new Engine();
 			var logger = new Logger(engine);
