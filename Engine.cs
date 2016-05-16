@@ -8,12 +8,7 @@ namespace Midnight
 	public class Engine
 	{
 
-		public static void Main (string[] args)
-		{
-			Console.ReadLine();
-			new SeveralAttacksTest().SeveralAttacks();
-			Console.ReadLine();
-		}
+		public static void Main (string[] args) {}
 
 		public readonly Emitter.EventEmitter emitter;
 		public readonly ActionManager.Manager actions;
