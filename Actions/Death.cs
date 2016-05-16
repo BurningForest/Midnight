@@ -27,7 +27,7 @@ namespace Midnight.Actions
 		{
 			card.GetLocation().ToGraveyard();
 
-			// todo: spotted
+			GetEngine().lantern.RecountTo(this);
 		}
 
 		public override Status Validation ()

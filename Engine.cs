@@ -15,6 +15,7 @@ namespace Midnight
 		public readonly Battlefield.Field field;
 		public readonly Chief[] chiefs;
 		public readonly Turn turn;
+		public readonly Lantern lantern;
 
 		public Engine ()
 		{
@@ -29,6 +30,7 @@ namespace Midnight
 			};
 
 			turn = new Turn(this);
+			lantern = new Lantern(this);
 		}
 
 	}

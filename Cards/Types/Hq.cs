@@ -23,5 +23,11 @@ namespace Midnight.Cards.Types
 				new PlatoonProtected()
 			);
 		}
+
+		public override bool IsSpotted ()
+		{
+			// hq is always spotted
+			return true;
+		}
 	}
 }

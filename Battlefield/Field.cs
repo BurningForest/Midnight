@@ -1,4 +1,5 @@
 ﻿using Midnight.Cards;
+using Midnight.Cards.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,17 +97,17 @@ namespace Midnight.Battlefield
 			return column;
 		}
 
-		public List<Card> GetAllCards ()
+		public List<FieldCard> GetAllCards ()
 		{
 			return GetCardsOf(cells);
 		}
 
-		public List<Card> GetCardsOf (List<Cell> cells)
+		public List<FieldCard> GetCardsOf (List<Cell> cells)
 		{
-			List<Card> cards = new List<Card>();
+			List<FieldCard> cards = new List<FieldCard>();
 
 			foreach (Cell cell in cells) {
-				Card card = cell.GetCard();
+				FieldCard card = cell.GetCard();
 
 				if (card != null) {
 					cards.Add(card);

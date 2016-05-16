@@ -1,4 +1,5 @@
 ﻿using Midnight.Battlefield;
+using System.Collections.Generic;
 
 namespace Midnight.Cards.Types
 {
@@ -20,5 +21,14 @@ namespace Midnight.Cards.Types
 
 			return location;
 		}
+
+		public List<FieldCard> GetAdjoiningCards ()
+		{
+			var cells = location.GetCell().GetAdjoiningCells();
+
+			return GetChief().GetEngine().field.GetCardsOf(cells);
+		}
+
+		public abstract bool IsSpotted ();
 	}
 }

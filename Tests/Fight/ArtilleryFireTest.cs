@@ -24,10 +24,10 @@ namespace Midnight.Tests.Fight
 			manage.Position(spg, engine.field.GetCell(0, 1));
 			manage.Position(light, engine.field.GetCell(2, 1));
 			manage.Position(medium, engine.field.GetCell(4, 1));
-
-			// Spotted
-			// var fight = manage.Fight(spg, medium);
-			// Assert.AreEqual(0, medium.GetDamage());
+			
+			var fight = manage.Fight(spg, medium);
+			Assert.AreEqual(Status.TargetIsNotSpotted, fight.GetStatus());
+			Assert.AreEqual(0, medium.GetDamage());
 
 			manage.Move(light, engine.field.GetCell(3, 1));
 			manage.Fight(spg, medium);

@@ -21,8 +21,7 @@ namespace Midnight.Actions
 		{
 			card.abilities.Get<Movement>().Activate(cell);
 			card.GetFieldLocation().ToCell(cell);
-
-			// todo: spotted
+			GetEngine().lantern.RecountTo(this);
 		}
 	}
 }

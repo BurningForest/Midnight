@@ -26,7 +26,7 @@ namespace Midnight.Battlefield
 			return card != null;
 		}
 
-		public Card GetCard ()
+		public FieldCard GetCard ()
 		{
 			return card;
 		}

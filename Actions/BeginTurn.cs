@@ -28,14 +28,11 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			// todo turn
-			// todo spotted
+			GetEngine().lantern.RecountTo(this);
 		}
 
 		public override Status Validation ()
 		{
-			// todo isTurnOwner
-
 			return Status.Success;
 		}
 	}

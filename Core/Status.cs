@@ -25,6 +25,7 @@
 		NotEnoughResources,
 		NotInDeck,
 		DeckIsEmpty,
-		NoCard
+		NoCard,
+		TargetIsNotSpotted
 	}
 }

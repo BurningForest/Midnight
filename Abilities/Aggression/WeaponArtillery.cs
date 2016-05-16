@@ -12,7 +12,9 @@ namespace Midnight.Abilities.Aggression
 				return Status.TargetIsUnderCamouflage;
 			}
 
-			// todo: spotted
+			if (!target.IsSpotted()) {
+				return Status.TargetIsNotSpotted;
+			}
 
 			return Status.Success;
 		}

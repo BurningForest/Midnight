@@ -27,7 +27,7 @@ namespace Midnight.Actions
 			}
 
 			AddChild(PayResources.ForCard(card));
-			// add spotted
+			GetEngine().lantern.RecountTo(this);
 		}
 	}
 }

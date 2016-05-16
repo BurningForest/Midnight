@@ -21,8 +21,7 @@ namespace Midnight.Actions
 		public override void Configure ()
 		{
 			card.GetFieldLocation().ToCell(cell);
-
-			// todo: spotted
+			GetEngine().lantern.RecountTo(this);
 		}
 
 		public override Status Validation ()
