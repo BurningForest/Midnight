@@ -18,6 +18,10 @@ namespace Midnight.Utils
 
 		public string LogCard (Card card)
 		{
+			if (card == null) {
+				return "null";
+			} 
+
 			return card.GetType().Name + "(" + card.GetChief().index + ")";
 		}
 
@@ -104,7 +108,12 @@ namespace Midnight.Utils
 
 		public string[] GetDynamicArgs (DealDamage action)
 		{
-			return Group( LogCard(action.target), action.value );
+			return Group(LogCard(action.target), action.value);
+		}
+
+		public string[] GetDynamicArgs (HealDamage action)
+		{
+			return Group(LogCard(action.target), action.value);
 		}
 
 		public string[] GetDynamicArgs (Death action)

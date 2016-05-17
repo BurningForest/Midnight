@@ -6,28 +6,15 @@ using Midnight.Core;
 
 namespace Midnight.Actions
 {
-	public class DealDamage : GameAction<DealDamage>
+	public class HealDamage : GameAction<HealDamage>
 	{
-
-		public class NonLethal : DealDamage
-		{
-			public NonLethal (int value, Card source, ForefrontCard target) : base(value, source, target)
-			{
-			}
-
-			public override void Configure ()
-			{
-				AddChild(new AddModifier(modifier));
-				AddChild(new Death(target));
-			}
-		} 
 
 		public readonly Modifier modifier;
 		public readonly Card source;
 		public readonly ForefrontCard target;
 		public int value { get; private set; }
 
-		public DealDamage (int value, Card source, ForefrontCard target)
+		public HealDamage (int value, Card source, ForefrontCard target)
 		{
 			this.value = value;
 			this.source = source;
@@ -36,12 +23,12 @@ namespace Midnight.Actions
 			modifier = new Modifier(Property.damage);
 		}
 
-		public int GetFinalDamage ()
+		public int GetFinalHeal ()
 		{
-			return Card.Limit(value, target.GetLives());
+			return -Card.Limit(value, target.GetDamage());
 		}
 
-		public int GetDamage ()
+		public int GetHeal ()
 		{
 			return Card.Limit(value);
 		}
@@ -49,18 +36,17 @@ namespace Midnight.Actions
 		public void ModifyDamage (int diff)
 		{
 			value += diff;
-			modifier.SetValue(GetFinalDamage());
+			modifier.SetValue(GetFinalHeal());
 		}
 
 		public override void Configure ()
 		{
 			modifier
-				.SetValue(GetFinalDamage())
+				.SetValue(GetFinalHeal())
 				.SetTarget(target)
 				.SetSource(source);
 
 			AddChild(new AddModifier(modifier));
-			AddChild(new Death(target));
 		}
 
 		public override Status Validation ()
@@ -71,6 +57,10 @@ namespace Midnight.Actions
 
 			if (!target.GetLocation().IsForefront()) {
 				return Status.NotAtForefront;
+			}
+
+			if (target.GetDamage() == 0) {
+				return Status.TargetIsNotDamaged;
 			}
 
 			return Status.Success;

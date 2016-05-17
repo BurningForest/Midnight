@@ -30,6 +30,8 @@
 		NoSpecificAbility,
 		NoValidTargets,
 		TargetIsInvalid,
-		NoOrderingAbility
+		NoOrderingAbility,
+		TargetIsNotDamaged,
+		NoTarget
 	}
 }
