@@ -13,12 +13,20 @@ namespace Midnight.ChiefOperations
 			this.chief = chief;
 		}
 
-		public TCard Create<TCard> ()
+		private TCard Initialize<TCard> ()
 			where TCard : Card, new()
 		{
 			var card = new TCard();
 			chief.cards.Add(card);
+			card.SetId(chief.GetEngine().cache.Register(card));
 			card.InitAbilities();
+			return card;
+		}
+
+		public TCard Create<TCard> ()
+			where TCard : Card, new()
+		{
+			var card = Initialize<TCard>();
 			card.GetLocation().ToDeck();
 			return card;
 		}
@@ -30,9 +38,8 @@ namespace Midnight.ChiefOperations
 				throw new Exception("Start cell is busy for Hq");
 			}
 
-			var card = new TCard();
-			chief.cards.Add(card);
-			card.InitAbilities();
+			var card = Initialize<TCard>();
+			card.GetLocation().ToDeck();
 			card.GetFieldLocation().ToCell(chief.GetStartCell());
 			return card;
 		}

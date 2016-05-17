@@ -31,6 +31,11 @@ namespace Midnight.Cards
 			return GetLocation().IsGraveyard();
 		}
 
+		public void SetId (int id)
+		{
+			this.id = id;
+		}
+
 		public void SetChief (Chief chief)
 		{
 			this.chief = chief;

@@ -16,11 +16,14 @@ namespace Midnight
 		public readonly Chief[] chiefs;
 		public readonly Turn turn;
 		public readonly Lantern lantern;
+		public readonly Cache cache;
 
 		public Engine ()
 		{
 			emitter = new Emitter.EventEmitter();
 			actions = new ActionManager.Manager(this);
+
+			cache = new Cache();
 
 			field = new Battlefield.Field().SetSize(5, 3);
 
