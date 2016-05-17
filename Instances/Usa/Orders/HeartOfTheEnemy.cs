@@ -23,7 +23,7 @@ namespace Midnight.Instances.Usa.Orders
 
 		public class HeartOfTheEnemyAbility : SpecificAbility
 		{
-			protected override GameAction[] Actions (FieldCard target)
+			protected override GameAction[] Actions (ForefrontCard target)
 			{
 				return new[] { new DealDamage(2, card, target) };
 			}

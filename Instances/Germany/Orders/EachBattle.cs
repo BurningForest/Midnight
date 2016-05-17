@@ -24,7 +24,7 @@ namespace Midnight.Instances.Germany.Orders
 
 		public class EachBattleAbility : SpecificAbility
 		{
-			protected override GameAction[] Actions (FieldCard target)
+			protected override GameAction[] Actions (ForefrontCard target)
 			{
 				return new GameAction[] {
 					new DealDamage(2, card, target),

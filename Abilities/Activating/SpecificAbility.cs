@@ -16,12 +16,12 @@ namespace Midnight.Abilities.Activating
 			return Targets(new Search(chief));
 		}
 
-		public GameAction[] GetActions (FieldCard target)
+		public GameAction[] GetActions (ForefrontCard target)
 		{
 			return Actions(target);
 		}
 
 		protected abstract Search Targets (Search search);
-		protected abstract GameAction[] Actions (FieldCard target);
+		protected abstract GameAction[] Actions (ForefrontCard target);
 	}
 }

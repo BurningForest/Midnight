@@ -24,7 +24,7 @@ namespace Midnight.Instances.Ussr.Orders
 
 		public class HelpForTheFrontAbility : SpecificAbility
 		{
-			protected override GameAction[] Actions (FieldCard target)
+			protected override GameAction[] Actions (ForefrontCard target)
 			{
 				return new GameAction[] {
 					new DrawRandom(chief),

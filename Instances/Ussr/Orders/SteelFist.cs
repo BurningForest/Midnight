@@ -7,32 +7,32 @@ using Midnight.Cards.Types;
 
 namespace Midnight.Instances.Ussr.Orders
 {
-	public class CrushTheEnemy : Order
+	public class SteelFist : Order
 	{
-		// Нанесите 1 повреждение выбранному штабу или технике
+		// Нанесите 5 повреждений штабу противника.
 
 		public static readonly Proto proto = new Proto() {
-			id = "so_takbilotakbudet",
+			id = "so_udarmolota",
 			level = 1,
 			type = Type.order,
 			subtype = Subtype.order,
 			country = Country.ussr,
 
-			cost = 0,
+			cost = 9,
 		};
 
-		public class CrushTheEnemyAbility : SpecificAbility
+		public class SteelFistAbility : SpecificAbility
 		{
 			protected override GameAction[] Actions (ForefrontCard target)
 			{
-				return new[] { new DealDamage(1, card, target) };
+				return new[] { new DealDamage(5, card, target) };
 			}
 
 			protected override Search Targets (Search search)
 			{
 				return search
 					.Enemy().Forefront()
-					.Vehicle().Hq();
+					.Hq();
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace Midnight.Instances.Ussr.Orders
 		{
 			base.InitAbilities();
 
-			abilities.Add(new CrushTheEnemyAbility());
+			abilities.Add(new SteelFistAbility());
 		}
 	}
 }
