@@ -1,13 +1,14 @@
 ﻿using Midnight.ChiefOperations;
 using Midnight.Core;
-using Midnight.Tests.Fight;
 using Midnight.Triggers;
-using System;
 
 namespace Midnight
 {
 	public class Engine
 	{
+
+		public class ClonedEngine : Engine {
+		}
 
 		public static void Main (string[] args) {}
 
@@ -37,6 +38,11 @@ namespace Midnight
 
 			turn = new Turn(this);
 			lantern = new Lantern(this);
+		}
+
+		public ClonedEngine Clone ()
+		{
+			return new Copier(this).GetClone();
 		}
 
 	}

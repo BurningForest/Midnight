@@ -34,6 +34,13 @@ namespace Midnight.Abilities
 			return true;
 		}
 
+		public virtual CardAbility CloneFor (Card card)
+		{
+			var clone = (CardAbility)MemberwiseClone();
+			clone.SetOwner(card);
+			return clone;
+		}
+
 	}
 
 	public abstract class CardAbility<TCard> : CardAbility

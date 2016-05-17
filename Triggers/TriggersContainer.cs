@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Midnight.ChiefOperations;
+using System.Collections.Generic;
 
 namespace Midnight.Triggers
 {
@@ -15,7 +16,15 @@ namespace Midnight.Triggers
 		public TriggersContainer Register<TTrigger> ()
 			where TTrigger : Trigger, new()
 		{
-			return Register(new TTrigger());
+			return Register<TTrigger>(null);
+		}
+
+		public TriggersContainer Register<TTrigger> (Chief chief)
+			where TTrigger : Trigger, new()
+		{
+			var trigger = new TTrigger();
+			trigger.SetChief(chief);
+			return Register(trigger);
 		}
 
 		public TriggersContainer Register (Trigger trigger)
@@ -27,6 +36,14 @@ namespace Midnight.Triggers
 
 		public List<Trigger> GetAll () {
 			return triggers;
+		}
+		
+		public void CloneFrom (TriggersContainer source)
+		{
+			foreach (var trigger in source.triggers) {
+				var chief = trigger.chief == null ? null : engine.chiefs[trigger.chief.index];
+				Register(trigger.CloneFor(engine, chief));
+			}
 		}
 	}
 }

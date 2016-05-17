@@ -33,6 +33,7 @@ namespace Midnight.Tests.Base
 		public void CardValues ()
 		{
 			var card = new TankLight();
+			card.Reset();
 
 			Assert.AreEqual(2, card.GetCost());
 			Assert.AreEqual(1, card.GetIncrease());

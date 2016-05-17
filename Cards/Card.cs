@@ -6,22 +6,25 @@ namespace Midnight.Cards
 {
 	public abstract class Card
 	{
-		//todo: spotted
-
 		public int id { get; private set; }
-		private Chief chief;
-		public Abilities abilities { get; protected set; }
-
-		private readonly ModifierContainer modifiers = new ModifierContainer();
 		private CardLocation location;
-		
+
+		public Abilities abilities { get; protected set; }
+		public ModifierContainer modifiers { get; protected set; }
+
+		private Chief chief;
+
 		public virtual CardLocation GetLocation ()
 		{
 			if (location == null) {
-				location = new CardLocation(this);
+				CreateLocation();
 			}
-
 			return location;
+		}
+
+		public virtual void CreateLocation ()
+		{
+			location = new CardLocation(this);
 		}
 
 		public abstract Proto GetProto ();
@@ -46,9 +49,14 @@ namespace Midnight.Cards
 			return chief;
 		}
 
-		public virtual void InitAbilities ()
+		public void Reset ()
 		{
 			abilities = new Abilities(this);
+			modifiers = new ModifierContainer();
+		}
+
+		public virtual void InitAbilities ()
+		{
 		}
 
 		public bool IsControlledBy (Chief chief)
@@ -142,6 +150,16 @@ namespace Midnight.Cards
 		public bool IsActive<Type> ()
 		{
 			return this is Type && IsActive();
+		}
+
+		public virtual Card CloneFor (Chief chief)
+		{
+			var clone = (Card) MemberwiseClone();
+			clone.CreateLocation();
+			clone.SetChief(chief);
+			clone.GetLocation().CloneFrom(GetLocation());
+			clone.Reset(); // modifiers and abilities should be cloned when all cards are created
+			return clone;
 		}
 	}
 }

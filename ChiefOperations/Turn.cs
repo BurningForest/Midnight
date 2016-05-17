@@ -32,6 +32,12 @@ namespace Midnight.ChiefOperations
 			owner = chief;
 		}
 
+		public void StartWith (Chief chief, int number)
+		{
+			this.number = number;
+			StartWith(chief);
+		}
+
 		private void ChangeOwner ()
 		{
 			owner = owner.GetOpponent();

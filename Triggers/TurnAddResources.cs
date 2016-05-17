@@ -8,6 +8,10 @@ namespace Midnight.Triggers
 	{
 		public void On (Before<BeginTurn> ev)
 		{
+			if (!IsOwner(ev.action.chief)) {
+				return;
+			}
+
 			ev.action.AddChild(
 				new SetResources(
 					ev.action.chief,

@@ -50,5 +50,12 @@ namespace Midnight.Cards
 		{
 			return Get<TAbility>() != null;
 		}
+
+		public void CloneFrom (Abilities source)
+		{
+			foreach (var ability in source.active) {
+				Add(ability.CloneFor(card));
+			}
+		}
 	}
 }

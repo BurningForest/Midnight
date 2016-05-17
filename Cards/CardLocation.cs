@@ -1,5 +1,6 @@
 ﻿using System;
 using Midnight.Cards.Enums;
+using Midnight.ChiefOperations;
 
 namespace Midnight.Cards
 {
@@ -13,6 +14,11 @@ namespace Midnight.Cards
 		public CardLocation (Card card)
 		{
 			this.card = card;
+		}
+
+		public Location GetValue ()
+		{
+			return location;
 		}
 
 		public void ToReserve ()
@@ -72,6 +78,11 @@ namespace Midnight.Cards
 		public bool IsForefront ()
 		{
 			return IsBattlefield() || IsSupport();
+		}
+
+		public virtual void CloneFrom (CardLocation source)
+		{
+			location = source.GetValue();
 		}
 	}
 }

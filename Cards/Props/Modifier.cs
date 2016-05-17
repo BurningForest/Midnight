@@ -54,6 +54,14 @@ namespace Midnight.Cards.Props
 			return value;
 		}
 
+		internal Modifier CloneFor (Engine.ClonedEngine engine)
+		{
+			return new Modifier(property)
+				.SetValue(value)
+				.SetTarget(engine.cache.Get(target.id))
+				.SetSource(engine.cache.Get(source.id));
+		}
+
 		public Modifier SetValue (int value)
 		{
 			this.value = value;

@@ -32,6 +32,10 @@
 		TargetIsInvalid,
 		NoOrderingAbility,
 		TargetIsNotDamaged,
-		NoTarget
+		NoTargetCard,
+		NoSourceCard,
+		WrongCardOwner,
+		NoSuchCell,
+		WrongCardType
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using Midnight.Battlefield;
 using System.Collections.Generic;
+using Midnight.ChiefOperations;
 
 namespace Midnight.Cards.Types
 {
@@ -16,10 +17,15 @@ namespace Midnight.Cards.Types
 		public CardFieldLocation GetFieldLocation ()
 		{
 			if (location == null) {
-				location = new CardFieldLocation(this);
+				CreateLocation();
 			}
 
 			return location;
+		}
+
+		public override void CreateLocation ()
+		{
+			location = new CardFieldLocation(this);
 		}
 
 		public List<FieldCard> GetAdjoiningCards ()

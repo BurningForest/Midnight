@@ -8,7 +8,7 @@ namespace Midnight.Core
 {
 	public class Lantern
 	{
-		private List<FieldCard> cards = new List<FieldCard>();
+		private List<int> cards = new List<int>();
 		private readonly Engine engine;
 
 		public Lantern (Engine engine)
@@ -35,8 +35,8 @@ namespace Midnight.Core
 
 		private GameAction Spotted (FieldCard card)
 		{
-			if (!cards.Contains(card)) {
-				cards.Add(card);
+			if (!cards.Contains(card.id)) {
+				cards.Add(card.id);
 				return new Spotted(card);
 			}
 
@@ -45,12 +45,17 @@ namespace Midnight.Core
 
 		private GameAction Unspotted (FieldCard card)
 		{
-			if (cards.Contains(card)) {
-				cards.Remove(card);
+			if (cards.Contains(card.id)) {
+				cards.Remove(card.id);
 				return new Unspotted(card);
 			}
 
 			return null;
+		}
+
+		public void CloneFrom (Lantern source)
+		{
+			cards.AddRange(source.cards);
 		}
 	}
 }

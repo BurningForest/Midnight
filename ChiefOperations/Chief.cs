@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using Midnight.Cards;
 using Midnight.Battlefield;
 using Midnight.Cards.Types;
-using Midnight.Cards.Enums;
 
 namespace Midnight.ChiefOperations
 {
@@ -13,7 +11,8 @@ namespace Midnight.ChiefOperations
 		private Engine engine;
 
 		public readonly int index;
-		
+		public readonly Io io;
+
 		public readonly CardsContainer cards;
 
 		private int resources = 0;
@@ -21,12 +20,19 @@ namespace Midnight.ChiefOperations
 		public Chief (int index)
 		{
 			this.index = index;
+			io = new Io(this);
 			cards = new CardsContainer(this);
+		}
+
+		public Emulated GetEmulated ()
+		{
+			return new Emulated(this);
 		}
 
 		public Chief SetEngine (Engine engine)
 		{
 			this.engine = engine;
+			io.SetEngine(engine);
 			return this;
 		}
 

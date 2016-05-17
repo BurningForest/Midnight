@@ -41,5 +41,15 @@ namespace Midnight.Cards
 			cell.RemoveCard(card);
 			cell = null;
 		}
+
+		public override void CloneFrom (CardLocation source)
+		{
+			base.CloneFrom(source);
+
+			if (source.IsBattlefield()) {
+				var cell = (source as CardFieldLocation).GetCell();
+				ToCell(card.GetChief().GetEngine().field.GetCell(cell.x, cell.y));
+			}
+		}
 	}
 }

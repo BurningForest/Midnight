@@ -27,8 +27,6 @@ namespace Midnight.Tests.TestInstances
 
 		public override void InitAbilities ()
 		{
-			abilities = new Cards.Abilities(this);
-
 			abilities.Add(
 				new MovementSlow(),
 				new WeaponCannon(),

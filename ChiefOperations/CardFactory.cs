@@ -18,7 +18,9 @@ namespace Midnight.ChiefOperations
 		{
 			var card = new TCard();
 			chief.cards.Add(card);
+			card.SetChief(chief);
 			card.SetId(chief.GetEngine().cache.Register(card));
+			card.Reset();
 			card.InitAbilities();
 			return card;
 		}
