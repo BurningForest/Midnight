@@ -8,11 +8,11 @@ using Midnight.Utils;
 namespace Midnight.Tests.Instances.Orders
 {
 	[TestClass]
-	public class EnemyHeartTest
+	public class HeartOfTheEnemyTest
 	{
 
 		[TestMethod]
-		public void EnemyHeart ()
+		public void HeartOfTheEnemy ()
 		{
 			Engine engine = new Engine();
 			Logger logger = new Logger(engine);
@@ -24,8 +24,8 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.SetResources(player, 50);
 
-			var heart1 = player.cards.factory.Create<EnemyHeart>();
-			var heart2 = player.cards.factory.Create<EnemyHeart>();
+			var heart1 = player.cards.factory.Create<HeartOfTheEnemy>();
+			var heart2 = player.cards.factory.Create<HeartOfTheEnemy>();
 
 			var hq = enemy.cards.factory.CreateDefaultHq<HqStrike>();
 			var tank = enemy.cards.factory.Create<TankMedium>();

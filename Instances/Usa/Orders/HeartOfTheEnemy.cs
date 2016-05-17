@@ -7,7 +7,7 @@ using Midnight.Cards.Types;
 
 namespace Midnight.Instances.Usa.Orders
 {
-	public class EnemyHeart : Order
+	public class HeartOfTheEnemy : Order
 	{
 		// Нанесите 2 повреждения выбранному штабу, технике или взводу.
 
@@ -21,11 +21,11 @@ namespace Midnight.Instances.Usa.Orders
 			cost = 2,
 		};
 
-		public class EnemyHeartAbility : SpecificAbility
+		public class HeartOfTheEnemyAbility : SpecificAbility
 		{
 			protected override GameAction[] Actions (FieldCard target)
 			{
-				return new[] { new DealDamage(2, card, (ForefrontCard) target) };
+				return new[] { new DealDamage(2, card, target) };
 			}
 
 			protected override Search Targets (Search search)
@@ -45,7 +45,7 @@ namespace Midnight.Instances.Usa.Orders
 		{
 			base.InitAbilities();
 
-			abilities.Add(new EnemyHeartAbility());
+			abilities.Add(new HeartOfTheEnemyAbility());
 		}
 	}
 }
