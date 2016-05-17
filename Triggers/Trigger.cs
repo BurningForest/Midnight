@@ -1,30 +1,16 @@
-﻿using System;
-using Midnight.ChiefOperations;
-using Midnight.Emitter;
+﻿using Midnight.Emitter;
 
 namespace Midnight.Triggers
 {
 	public abstract class Trigger : IListener
 	{
-		public readonly Engine engine;
-		public readonly Chief chief;
+		public Engine engine { get; private set; }
 
-		public Trigger (Engine engine, Chief chief)
+		public void SetEngine (Engine engine)
 		{
 			this.engine = engine;
-			this.chief = chief;
 
 			engine.emitter.Subscribe(this);
-		}
-
-		public bool IsCorrectChief (Chief chief)
-		{
-			return this.chief == chief;
-		}
-
-		private void Loser (Chief chief)
-		{
-			throw new NotImplementedException();
 		}
 	}
 }

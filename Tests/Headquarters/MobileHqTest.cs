@@ -16,7 +16,7 @@ namespace Midnight.Tests.Headquarters
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			new TurnAddResources(engine);
+			engine.triggers.Register<TurnAddResources>();
 
 			var field  = engine.field;
 			var player = engine.chiefs[0];

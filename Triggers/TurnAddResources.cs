@@ -4,13 +4,8 @@ using Midnight.Emitter;
 
 namespace Midnight.Triggers
 {
-	public class TurnAddResources : IListener<Before<BeginTurn>>
+	public class TurnAddResources : Trigger, IListener<Before<BeginTurn>>
 	{
-		public TurnAddResources (Engine engine)
-		{
-			engine.emitter.Subscribe(this);
-		}
-
 		public void On (Before<BeginTurn> ev)
 		{
 			ev.action.AddChild(

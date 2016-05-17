@@ -16,8 +16,8 @@ namespace Midnight.Tests.Positioning
 			Engine engine = new Engine();
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
-
-			new TurnAddResources(engine);
+			
+			engine.triggers.Register<TurnAddResources>();
 
 			var field  = engine.field;
 			var player = engine.chiefs[0];

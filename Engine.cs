@@ -1,6 +1,7 @@
 ﻿using Midnight.ChiefOperations;
 using Midnight.Core;
 using Midnight.Tests.Fight;
+using Midnight.Triggers;
 using System;
 
 namespace Midnight
@@ -17,6 +18,7 @@ namespace Midnight
 		public readonly Turn turn;
 		public readonly Lantern lantern;
 		public readonly Cache cache;
+		public readonly TriggersContainer triggers;
 
 		public Engine ()
 		{
@@ -24,6 +26,7 @@ namespace Midnight
 			actions = new ActionManager.Manager(this);
 
 			cache = new Cache();
+			triggers = new TriggersContainer(this);
 
 			field = new Battlefield.Field().SetSize(5, 3);
 
