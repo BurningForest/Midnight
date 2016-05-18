@@ -92,6 +92,11 @@ namespace Midnight.Core
 			return Launch(new Death.Forced(target));
 		}
 
+		public Final Surrender (Chief loser)
+		{
+			return Launch(new Final(loser.GetOpponent(), Final.Trigger.Surrender));
+		}
+
 		public SetResources SetResources (Chief chief, int value)
 		{
 			return Launch(new SetResources(chief, value));

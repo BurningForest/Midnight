@@ -213,9 +213,9 @@ namespace Midnight.ChiefOperations
 			return manage.EndTurn(chief).GetStatus();
 		}
 
-		private Status Surrender ()
+		public Status Surrender ()
 		{
-			throw new System.NotImplementedException();
+			return manage.Surrender(chief).GetStatus();
 		}
 
 
