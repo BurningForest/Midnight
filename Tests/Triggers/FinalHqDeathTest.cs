@@ -12,16 +12,15 @@ using Midnight.Actions;
 namespace Midnight.Tests.Triggers
 {
 	[TestClass]
-	public class FinalDeckOutTest
+	public class FinalHqDeathTest
 	{
 		[TestMethod]
-		public void FinalDeckOut ()
+		public void FinalHqDeath ()
 		{
 			Engine engine = new Engine();
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 
-			engine.triggers.Register<CardAutoDraw>();
 			engine.triggers.Register<FinalDeckOut>();
 			engine.triggers.Register<FinalHqDeath>();
 
@@ -30,36 +29,26 @@ namespace Midnight.Tests.Triggers
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			for (int i = 0; i < 10; i++) {
-				player.cards.factory.Create<TankLight>();
-				enemy .cards.factory.Create<TankLight>();
-			}
+			var hq = player.cards.factory.CreateDefaultHq<HqGuards>();
+			var spg1 = enemy.cards.factory.Create<TankBigSpg>();
+			var spg2 = enemy.cards.factory.Create<TankBigSpg>();
 
-			manage.Draw(player, 8);
-			manage.Draw(enemy , 6);
+			manage.Position(spg1, engine.field.GetCell(2, 2));
+			manage.Position(spg2, engine.field.GetCell(1, 2));
 
-			manage.StartGame(player);
+			manage.StartGame(enemy);
 
-			manage.EndTurn(player);
-			manage.EndTurn(enemy);  // 1 card in player deck
+			manage.Fight(spg1, hq);
 
-			manage.EndTurn(player);
-			manage.EndTurn(enemy);
-
+			Assert.IsFalse(hq.IsDead());
 			Assert.AreEqual(null, final.action);
-			Assert.AreEqual(0, player.cards.CountLocation(Location.deck));
 
-			manage.EndTurn(player);
+			manage.Fight(spg2, hq);
 
-			Assert.AreEqual(null, final.action);
-			Assert.AreEqual(0, player.cards.CountLocation(Location.deck));
-
-			manage.EndTurn(enemy);
-
+			Assert.IsTrue(hq.IsDead());
 			Assert.AreNotEqual(null, final.action);
 			Assert.AreEqual(1, final.count);
-			Assert.AreEqual(Final.Trigger.DeckOut, final.action.trigger);
-			Assert.AreSame(enemy, final.action.winner);
+			Assert.AreEqual(final.action.trigger, Final.Trigger.HqDeath);
 		}
 	}
 }

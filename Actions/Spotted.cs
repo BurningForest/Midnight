@@ -3,7 +3,7 @@ using Midnight.Cards.Types;
 
 namespace Midnight.Actions
 {
-	public class Spotted : GameAction<Step>
+	public class Spotted : GameAction<Spotted>
 	{
 		public readonly FieldCard card;
 

@@ -8,11 +8,20 @@ namespace Midnight.Actions
 {
 	public class Final : GameAction<Final>
 	{
-		public readonly Chief winner;
+		public enum Trigger
+		{
+			HqDeath,
+			DeckOut,
+			Surrender
+		};
 
-		public Final (Chief winner)
+		public readonly Chief winner;
+		public readonly Trigger trigger;
+
+		public Final (Chief winner, Trigger trigger)
 		{
 			this.winner = winner;
+			this.trigger = trigger;
 		}
 
 		public override void Configure ()
