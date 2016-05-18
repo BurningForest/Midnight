@@ -21,14 +21,15 @@ namespace Midnight.Tests.Triggers
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 
-			engine.triggers.Register<CardAutoDraw>();
-			engine.triggers.Register<FinalDeckOut>();
-			engine.triggers.Register<FinalHqDeath>();
-
 			var final = new FinalListener(engine);
 
 			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var enemy = engine.chiefs[1];
+
+			engine.triggers.Register<CardAutoDraw>();
+			engine.triggers.Register<FinalDeckOut>();
+			engine.triggers.Register<FinalHqDeath>(player);
+			engine.triggers.Register<FinalHqDeath>(enemy);
 
 			for (int i = 0; i < 10; i++) {
 				player.cards.factory.Create<TankLight>();

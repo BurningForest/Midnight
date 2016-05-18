@@ -5,6 +5,7 @@ using Midnight.Cards.Types;
 using Midnight.ChiefOperations;
 using Midnight.Core;
 using Midnight.Tests.TestInstances;
+using Midnight.Triggers;
 using System.Linq;
 
 namespace Midnight.Tests.Base
