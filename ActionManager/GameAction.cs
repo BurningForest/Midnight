@@ -142,31 +142,31 @@ namespace Midnight.ActionManager
 
 		internal override void NotifyBefore (EventEmitter emitter)
 		{
-			emitter.Publish(new Before<TAction>(this as TAction));
+			emitter.Publish(new Before<TAction>((TAction)this));
 			emitter.Publish(new Before<GameAction>(this));
 		}
 
 		internal override void NotifyInside (EventEmitter emitter)
 		{
-			emitter.Publish(new Inside<TAction>(this as TAction));
+			emitter.Publish(new Inside<TAction>((TAction)this));
 			emitter.Publish(new Inside<GameAction>(this));
 		}
 
 		internal override void NotifyAfter (EventEmitter emitter)
 		{
-			emitter.Publish(new After<TAction>(this as TAction));
+			emitter.Publish(new After<TAction>((TAction)this));
 			emitter.Publish(new After<GameAction>(this));
 		}
 
 		internal override void NotifyFailure (EventEmitter emitter)
 		{
-			emitter.Publish(new Failure<TAction>(this as TAction));
+			emitter.Publish(new Failure<TAction>((TAction)this));
 			emitter.Publish(new Failure<GameAction>(this));
 		}
 
 		internal override void NotifyFinish (EventEmitter emitter)
 		{
-			emitter.Publish(new Finish<TAction>(this as TAction));
+			emitter.Publish(new Finish<TAction>((TAction)this));
 			emitter.Publish(new Finish<GameAction>(this));
 		}
 	}

@@ -45,27 +45,5 @@ namespace Midnight.ChiefOperations
 			card.GetFieldLocation().ToCell(chief.GetStartCell());
 			return card;
 		}
-
-		public CardFactory AddDefault<TCard> (int count)
-			where TCard : Card, new()
-		{
-			for (int i = 0; i < count; i++) {
-				Create<TCard>();
-			}
-			return this;
-		}
-
-		public CardFactory AddDefault<TCard> ()
-			where TCard : Card, new()
-		{
-			return AddDefault<TCard>(0);
-		}
-
-		public CardFactory AddDefaultHq<TCard> ()
-			where TCard : Hq, new()
-		{
-			CreateDefaultHq<TCard>();
-			return this;
-		}
 	}
 }

@@ -36,6 +36,7 @@
 		NoSourceCard,
 		WrongCardOwner,
 		NoSuchCell,
-		WrongCardType
+		WrongCardType,
+		GameIsFinished
 	}
 }

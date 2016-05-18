@@ -3,7 +3,7 @@ using Midnight.ChiefOperations;
 
 namespace Midnight.Actions
 {
-	public class DrawCount : GameAction<DrawList>
+	public class DrawCount : GameAction<DrawCount>
 	{
 		public readonly Chief chief;
 		public readonly int count;

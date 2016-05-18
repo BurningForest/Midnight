@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Midnight.ActionManager.Events;
 using Midnight.Actions;
+using System;
 
 namespace Midnight.ActionManager
 {

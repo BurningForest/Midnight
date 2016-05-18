@@ -5,7 +5,7 @@ using Midnight.Core;
 
 namespace Midnight.Actions
 {
-	public class DrawRandom : GameAction<Draw>
+	public class DrawRandom : GameAction<DrawRandom>
 	{
 		public readonly Chief chief;
 

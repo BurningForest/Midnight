@@ -23,8 +23,8 @@ namespace Midnight.Tests.Positioning
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			player.cards.factory.AddDefaultHq<HqConsol>();
-			enemy .cards.factory.AddDefaultHq<HqStrike>();
+			player.cards.factory.CreateDefaultHq<HqConsol>();
+			enemy .cards.factory.CreateDefaultHq<HqStrike>();
 
 			var medium = player.cards.factory.Create<TankMedium>();
 			var heavy  = player.cards.factory.Create<TankHeavy>();

@@ -1,4 +1,6 @@
-﻿using Midnight.ChiefOperations;
+﻿using System;
+using Midnight.Actions;
+using Midnight.ChiefOperations;
 using Midnight.Core;
 using Midnight.Triggers;
 
@@ -20,6 +22,8 @@ namespace Midnight
 		public readonly Lantern lantern;
 		public readonly Cache cache;
 		public readonly TriggersContainer triggers;
+
+		public Final final { get; private set; }
 
 		public Engine ()
 		{
@@ -43,6 +47,13 @@ namespace Midnight
 		public ClonedEngine Clone ()
 		{
 			return new Copier(this).GetClone();
+		}
+
+		internal void Finish (Final final)
+		{
+			if (this.final == null) {
+				this.final = final;
+			}
 		}
 
 	}
