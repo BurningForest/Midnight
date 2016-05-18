@@ -14,7 +14,7 @@ namespace Midnight.Triggers
 			return this;
 		}
 
-		public int SetMax ()
+		public int GetMax ()
 		{
 			return max;
 		}
