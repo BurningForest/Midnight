@@ -1,5 +1,6 @@
 ﻿using Midnight.Cards;
 using Midnight.Cards.Types;
+using Midnight.ChiefOperations.IoOptions;
 using Midnight.Core;
 
 namespace Midnight.ChiefOperations
@@ -27,10 +28,13 @@ namespace Midnight.ChiefOperations
 		private readonly Chief chief;
 		private Engine engine;
 		private Manage manage;
+		public readonly Options options;
 
 		public Io (Chief chief)
 		{
 			this.chief = chief;
+
+			options = new Options(chief);
 		}
 
 		private Card GetCard (int id)

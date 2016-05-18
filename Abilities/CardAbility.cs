@@ -1,5 +1,6 @@
 ﻿using Midnight.Cards;
 using Midnight.ChiefOperations;
+using Midnight.Core;
 using Midnight.Emitter;
 using System;
 
