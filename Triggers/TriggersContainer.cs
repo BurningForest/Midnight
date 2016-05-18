@@ -13,13 +13,13 @@ namespace Midnight.Triggers
 			this.engine = engine;
 		}
 
-		public TriggersContainer Register<TTrigger> ()
+		public TTrigger Register<TTrigger> ()
 			where TTrigger : Trigger, new()
 		{
-			return Register<TTrigger>(null);
+			return Register(new TTrigger());
 		}
 
-		public TriggersContainer Register<TTrigger> (Chief chief)
+		public TTrigger Register<TTrigger> (Chief chief)
 			where TTrigger : Trigger, new()
 		{
 			var trigger = new TTrigger();
@@ -27,11 +27,12 @@ namespace Midnight.Triggers
 			return Register(trigger);
 		}
 
-		public TriggersContainer Register (Trigger trigger)
+		public TTrigger Register<TTrigger> (TTrigger trigger)
+			where TTrigger : Trigger
 		{
 			triggers.Add(trigger);
 			trigger.SetEngine(engine);
-			return this;
+			return trigger;
 		}
 
 		public List<Trigger> GetAll () {

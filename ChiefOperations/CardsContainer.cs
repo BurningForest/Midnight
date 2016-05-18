@@ -14,7 +14,7 @@ namespace Midnight.ChiefOperations
 		private Chief chief;
 		private bool isShuffle = true;
 
-		private Random random = new Random();
+		private static Random random = new Random();
 
 		public CardsContainer (Chief chief)
 		{
@@ -54,6 +54,17 @@ namespace Midnight.ChiefOperations
 			return cards.Where(card => card.GetLocation().Is(location)).ToList();
 		}
 
+		public List<Card> FromLocationShuffled (Location location)
+		{
+			var cards = FromLocation(location);
+
+			if (IsShuffleOn()) {
+				Shuffle(cards);
+			}
+
+			return cards;
+		}
+
 		public Card GetRandomDeckCard ()
 		{
 			var deck = FromLocation(Location.deck);
@@ -69,13 +80,7 @@ namespace Midnight.ChiefOperations
 
 		public List<Card> GetShuffledDeck ()
 		{
-			var deck = FromLocation(Location.deck);
-
-			if (IsShuffleOn()) {
-				Shuffle(deck);
-			}
-
-			return deck;
+			return FromLocationShuffled(Location.deck);
 		}
 
 		public Platoon GetPlatoonBySubtype (Subtype subtype)
