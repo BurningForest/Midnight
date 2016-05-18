@@ -77,12 +77,12 @@ namespace Midnight.Core
 			return Draw(chief, 1);
 		}
 
-		public void Heal (int v, Card target, Card source)
+		public HealDamage Heal (int value, FieldCard target, Card source)
 		{
-			throw new NotImplementedException();
+			return Launch(new HealDamage(value, source, target));
 		}
 
-		public DealDamage Damage (int value, FieldCard target, FieldCard source)
+		public DealDamage Damage (int value, FieldCard target, Card source)
 		{
 			return Launch(new DealDamage(value, source, target));
 		}
