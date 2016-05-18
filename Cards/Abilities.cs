@@ -37,7 +37,7 @@ namespace Midnight.Cards
 			where TAbility : CardAbility
 		{
 			foreach (var ability in active) {
-				if (ability is TAbility) {
+				if (ability is TAbility && ability.IsActive()) {
 					return (TAbility)ability;
 				}
 			}

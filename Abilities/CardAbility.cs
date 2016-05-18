@@ -29,7 +29,7 @@ namespace Midnight.Abilities
 
 		protected abstract bool IsValidCard (Card card);
 
-		protected virtual bool IsActive ()
+		public virtual bool IsActive ()
 		{
 			return true;
 		}
