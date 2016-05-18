@@ -49,6 +49,19 @@ namespace Midnight.ChiefOperations
 			return isShuffle;
 		}
 
+		public int CountLocation (Location location)
+		{
+			var count = 0;
+
+			foreach (var card in cards) {
+				if (card.GetLocation().Is(location)) {
+					++count;
+				}
+			}
+
+			return count;
+		}
+
 		public List<Card> FromLocation (Location location)
 		{
 			return cards.Where(card => card.GetLocation().Is(location)).ToList();

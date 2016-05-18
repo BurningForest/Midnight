@@ -41,38 +41,38 @@ namespace Midnight.Tests.Triggers
 
 			manage.StartGame(enemy);
 
-			Assert.AreEqual(0, player.cards.FromLocation(Location.reserve).Count);
-			Assert.AreEqual(0, enemy.cards.FromLocation(Location.reserve).Count);
+			Assert.AreEqual(0, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(0, enemy.cards.CountLocation(Location.reserve));
 
 			manage.EndTurn(enemy);
 
-			Assert.AreEqual(1, player.cards.FromLocation(Location.reserve).Count);
-			Assert.AreEqual(0, enemy.cards.FromLocation(Location.reserve).Count);
+			Assert.AreEqual(1, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(0, enemy.cards.CountLocation(Location.reserve));
 			Assert.IsTrue(plCards[0].GetLocation().IsReserve());
 
 			manage.EndTurn(player);
 
-			Assert.AreEqual(1, player.cards.FromLocation(Location.reserve).Count);
-			Assert.AreEqual(1, enemy.cards.FromLocation(Location.reserve).Count);
+			Assert.AreEqual(1, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(1, enemy.cards.CountLocation(Location.reserve));
 
 
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
 
-			Assert.AreEqual(2, player.cards.FromLocation(Location.reserve).Count);
-			Assert.AreEqual(2, enemy.cards.FromLocation(Location.reserve).Count);
+			Assert.AreEqual(2, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(2, enemy.cards.CountLocation(Location.reserve));
 
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
 
-			Assert.AreEqual(3, player.cards.FromLocation(Location.reserve).Count);
-			Assert.AreEqual(3, enemy.cards.FromLocation(Location.reserve).Count);
+			Assert.AreEqual(3, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(3, enemy.cards.CountLocation(Location.reserve));
 
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
 
-			Assert.AreEqual(4, player.cards.FromLocation(Location.reserve).Count);
-			Assert.AreEqual(4, enemy.cards.FromLocation(Location.reserve).Count);
+			Assert.AreEqual(4, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(4, enemy.cards.CountLocation(Location.reserve));
 
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
