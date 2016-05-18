@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Midnight.Core;
 using Midnight.Tests.TestInstances;
+using System;
 
 namespace Midnight.Tests.Base
 {
@@ -22,5 +24,16 @@ namespace Midnight.Tests.Base
 			Assert.AreEqual(3, medium.id);
 			Assert.AreEqual(4, hq.id);
 		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentException))]
+		public void CacheDuplicateid ()
+		{
+			var cache = new Cache();
+			var card = new TankLight();
+			cache.ManualRegister(card, 1);
+			cache.ManualRegister(card, 1);
+		}
+
 	}
 }

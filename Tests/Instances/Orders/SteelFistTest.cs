@@ -28,7 +28,7 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.SetResources(player, 20);
 			manage.Position(tm, field.GetCell(2, 2));
-			manage.Draw(player, 1);
+			manage.Draw(player);
 
 			manage.StartGame(player);
 

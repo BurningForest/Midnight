@@ -26,10 +26,10 @@ namespace Midnight.Actions
 			rounds[0] = new FightRound();
 			rounds[1] = new FightRound();
 
-			GetRoundFor(source).AddFightAction(new Attack(source, target));
+			GetRoundFor(source).AddFightAction(new Attack(source, target), target);
 
 			if (!CanPreventCounter(source)) {
-				GetRoundFor(target).AddFightAction(new CounterAttack(target, source));
+				GetRoundFor(target).AddFightAction(new CounterAttack(target, source), source);
 			}
 
 			AddChildren(rounds);

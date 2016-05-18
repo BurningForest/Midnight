@@ -15,7 +15,7 @@ namespace Midnight.Tests.TestInstances
 
 			power = 2,
 			defense = 0,
-			toughness = 3,
+			toughness = 2,
 			increase = 0,
 			cost = 2,
 		};

@@ -34,6 +34,14 @@ namespace Midnight.Tests.Fight
 
 			Assert.AreEqual(0, spg.GetDamage());
 			Assert.AreEqual(1, medium.GetDamage());
+
+			engine.chiefs[0].io.EndTurn();
+			engine.chiefs[1].io.EndTurn();
+			
+			manage.Move(light, engine.field.GetCell(2, 1));
+			Assert.AreEqual(Status.TargetIsNotSpotted, manage.Fight(spg, medium).GetStatus());
+			Assert.AreEqual(1, medium.GetDamage());
+
 		}
 	}
 }

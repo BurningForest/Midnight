@@ -17,8 +17,12 @@ namespace Midnight.Actions
 
 			public override void Configure ()
 			{
+				modifier
+					.SetValue(GetFinalDamage())
+					.SetTarget(target)
+					.SetSource(source);
+
 				AddChild(new AddModifier(modifier));
-				AddChild(new Death(target));
 			}
 		} 
 

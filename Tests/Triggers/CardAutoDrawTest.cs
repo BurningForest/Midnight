@@ -18,7 +18,7 @@ namespace Midnight.Tests.Triggers
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 
-			engine.triggers.Register<CardAutoDraw>();
+			var autoDraw = engine.triggers.Register<CardAutoDraw>();
 			
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
@@ -38,6 +38,12 @@ namespace Midnight.Tests.Triggers
 				enemy.cards.factory.Create<TankHeavy>(),
 				enemy.cards.factory.Create<TankSpatg>()
 			};
+
+			Assert.AreEqual(1, autoDraw.GetCount());
+			autoDraw.SetCount(2);
+			Assert.AreEqual(2, autoDraw.GetCount());
+			autoDraw.SetCount(1);
+			Assert.AreEqual(1, autoDraw.GetCount());
 
 			manage.StartGame(enemy);
 

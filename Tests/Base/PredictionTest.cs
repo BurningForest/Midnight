@@ -24,15 +24,17 @@ namespace Midnight.Tests.Base
 			
 			var strike = player.cards.factory.CreateDefaultHq<HqStrike>();
 			var medium = player.cards.factory.Create<TankMedium>();
+			var light  = player.cards.factory.Create<TankLight>();
 			var order  = player.cards.factory.Create<EachBattle>();
+			var platoon = player.cards.factory.Create<PlatoonEnforceArtillery>();
 
 			var guards = enemy.cards.factory.CreateDefaultHq<HqGuards>();
 			var heavy  = enemy.cards.factory.Create<TankHeavy>();
 
 			manage.Position(heavy , field.GetCell(0, 1));
 			manage.Position(medium, field.GetCell(0, 2));
-			manage.Draw(player, 1);
-			manage.SetResources(player, 10);
+			manage.Draw(player, 3);
+			manage.SetResources(player, 50);
 
 			manage.StartGame(enemy);
 			manage.Fight(heavy, strike);
@@ -42,8 +44,6 @@ namespace Midnight.Tests.Base
 			manage.EndTurn(enemy);
 
 			var emulated = player.GetEmulated();
-
-			new Logger(emulated.GetChief().GetEngine());
 
 			emulated.Attack(
 				new Io.Target() {
@@ -89,6 +89,32 @@ namespace Midnight.Tests.Base
 
 			Assert.AreEqual(0, heavy.GetDamage());
 			Assert.AreEqual(3, strike.GetDamage());
+
+			Assert.AreEqual(
+				Status.Success,
+				emulated.Deploy(new Io.Position() {
+					cardId = light.id,
+					x = 1,
+					y = 0
+				})
+			);
+
+			Assert.AreEqual(
+				Status.Success,
+				emulated.Move(new Io.Position() {
+					cardId = light.id,
+					x = 1,
+					y = 1
+				})
+			);
+
+			Assert.AreEqual(
+				Status.Success,
+				emulated.Deploy(new Io.SingleCard() {
+					cardId = platoon.id
+				})
+			);
+			Assert.AreEqual( Status.Success, emulated.EndTurn() );
 		}
 	}
 }

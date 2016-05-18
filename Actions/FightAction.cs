@@ -21,7 +21,7 @@ namespace Midnight.Actions
 
 		protected DealDamage CreateDamageAction ()
 		{
-			damage = new DealDamage(source.GetPower(), source, target);
+			damage = new DealDamage.NonLethal(source.GetPower(), source, target);
 
 			if (source.abilities.Has<PlatoonEnforced>()) {
 				PlatoonsEnforce();

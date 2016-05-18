@@ -19,8 +19,8 @@ namespace Midnight.Tests.Triggers
 			Engine engine = new Engine();
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
-			
-			engine.triggers.Register<ReserveCleanUp>();
+
+			var cleanUp = engine.triggers.Register<ReserveCleanUp>();
 
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
@@ -30,6 +30,12 @@ namespace Midnight.Tests.Triggers
 				player.cards.factory.Create<TankHeavy>();
 				player.cards.factory.Create<TankSpatg>();
 			}
+
+			Assert.AreEqual(6, cleanUp.GetMax());
+			cleanUp.SetMax(5);
+			Assert.AreEqual(5, cleanUp.GetMax());
+			cleanUp.SetMax(6);
+			Assert.AreEqual(6, cleanUp.GetMax());
 
 			manage.Draw(player, 6);
 
@@ -43,7 +49,7 @@ namespace Midnight.Tests.Triggers
 			Assert.AreEqual(0, player.cards.CountLocation(Location.graveyard));
 			Assert.AreEqual(6, player.cards.CountLocation(Location.reserve));
 
-			manage.Draw(player, 1);
+			manage.Draw(player);
 			
 			Assert.AreEqual(0, player.cards.CountLocation(Location.graveyard));
 			Assert.AreEqual(7, player.cards.CountLocation(Location.reserve));
@@ -53,7 +59,7 @@ namespace Midnight.Tests.Triggers
 			Assert.AreEqual(1, player.cards.CountLocation(Location.graveyard));
 			Assert.AreEqual(6, player.cards.CountLocation(Location.reserve));
 
-			manage.Draw(player, 1);
+			manage.Draw(player);
 			
 			Assert.AreEqual(1, player.cards.CountLocation(Location.graveyard));
 			Assert.AreEqual(7, player.cards.CountLocation(Location.reserve));

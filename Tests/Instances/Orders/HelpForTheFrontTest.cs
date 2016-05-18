@@ -25,7 +25,14 @@ namespace Midnight.Tests.Instances.Orders
 			var tank = player.cards.factory.Create<TankMedium>();
 
 			manage.Draw(help);
-			manage.Damage(5, hq, hq);
+			manage.Damage(6, hq, hq);
+
+			Assert.AreEqual(6, hq.GetDamage());
+
+			manage.Heal(1, hq, tank);
+
+			Assert.AreEqual(5, hq.GetDamage());
+
 			manage.SetResources(player, 10);
 
 			manage.StartGame(player);

@@ -89,7 +89,7 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.StartGame(player);
 
-			manage.Draw(player, 1);
+			manage.Draw(player);
 			manage.Order(each, spg);
 
 			Assert.AreEqual(2, spg.GetDamage());
