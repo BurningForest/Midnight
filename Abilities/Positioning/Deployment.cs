@@ -53,16 +53,23 @@ namespace Midnight.Abilities.Positioning
 			}
 		}
 
+		public bool IsWithoutCell ()
+		{
+			return card is Platoon;
+		}
+
 		public List<Cell> GetAllowedCells ()
 		{
-			return GetPotentialCells().Where(IsCorrectCell) as List<Cell>;
+			if (IsWithoutCell()) {
+				return null;
+			}
+
+			return GetPotentialCells().Where(IsCorrectCell).ToList();
 		}
 
 		public bool IsAllowedCell (Cell cell)
 		{
 			return IsCorrectCell(cell) && GetPotentialCells().Contains(cell);
 		}
-
-		// todo: add resources pay action
 	}
 }

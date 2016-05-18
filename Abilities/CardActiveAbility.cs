@@ -23,7 +23,5 @@ namespace Midnight.Abilities
 		{
 			return GetQuantity() >= GetMaxQuantity();
 		}
-
-		public abstract Status Validate ();
 	}
 }

@@ -13,7 +13,9 @@ namespace Midnight.Tests.Base
 			var logger = new Logger(engine);
 
 			var player = engine.chiefs[0];
-			var enemy = engine.chiefs[1];
+			var enemy  = engine.chiefs[1];
+
+
 		}
 	}
 }

@@ -35,6 +35,11 @@ namespace Midnight.Abilities
 			return true;
 		}
 
+		public virtual Status Validate ()
+		{
+			return Status.Success;
+		}
+
 		public virtual CardAbility CloneFor (Card card)
 		{
 			var clone = (CardAbility)MemberwiseClone();

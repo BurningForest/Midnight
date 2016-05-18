@@ -83,7 +83,8 @@ namespace Midnight.Abilities.Positioning
 				.GetFieldLocation()
 				.GetCell()
 				.GetRunCells()
-				.Where(CanMoveTo) as List<Cell>;
+				.Where(CanMoveTo)
+				.ToList();
 		}
 
 		public override Status Validate ()
