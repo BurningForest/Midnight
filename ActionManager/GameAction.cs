@@ -16,11 +16,6 @@ namespace Midnight.ActionManager
 		private Manager manager;
 		private Engine engine;
 
-		protected Manager GetManager ()
-		{
-			return manager;
-		}
-
 		protected Engine GetEngine ()
 		{
 			return engine;
