@@ -6,7 +6,7 @@ namespace Midnight.Tests.TestInstances
 {
 	public class TankSpg : SpgVehicle
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<TankSpg>() {
 			id = "tv_spg_tank",
 			level = 1,
 			type = Type.vehicle,

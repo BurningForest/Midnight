@@ -5,7 +5,7 @@ namespace Midnight.Instances.Usa.Vehicles
 {
 	public class Liberty : HeavyVehicle
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<Liberty>() {
 			id = "uv_mark7liberty",
 			level = 1,
 			type = Type.vehicle,

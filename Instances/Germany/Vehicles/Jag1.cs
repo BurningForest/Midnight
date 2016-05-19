@@ -5,7 +5,7 @@ namespace Midnight.Instances.Germany.Vehicle
 {
 	public class Jag1 : SpatgVehicle
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<Jag1>() {
 			id = "gv_panzerjagerI",
 			level = 1,
 			type = Type.vehicle,

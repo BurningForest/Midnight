@@ -5,7 +5,7 @@ namespace Midnight.Instances.Germany.Vehicle
 {
 	public class LTraktor : LightVehicle
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<LTraktor>() {
 			id = "gv_leichttraktor",
 			level = 1,
 			type = Type.vehicle,

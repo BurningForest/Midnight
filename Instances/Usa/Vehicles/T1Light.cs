@@ -5,7 +5,7 @@ namespace Midnight.Instances.Usa.Vehicles
 {
 	public class T1Light : LightVehicle
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<T1Light>() {
 			id = "uv_t1lt",
 			level = 1,
 			type = Type.vehicle,

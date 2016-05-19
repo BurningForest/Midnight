@@ -11,7 +11,7 @@ namespace Midnight.Instances.Ussr.Orders
 	{
 		// Нанесите 5 повреждений штабу противника.
 
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<SteelFist>() {
 			id = "so_udarmolota",
 			level = 1,
 			type = Type.order,

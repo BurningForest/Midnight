@@ -5,7 +5,7 @@ namespace Midnight.Instances.Usa.Vehicles
 {
 	public class T18 : SpatgVehicle
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<T18>() {
 			id = "uv_t18",
 			level = 1,
 			type = Type.vehicle,

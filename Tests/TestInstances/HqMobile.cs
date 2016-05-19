@@ -8,7 +8,7 @@ namespace Midnight.Tests.TestInstances
 {
 	public class HqMobile : Hq
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<HqMobile>() {
 			id = "th_mobile",
 			level = 1,
 			type = Type.hq,

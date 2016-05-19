@@ -11,7 +11,7 @@ namespace Midnight.Instances.Usa.Orders
 	{
 		// Нанесите 2 повреждения выбранному штабу, технике или взводу.
 
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<HeartOfTheEnemy>() {
 			id = "uo_crushprussian",
 			level = 1,
 			type = Type.order,

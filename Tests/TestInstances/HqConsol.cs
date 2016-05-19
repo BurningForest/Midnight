@@ -5,7 +5,7 @@ namespace Midnight.Tests.TestInstances
 {
 	public class HqConsol : Hq
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<HqConsol>() {
 			id = "th_consolidated",
 			level = 1,
 			type = Type.hq,

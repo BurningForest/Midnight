@@ -5,7 +5,7 @@ namespace Midnight.Tests.TestInstances
 {
 	public class PlatoonEnforceScout : Platoon.Enforce
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<PlatoonEnforceScout>() {
 			id = "tp_enforce_scout",
 			level = 1,
 			type = Type.platoon,

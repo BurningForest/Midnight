@@ -5,7 +5,7 @@ namespace Midnight.Instances.Germany.Vehicle
 {
 	public class A7v : HeavyVehicle
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<A7v>() {
 			id = "gv_a7v",
 			level = 1,
 			type = Type.vehicle,

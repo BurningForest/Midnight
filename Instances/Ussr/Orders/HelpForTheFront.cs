@@ -12,7 +12,7 @@ namespace Midnight.Instances.Ussr.Orders
 		// Возьмите карту.
 		// Восстановите 2 прочности своему штабу.
 
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<HelpForTheFront>() {
 			id = "so_budbditelnym",
 			level = 1,
 			type = Type.order,

@@ -12,7 +12,7 @@ namespace Midnight.Instances.Germany.Orders
 		// Нанесите 2 повреждения выбранной технике.
 		// Восстановите 2 прочности вашему штабу.
 
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<EachBattle>() {
 			id = "go_tagderwehrmacht",
 			level = 1,
 			type = Type.order,

@@ -3,9 +3,9 @@ using Midnight.Cards.Types;
 
 namespace Midnight.Instances.Germany.Platoons
 {
-	public class T35_1 : Platoon.Protect
+	public class ScoutsM : Platoon.Protect
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<ScoutsM>() {
 			id = "gp_auskundschaftersderpdmuncheberg",
 			level = 1,
 			type = Type.platoon,

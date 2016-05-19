@@ -6,7 +6,7 @@ namespace Midnight.Tests.TestInstances
 {
 	public class TankMedium : MediumVehicle
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<TankMedium>() {
 			id = "tv_medium_tank",
 			level = 1,
 			type = Type.vehicle,

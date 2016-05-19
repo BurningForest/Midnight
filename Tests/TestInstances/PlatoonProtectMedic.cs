@@ -5,7 +5,7 @@ namespace Midnight.Tests.TestInstances
 {
 	public class PlatoonProtectMedic : Platoon.Protect
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<PlatoonProtectIntendancy>() {
 			id = "tp_protect_medic",
 			level = 1,
 			type = Type.platoon,

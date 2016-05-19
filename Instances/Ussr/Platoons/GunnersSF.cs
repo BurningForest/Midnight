@@ -5,7 +5,7 @@ namespace Midnight.Instances.Ussr.GunnersSF
 {
 	public class GunnersSF : Platoon.Enforce
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<GunnersSF>() {
 			id = "sp_strelkiuzhnogofronta",
 			level = 1,
 			type = Type.platoon,

@@ -5,7 +5,7 @@ namespace Midnight.Tests.TestInstances
 {
 	public class HqStrike : Hq
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<HqStrike>() {
 			id = "th_strike",
 			level = 1,
 			type = Type.hq,

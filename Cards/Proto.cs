@@ -1,6 +1,6 @@
 ﻿namespace Midnight.Cards.Enums
 {
-	public struct Proto
+	public abstract class Proto
 	{
 		public string id;
 		public int level;
@@ -13,5 +13,16 @@
 		public int toughness;
 		public int increase;
 		public int cost;
+
+		public abstract Card Produce ();
+	}
+
+	public class Proto<TCard> : Proto
+		where TCard : Card, new()
+	{
+		public override Card Produce ()
+		{
+			return new TCard();
+		}
 	}
 }

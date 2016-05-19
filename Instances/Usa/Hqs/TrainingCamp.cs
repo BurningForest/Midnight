@@ -5,7 +5,7 @@ namespace Midnight.Instances.Usa.Hqs
 {
 	public class TrainingCamp : Hq
 	{
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<TrainingCamp>() {
 			id = "uh_trainingcamp",
 			level = 1,
 			type = Type.hq,

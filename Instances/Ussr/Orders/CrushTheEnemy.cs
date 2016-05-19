@@ -11,7 +11,7 @@ namespace Midnight.Instances.Ussr.Orders
 	{
 		// Нанесите 1 повреждение выбранному штабу или технике
 
-		public static readonly Proto proto = new Proto() {
+		public static readonly Proto proto = new Proto<CrushTheEnemy>() {
 			id = "so_takbilotakbudet",
 			level = 1,
 			type = Type.order,
