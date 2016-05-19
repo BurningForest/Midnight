@@ -26,7 +26,10 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 			if (cells.Count == 0) {
 				return null;
 			} else {
-				return new DeployOptions() { cells = cells.ToArray() };
+				return new DeployOptions() {
+					type = TargetType.Cell,
+					cells = cells.ToArray()
+				};
 			}
 		}
 	}

@@ -24,7 +24,7 @@ namespace Midnight.Tests.Triggers
 			var enemy  = engine.chiefs[1];
 
 			player.cards.SetShuffleOff();
-
+			
 			var plCards = new FieldCard[] {
 				player.cards.factory.Create<TankLight>(),
 				player.cards.factory.Create<TankMedium>(),
@@ -44,7 +44,7 @@ namespace Midnight.Tests.Triggers
 			Assert.AreEqual(2, autoDraw.GetCount());
 			autoDraw.SetCount(1);
 			Assert.AreEqual(1, autoDraw.GetCount());
-
+			
 			manage.StartGame(enemy);
 
 			Assert.AreEqual(0, player.cards.CountLocation(Location.reserve));
@@ -60,8 +60,7 @@ namespace Midnight.Tests.Triggers
 
 			Assert.AreEqual(1, player.cards.CountLocation(Location.reserve));
 			Assert.AreEqual(1, enemy.cards.CountLocation(Location.reserve));
-
-
+			
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
 
