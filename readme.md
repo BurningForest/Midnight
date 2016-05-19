@@ -104,9 +104,7 @@ if (status == Status.Success) {
 Unfortunately, you can't just create card of specific id, that's why you need to create your own mapping:
 
 ```cs
-Proto GetProto(Chief chief, string protoId) {
-	var factory = chief.cards.factory;
-
+Proto GetProto(string protoId) {
 	switch(protoId) {
 		case 'gv_a7v':
 			return Midnight.Instances.Germany.Vehicle.A7v.proto;
