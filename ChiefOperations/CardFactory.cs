@@ -1,4 +1,5 @@
 ﻿using Midnight.Cards;
+using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
 using System;
 
@@ -13,10 +14,8 @@ namespace Midnight.ChiefOperations
 			this.chief = chief;
 		}
 
-		private TCard Initialize<TCard> ()
-			where TCard : Card, new()
+		private Card Initialize(Card card)
 		{
-			var card = new TCard();
 			chief.cards.Add(card);
 			card.SetChief(chief);
 			card.SetId(chief.GetEngine().cache.Register(card));
@@ -25,10 +24,28 @@ namespace Midnight.ChiefOperations
 			return card;
 		}
 
+		public Card Create (Proto proto)
+		{
+			var card = Initialize(proto.Produce());
+			card.GetLocation().ToDeck();
+			return card;
+		}
+
+		public Hq CreateDefaultHq (Proto proto)
+		{
+			if (chief.GetStartCell().IsBusy()) {
+				throw new Exception("Start cell is busy for Hq");
+			}
+
+			var card = (Hq)Initialize(proto.Produce());
+			card.GetFieldLocation().ToCell(chief.GetStartCell());
+			return card;
+		}
+
 		public TCard Create<TCard> ()
 			where TCard : Card, new()
 		{
-			var card = Initialize<TCard>();
+			var card = (TCard)Initialize(new TCard());
 			card.GetLocation().ToDeck();
 			return card;
 		}
@@ -40,8 +57,7 @@ namespace Midnight.ChiefOperations
 				throw new Exception("Start cell is busy for Hq");
 			}
 
-			var card = Initialize<TCard>();
-			card.GetLocation().ToDeck();
+			var card = (TCard)Initialize(new TCard());
 			card.GetFieldLocation().ToCell(chief.GetStartCell());
 			return card;
 		}

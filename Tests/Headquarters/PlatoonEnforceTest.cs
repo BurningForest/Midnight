@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Cards.Enums;
+using Midnight.Cards.Types;
 using Midnight.Core;
 using Midnight.Tests.TestInstances;
 using Midnight.Triggers;
@@ -22,12 +23,12 @@ namespace Midnight.Tests.Headquarters
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			var guards = player.cards.factory.CreateDefaultHq<HqGuards>();
-			var artill = player.cards.factory.Create<PlatoonEnforceArtillery>();
-			var scout1 = player.cards.factory.Create<PlatoonEnforceScout>();
-			var scout2 = player.cards.factory.Create<PlatoonEnforceScout>();
+			var guards = player.cards.factory.CreateDefaultHq(HqGuards.proto);
+			var artill = (Platoon) player.cards.factory.Create(PlatoonEnforceArtillery.proto);
+			var scout1 = (Platoon) player.cards.factory.Create(PlatoonEnforceScout.proto);
+			var scout2 = (Platoon) player.cards.factory.Create(PlatoonEnforceScout.proto);
 
-			var consol = enemy.cards.factory.CreateDefaultHq<HqConsol>();
+			var consol = enemy.cards.factory.CreateDefaultHq(HqConsol.proto);
 
 			manage.Draw(player, 3);
 			manage.StartGame(player);
