@@ -2,6 +2,7 @@
 using Midnight.ChiefOperations;
 using Midnight.ChiefOperations.IoOptions;
 using Midnight.Core;
+using Midnight.Instances.Ussr.Orders;
 using Midnight.Tests.TestInstances;
 using Midnight.Utils;
 
@@ -146,5 +147,50 @@ namespace Midnight.Tests.Base
 			Assert.AreEqual(heavy.id, attacks.targets[0].targetId);
 			Assert.AreEqual(spatg.id, attacks.targets[1].targetId);
 		}
+
+		[TestMethod]
+		public void OrderOptions ()
+		{
+			var engine = new Engine();
+			var logger = new Logger(engine);
+			var manage = new Manage(engine);
+
+			var player = engine.chiefs[0];
+			var enemy = engine.chiefs[1];
+
+			var front = player.cards.factory.Create<HelpForTheFront>();
+			var crush = player.cards.factory.Create<CrushTheEnemy>();
+			var spatg = enemy.cards.factory.Create<TankSpatg>();
+
+			manage.SetResources(player, 10);
+			manage.Draw(crush);
+			manage.Draw(front);
+			manage.Position(spatg, engine.field.GetCell(3, 2));
+
+			manage.StartGame(player);
+
+			var options = player.io.options.GetAvailable();
+
+			Assert.AreEqual(2, options.Count);
+
+			var frontOpt = options[0];
+			var crushOpt = options[1];
+			
+			Assert.AreEqual(null, frontOpt.deploys);
+			Assert.AreEqual(null, frontOpt.attacks);
+			Assert.AreEqual(null, frontOpt.moves);
+
+			Assert.AreEqual(TargetType.Global, frontOpt.orders.type);
+			Assert.AreEqual(null, frontOpt.orders.targets);
+
+			Assert.AreEqual(null, crushOpt.deploys);
+			Assert.AreEqual(null, crushOpt.attacks);
+			Assert.AreEqual(null, crushOpt.moves);
+
+			Assert.AreEqual(TargetType.Card, crushOpt.orders.type);
+			Assert.AreEqual(1, crushOpt.orders.targets.Length);
+			Assert.AreEqual(spatg.id, crushOpt.orders.targets[0].targetId);
+		}
+
 	}
 }
