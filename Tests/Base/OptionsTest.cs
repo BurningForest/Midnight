@@ -113,5 +113,38 @@ namespace Midnight.Tests.Base
 			Assert.AreEqual(1, moves.cells[1].x);
 			Assert.AreEqual(1, moves.cells[1].y);
 		}
+
+		[TestMethod]
+		public void AttackOptions ()
+		{
+			var engine = new Engine();
+			var logger = new Logger(engine);
+			var manage = new Manage(engine);
+
+			var player = engine.chiefs[0];
+			var enemy = engine.chiefs[1];
+
+			var light = player.cards.factory.Create<TankLight>();
+			var heavy = enemy.cards.factory.Create<TankHeavy>();
+			var spatg = enemy.cards.factory.Create<TankSpatg>();
+
+			manage.Position(light, engine.field.GetCell(2, 2));
+			manage.Position(heavy, engine.field.GetCell(1, 2));
+			manage.Position(spatg, engine.field.GetCell(3, 2));
+
+			manage.StartGame(player);
+
+			var options = player.io.options.GetAvailable();
+
+			Assert.AreEqual(1, options.Count);
+			Assert.AreEqual(null, options[0].deploys);
+			Assert.AreEqual(null, options[0].orders);
+
+			var attacks = options[0].attacks;
+
+			Assert.AreEqual(2, attacks.targets.Length);
+			Assert.AreEqual(heavy.id, attacks.targets[0].targetId);
+			Assert.AreEqual(spatg.id, attacks.targets[1].targetId);
+		}
 	}
 }
