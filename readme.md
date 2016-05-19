@@ -33,8 +33,8 @@ manage.StartGame(engine.chiefs[random.next(engine.chiefs.Length)]);
 ### Listen and serialize game events
 ```cs
 class MyListener :
-	LListener<After<GameEvent>>,
-	LListener<After<Final>>
+	IListener<After<GameEvent>>,
+	IListener<After<Final>>
 {
 
 	public MyListener (Midnight.Engine engine) {
