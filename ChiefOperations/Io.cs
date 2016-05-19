@@ -212,6 +212,11 @@ namespace Midnight.ChiefOperations
 			}
 		}
 
+		public Status StartGame ()
+		{
+			return manage.StartGame(chief).GetStatus();
+		}
+
 		public Status EndTurn ()
 		{
 			return manage.EndTurn(chief).GetStatus();

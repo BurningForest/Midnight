@@ -14,6 +14,13 @@ namespace Midnight.Battlefield
 		private int height;
 		private List<Cell> cells = new List<Cell>();
 
+		/**
+		 *              [hq1]
+		 *   02 12 22 32 42 
+		 *   01 11 21 31 41
+		 *   00 10 20 30 40
+		 * [hq0] 
+		 */
 		public Field SetSize (int width, int height)
 		{
 			this.width = width;

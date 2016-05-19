@@ -10,6 +10,7 @@ namespace Midnight.Tests.Base
 	[TestClass]
 	public class OptionsTest
 	{
+
 		[TestMethod]
 		public void DeploymentOptions ()
 		{
@@ -39,7 +40,7 @@ namespace Midnight.Tests.Base
 
 			manage.Position(medium, engine.field.GetCell(0, 1));
 
-			manage.StartGame(player);
+			player.io.StartGame();
 
 			var options = player.io.options.GetAvailable();
 
@@ -78,6 +79,39 @@ namespace Midnight.Tests.Base
 			Assert.AreEqual(2, newOptions.Count); // 2 movements
 			Assert.AreEqual(light.id, newOptions[0].cardId);
 			Assert.AreEqual(medium.id, newOptions[1].cardId);
+		}
+
+		[TestMethod]
+		public void MovementOptions ()
+		{
+			var engine = new Engine();
+			var logger = new Logger(engine);
+			var manage = new Manage(engine);
+
+			var player = engine.chiefs[0];
+			var enemy = engine.chiefs[1];
+
+			var medium = player.cards.factory.Create<TankMedium>();
+			var spg = enemy.cards.factory.Create<TankSpg>();
+
+			manage.Position(medium, engine.field.GetCell(0, 2));
+			manage.Position(spg, engine.field.GetCell(1, 2));
+
+			manage.StartGame(player);
+
+			var options = player.io.options.GetAvailable();
+
+			Assert.AreEqual(1, options.Count);
+			Assert.AreEqual(null, options[0].deploys);
+			Assert.AreEqual(null, options[0].orders);
+
+			var moves = options[0].moves;
+
+			Assert.AreEqual(2, moves.cells.Length);
+			Assert.AreEqual(0, moves.cells[0].x);
+			Assert.AreEqual(1, moves.cells[0].y);
+			Assert.AreEqual(1, moves.cells[1].x);
+			Assert.AreEqual(1, moves.cells[1].y);
 		}
 	}
 }
