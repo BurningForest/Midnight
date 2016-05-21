@@ -58,8 +58,7 @@ namespace Midnight.Tests.Instances.Vehicles
 				x = 1,
 				y = 1
 			}));
-
-			Assert.AreNotEqual(null, stPz2.abilities.Get<Supply>());
+			
 			Assert.AreEqual(heavyLocation, heavy.GetLocation().GetCurrent());
 			Assert.AreEqual(Location.deck, spatg.GetLocation().GetCurrent());
 
