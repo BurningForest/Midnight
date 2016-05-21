@@ -118,3 +118,27 @@ Proto GetProto(string protoId) {
 	}
 }
 ```
+
+### Example of action cycle:
+Such structure can be logged using `Midnight.Utils.Logger`
+
+```
+StartGame(0)
+| BeginTurn(0)
+Position(TankMedium(0, 1), {1:1})
+Position(TankHeavy(1, 2), {2:1})
+| Spotted()
+| Spotted()
+Fight(TankMedium(0, 1), TankHeavy(1, 2))
+| FightRound():FightRoundIsEmpty
+| FightRound()
+| | Attack(TankMedium(0, 1), TankHeavy(1, 2))
+| | | NonLethal(TankHeavy(1, 2), 2)
+| | | | AddModifier(TankHeavy(1, 2), damage, 2)
+| | CounterAttack(TankHeavy(1, 2), TankMedium(0, 1))
+| | | NonLethal(TankMedium(0, 1), 3)
+| | | | AddModifier(TankMedium(0, 1), damage, 3)
+| | Death(TankHeavy(1, 2)):CardHasLives
+| | Death(TankMedium(0, 1)):CardHasLives
+
+```
