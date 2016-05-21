@@ -14,5 +14,10 @@
 		{
 			this.title = title;
 		}
+
+		public override string ToString ()
+		{
+			return "Location[" + title + "]";
+		}
 	}
 }
