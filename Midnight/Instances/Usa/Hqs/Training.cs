@@ -1,16 +1,16 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
 
-namespace Midnight.Instances.Ussr.Hqs
+namespace Midnight.Instances.Usa.Hqs
 {
 	public class Training : Hq
 	{
-		public static readonly Proto proto = new Proto() {
-			id = "sh_uchebnayachast",
+		public static readonly Proto proto = new Proto<Training>() {
+			id = "uh_trainingcamp",
 			level = 1,
 			type = Type.hq,
 			subtype = Subtype.beginner,
-			country = Country.ussr,
+			country = Country.usa,
 
 			power = 2,
 			toughness = 18,
