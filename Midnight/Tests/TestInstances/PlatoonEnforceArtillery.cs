@@ -1,23 +1,24 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.TestInstances
 {
 	public class PlatoonEnforceArtillery : Platoon.Enforce
 	{
-		public static readonly Proto proto = new Proto<PlatoonEnforceArtillery>() {
-			id = "tp_enforce_artillery",
-			level = 1,
-			type = Type.Platoon,
-			subtype = Subtype.Artillery,
-			country = Country.USA,
+		public static readonly Proto proto = new ParameterizedProto<PlatoonEnforceArtillery>() {
+			ID = "tp_enforce_artillery",
+			Level = 1,
+			Type = Type.Platoon,
+			Subtype = Subtype.Artillery,
+			Country = Country.USA,
 
-			power = 1,
-			defense = 0,
-			toughness = 5,
-			increase = 1,
-			cost = 4,
+			Power = 1,
+			Defense = 0,
+			Toughness = 5,
+			Increase = 1,
+			Cost = 4,
 		};
 
 		public override Proto GetProto ()

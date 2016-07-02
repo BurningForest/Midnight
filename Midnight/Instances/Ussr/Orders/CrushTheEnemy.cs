@@ -4,6 +4,7 @@ using Midnight.Actions;
 using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Ussr.Orders
@@ -12,13 +13,13 @@ namespace Midnight.Instances.Ussr.Orders
 	{
 		// Нанесите 1 повреждение выбранному штабу или технике
 
-		public static readonly Proto proto = new Proto<CrushTheEnemy>() {
-			id = "so_takbilotakbudet",
-			level = 1,
-			type = Type.Order,
-			country = Country.USSR,
+		public static readonly Proto proto = new ParameterizedProto<CrushTheEnemy>() {
+			ID = "so_takbilotakbudet",
+			Level = 1,
+			Type = Type.Order,
+			Country = Country.USSR,
 
-			cost = 0,
+			Cost = 0,
 		};
 
 		public class CrushTheEnemyAbility : SpecificAbility

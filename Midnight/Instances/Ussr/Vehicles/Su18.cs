@@ -1,23 +1,24 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Ussr.Vehicles
 {
 	public class Su18 : HeavyVehicle
 	{
-		public static readonly Proto proto = new Proto<Su18>() {
-			id = "sv_su18",
-			level = 1,
-			type = Type.Vehicle,
-			subtype = Subtype.Spg,
-			country = Country.USSR,
+		public static readonly Proto proto = new ParameterizedProto<Su18>() {
+			ID = "sv_su18",
+			Level = 1,
+			Type = Type.Vehicle,
+			Subtype = Subtype.Spg,
+			Country = Country.USSR,
 
-			power = 1,
-			defense = 0,
-			toughness = 4,
-			increase = 0,
-			cost = 2,
+			Power = 1,
+			Defense = 0,
+			Toughness = 4,
+			Increase = 0,
+			Cost = 2,
 		};
 
 		public override Proto GetProto ()

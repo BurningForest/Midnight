@@ -1,6 +1,7 @@
 ﻿using Midnight.Abilities.Passive;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Germany.Vehicle
@@ -8,18 +9,18 @@ namespace Midnight.Instances.Germany.Vehicle
 	public class StPz2 : SpgVehicle
 	{
 
-		public static readonly Proto proto = new Proto<StPz2>() {
-			id = "gv_sturmpanzerII",
-			level = 5,
-			type = Type.Vehicle,
-			subtype = Subtype.Spatg,
-			country = Country.Germany,
+		public static readonly Proto proto = new ParameterizedProto<StPz2>() {
+			ID = "gv_sturmpanzerII",
+			Level = 5,
+			Type = Type.Vehicle,
+			Subtype = Subtype.Spatg,
+			Country = Country.Germany,
 
-			power = 2,
-			defense = 0,
-			toughness = 4,
-			increase = 0,
-			cost = 4,
+			Power = 2,
+			Defense = 0,
+			Toughness = 4,
+			Increase = 0,
+			Cost = 4,
 		};
 		
 		public class GermanySupply : Supply

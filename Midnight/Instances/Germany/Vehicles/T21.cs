@@ -1,23 +1,24 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Germany.Vehicle
 {
 	public class T21 : MediumVehicle
 	{
-		public static readonly Proto proto = new Proto<T21>() {
-			id = "gv_t21",
-			level = 1,
-			type = Type.Vehicle,
-			subtype = Subtype.Medium,
-			country = Country.Germany,
+		public static readonly Proto proto = new ParameterizedProto<T21>() {
+			ID = "gv_t21",
+			Level = 1,
+			Type = Type.Vehicle,
+			Subtype = Subtype.Medium,
+			Country = Country.Germany,
 
-			power = 3,
-			defense = 0,
-			toughness = 5,
-			increase = 1,
-			cost = 5,
+			Power = 3,
+			Defense = 0,
+			Toughness = 5,
+			Increase = 1,
+			Cost = 5,
 		};
 
 		public override Proto GetProto ()

@@ -1,21 +1,22 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.TestInstances
 {
 	public class HqGuards : Hq
 	{
-		public static readonly Proto proto = new Proto<HqGuards>() {
-			id = "th_guards",
-			level = 1,
-			type = Type.HQ,
-			subtype = Subtype.Guards,
-			country = Country.USA,
+		public static readonly Proto proto = new ParameterizedProto<HqGuards>() {
+			ID = "th_guards",
+			Level = 1,
+			Type = Type.HQ,
+			Subtype = Subtype.Guards,
+			Country = Country.USA,
 
-			power = 1,
-			toughness = 15,
-			increase = 9,
+			Power = 1,
+			Toughness = 15,
+			Increase = 9,
 		};
 
 		public override Proto GetProto ()

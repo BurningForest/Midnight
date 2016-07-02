@@ -4,6 +4,7 @@ using Midnight.Actions;
 using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Usa.Orders
@@ -12,13 +13,13 @@ namespace Midnight.Instances.Usa.Orders
 	{
 		// Нанесите 2 повреждения выбранному штабу, технике или взводу.
 
-		public static readonly Proto proto = new Proto<HeartOfTheEnemy>() {
-			id = "uo_crushprussian",
-			level = 1,
-			type = Type.Order,
-			country = Country.USA,
+		public static readonly Proto proto = new ParameterizedProto<HeartOfTheEnemy>() {
+			ID = "uo_crushprussian",
+			Level = 1,
+			Type = Type.Order,
+			Country = Country.USA,
 			
-			cost = 2,
+			Cost = 2,
 		};
 
 		public class HeartOfTheEnemyAbility : SpecificAbility

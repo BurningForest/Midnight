@@ -4,6 +4,7 @@ using Midnight.Actions;
 using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Germany.Orders
@@ -13,13 +14,13 @@ namespace Midnight.Instances.Germany.Orders
 		// Нанесите 2 повреждения выбранной технике.
 		// Восстановите 2 прочности вашему штабу.
 
-		public static readonly Proto proto = new Proto<EachBattle>() {
-			id = "go_tagderwehrmacht",
-			level = 1,
-			type = Type.Order,
-			country = Country.Germany,
+		public static readonly Proto proto = new ParameterizedProto<EachBattle>() {
+			ID = "go_tagderwehrmacht",
+			Level = 1,
+			Type = Type.Order,
+			Country = Country.Germany,
 
-			cost = 4,
+			Cost = 4,
 		};
 
 		public class EachBattleAbility : SpecificAbility

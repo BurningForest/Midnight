@@ -1,23 +1,24 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Usa.Vehicles
 {
 	public class T7Combat : LightVehicle
 	{
-		public static readonly Proto proto = new Proto<T7Combat>() {
-			id = "uv_t7combatcar",
-			level = 1,
-			type = Type.Vehicle,
-			subtype = Subtype.Light,
-			country = Country.USA,
+		public static readonly Proto proto = new ParameterizedProto<T7Combat>() {
+			ID = "uv_t7combatcar",
+			Level = 1,
+			Type = Type.Vehicle,
+			Subtype = Subtype.Light,
+			Country = Country.USA,
 
-			power = 3,
-			defense = 0,
-			toughness = 1,
-			increase = 0,
-			cost = 2,
+			Power = 3,
+			Defense = 0,
+			Toughness = 1,
+			Increase = 0,
+			Cost = 2,
 		};
 
 		public override Proto GetProto ()

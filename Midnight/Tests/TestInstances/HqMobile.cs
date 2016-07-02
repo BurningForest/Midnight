@@ -3,22 +3,23 @@ using Midnight.Abilities.Passive;
 using Midnight.Abilities.Positioning;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.TestInstances
 {
 	public class HqMobile : Hq
 	{
-		public static readonly Proto proto = new Proto<HqMobile>() {
-			id = "th_mobile",
-			level = 1,
-			type = Type.HQ,
-			subtype = Subtype.Strike,
-			country = Country.USA,
+		public static readonly Proto proto = new ParameterizedProto<HqMobile>() {
+			ID = "th_mobile",
+			Level = 1,
+			Type = Type.HQ,
+			Subtype = Subtype.Strike,
+			Country = Country.USA,
 
-			power = 3,
-			toughness = 14,
-			increase = 8,
+			Power = 3,
+			Toughness = 14,
+			Increase = 8,
 		};
 
 		public override Proto GetProto ()

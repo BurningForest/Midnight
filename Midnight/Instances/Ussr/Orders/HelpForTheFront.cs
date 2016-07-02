@@ -4,6 +4,7 @@ using Midnight.Actions;
 using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Ussr.Orders
@@ -13,13 +14,13 @@ namespace Midnight.Instances.Ussr.Orders
 		// Возьмите карту.
 		// Восстановите 2 прочности своему штабу.
 
-		public static readonly Proto proto = new Proto<HelpForTheFront>() {
-			id = "so_budbditelnym",
-			level = 1,
-			type = Type.Order,
-			country = Country.USSR,
+		public static readonly Proto proto = new ParameterizedProto<HelpForTheFront>() {
+			ID = "so_budbditelnym",
+			Level = 1,
+			Type = Type.Order,
+			Country = Country.USSR,
 
-			cost = 2,
+			Cost = 2,
 		};
 
 		public class HelpForTheFrontAbility : SpecificAbility

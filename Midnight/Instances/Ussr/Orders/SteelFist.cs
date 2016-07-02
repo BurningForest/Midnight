@@ -4,6 +4,7 @@ using Midnight.Actions;
 using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Ussr.Orders
@@ -12,13 +13,13 @@ namespace Midnight.Instances.Ussr.Orders
 	{
 		// Нанесите 5 повреждений штабу противника.
 
-		public static readonly Proto proto = new Proto<SteelFist>() {
-			id = "so_udarmolota",
-			level = 1,
-			type = Type.Order,
-			country = Country.USSR,
+		public static readonly Proto proto = new ParameterizedProto<SteelFist>() {
+			ID = "so_udarmolota",
+			Level = 1,
+			Type = Type.Order,
+			Country = Country.USSR,
 
-			cost = 9,
+			Cost = 9,
 		};
 
 		public class SteelFistAbility : SpecificAbility

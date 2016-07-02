@@ -1,24 +1,25 @@
 ﻿using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.TestInstances
 {
 	public class TankLight : LightVehicle
 	{
-		public static readonly Proto proto = new Proto<TankLight>() {
-			id = "tv_Light_tank",
-			level = 1,
-			type = Type.Vehicle,
-			subtype = Subtype.Light,
-			country = Country.USA,
+		public static readonly Proto proto = new ParameterizedProto<TankLight>() {
+			ID = "tv_Light_tank",
+			Level = 1,
+			Type = Type.Vehicle,
+			Subtype = Subtype.Light,
+			Country = Country.USA,
 
-			power = 1,
-			defense = 0,
-			toughness = 2,
-			increase = 1,
-			cost = 2,
+			Power = 1,
+			Defense = 0,
+			Toughness = 2,
+			Increase = 1,
+			Cost = 2,
 		};
 
 		public override Proto GetProto ()

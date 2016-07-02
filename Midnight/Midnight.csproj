@@ -117,7 +117,6 @@
     <Compile Include="Cards\Props\Modifier.cs" />
     <Compile Include="Cards\Props\ModifierContainer.cs" />
     <Compile Include="Cards\Props\Property.cs" />
-    <Compile Include="Cards\Proto.cs" />
     <Compile Include="Cards\Search.cs" />
     <Compile Include="Cards\Types\FieldCard.cs" />
     <Compile Include="Cards\Types\ForefrontCard.cs" />

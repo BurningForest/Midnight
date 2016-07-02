@@ -1,6 +1,7 @@
 ﻿using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos;
 using System;
 
 namespace Midnight.ChiefOperations
@@ -26,7 +27,7 @@ namespace Midnight.ChiefOperations
 
 		public Card Create (Proto proto)
 		{
-			var card = Initialize(proto.Produce());
+			var card = Initialize((Card)proto.Produce());
 			card.GetLocation().ToDeck();
 			return card;
 		}
@@ -37,7 +38,7 @@ namespace Midnight.ChiefOperations
 				throw new Exception("Start cell is busy for Hq");
 			}
 
-			var card = (Hq)Initialize(proto.Produce());
+			var card = (Hq)Initialize((Card)proto.Produce());
 			card.GetFieldLocation().ToCell(chief.GetStartCell());
 			return card;
 		}

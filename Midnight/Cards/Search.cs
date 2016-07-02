@@ -34,11 +34,11 @@ namespace Midnight.Cards
 				return false;
 			}
 
-			if (types.Count > 0 && !types.Contains(card.GetProto().type)) {
+			if (types.Count > 0 && !types.Contains(card.GetProto().Type)) {
 				return false;
 			}
 
-			if (subtypes.Count > 0 && !subtypes.Contains(card.GetProto().subtype)) {
+			if (subtypes.Count > 0 && !subtypes.Contains(card.GetProto().Subtype)) {
 				return false;
 			}
 

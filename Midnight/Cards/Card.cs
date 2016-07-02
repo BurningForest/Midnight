@@ -1,6 +1,7 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Props;
 using Midnight.ChiefOperations;
+using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
 namespace Midnight.Cards
@@ -72,17 +73,17 @@ namespace Midnight.Cards
 
 		public bool Is (Country country)
 		{
-			return GetProto().country == country;
+			return GetProto().Country == country;
 		}
 
 		public bool Is (Subtype subtype)
 		{
-			return GetProto().subtype == subtype;
+			return GetProto().Subtype == subtype;
 		}
 
 		public bool Is (Type type)
 		{
-			return GetProto().type == type;
+			return GetProto().Type == type;
 		}
 
 		public void Modify (Modifier modifier)

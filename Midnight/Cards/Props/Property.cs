@@ -1,5 +1,6 @@
 ﻿using System;
 using Midnight.Cards.Enums;
+using Sun.CardProtos;
 
 namespace Midnight.Cards.Props
 {
@@ -20,7 +21,7 @@ namespace Midnight.Cards.Props
 
 			public override int GetProtoValue (Proto proto)
 			{
-				return proto.power;
+				return proto.Power ?? 0;
 			}
 
 			public override string ToString ()
@@ -34,7 +35,7 @@ namespace Midnight.Cards.Props
 
 			public override int GetProtoValue (Proto proto)
 			{
-				return proto.defense;
+				return proto.Defense ?? 0;
 			}
 
 			public override string ToString ()
@@ -48,7 +49,7 @@ namespace Midnight.Cards.Props
 
 			public override int GetProtoValue (Proto proto)
 			{
-				return proto.toughness;
+				return proto.Toughness ?? 0;
 			}
 
 			public override string ToString ()
@@ -62,7 +63,7 @@ namespace Midnight.Cards.Props
 
 			public override int GetProtoValue (Proto proto)
 			{
-				return proto.increase;
+				return proto.Increase ?? 0;
 			}
 
 			public override string ToString ()
@@ -76,7 +77,7 @@ namespace Midnight.Cards.Props
 
 			public override int GetProtoValue (Proto proto)
 			{
-				return proto.cost;
+				return proto.Cost ?? 0;
 			}
 
 			public override string ToString ()
