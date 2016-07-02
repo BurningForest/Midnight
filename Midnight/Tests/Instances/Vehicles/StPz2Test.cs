@@ -27,7 +27,7 @@ namespace Midnight.Tests.Instances.Vehicles
 			CheckSupply<HqGuards>(Location.deck);
 		}
 
-		private void CheckSupply<TCard> (Location heavyLocation)
+		private void CheckSupply<TCard> (Location HeavyLocation)
 			where TCard : Hq, new()
 		{
 			Engine engine = new Engine();
@@ -42,16 +42,16 @@ namespace Midnight.Tests.Instances.Vehicles
 
 			var myHq = player.cards.factory.CreateDefaultHq<TCard>();
 			var stPz2 = player.cards.factory.Create<StPz2>();
-			var heavy = player.cards.factory.Create<TankHeavy>();
+			var Heavy = player.cards.factory.Create<TankHeavy>();
 
 			var hisHq = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var spatg = enemy.cards.factory.Create<TankSpatg>();
+			var Spatg = enemy.cards.factory.Create<TankSpatg>();
 
 			manage.Draw(stPz2);
 
 			player.io.StartGame();
 
-			Assert.AreEqual(Location.deck, heavy.GetLocation().GetCurrent());
+			Assert.AreEqual(Location.deck, Heavy.GetLocation().GetCurrent());
 
 			Assert.AreEqual(Status.Success, player.io.Deploy(new Io.Position() {
 				cardId = stPz2.id,
@@ -59,8 +59,8 @@ namespace Midnight.Tests.Instances.Vehicles
 				y = 1
 			}));
 			
-			Assert.AreEqual(heavyLocation, heavy.GetLocation().GetCurrent());
-			Assert.AreEqual(Location.deck, spatg.GetLocation().GetCurrent());
+			Assert.AreEqual(HeavyLocation, Heavy.GetLocation().GetCurrent());
+			Assert.AreEqual(Location.deck, Spatg.GetLocation().GetCurrent());
 
 			Assert.AreEqual(Status.Success, player.io.Attack(new Io.Target() {
 				sourceId = stPz2.id,

@@ -4,6 +4,7 @@ using Midnight.Actions;
 using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Usa.Orders
 {
@@ -14,9 +15,8 @@ namespace Midnight.Instances.Usa.Orders
 		public static readonly Proto proto = new Proto<HeartOfTheEnemy>() {
 			id = "uo_crushprussian",
 			level = 1,
-			type = Type.order,
-			subtype = Subtype.order,
-			country = Country.usa,
+			type = Type.Order,
+			country = Country.USA,
 			
 			cost = 2,
 		};

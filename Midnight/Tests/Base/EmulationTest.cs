@@ -18,10 +18,10 @@ namespace Midnight.Tests.Base
 			public Engine engine;
 			public Chief player;
 			public Chief enemy;
-			public Hq hq;
-			public Card light;
-			public Card heavy;
-			public Card spatg;
+			public Hq HQ;
+			public Card Light;
+			public Card Heavy;
+			public Card Spatg;
 		}
 
 		private Bank CreateBank ()
@@ -30,10 +30,10 @@ namespace Midnight.Tests.Base
 			bank.engine = new Engine();
 			bank.player = bank.engine.chiefs[0];
 			bank.enemy  = bank.engine.chiefs[1];
-			bank.hq     = bank.player.cards.factory.CreateDefaultHq<HqGuards>();
-			bank.light  = bank.player.cards.factory.Create<TankLight>();
-			bank.heavy  = bank.enemy .cards.factory.Create<TankHeavy>();
-			bank.spatg  = bank.enemy .cards.factory.Create<TankSpatg>();
+			bank.HQ     = bank.player.cards.factory.CreateDefaultHq<HqGuards>();
+			bank.Light  = bank.player.cards.factory.Create<TankLight>();
+			bank.Heavy  = bank.enemy .cards.factory.Create<TankHeavy>();
+			bank.Spatg  = bank.enemy .cards.factory.Create<TankSpatg>();
 			bank.engine.turn.StartWith(bank.player);
 			return bank;
 		}
@@ -44,10 +44,10 @@ namespace Midnight.Tests.Base
 			bank.engine = source.engine.Clone();
 			bank.player = bank.engine.chiefs[0];
 			bank.enemy  = bank.engine.chiefs[1];
-			bank.hq     = bank.player.cards.GetHq();
-			bank.light  = bank.player.cards.GetAll().Find(c => c is TankLight);
-			bank.heavy  = bank.enemy .cards.GetAll().Find(c => c is TankHeavy);
-			bank.spatg  = bank.enemy .cards.GetAll().Find(c => c is TankSpatg);
+			bank.HQ     = bank.player.cards.GetHq();
+			bank.Light  = bank.player.cards.GetAll().Find(c => c is TankLight);
+			bank.Heavy  = bank.enemy .cards.GetAll().Find(c => c is TankHeavy);
+			bank.Spatg  = bank.enemy .cards.GetAll().Find(c => c is TankSpatg);
 			return bank;
 		}
 
@@ -70,20 +70,20 @@ namespace Midnight.Tests.Base
 			var source = CreateBank();
 			var cloned = CloneBank(source);
 			
-			Assert.AreNotSame(source.hq, cloned.hq);
-			Assert.AreNotSame(source.light, cloned.light);
-			Assert.AreNotSame(source.heavy, cloned.heavy);
-			Assert.AreNotSame(source.spatg, cloned.spatg);
+			Assert.AreNotSame(source.HQ, cloned.HQ);
+			Assert.AreNotSame(source.Light, cloned.Light);
+			Assert.AreNotSame(source.Heavy, cloned.Heavy);
+			Assert.AreNotSame(source.Spatg, cloned.Spatg);
 
-			Assert.AreEqual(source.hq.id, cloned.hq.id);
-			Assert.AreEqual(source.spatg.id, cloned.spatg.id);
+			Assert.AreEqual(source.HQ.id, cloned.HQ.id);
+			Assert.AreEqual(source.Spatg.id, cloned.Spatg.id);
 
-			Assert.AreSame(source.hq, source.engine.cache.Get(source.hq.id));
-			Assert.AreSame(cloned.hq, cloned.engine.cache.Get(cloned.hq.id));
+			Assert.AreSame(source.HQ, source.engine.cache.Get(source.HQ.id));
+			Assert.AreSame(cloned.HQ, cloned.engine.cache.Get(cloned.HQ.id));
 
-			Assert.AreNotSame(source.hq.GetLocation(), cloned.hq.GetLocation());
-			Assert.AreNotSame(source.hq.abilities, cloned.hq.abilities);
-			Assert.AreNotSame(source.hq.modifiers, cloned.hq.modifiers);
+			Assert.AreNotSame(source.HQ.GetLocation(), cloned.HQ.GetLocation());
+			Assert.AreNotSame(source.HQ.abilities, cloned.HQ.abilities);
+			Assert.AreNotSame(source.HQ.modifiers, cloned.HQ.modifiers);
 		}
 
 		[TestMethod]
@@ -94,19 +94,19 @@ namespace Midnight.Tests.Base
 
 			var manage = new Manage(cloned.engine);
 				
-			manage.Damage(2, cloned.hq, cloned.hq);
+			manage.Damage(2, cloned.HQ, cloned.HQ);
 
-			cloned.hq.abilities.Add(new FirstStrike());
+			cloned.HQ.abilities.Add(new FirstStrike());
 
-			Assert.AreEqual(2, cloned.hq.GetDamage());
-			Assert.AreEqual(0, source.hq.GetDamage());
-			Assert.IsTrue (cloned.hq.abilities.Has<FirstStrike>());
-			Assert.IsFalse(source.hq.abilities.Has<FirstStrike>());
+			Assert.AreEqual(2, cloned.HQ.GetDamage());
+			Assert.AreEqual(0, source.HQ.GetDamage());
+			Assert.IsTrue (cloned.HQ.abilities.Has<FirstStrike>());
+			Assert.IsFalse(source.HQ.abilities.Has<FirstStrike>());
 
-			manage.Kill(cloned.hq);
+			manage.Kill(cloned.HQ);
 
-			Assert.IsTrue(cloned.hq.IsDead());
-			Assert.IsFalse(source.hq.IsDead());
+			Assert.IsTrue(cloned.HQ.IsDead());
+			Assert.IsFalse(source.HQ.IsDead());
 		}
 
 		[TestMethod]
@@ -117,19 +117,19 @@ namespace Midnight.Tests.Base
 
 			var manage = new Manage(source.engine);
 
-			manage.Damage(2, source.hq, source.hq);
+			manage.Damage(2, source.HQ, source.HQ);
 
-			source.hq.abilities.Add(new FirstStrike());
+			source.HQ.abilities.Add(new FirstStrike());
 
-			Assert.AreEqual(2, source.hq.GetDamage());
-			Assert.AreEqual(0, cloned.hq.GetDamage());
-			Assert.IsTrue(source.hq.abilities.Has<FirstStrike>());
-			Assert.IsFalse(cloned.hq.abilities.Has<FirstStrike>());
+			Assert.AreEqual(2, source.HQ.GetDamage());
+			Assert.AreEqual(0, cloned.HQ.GetDamage());
+			Assert.IsTrue(source.HQ.abilities.Has<FirstStrike>());
+			Assert.IsFalse(cloned.HQ.abilities.Has<FirstStrike>());
 
-			manage.Kill(source.hq);
+			manage.Kill(source.HQ);
 
-			Assert.IsTrue(source.hq.IsDead());
-			Assert.IsFalse(cloned.hq.IsDead());
+			Assert.IsTrue(source.HQ.IsDead());
+			Assert.IsFalse(cloned.HQ.IsDead());
 		}
 	}
 }

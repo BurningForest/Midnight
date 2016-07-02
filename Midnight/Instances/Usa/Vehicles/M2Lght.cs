@@ -1,6 +1,7 @@
 ﻿using Midnight.Abilities.Passive;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Usa.Vehicles
 {
@@ -9,9 +10,9 @@ namespace Midnight.Instances.Usa.Vehicles
 		public static readonly Proto proto = new Proto<M2Light>() {
 			id = "uv_m2lt",
 			level = 2,
-			type = Type.vehicle,
-			subtype = Subtype.light,
-			country = Country.usa,
+			type = Type.Vehicle,
+			subtype = Subtype.Light,
+			country = Country.USA,
 
 			power = 1,
 			defense = 0,
@@ -24,7 +25,7 @@ namespace Midnight.Instances.Usa.Vehicles
 		{
 			public override bool IsActive ()
 			{
-				return chief.cards.HasHq(Country.usa);
+				return chief.cards.HasHq(Country.USA);
 			}
 		}
 

@@ -27,7 +27,7 @@ namespace Midnight.Tests.Instances.Orders
 			var heart1 = player.cards.factory.Create<HeartOfTheEnemy>();
 			var heart2 = player.cards.factory.Create<HeartOfTheEnemy>();
 
-			var hq = enemy.cards.factory.CreateDefaultHq<HqStrike>();
+			var HQ = enemy.cards.factory.CreateDefaultHq<HqStrike>();
 			var tank = enemy.cards.factory.Create<TankMedium>();
 
 			manage.Position(tank, field.GetCell(2, 2));
@@ -35,10 +35,10 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.StartGame(player);
 
-			Assert.IsTrue(manage.Order(heart1, hq).IsValid());
-			Assert.AreEqual(2, hq.GetDamage());
+			Assert.IsTrue(manage.Order(heart1, HQ).IsValid());
+			Assert.AreEqual(2, HQ.GetDamage());
 
-			Assert.AreEqual(Status.NotAtReserve, manage.Order(heart1, hq).GetStatus());
+			Assert.AreEqual(Status.NotAtReserve, manage.Order(heart1, HQ).GetStatus());
 
 			Assert.IsTrue(manage.Order(heart2, tank).IsValid());
 			Assert.AreEqual(2, tank.GetDamage());

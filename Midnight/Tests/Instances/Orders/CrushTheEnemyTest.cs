@@ -24,7 +24,7 @@ namespace Midnight.Tests.Instances.Orders
 			var crush1 = player.cards.factory.Create<CrushTheEnemy>();
 			var crush2 = player.cards.factory.Create<CrushTheEnemy>();
 
-			var hq = enemy.cards.factory.CreateDefaultHq<HqStrike>();
+			var HQ = enemy.cards.factory.CreateDefaultHq<HqStrike>();
 			var tm = enemy.cards.factory.Create<TankMedium>();
 
 			manage.Position(tm, field.GetCell(2, 2));
@@ -32,9 +32,9 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.StartGame(player);
 
-			Assert.IsTrue(manage.Order(crush1, hq).IsValid());
+			Assert.IsTrue(manage.Order(crush1, HQ).IsValid());
 			Assert.IsTrue(manage.Order(crush2, tm).IsValid());
-			Assert.AreEqual(1, hq.GetDamage());
+			Assert.AreEqual(1, HQ.GetDamage());
 			Assert.AreEqual(1, tm.GetDamage());
 		}
 

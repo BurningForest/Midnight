@@ -92,23 +92,23 @@ namespace Midnight.ChiefOperations
 
 		public List<Cell> GetFootholdCells ()
 		{
-			var hqs = cards.GetAliveHqs();
+			var HQs = cards.GetAliveHqs();
 
-			if (hqs.Count == 0) {
+			if (HQs.Count == 0) {
 				return engine.field.GetCellsByColumn(GetStartCell().x);
-			} else if (hqs.Count == 1) {
-				return hqs[0].GetFootholdCells();
+			} else if (HQs.Count == 1) {
+				return HQs[0].GetFootholdCells();
 			} else {
-				return CompileFootholdCells(hqs);
+				return CompileFootholdCells(HQs);
 			}
 		}
 
-		private List<Cell> CompileFootholdCells (List<Hq> hqs)
+		private List<Cell> CompileFootholdCells (List<Hq> HQs)
 		{
 			IEnumerable<Cell> cells = new List<Cell>();
 
-			foreach (Hq hq in hqs) {
-				cells = cells.Union(hq.GetFootholdCells());
+			foreach (Hq HQ in HQs) {
+				cells = cells.Union(HQ.GetFootholdCells());
 			}
 
 			return cells.ToList();

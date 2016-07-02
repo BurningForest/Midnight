@@ -1,6 +1,7 @@
 ﻿using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,17 +110,17 @@ namespace Midnight.ChiefOperations
 
 		public List<Platoon> GetOrderedPlatoons ()
 		{
-			var platoons = new List<Platoon>();
+			var Platoons = new List<Platoon>();
 
 			foreach (var subtype in Platoon.subtypeOrder) {
 				var item = GetPlatoonBySubtype(subtype);
 
 				if (item != null) {
-					platoons.Add(item);
+					Platoons.Add(item);
 				}
 			}
 
-			return platoons;
+			return Platoons;
 		}
 
 		public List<Hq> GetAliveHqs ()
@@ -143,17 +144,17 @@ namespace Midnight.ChiefOperations
 
 		public bool HasHq (Country country)
 		{
-			return GetAliveHqs().Any(hq => hq.Is(country));
+			return GetAliveHqs().Any(HQ => HQ.Is(country));
 		}
 
 		public bool HasHq (Subtype subtype)
 		{
-			return GetAliveHqs().Any(hq => hq.Is(subtype));
+			return GetAliveHqs().Any(HQ => HQ.Is(subtype));
 		}
 
 		public bool HasHq (Country country, Subtype subtype)
 		{
-			return GetAliveHqs().Any(hq => hq.Is(country) && hq.Is(subtype));
+			return GetAliveHqs().Any(HQ => HQ.Is(country) && HQ.Is(subtype));
 		}
 
 		private void Shuffle<T> (List<T> list)

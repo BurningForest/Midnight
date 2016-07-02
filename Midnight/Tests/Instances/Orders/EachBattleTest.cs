@@ -28,26 +28,26 @@ namespace Midnight.Tests.Instances.Orders
 			var each2 = player.cards.factory.Create<EachBattle>();
 
 			var hisHq = enemy.cards.factory.CreateDefaultHq<HqGuards>();
-			var spg1 = enemy.cards.factory.Create<TankSpg>();
-			var spg2 = enemy.cards.factory.Create<TankSpg>();
-			var spg3 = enemy.cards.factory.Create<TankSpg>();
+			var Spg1 = enemy.cards.factory.Create<TankSpg>();
+			var Spg2 = enemy.cards.factory.Create<TankSpg>();
+			var Spg3 = enemy.cards.factory.Create<TankSpg>();
 
-			manage.Position(spg1, field.GetCell(3, 0));
-			manage.Position(spg2, field.GetCell(3, 1));
-			manage.Position(spg3, field.GetCell(3, 2));
+			manage.Position(Spg1, field.GetCell(3, 0));
+			manage.Position(Spg2, field.GetCell(3, 1));
+			manage.Position(Spg3, field.GetCell(3, 2));
 
 			manage.StartGame(enemy);
 
 			manage.Fight(hisHq, myHq);
-			manage.Fight(spg1, myHq);
-			manage.Fight(spg2, myHq);
-			manage.Fight(spg3, myHq);
+			manage.Fight(Spg1, myHq);
+			manage.Fight(Spg2, myHq);
+			manage.Fight(Spg3, myHq);
 
 			Assert.AreEqual(4, myHq.GetDamage());
 
 			manage.EndTurn(enemy);
 
-			Assert.AreEqual(Status.NotAtReserve, manage.Order(each1, spg1).GetStatus());
+			Assert.AreEqual(Status.NotAtReserve, manage.Order(each1, Spg1).GetStatus());
 			manage.Draw(player, 2);
 
 			Assert.AreEqual(Status.TargetIsInvalid, manage.Order(each1, hisHq).GetStatus());
@@ -58,14 +58,14 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.EndTurn(enemy);
 
-			Assert.IsTrue(manage.Order(each1, spg1).IsValid());
+			Assert.IsTrue(manage.Order(each1, Spg1).IsValid());
 			Assert.IsTrue(each1.IsDead());
-			Assert.AreEqual(2, spg1.GetDamage());
+			Assert.AreEqual(2, Spg1.GetDamage());
 			Assert.AreEqual(2, myHq.GetDamage());
 
-			Assert.IsTrue(manage.Order(each2, spg1).IsValid());
+			Assert.IsTrue(manage.Order(each2, Spg1).IsValid());
 			Assert.IsTrue(each2.IsDead());
-			Assert.IsTrue(spg1.IsDead());
+			Assert.IsTrue(Spg1.IsDead());
 			Assert.AreEqual(0, myHq.GetDamage());
 		}
 
@@ -83,16 +83,16 @@ namespace Midnight.Tests.Instances.Orders
 			manage.SetResources(player, 50);
 			
 			var each = player.cards.factory.Create<EachBattle>();
-			var spg  = enemy.cards.factory.Create<TankSpg>();
+			var Spg  = enemy.cards.factory.Create<TankSpg>();
 
-			manage.Position(spg, field.GetCell(3, 2));
+			manage.Position(Spg, field.GetCell(3, 2));
 
 			manage.StartGame(player);
 
 			manage.Draw(player);
-			manage.Order(each, spg);
+			manage.Order(each, Spg);
 
-			Assert.AreEqual(2, spg.GetDamage());
+			Assert.AreEqual(2, Spg.GetDamage());
 			Assert.IsTrue(each.IsDead());
 		}
 

@@ -17,30 +17,30 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 
-			var spg = engine.chiefs[0].cards.factory.Create<TankSpg>();
-			var light = engine.chiefs[0].cards.factory.Create<TankLight>();
-			var medium = engine.chiefs[1].cards.factory.Create<TankMedium>();
+			var Spg = engine.chiefs[0].cards.factory.Create<TankSpg>();
+			var Light = engine.chiefs[0].cards.factory.Create<TankLight>();
+			var Medium = engine.chiefs[1].cards.factory.Create<TankMedium>();
 
-			manage.Position(spg, engine.field.GetCell(0, 1));
-			manage.Position(light, engine.field.GetCell(2, 1));
-			manage.Position(medium, engine.field.GetCell(4, 1));
+			manage.Position(Spg, engine.field.GetCell(0, 1));
+			manage.Position(Light, engine.field.GetCell(2, 1));
+			manage.Position(Medium, engine.field.GetCell(4, 1));
 			
-			var fight = manage.Fight(spg, medium);
+			var fight = manage.Fight(Spg, Medium);
 			Assert.AreEqual(Status.TargetIsNotSpotted, fight.GetStatus());
-			Assert.AreEqual(0, medium.GetDamage());
+			Assert.AreEqual(0, Medium.GetDamage());
 
-			manage.Move(light, engine.field.GetCell(3, 1));
-			manage.Fight(spg, medium);
+			manage.Move(Light, engine.field.GetCell(3, 1));
+			manage.Fight(Spg, Medium);
 
-			Assert.AreEqual(0, spg.GetDamage());
-			Assert.AreEqual(1, medium.GetDamage());
+			Assert.AreEqual(0, Spg.GetDamage());
+			Assert.AreEqual(1, Medium.GetDamage());
 
 			engine.chiefs[0].io.EndTurn();
 			engine.chiefs[1].io.EndTurn();
 			
-			manage.Move(light, engine.field.GetCell(2, 1));
-			Assert.AreEqual(Status.TargetIsNotSpotted, manage.Fight(spg, medium).GetStatus());
-			Assert.AreEqual(1, medium.GetDamage());
+			manage.Move(Light, engine.field.GetCell(2, 1));
+			Assert.AreEqual(Status.TargetIsNotSpotted, manage.Fight(Spg, Medium).GetStatus());
+			Assert.AreEqual(1, Medium.GetDamage());
 
 		}
 	}

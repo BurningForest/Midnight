@@ -5,6 +5,7 @@ using Midnight.Cards.Props;
 using Midnight.Cards.Types;
 using Midnight.Cards.Vehicles;
 using Midnight.Tests.TestInstances;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.Base
 {
@@ -20,13 +21,13 @@ namespace Midnight.Tests.Base
 			Assert.IsTrue(card is Vehicle);
 			Assert.IsTrue(card is LightVehicle);
 
-			Assert.IsTrue(card.Is(Country.usa));
-			Assert.IsTrue(card.Is(Type.vehicle));
-			Assert.IsTrue(card.Is(Subtype.light));
+			Assert.IsTrue(card.Is(Country.USA));
+			Assert.IsTrue(card.Is(Type.Vehicle));
+			Assert.IsTrue(card.Is(Subtype.Light));
 			
-			Assert.IsFalse(card.Is(Country.germany));
-			Assert.IsFalse(card.Is(Type.order));
-			Assert.IsFalse(card.Is(Subtype.heavy));
+			Assert.IsFalse(card.Is(Country.Germany));
+			Assert.IsFalse(card.Is(Type.Order));
+			Assert.IsFalse(card.Is(Subtype.Heavy));
 		}
 
 		[TestMethod]

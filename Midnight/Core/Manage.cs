@@ -102,14 +102,14 @@ namespace Midnight.Core
 			return Launch(new SetResources(chief, value));
 		}
 
-		public GiveOrder Order (Order order, FieldCard target)
+		public GiveOrder Order (Order Order, FieldCard target)
 		{
-			return Launch(new GiveOrder(order, target));
+			return Launch(new GiveOrder(Order, target));
 		}
 
-		public GiveOrder Order (Order order)
+		public GiveOrder Order (Order Order)
 		{
-			return Launch(new GiveOrder(order));
+			return Launch(new GiveOrder(Order));
 		}
 
 		private TAction Launch<TAction> (TAction action)

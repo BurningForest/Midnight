@@ -1,5 +1,6 @@
 ﻿using Midnight.Abilities.Positioning;
 using Midnight.Cards.Enums;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Cards.Types
 {
@@ -9,11 +10,11 @@ namespace Midnight.Cards.Types
 		public abstract class Protect : Platoon { }
 
 		public static Subtype[] subtypeOrder = {
-			Subtype.scout,
-			Subtype.communications,
-			Subtype.artillery,
-			Subtype.medic,
-			Subtype.intendancy,
+			Subtype.Scout,
+			Subtype.Communications,
+			Subtype.Artillery,
+			Subtype.Medic,
+			Subtype.Intendancy,
 		};
 
 		public override void InitAbilities ()

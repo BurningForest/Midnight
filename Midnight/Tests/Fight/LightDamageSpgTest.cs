@@ -17,16 +17,16 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 
-			var light = engine.chiefs[0].cards.factory.Create<TankLight>();
-			var spg   = engine.chiefs[1].cards.factory.Create<TankSpg>();
+			var Light = engine.chiefs[0].cards.factory.Create<TankLight>();
+			var Spg   = engine.chiefs[1].cards.factory.Create<TankSpg>();
 
-			manage.Position(light, engine.field.GetCell(1, 1));
-			manage.Position(spg, engine.field.GetCell(2, 1));
+			manage.Position(Light, engine.field.GetCell(1, 1));
+			manage.Position(Spg, engine.field.GetCell(2, 1));
 
-			manage.Fight(light, spg);
+			manage.Fight(Light, Spg);
 
-			Assert.AreEqual(0, light.GetDamage());
-			Assert.AreEqual(1, spg.GetDamage());
+			Assert.AreEqual(0, Light.GetDamage());
+			Assert.AreEqual(1, Spg.GetDamage());
 		}
 	}
 }

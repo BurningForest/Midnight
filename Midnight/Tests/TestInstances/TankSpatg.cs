@@ -1,17 +1,18 @@
 ﻿using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.TestInstances
 {
 	public class TankSpatg : SpatgVehicle
 	{
 		public static readonly Proto proto = new Proto<TankSpatg>() {
-			id = "tv_spatg_tank",
+			id = "tv_Spatg_tank",
 			level = 1,
-			type = Type.vehicle,
-			subtype = Subtype.spatg,
-			country = Country.germany,
+			type = Type.Vehicle,
+			subtype = Subtype.Spatg,
+			country = Country.Germany,
 
 			power = 2,
 			defense = 0,

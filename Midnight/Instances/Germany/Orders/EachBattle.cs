@@ -4,6 +4,7 @@ using Midnight.Actions;
 using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Germany.Orders
 {
@@ -15,9 +16,8 @@ namespace Midnight.Instances.Germany.Orders
 		public static readonly Proto proto = new Proto<EachBattle>() {
 			id = "go_tagderwehrmacht",
 			level = 1,
-			type = Type.order,
-			subtype = Subtype.order,
-			country = Country.germany,
+			type = Type.Order,
+			country = Country.Germany,
 
 			cost = 4,
 		};

@@ -1,5 +1,6 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.TestInstances
 {
@@ -8,9 +9,9 @@ namespace Midnight.Tests.TestInstances
 		public static readonly Proto proto = new Proto<PlatoonProtectIntendancy>() {
 			id = "tp_protect_intendancy",
 			level = 1,
-			type = Type.platoon,
-			subtype = Subtype.intendancy,
-			country = Country.germany,
+			type = Type.Platoon,
+			subtype = Subtype.Intendancy,
+			country = Country.Germany,
 
 			power = 0,
 			defense = 3,

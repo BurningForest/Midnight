@@ -26,7 +26,7 @@ namespace Midnight.Cards.Types
 
 		public override bool IsSpotted ()
 		{
-			// hq is always spotted
+			// HQ is always spotted
 			return true;
 		}
 	}

@@ -8,14 +8,14 @@ namespace Midnight.ChiefOperations.IoOptions
 		public AttackOptions attacks;
 		public DeployOptions deploys;
 		public MoveOptions   moves;
-		public OrderOptions  orders;
+		public OrderOptions  Orders;
 		
 		public bool IsEmpty ()
 		{
 			return null == attacks
 				&& null == deploys
 				&& null == moves
-				&& null == orders;
+				&& null == Orders;
 		}
 	}
 }

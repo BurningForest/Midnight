@@ -1,5 +1,6 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Usa.Vehicles
 {
@@ -8,9 +9,9 @@ namespace Midnight.Instances.Usa.Vehicles
 		public static readonly Proto proto = new Proto<Liberty>() {
 			id = "uv_mark7liberty",
 			level = 1,
-			type = Type.vehicle,
-			subtype = Subtype.heavy,
-			country = Country.usa,
+			type = Type.Vehicle,
+			subtype = Subtype.Heavy,
+			country = Country.USA,
 
 			power = 4,
 			defense = 0,

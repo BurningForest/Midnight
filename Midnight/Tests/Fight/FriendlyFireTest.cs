@@ -17,17 +17,17 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 
-			var medium = engine.chiefs[0].cards.factory.Create<TankMedium>();
-			var light = engine.chiefs[0].cards.factory.Create<TankLight>();
+			var Medium = engine.chiefs[0].cards.factory.Create<TankMedium>();
+			var Light = engine.chiefs[0].cards.factory.Create<TankLight>();
 			
-			manage.Position(light, engine.field.GetCell(2, 1));
-			manage.Position(medium, engine.field.GetCell(3, 1));
+			manage.Position(Light, engine.field.GetCell(2, 1));
+			manage.Position(Medium, engine.field.GetCell(3, 1));
 			
-			var fight = manage.Fight(light, medium);
+			var fight = manage.Fight(Light, Medium);
 
 			Assert.AreEqual(Status.TargetIsFriendly, fight.GetStatus());
-			Assert.AreEqual(0, light.GetDamage());
-			Assert.AreEqual(0, medium.GetDamage());
+			Assert.AreEqual(0, Light.GetDamage());
+			Assert.AreEqual(0, Medium.GetDamage());
 		}
 	}
 }

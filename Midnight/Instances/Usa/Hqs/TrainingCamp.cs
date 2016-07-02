@@ -1,5 +1,6 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Usa.Hqs
 {
@@ -8,9 +9,9 @@ namespace Midnight.Instances.Usa.Hqs
 		public static readonly Proto proto = new Proto<TrainingCamp>() {
 			id = "uh_trainingcamp",
 			level = 1,
-			type = Type.hq,
-			subtype = Subtype.beginner,
-			country = Country.usa,
+			type = Type.HQ,
+			subtype = Subtype.Beginner,
+			country = Country.USA,
 
 			power = 2,
 			toughness = 18,

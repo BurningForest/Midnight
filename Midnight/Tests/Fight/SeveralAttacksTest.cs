@@ -17,36 +17,36 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 			
-			var medium1 = engine.chiefs[0].cards.factory.Create<TankMedium>();
-			var medium2 = engine.chiefs[0].cards.factory.Create<TankMedium>();
-			var heavy   = engine.chiefs[1].cards.factory.Create<TankHeavy>();
+			var Medium1 = engine.chiefs[0].cards.factory.Create<TankMedium>();
+			var Medium2 = engine.chiefs[0].cards.factory.Create<TankMedium>();
+			var Heavy   = engine.chiefs[1].cards.factory.Create<TankHeavy>();
 
-			manage.Position(medium1, engine.field.GetCell(0, 0));
-			manage.Position(heavy, engine.field.GetCell(0, 1));
-			manage.Position(medium2, engine.field.GetCell(0, 2));
+			manage.Position(Medium1, engine.field.GetCell(0, 0));
+			manage.Position(Heavy, engine.field.GetCell(0, 1));
+			manage.Position(Medium2, engine.field.GetCell(0, 2));
 			
-			manage.Fight(medium1, heavy);
-			manage.Fight(medium2, heavy);
+			manage.Fight(Medium1, Heavy);
+			manage.Fight(Medium2, Heavy);
 
-			Assert.AreEqual(3, medium1.GetDamage());
-			Assert.AreEqual(0, medium2.GetDamage());
-			Assert.AreEqual(4, heavy.GetDamage());
+			Assert.AreEqual(3, Medium1.GetDamage());
+			Assert.AreEqual(0, Medium2.GetDamage());
+			Assert.AreEqual(4, Heavy.GetDamage());
 
 			manage.EndTurn(engine.chiefs[0]);
 
-			manage.Fight(heavy, medium2);
-			Assert.AreEqual(3, medium2.GetDamage());
-			Assert.AreEqual(6, heavy.GetDamage());
+			manage.Fight(Heavy, Medium2);
+			Assert.AreEqual(3, Medium2.GetDamage());
+			Assert.AreEqual(6, Heavy.GetDamage());
 
 			manage.EndTurn(engine.chiefs[1]);
 			
-			manage.Fight(medium1, heavy);
-			Assert.AreEqual(3, medium1.GetDamage());
-			Assert.AreEqual(8, heavy.GetDamage());
+			manage.Fight(Medium1, Heavy);
+			Assert.AreEqual(3, Medium1.GetDamage());
+			Assert.AreEqual(8, Heavy.GetDamage());
 
-			manage.Fight(medium2, heavy);
-			Assert.AreEqual(3, medium2.GetDamage());
-			Assert.IsTrue(heavy.IsDead());
+			manage.Fight(Medium2, Heavy);
+			Assert.AreEqual(3, Medium2.GetDamage());
+			Assert.IsTrue(Heavy.IsDead());
 		}
 	}
 }

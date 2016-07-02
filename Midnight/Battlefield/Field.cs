@@ -15,11 +15,11 @@ namespace Midnight.Battlefield
 		private List<Cell> cells = new List<Cell>();
 
 		/**
-		 *              [hq1]
+		 *              [HQ1]
 		 *   02 12 22 32 42 
 		 *   01 11 21 31 41
 		 *   00 10 20 30 40
-		 * [hq0] 
+		 * [HQ0] 
 		 */
 		public Field SetSize (int width, int height)
 		{

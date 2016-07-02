@@ -1,5 +1,6 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.ChiefOperations;
+using Sun.CardProtos.Enums;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -80,56 +81,56 @@ namespace Midnight.Cards
 		// type
 		public Search Hq ()
 		{
-			types.Add(Type.hq);
+			types.Add(Type.HQ);
 			return this;
 		}
 
 		public Search Vehicle ()
 		{
-			types.Add(Type.vehicle);
+			types.Add(Type.Vehicle);
 			return this;
 		}
 
 		public Search Platoon ()
 		{
-			types.Add(Type.platoon);
+			types.Add(Type.Platoon);
 			return this;
 		}
 
 		public Search Order ()
 		{
-			types.Add(Type.order);
+			types.Add(Type.Order);
 			return this;
 		}
 
 		// subtype
 		public Search Light ()
 		{
-			subtypes.Add(Subtype.light);
+			subtypes.Add(Subtype.Light);
 			return this;
 		}
 
 		public Search Medium ()
 		{
-			subtypes.Add(Subtype.medium);
+			subtypes.Add(Subtype.Medium);
 			return this;
 		}
 
 		public Search Heavy ()
 		{
-			subtypes.Add(Subtype.heavy);
+			subtypes.Add(Subtype.Heavy);
 			return this;
 		}
 
 		public Search Spatg ()
 		{
-			subtypes.Add(Subtype.spatg);
+			subtypes.Add(Subtype.Spatg);
 			return this;
 		}
 
 		public Search Spg ()
 		{
-			subtypes.Add(Subtype.spg);
+			subtypes.Add(Subtype.Spg);
 			return this;
 		}
 

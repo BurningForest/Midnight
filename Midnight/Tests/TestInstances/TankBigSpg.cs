@@ -1,17 +1,18 @@
 ﻿using Midnight.Cards;
 using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.TestInstances
 {
 	public class TankBigSpg : SpgVehicle
 	{
 		public static readonly Proto proto = new Proto<TankBigSpg>() {
-			id = "tv_big_spg_tank",
+			id = "tv_big_Spg_tank",
 			level = 5,
-			type = Type.vehicle,
-			subtype = Subtype.spg,
-			country = Country.germany,
+			type = Type.Vehicle,
+			subtype = Subtype.Spg,
+			country = Country.Germany,
 
 			power = 8,
 			defense = 0,

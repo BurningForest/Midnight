@@ -135,18 +135,18 @@ namespace Midnight.Tests.Base
 		public void GettingAllCards ()
 		{
 			var field = CreateField();
-			var light = new TankLight();
-			var spatg = new TankSpatg();
-			var heavy = new TankHeavy();
+			var Light = new TankLight();
+			var Spatg = new TankSpatg();
+			var Heavy = new TankHeavy();
 
-			light.GetFieldLocation().ToCell(field.GetCell(1, 1));
-			spatg.GetFieldLocation().ToCell(field.GetCell(2, 1));
+			Light.GetFieldLocation().ToCell(field.GetCell(1, 1));
+			Spatg.GetFieldLocation().ToCell(field.GetCell(2, 1));
 
 			var allCards = field.GetAllCards();
 
 			Assert.AreEqual(2, allCards.Count);
-			Assert.IsTrue(allCards.Contains(light));
-			Assert.IsTrue(allCards.Contains(spatg));
+			Assert.IsTrue(allCards.Contains(Light));
+			Assert.IsTrue(allCards.Contains(Spatg));
 		}
 
 		[TestMethod]
@@ -155,11 +155,11 @@ namespace Midnight.Tests.Base
 		{
 			var field = CreateField();
 			var cell = field.GetCell(1, 1);
-			var light = new TankLight();
-			var spatg = new TankSpatg();
+			var Light = new TankLight();
+			var Spatg = new TankSpatg();
 
-			light.GetFieldLocation().ToCell(cell);
-			spatg.GetFieldLocation().ToCell(cell);
+			Light.GetFieldLocation().ToCell(cell);
+			Spatg.GetFieldLocation().ToCell(cell);
 		}
 
 		[TestMethod]
@@ -168,11 +168,11 @@ namespace Midnight.Tests.Base
 		{
 			var field = CreateField();
 			var cell = field.GetCell(1, 1);
-			var light = new TankLight();
-			var spatg = new TankSpatg();
+			var Light = new TankLight();
+			var Spatg = new TankSpatg();
 
-			light.GetFieldLocation().ToCell(cell);
-			cell.RemoveCard(spatg);
+			Light.GetFieldLocation().ToCell(cell);
+			cell.RemoveCard(Spatg);
 		}
 
 		[TestMethod]

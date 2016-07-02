@@ -1,4 +1,6 @@
-﻿namespace Midnight.Cards.Enums
+﻿using Sun.CardProtos.Enums;
+
+namespace Midnight.Cards.Enums
 {
 	public abstract class Proto
 	{

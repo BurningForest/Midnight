@@ -36,22 +36,22 @@ namespace Midnight.Actions
 
 		private void PlatoonsEnforce ()
 		{
-			foreach (var platoon in source.GetChief().cards.GetOrderedPlatoons()) {
-				if (platoon is Enforce) {
-					damage.ModifyDamage(platoon.GetPower());
-					AddChild(new ActivatePlatoon(platoon, platoon.GetPower()));
+			foreach (var Platoon in source.GetChief().cards.GetOrderedPlatoons()) {
+				if (Platoon is Enforce) {
+					damage.ModifyDamage(Platoon.GetPower());
+					AddChild(new ActivatePlatoon(Platoon, Platoon.GetPower()));
 				}
 			}
 		}
 
 		private void PlatoonsProtect ()
 		{
-			foreach (var platoon in target.GetChief().cards.GetOrderedPlatoons()) {
-				if (platoon is Protect && damage.GetDamage() > 0) {
-					var value = Math.Min(damage.GetDamage(), platoon.GetDefense());
+			foreach (var Platoon in target.GetChief().cards.GetOrderedPlatoons()) {
+				if (Platoon is Protect && damage.GetDamage() > 0) {
+					var value = Math.Min(damage.GetDamage(), Platoon.GetDefense());
 
 					damage.ModifyDamage(-value);
-					AddChild(new ActivatePlatoon(platoon, value));
+					AddChild(new ActivatePlatoon(Platoon, value));
 				}
 			}
 		}

@@ -46,15 +46,15 @@ namespace Midnight.Tests.Instances.Vehicles
 			var m2lt = player.cards.factory.Create<M2Light>();
 
 			var hisHq = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var spg = enemy.cards.factory.Create<TankSpg>();
+			var Spg = enemy.cards.factory.Create<TankSpg>();
 
 			manage.Position(m2lt, field.GetCell(1, 1));
-			manage.Position(spg, field.GetCell(2, 1));
+			manage.Position(Spg, field.GetCell(2, 1));
 
 			enemy.io.StartGame();
 
 			Assert.AreEqual(attackStatus, enemy.io.Attack(new Io.Target() {
-				sourceId = spg.id,
+				sourceId = Spg.id,
 				targetId = m2lt.id,
 			}));
 		}

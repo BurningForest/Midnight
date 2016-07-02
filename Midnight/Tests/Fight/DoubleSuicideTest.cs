@@ -19,21 +19,21 @@ namespace Midnight.Tests.Fight
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 			
-			var spatg1 = player.cards.factory.Create<TankSpatg>();
-			var spatg2 = enemy .cards.factory.Create<TankSpatg>();
+			var Spatg1 = player.cards.factory.Create<TankSpatg>();
+			var Spatg2 = enemy .cards.factory.Create<TankSpatg>();
 
-			manage.Position(spatg1, engine.field.GetCell(0, 1));
-			manage.Position(spatg2, engine.field.GetCell(1, 1));
+			manage.Position(Spatg1, engine.field.GetCell(0, 1));
+			manage.Position(Spatg2, engine.field.GetCell(1, 1));
 
 			manage.StartGame();
 
 			player.io.Attack(new Io.Target() {
-				sourceId = spatg1.id,
-				targetId = spatg2.id
+				sourceId = Spatg1.id,
+				targetId = Spatg2.id
 			});
 
-			Assert.IsTrue(spatg1.IsDead());
-			Assert.IsTrue(spatg2.IsDead());
+			Assert.IsTrue(Spatg1.IsDead());
+			Assert.IsTrue(Spatg2.IsDead());
 		}
 	}
 }

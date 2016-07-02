@@ -1,6 +1,7 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Props;
 using Midnight.ChiefOperations;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Cards
 {

@@ -37,7 +37,7 @@ namespace Midnight.ChiefOperations.IoOptions
 			option.deploys = new DeploysCollector (card).Collect();
 			option.moves   = new MovesCollector   (card).Collect();
 			option.attacks = new AttacksCollector (card).Collect();
-			option.orders  = new OrdersCollector  (card).Collect();
+			option.Orders  = new OrdersCollector  (card).Collect();
 
 			return option;
 		}

@@ -14,15 +14,15 @@ namespace Midnight.Tests.Base
 		{
 			var engine = new Engine();
 			
-			var spg = engine.chiefs[0].cards.factory.Create<TankSpg>();
-			var light = engine.chiefs[0].cards.factory.Create<TankLight>();
-			var medium = engine.chiefs[1].cards.factory.Create<TankMedium>();
-			var hq = engine.chiefs[0].cards.factory.CreateDefaultHq<HqConsol>();
+			var Spg = engine.chiefs[0].cards.factory.Create<TankSpg>();
+			var Light = engine.chiefs[0].cards.factory.Create<TankLight>();
+			var Medium = engine.chiefs[1].cards.factory.Create<TankMedium>();
+			var HQ = engine.chiefs[0].cards.factory.CreateDefaultHq<HqConsol>();
 
-			Assert.AreEqual(1, spg.id);
-			Assert.AreEqual(2, light.id);
-			Assert.AreEqual(3, medium.id);
-			Assert.AreEqual(4, hq.id);
+			Assert.AreEqual(1, Spg.id);
+			Assert.AreEqual(2, Light.id);
+			Assert.AreEqual(3, Medium.id);
+			Assert.AreEqual(4, HQ.id);
 		}
 
 		[TestMethod]

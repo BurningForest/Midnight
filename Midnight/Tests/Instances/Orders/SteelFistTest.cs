@@ -23,7 +23,7 @@ namespace Midnight.Tests.Instances.Orders
 
 			var crush = player.cards.factory.Create<SteelFist>();
 
-			var hq = enemy.cards.factory.CreateDefaultHq<HqStrike>();
+			var HQ = enemy.cards.factory.CreateDefaultHq<HqStrike>();
 			var tm = enemy.cards.factory.Create<TankMedium>();
 
 			manage.SetResources(player, 20);
@@ -33,8 +33,8 @@ namespace Midnight.Tests.Instances.Orders
 			manage.StartGame(player);
 
 			Assert.AreEqual(Status.TargetIsInvalid, manage.Order(crush, tm).GetStatus());
-			Assert.IsTrue(manage.Order(crush, hq).IsValid());
-			Assert.AreEqual(5, hq.GetDamage());
+			Assert.IsTrue(manage.Order(crush, HQ).IsValid());
+			Assert.AreEqual(5, HQ.GetDamage());
 		}
 
 	}

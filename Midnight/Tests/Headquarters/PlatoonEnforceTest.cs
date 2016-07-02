@@ -5,6 +5,7 @@ using Midnight.Core;
 using Midnight.Tests.TestInstances;
 using Midnight.Triggers;
 using Midnight.Utils;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Tests.Headquarters
 {
@@ -35,7 +36,7 @@ namespace Midnight.Tests.Headquarters
 
 			Assert.IsTrue(manage.Deploy(artill).IsValid());
 
-			Assert.AreSame(artill, player.cards.GetPlatoonBySubtype(Subtype.artillery));
+			Assert.AreSame(artill, player.cards.GetPlatoonBySubtype(Subtype.Artillery));
 			Utils.ArrayAreEqual(player.cards.GetOrderedPlatoons(), new[]{ artill });
 
 			Assert.IsTrue(manage.Fight(guards, consol).IsValid());

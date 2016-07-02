@@ -24,13 +24,13 @@ namespace Midnight.Tests.Headquarters
 			var field  = engine.field;
 
 			var strike = player.cards.factory.CreateDefaultHq<HqStrike>(); // 3/20
-			var spg    = player.cards.factory.Create<TankBigSpg>(); // 8/4
+			var Spg    = player.cards.factory.Create<TankBigSpg>(); // 8/4
 
 			var consol = enemy.cards.factory.CreateDefaultHq<HqConsol>(); // 2/25
 			var medic  = enemy.cards.factory.Create<PlatoonProtectMedic>(); // 2/7
 			var intend = enemy.cards.factory.Create<PlatoonProtectIntendancy>(); // 3/3
 
-			manage.Position(spg, field.GetCell(4, 1));
+			manage.Position(Spg, field.GetCell(4, 1));
 
 			manage.StartGame(enemy);
 			manage.Draw(enemy, 3);
@@ -57,7 +57,7 @@ namespace Midnight.Tests.Headquarters
 			Assert.AreEqual(1, intend.GetDamage()); // absorb 2 damage
 			Assert.AreEqual(1, consol.GetDamage()); // 0 damage received
 
-			Assert.IsTrue(manage.Fight(spg, consol).IsValid()); // 8 damage
+			Assert.IsTrue(manage.Fight(Spg, consol).IsValid()); // 8 damage
 			Assert.AreEqual(6, medic.GetDamage()); // absorb 2 damage
 			Assert.IsTrue(intend.IsDead()); // absorb 3 damage
 			Assert.AreEqual(4, consol.GetDamage()); // 3 damage received

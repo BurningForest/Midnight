@@ -23,15 +23,15 @@ namespace Midnight.Tests.Headquarters
 			var enemy  = engine.chiefs[1];
 			
 			var mobile = player.cards.factory.CreateDefaultHq<HqMobile>();
-			var light  = player.cards.factory.Create<TankLight>();
-			var spatg  = player.cards.factory.Create<TankSpatg>();
+			var Light  = player.cards.factory.Create<TankLight>();
+			var Spatg  = player.cards.factory.Create<TankSpatg>();
 
 			var strike = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var heavy  = enemy.cards.factory.Create<TankHeavy>();
+			var Heavy  = enemy.cards.factory.Create<TankHeavy>();
 
-			manage.Draw(light);
-			manage.Draw(spatg);
-			manage.Position(heavy, field.GetCell(2, 0));
+			manage.Draw(Light);
+			manage.Draw(Spatg);
+			manage.Position(Heavy, field.GetCell(2, 0));
 
 			manage.StartGame(player);
 			
@@ -45,9 +45,9 @@ namespace Midnight.Tests.Headquarters
 			});
 
 			Assert.AreEqual(Status.TargetIsTooFar, manage.Fight(mobile, strike).GetStatus());
-			Assert.IsTrue(manage.Deploy(light, field.GetCell(0, 1)).IsValid());
+			Assert.IsTrue(manage.Deploy(Light, field.GetCell(0, 1)).IsValid());
 			Assert.IsTrue(manage.Move(mobile, field.GetCell(1, 0)).IsValid());
-			Assert.IsTrue(manage.Deploy(spatg, field.GetCell(0, 0)).IsValid());
+			Assert.IsTrue(manage.Deploy(Spatg, field.GetCell(0, 0)).IsValid());
 
 			Utils.ArrayAreEqual(player.GetFootholdCells(), new[]{
 				field.GetCell(0, 0),
@@ -58,20 +58,20 @@ namespace Midnight.Tests.Headquarters
 			});
 			manage.EndTurn(player);
 			
-			manage.Fight(heavy, mobile);
-			Assert.AreEqual(3, heavy.GetDamage());
+			manage.Fight(Heavy, mobile);
+			Assert.AreEqual(3, Heavy.GetDamage());
 			Assert.AreEqual(3, mobile.GetDamage());
 
 			manage.EndTurn(enemy);
 
-			manage.Fight(mobile, heavy);
-			Assert.AreEqual(6, heavy.GetDamage());
+			manage.Fight(mobile, Heavy);
+			Assert.AreEqual(6, Heavy.GetDamage());
 			Assert.AreEqual(3, mobile.GetDamage());
 
 			manage.EndTurn(player);
 
-			manage.Fight(heavy, mobile);
-			Assert.AreEqual(6, heavy.GetDamage());
+			manage.Fight(Heavy, mobile);
+			Assert.AreEqual(6, Heavy.GetDamage());
 			Assert.AreEqual(6, mobile.GetDamage());
 
 		}

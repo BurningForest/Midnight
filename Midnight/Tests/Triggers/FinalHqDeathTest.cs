@@ -29,23 +29,23 @@ namespace Midnight.Tests.Triggers
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			var hq = player.cards.factory.CreateDefaultHq<HqGuards>();
-			var spg1 = enemy.cards.factory.Create<TankBigSpg>();
-			var spg2 = enemy.cards.factory.Create<TankBigSpg>();
+			var HQ = player.cards.factory.CreateDefaultHq<HqGuards>();
+			var Spg1 = enemy.cards.factory.Create<TankBigSpg>();
+			var Spg2 = enemy.cards.factory.Create<TankBigSpg>();
 
-			manage.Position(spg1, engine.field.GetCell(2, 2));
-			manage.Position(spg2, engine.field.GetCell(1, 2));
+			manage.Position(Spg1, engine.field.GetCell(2, 2));
+			manage.Position(Spg2, engine.field.GetCell(1, 2));
 
 			manage.StartGame(enemy);
 
-			manage.Fight(spg1, hq);
+			manage.Fight(Spg1, HQ);
 
-			Assert.IsFalse(hq.IsDead());
+			Assert.IsFalse(HQ.IsDead());
 			Assert.AreEqual(null, final.action);
 
-			manage.Fight(spg2, hq);
+			manage.Fight(Spg2, HQ);
 
-			Assert.IsTrue(hq.IsDead());
+			Assert.IsTrue(HQ.IsDead());
 			Assert.AreNotEqual(null, final.action);
 			Assert.AreEqual(1, final.count);
 			Assert.AreEqual(final.action.trigger, Final.Trigger.HqDeath);

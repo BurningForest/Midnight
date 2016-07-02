@@ -1,5 +1,6 @@
 ﻿using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
+using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Ussr.GunnersSF
 {
@@ -8,9 +9,9 @@ namespace Midnight.Instances.Ussr.GunnersSF
 		public static readonly Proto proto = new Proto<GunnersSF>() {
 			id = "sp_strelkiuzhnogofronta",
 			level = 1,
-			type = Type.platoon,
-			subtype = Subtype.artillery,
-			country = Country.ussr,
+			type = Type.Platoon,
+			subtype = Subtype.Artillery,
+			country = Country.USSR,
 
 			power = 1,
 			defense = 0,

@@ -31,6 +31,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Non-Nuget Packages\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sun.CardProtos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Non-Nuget Packages\Sun.CardProtos.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -105,10 +113,7 @@
     <Compile Include="Cards\Card.cs" />
     <Compile Include="Cards\CardFieldLocation.cs" />
     <Compile Include="Cards\CardLocation.cs" />
-    <Compile Include="Cards\Enums\County.cs" />
     <Compile Include="Cards\Enums\Location.cs" />
-    <Compile Include="Cards\Enums\Subtype.cs" />
-    <Compile Include="Cards\Enums\Type.cs" />
     <Compile Include="Cards\Props\Modifier.cs" />
     <Compile Include="Cards\Props\ModifierContainer.cs" />
     <Compile Include="Cards\Props\Property.cs" />
