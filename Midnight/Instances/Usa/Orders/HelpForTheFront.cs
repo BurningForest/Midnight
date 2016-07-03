@@ -7,7 +7,7 @@ using Midnight.Cards.Types;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
-namespace Midnight.Instances.Ussr.Orders
+namespace Midnight.Instances.Usa.Orders
 {
 	public class HelpForTheFront : Order
 	{
@@ -18,7 +18,7 @@ namespace Midnight.Instances.Ussr.Orders
 			ID = "so_budbditelnym",
 			Level = 1,
 			Type = Type.Order,
-			Country = Country.USSR,
+			Country = Country.USA,
 
 			Cost = 2,
 		};

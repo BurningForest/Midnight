@@ -2,6 +2,7 @@
 using Midnight.ChiefOperations;
 using Midnight.ChiefOperations.IoOptions;
 using Midnight.Core;
+using Midnight.Instances.Usa.Orders;
 using Midnight.Instances.Ussr.Orders;
 using Midnight.Tests.TestInstances;
 using Midnight.Utils;

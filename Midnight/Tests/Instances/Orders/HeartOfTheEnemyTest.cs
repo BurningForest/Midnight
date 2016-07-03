@@ -1,8 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Midnight.Core;
-using Midnight.Instances.Usa.Orders;
+using Midnight.Instances.Ussr.Orders;
 using Midnight.Tests.TestInstances;
-using Midnight.Triggers;
 using Midnight.Utils;
 
 namespace Midnight.Tests.Instances.Orders

@@ -7,7 +7,7 @@ using Midnight.Cards.Types;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
-namespace Midnight.Instances.Usa.Orders
+namespace Midnight.Instances.Ussr.Orders
 {
 	public class HeartOfTheEnemy : Order
 	{
@@ -17,7 +17,7 @@ namespace Midnight.Instances.Usa.Orders
 			ID = "uo_crushprussian",
 			Level = 1,
 			Type = Type.Order,
-			Country = Country.USA,
+			Country = Country.USSR,
 			
 			Cost = 2,
 		};

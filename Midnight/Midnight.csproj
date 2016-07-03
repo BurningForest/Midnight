@@ -164,7 +164,7 @@
     <Compile Include="Instances\Germany\Vehicles\T21.cs" />
     <Compile Include="Instances\Usa\Hqs\Training.cs" />
     <Compile Include="Instances\Usa\Hqs\TrainingCamp.cs" />
-    <Compile Include="Instances\Usa\Orders\HeartOfTheEnemy.cs" />
+    <Compile Include="Instances\Ussr\Orders\HeartOfTheEnemy.cs" />
     <Compile Include="Instances\Usa\Vehicles\Liberty.cs" />
     <Compile Include="Instances\Usa\Vehicles\M2Lght.cs" />
     <Compile Include="Instances\Usa\Vehicles\T18.cs" />
@@ -174,7 +174,7 @@
     <Compile Include="Instances\Ussr\Hqs\Training.cs" />
     <Compile Include="Instances\Ussr\Hqs\TrainingBase.cs" />
     <Compile Include="Instances\Ussr\Orders\CrushTheEnemy.cs" />
-    <Compile Include="Instances\Ussr\Orders\HelpForTheFront.cs" />
+    <Compile Include="Instances\Usa\Orders\HelpForTheFront.cs" />
     <Compile Include="Instances\Ussr\Orders\SteelFist.cs" />
     <Compile Include="Instances\Ussr\Platoons\GunnersSF.cs" />
     <Compile Include="Instances\Ussr\Vehicles\Ms1.cs" />
