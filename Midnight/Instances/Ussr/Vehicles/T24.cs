@@ -7,19 +7,8 @@ namespace Midnight.Instances.Ussr.Vehicles
 {
 	public class T24 : HeavyVehicle
 	{
-		public static readonly Proto proto = new ParameterizedProto<T24>() {
-			ID = "sv_t24",
-			Level = 1,
-			Type = Type.Vehicle,
-			Subtype = Subtype.Medium,
-			Country = Country.USSR,
-
-			Power = 1,
-			Defense = 0,
-			Toughness = 9,
-			Increase = 1,
-			Cost = 5,
-		};
+        public static readonly Proto proto = new CardProtosRepository()
+            .GetParameterizedProto<T24>("sv_t-24");
 
 		public override Proto GetProto ()
 		{

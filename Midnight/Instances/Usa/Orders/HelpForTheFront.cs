@@ -11,17 +11,11 @@ namespace Midnight.Instances.Usa.Orders
 {
 	public class HelpForTheFront : Order
 	{
-		// Возьмите карту.
-		// Восстановите 2 прочности своему штабу.
+        // Возьмите карту.
+        // Восстановите 2 прочности своему штабу.
 
-		public static readonly Proto proto = new ParameterizedProto<HelpForTheFront>() {
-			ID = "so_budbditelnym",
-			Level = 1,
-			Type = Type.Order,
-			Country = Country.USA,
-
-			Cost = 2,
-		};
+        public static readonly Proto proto = new CardProtosRepository()
+            .GetParameterizedProto<HelpForTheFront>("uo_ford_t");
 
 		public class HelpForTheFrontAbility : SpecificAbility
 		{

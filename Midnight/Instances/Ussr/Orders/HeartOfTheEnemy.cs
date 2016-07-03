@@ -2,25 +2,17 @@
 using Midnight.ActionManager;
 using Midnight.Actions;
 using Midnight.Cards;
-using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
 using Sun.CardProtos;
-using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Ussr.Orders
 {
-	public class HeartOfTheEnemy : Order
+    public class HeartOfTheEnemy : Order
 	{
-		// Нанесите 2 повреждения выбранному штабу, технике или взводу.
+        // Нанесите 2 повреждения выбранному штабу, технике или взводу.
 
-		public static readonly Proto proto = new ParameterizedProto<HeartOfTheEnemy>() {
-			ID = "uo_crushprussian",
-			Level = 1,
-			Type = Type.Order,
-			Country = Country.USSR,
-			
-			Cost = 2,
-		};
+        public static readonly Proto proto = new CardProtosRepository()
+            .GetParameterizedProto<HeartOfTheEnemy>("so_ilya_muromets");
 
 		public class HeartOfTheEnemyAbility : SpecificAbility
 		{

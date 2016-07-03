@@ -11,17 +11,11 @@ namespace Midnight.Instances.Germany.Orders
 {
 	public class EachBattle : Order
 	{
-		// Нанесите 2 повреждения выбранной технике.
-		// Восстановите 2 прочности вашему штабу.
+        // Нанесите 2 повреждения выбранной технике.
+        // Восстановите 2 прочности вашему штабу.
 
-		public static readonly Proto proto = new ParameterizedProto<EachBattle>() {
-			ID = "go_tagderwehrmacht",
-			Level = 1,
-			Type = Type.Order,
-			Country = Country.Germany,
-
-			Cost = 4,
-		};
+        public static readonly Proto proto = new CardProtosRepository()
+            .GetParameterizedProto<EachBattle>("go_paris-geschutz");
 
 		public class EachBattleAbility : SpecificAbility
 		{

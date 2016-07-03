@@ -3,12 +3,13 @@ using Midnight.Cards.Vehicles;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
-namespace Midnight.Instances.Ussr.Vehicles
+namespace Midnight.Instances.Germany.Vehicle
 {
-	public class Ms1 : LightVehicle
+	public class GrosstraktorII : MediumVehicle
 	{
         public static readonly Proto proto = new CardProtosRepository()
-            .GetParameterizedProto<Ms1>("sv_ms1");
+            .GetParameterizedProto<GrosstraktorII>("gv_grosstraktorII");
+
 
 		public override Proto GetProto ()
 		{

@@ -7,19 +7,8 @@ namespace Midnight.Instances.Usa.Vehicles
 {
 	public class Liberty : HeavyVehicle
 	{
-		public static readonly Proto proto = new ParameterizedProto<Liberty>() {
-			ID = "uv_mark7liberty",
-			Level = 1,
-			Type = Type.Vehicle,
-			Subtype = Subtype.Heavy,
-			Country = Country.USA,
-
-            Power = 4,
-			Defense = 0,
-			Toughness = 7,
-			Increase = 2,
-			Cost = 7,
-		};
+        public static readonly Proto proto = new CardProtosRepository()
+            .GetParameterizedProto<Liberty>("uv_mark8liberty");
 
 		public override Proto GetProto ()
 		{
