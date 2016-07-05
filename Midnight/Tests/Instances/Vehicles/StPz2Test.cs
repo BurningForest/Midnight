@@ -18,13 +18,13 @@ namespace Midnight.Tests.Instances.Vehicles
 		[TestMethod]
 		public void InGermany ()
 		{
-			CheckSupply<HqStrike>(Location.reserve);
+			CheckSupply<HqStrike>(Location.Reserve);
 		}
 
 		[TestMethod]
 		public void InUsa ()
 		{
-			CheckSupply<HqGuards>(Location.deck);
+			CheckSupply<HqGuards>(Location.Deck);
 		}
 
 		private void CheckSupply<TCard> (Location HeavyLocation)
@@ -51,7 +51,7 @@ namespace Midnight.Tests.Instances.Vehicles
 
 			player.io.StartGame();
 
-			Assert.AreEqual(Location.deck, Heavy.GetLocation().GetCurrent());
+			Assert.AreEqual(Location.Deck, Heavy.GetLocation().GetCurrent());
 
 			Assert.AreEqual(Status.Success, player.io.Deploy(new Io.Position() {
 				cardId = stPz2.id,
@@ -60,7 +60,7 @@ namespace Midnight.Tests.Instances.Vehicles
 			}));
 			
 			Assert.AreEqual(HeavyLocation, Heavy.GetLocation().GetCurrent());
-			Assert.AreEqual(Location.deck, Spatg.GetLocation().GetCurrent());
+			Assert.AreEqual(Location.Deck, Spatg.GetLocation().GetCurrent());
 
 			Assert.AreEqual(Status.Success, player.io.Attack(new Io.Target() {
 				sourceId = stPz2.id,

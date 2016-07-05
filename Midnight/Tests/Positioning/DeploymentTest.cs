@@ -41,7 +41,7 @@ namespace Midnight.Tests.Positioning
 
 			manage.StartGame(player);
 
-			Assert.AreEqual(3, enemy.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(3, enemy.cards.CountLocation(Location.Reserve));
 			Assert.AreEqual(5, player.GetTotalIncrease());
 			Assert.AreEqual(5, player.GetResources());
 			Assert.AreEqual(4, enemy.GetTotalIncrease());

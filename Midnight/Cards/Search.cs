@@ -13,7 +13,7 @@ namespace Midnight.Cards
 
 		private HashSet<Type> types = new HashSet<Type>();
 		private HashSet<Subtype> subtypes = new HashSet<Subtype>();
-		private HashSet<Location> locations = new HashSet<Location>();
+		private HashSet<Location?> locations = new HashSet<Location?>();
 
 		private readonly Chief chief;
 
@@ -142,31 +142,31 @@ namespace Midnight.Cards
 
 		public Search Battlefield ()
 		{
-			locations.Add(Location.battlefield);
+			locations.Add(Location.Battlefield);
 			return this;
 		}
 
 		public Search Reserve ()
 		{
-			locations.Add(Location.reserve);
+			locations.Add(Location.Reserve);
 			return this;
 		}
 
 		public Search Graveyard ()
 		{
-			locations.Add(Location.graveyard);
+			locations.Add(Location.Graveyard);
 			return this;
 		}
 
 		public Search Support ()
 		{
-			locations.Add(Location.support);
+			locations.Add(Location.Support);
 			return this;
 		}
 
 		public Search Deck ()
 		{
-			locations.Add(Location.deck);
+			locations.Add(Location.Deck);
 			return this;
 		}
 	}

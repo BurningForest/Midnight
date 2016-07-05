@@ -48,12 +48,12 @@ namespace Midnight.Tests.Triggers
 			manage.EndTurn(enemy);
 
 			Assert.AreEqual(null, final.action);
-			Assert.AreEqual(0, player.cards.CountLocation(Location.deck));
+			Assert.AreEqual(0, player.cards.CountLocation(Location.Deck));
 
 			manage.EndTurn(player);
 
 			Assert.AreEqual(null, final.action);
-			Assert.AreEqual(0, player.cards.CountLocation(Location.deck));
+			Assert.AreEqual(0, player.cards.CountLocation(Location.Deck));
 
 			manage.EndTurn(enemy);
 

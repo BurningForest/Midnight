@@ -18,7 +18,7 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			var reserve = chief.cards.FromLocationShuffled(Location.reserve);
+			var reserve = chief.cards.FromLocationShuffled(Location.Reserve);
 			var shuffle = System.Math.Min(count, reserve.Count);
 
 			for (var i = 0; i < shuffle; i++) {

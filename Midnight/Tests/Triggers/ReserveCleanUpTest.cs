@@ -41,43 +41,43 @@ namespace Midnight.Tests.Triggers
 
 			manage.StartGame(player);
 
-			Assert.AreEqual(6, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(6, player.cards.CountLocation(Location.Reserve));
 
 			manage.EndTurn(player);
 			manage.EndTurn(enemy);
 
-			Assert.AreEqual(0, player.cards.CountLocation(Location.graveyard));
-			Assert.AreEqual(6, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(0, player.cards.CountLocation(Location.Graveyard));
+			Assert.AreEqual(6, player.cards.CountLocation(Location.Reserve));
 
 			manage.Draw(player);
 			
-			Assert.AreEqual(0, player.cards.CountLocation(Location.graveyard));
-			Assert.AreEqual(7, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(0, player.cards.CountLocation(Location.Graveyard));
+			Assert.AreEqual(7, player.cards.CountLocation(Location.Reserve));
 
 			manage.EndTurn(player);
 			
-			Assert.AreEqual(1, player.cards.CountLocation(Location.graveyard));
-			Assert.AreEqual(6, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(1, player.cards.CountLocation(Location.Graveyard));
+			Assert.AreEqual(6, player.cards.CountLocation(Location.Reserve));
 
 			manage.Draw(player);
 			
-			Assert.AreEqual(1, player.cards.CountLocation(Location.graveyard));
-			Assert.AreEqual(7, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(1, player.cards.CountLocation(Location.Graveyard));
+			Assert.AreEqual(7, player.cards.CountLocation(Location.Reserve));
 
 			manage.EndTurn(enemy);
 			
-			Assert.AreEqual(1, player.cards.CountLocation(Location.graveyard));
-			Assert.AreEqual(7, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(1, player.cards.CountLocation(Location.Graveyard));
+			Assert.AreEqual(7, player.cards.CountLocation(Location.Reserve));
 
 			manage.Draw(player, 2);
 			
-			Assert.AreEqual(1, player.cards.CountLocation(Location.graveyard));
-			Assert.AreEqual(9, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(1, player.cards.CountLocation(Location.Graveyard));
+			Assert.AreEqual(9, player.cards.CountLocation(Location.Reserve));
 
 			manage.EndTurn(player);
 			
-			Assert.AreEqual(4, player.cards.CountLocation(Location.graveyard));
-			Assert.AreEqual(6, player.cards.CountLocation(Location.reserve));
+			Assert.AreEqual(4, player.cards.CountLocation(Location.Graveyard));
+			Assert.AreEqual(6, player.cards.CountLocation(Location.Reserve));
 
 		}
 	}

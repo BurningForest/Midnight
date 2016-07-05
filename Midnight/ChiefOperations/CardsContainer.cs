@@ -81,7 +81,7 @@ namespace Midnight.ChiefOperations
 
 		public Card GetRandomDeckCard ()
 		{
-			var deck = FromLocation(Location.deck);
+			var deck = FromLocation(Location.Deck);
 
 			if (deck.Count == 0) {
 				return null;
@@ -94,7 +94,7 @@ namespace Midnight.ChiefOperations
 
 		public List<Card> GetShuffledDeck ()
 		{
-			return FromLocationShuffled(Location.deck);
+			return FromLocationShuffled(Location.Deck);
 		}
 
 		public Platoon GetPlatoonBySubtype (Subtype subtype)

@@ -24,7 +24,7 @@ namespace Midnight.Cards
 
 		private void ToBattefield ()
 		{
-			location = Location.battlefield;
+			location = Location.Battlefield;
 		}
 
 		public Cell GetCell ()

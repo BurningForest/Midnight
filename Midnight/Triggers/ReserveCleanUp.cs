@@ -27,7 +27,7 @@ namespace Midnight.Triggers
 				return;
 			}
 
-			var diff = action.chief.cards.CountLocation(Location.reserve) - max;
+			var diff = action.chief.cards.CountLocation(Location.Reserve) - max;
 
 			if (diff > 0) {
 				action.AddChild(new CleanUp(action.chief, diff));
