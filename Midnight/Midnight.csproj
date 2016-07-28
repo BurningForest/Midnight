@@ -162,6 +162,7 @@
     <Compile Include="Instances\Germany\Vehicles\LkII.cs" />
     <Compile Include="Instances\Germany\Vehicles\StPz2.cs" />
     <Compile Include="Instances\Germany\Vehicles\GrosstraktorII.cs" />
+    <Compile Include="Instances\InstancesFactory.cs" />
     <Compile Include="Instances\Usa\Hqs\TrainingCamp.cs" />
     <Compile Include="Instances\Ussr\Orders\HeartOfTheEnemy.cs" />
     <Compile Include="Instances\Usa\Vehicles\Liberty.cs" />
