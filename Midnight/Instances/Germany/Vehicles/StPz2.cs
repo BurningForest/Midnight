@@ -4,7 +4,7 @@ using Midnight.Cards.Vehicles;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
-namespace Midnight.Instances.Germany.Vehicle
+namespace Midnight.Instances.Germany.Vehicles
 {
 	public class StPz2 : SpgVehicle
 	{

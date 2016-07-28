@@ -5,7 +5,7 @@ using Midnight.Cards.Types;
 using Midnight.ChiefOperations;
 using Midnight.Core;
 using Midnight.Instances.Germany.Orders;
-using Midnight.Instances.Germany.Vehicle;
+using Midnight.Instances.Germany.Vehicles;
 using Midnight.Tests.TestInstances;
 using Midnight.Utils;
 

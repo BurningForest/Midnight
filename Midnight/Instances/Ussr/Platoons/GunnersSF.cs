@@ -3,7 +3,7 @@ using Midnight.Cards.Types;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
-namespace Midnight.Instances.Ussr.GunnersSF
+namespace Midnight.Instances.Ussr.Platoons
 {
 	public class GunnersSF : Platoon.Enforce
 	{
