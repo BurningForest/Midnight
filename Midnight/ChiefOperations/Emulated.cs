@@ -129,7 +129,7 @@ namespace Midnight.ChiefOperations
 					list.Add(((AddModifier)action).modifier);
 				}
 
-				list.AddRange(CollectModifiersFrom(action.GetChildren()));
+				list.AddRange(CollectModifiersFrom(action.Children));
 			}
 
 			return list;

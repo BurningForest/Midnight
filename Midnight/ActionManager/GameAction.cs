@@ -32,9 +32,12 @@ namespace Midnight.ActionManager
 			return status;
 		}
 
-		public List<GameAction> GetChildren ()
+		public List<GameAction> Children
 		{
-			return children;
+            get
+            {
+                return children;
+            }
 		}
 
 		public GameAction AddChild (GameAction action)

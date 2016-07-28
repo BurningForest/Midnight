@@ -77,7 +77,7 @@ namespace Midnight.ActionManager
 
 			action.Close();
 
-			foreach (GameAction child in action.GetChildren()) {
+			foreach (GameAction child in action.Children) {
 				ForceLaunch(child);
 			}
 
