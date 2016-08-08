@@ -219,7 +219,7 @@ namespace Midnight.ChiefOperations
 
 		public Status EndTurn ()
 		{
-			return manage.EndTurn(chief).GetStatus();
+			return chief.IsTurnOwner() ? manage.EndTurn(chief).GetStatus() : Status.NotTurnOfSource;
 		}
 
 		public Status Surrender ()
