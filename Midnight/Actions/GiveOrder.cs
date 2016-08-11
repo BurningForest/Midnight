@@ -8,8 +8,8 @@ namespace Midnight.Actions
 {
 	public class GiveOrder : GameAction<GiveOrder>
 	{
-		private readonly Order source;
-		private readonly FieldCard target;
+		public readonly Order source;
+		public readonly FieldCard target;
 
 		public GiveOrder (Order source, FieldCard target)
 		{
