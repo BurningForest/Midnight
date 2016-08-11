@@ -8,15 +8,12 @@ namespace Midnight.Abilities.Aggression
 	{
 		public Status Validate (FieldCard target)
 		{
+            //Console.WriteLine(target.GetProto().ID);
 			if (!target.GetFieldLocation().IsBattlefield()) {
 				return Status.NotAtBattlefield;
 			}
 
-			if (!card.IsEnemyOf(target)) {
-				return Status.TargetIsFriendly;
-			}
-
-			return ValidateRange(target);
+			return !card.IsEnemyOf(target) ? Status.TargetIsFriendly : ValidateRange(target);
 		}
 
 		public abstract Status ValidateRange (FieldCard target);

@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
-
-namespace Midnight.ChiefOperations.IoOptions
+﻿namespace Midnight.ChiefOperations.IoOptions
 {
 	public class CardOption
 	{
-		public int cardId;
-		public AttackOptions attacks;
-		public DeployOptions deploys;
-		public MoveOptions   moves;
-		public OrderOptions  Orders;
-		
-		public bool IsEmpty ()
+		public int CardId;
+		public AttackOptions Attacks { get; set; }
+		public DeployOptions Deploys { get; set; }
+        public MoveOptions Moves { get; set; }
+        public OrderOptions Orders { get; set; }
+
+        public bool IsEmpty ()
 		{
-			return null == attacks
-				&& null == deploys
-				&& null == moves
+			return null == Attacks
+				&& null == Deploys
+				&& null == Moves
 				&& null == Orders;
 		}
 	}

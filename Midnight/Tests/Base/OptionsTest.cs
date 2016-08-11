@@ -51,24 +51,24 @@ namespace Midnight.Tests.Base
 			CardOption LightOption = options[0];
 			CardOption medicOption = options[2];
 
-			Assert.AreEqual(Light.id, LightOption.cardId);
-			Assert.AreEqual(medic.id, medicOption.cardId);
+			Assert.AreEqual(Light.id, LightOption.CardId);
+			Assert.AreEqual(medic.id, medicOption.CardId);
 
-			Assert.AreEqual(null, LightOption.attacks);
-			Assert.AreEqual(null, LightOption.moves);
+			Assert.AreEqual(null, LightOption.Attacks);
+			Assert.AreEqual(null, LightOption.Moves);
 			Assert.AreEqual(null, LightOption.Orders);
 
-			Assert.AreEqual(TargetType.Cell, LightOption.deploys.type);
-			Assert.AreEqual(2, LightOption.deploys.cells.Length);
+			Assert.AreEqual(TargetType.Cell, LightOption.Deploys.type);
+			Assert.AreEqual(2, LightOption.Deploys.cells.Length);
 
-			Assert.AreEqual(1, LightOption.deploys.cells[0].x);
-			Assert.AreEqual(0, LightOption.deploys.cells[0].y);
+			Assert.AreEqual(1, LightOption.Deploys.cells[0].x);
+			Assert.AreEqual(0, LightOption.Deploys.cells[0].y);
 
-			Assert.AreEqual(1, LightOption.deploys.cells[1].x);
-			Assert.AreEqual(1, LightOption.deploys.cells[1].y);
+			Assert.AreEqual(1, LightOption.Deploys.cells[1].x);
+			Assert.AreEqual(1, LightOption.Deploys.cells[1].y);
 
-			Assert.AreEqual(TargetType.Global, medicOption.deploys.type);
-			Assert.AreEqual(null, medicOption.deploys.cells);
+			Assert.AreEqual(TargetType.Global, medicOption.Deploys.type);
+			Assert.AreEqual(null, medicOption.Deploys.cells);
 
 			player.io.Deploy(new Io.Position() {
 				cardId = Light.id,
@@ -79,8 +79,8 @@ namespace Midnight.Tests.Base
 			var newOptions = player.io.options.GetAvailable();
 
 			Assert.AreEqual(2, newOptions.Count); // 2 movements
-			Assert.AreEqual(Light.id, newOptions[0].cardId);
-			Assert.AreEqual(Medium.id, newOptions[1].cardId);
+			Assert.AreEqual(Light.id, newOptions[0].CardId);
+			Assert.AreEqual(Medium.id, newOptions[1].CardId);
 		}
 
 		[TestMethod]
@@ -104,10 +104,10 @@ namespace Midnight.Tests.Base
 			var options = player.io.options.GetAvailable();
 
 			Assert.AreEqual(1, options.Count);
-			Assert.AreEqual(null, options[0].deploys);
+			Assert.AreEqual(null, options[0].Deploys);
 			Assert.AreEqual(null, options[0].Orders);
 
-			var moves = options[0].moves;
+			var moves = options[0].Moves;
 
 			Assert.AreEqual(2, moves.cells.Length);
 			Assert.AreEqual(0, moves.cells[0].x);
@@ -139,10 +139,10 @@ namespace Midnight.Tests.Base
 			var options = player.io.options.GetAvailable();
 
 			Assert.AreEqual(1, options.Count);
-			Assert.AreEqual(null, options[0].deploys);
+			Assert.AreEqual(null, options[0].Deploys);
 			Assert.AreEqual(null, options[0].Orders);
 
-			var attacks = options[0].attacks;
+			var attacks = options[0].Attacks;
 
 			Assert.AreEqual(2, attacks.targets.Length);
 			Assert.AreEqual(Heavy.id, attacks.targets[0].targetId);
@@ -177,16 +177,16 @@ namespace Midnight.Tests.Base
 			var frontOpt = options[0];
 			var crushOpt = options[1];
 			
-			Assert.AreEqual(null, frontOpt.deploys);
-			Assert.AreEqual(null, frontOpt.attacks);
-			Assert.AreEqual(null, frontOpt.moves);
+			Assert.AreEqual(null, frontOpt.Deploys);
+			Assert.AreEqual(null, frontOpt.Attacks);
+			Assert.AreEqual(null, frontOpt.Moves);
 
 			Assert.AreEqual(TargetType.Global, frontOpt.Orders.type);
 			Assert.AreEqual(null, frontOpt.Orders.targets);
 
-			Assert.AreEqual(null, crushOpt.deploys);
-			Assert.AreEqual(null, crushOpt.attacks);
-			Assert.AreEqual(null, crushOpt.moves);
+			Assert.AreEqual(null, crushOpt.Deploys);
+			Assert.AreEqual(null, crushOpt.Attacks);
+			Assert.AreEqual(null, crushOpt.Moves);
 
 			Assert.AreEqual(TargetType.Card, crushOpt.Orders.type);
 			Assert.AreEqual(1, crushOpt.Orders.targets.Length);

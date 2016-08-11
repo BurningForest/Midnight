@@ -4,6 +4,7 @@ using Midnight.Abilities.Aggression;
 using Midnight.Core;
 using Midnight.Cards.Types;
 using System;
+using System.Linq;
 
 namespace Midnight.ChiefOperations.IoOptions.Collectors
 {
@@ -29,17 +30,8 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 		private List<FieldCard> GetAllowedTargets ()
 		{
 			var weapon = card.abilities.Get<Weapon>();
-			var list = new List<FieldCard>();
 
-			foreach (var card in card.GetChief().GetOpponent().cards.GetAll()) {
-				var fieldCard = card as FieldCard;
-
-				if (fieldCard != null && weapon.Validate(fieldCard) == Status.Success) {
-					list.Add(fieldCard);
-				}
-			}
-
-			return list;
+		    return card.GetChief().GetOpponent().cards.GetAll().OfType<FieldCard>().Where(fieldCard => weapon.Validate(fieldCard) == Status.Success).ToList();
 		}
 	}
 }
