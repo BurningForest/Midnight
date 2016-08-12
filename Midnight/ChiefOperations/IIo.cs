@@ -15,5 +15,7 @@ namespace Midnight.ChiefOperations
 		Status Order  (Io.SingleCard command);
 
 		Status EndTurn ();
+
+        Status Surrender();
 	}
 }

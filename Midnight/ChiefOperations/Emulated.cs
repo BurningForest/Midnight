@@ -83,7 +83,12 @@ namespace Midnight.ChiefOperations
 			return GetChief().io.EndTurn();
 		}
 
-		public List<Prediction> GetDamagePredictions ()
+        public Status Surrender()
+        {
+            return GetChief().io.Surrender();
+        }
+
+        public List<Prediction> GetDamagePredictions ()
 		{
 			return GetPropertyPredictions(Property.damage);
 		}
@@ -134,5 +139,5 @@ namespace Midnight.ChiefOperations
 
 			return list;
 		}
-	}
+    }
 }
