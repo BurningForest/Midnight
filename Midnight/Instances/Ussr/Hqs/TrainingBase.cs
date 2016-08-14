@@ -8,7 +8,7 @@ namespace Midnight.Instances.Ussr.Hqs
 	public class TrainingBase : Hq
 	{
         public static readonly Proto proto = new CardProtosRepository()
-            .GetParameterizedProto<TrainingBase>("sh_orlovskoe_bu");
+            .GetParameterizedProto<TrainingBase>("sh_orel");
 
 		public override Proto GetProto ()
 		{

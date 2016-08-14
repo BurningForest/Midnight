@@ -8,7 +8,7 @@ namespace Midnight.Instances.Germany.Hqs
 	public class Training : Hq
 	{
         public static readonly Proto proto = new CardProtosRepository()
-            .GetParameterizedProto<Training>("gh_pztrs_wunsdorf");
+            .GetParameterizedProto<Training>("gh_wunsdorf");
 
 		public override Proto GetProto ()
 		{

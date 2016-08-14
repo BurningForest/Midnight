@@ -159,7 +159,7 @@ namespace Midnight.Tests.Base
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
 
-			var front = player.cards.factory.Create<HelpForTheFront>();
+			var front = player.cards.factory.Create<FordT>();
 			var crush = player.cards.factory.Create<CrushTheEnemy>();
 			var Spatg = enemy.cards.factory.Create<TankSpatg>();
 

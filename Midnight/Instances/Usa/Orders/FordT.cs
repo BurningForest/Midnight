@@ -7,31 +7,29 @@ using Midnight.Cards.Types;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
-namespace Midnight.Instances.Germany.Orders
+namespace Midnight.Instances.Usa.Orders
 {
-	public class EachBattle : Order
+	public class FordT : Order
 	{
-        // Нанесите 2 повреждения выбранной технике.
-        // Восстановите 2 прочности вашему штабу.
+        // Возьмите карту.
+        // Восстановите 2 прочности своему штабу.
 
         public static readonly Proto proto = new CardProtosRepository()
-            .GetParameterizedProto<EachBattle>("go_paris-geschutz");
+            .GetParameterizedProto<FordT>("uo_ford_t");
 
-		public class EachBattleAbility : SpecificAbility
+		public class HelpForTheFrontAbility : SpecificAbility
 		{
 			protected override GameAction[] Actions (ForefrontCard target)
 			{
 				return new GameAction[] {
-					new DealDamage(2, card, target),
+					new DrawRandom(chief),
 					new HealDamage(2, card, chief.cards.GetHq())
 				};
 			}
 
 			protected override Search Targets (Search search)
 			{
-				return search
-					.Enemy().Forefront()
-					.Vehicle();
+				return null;
 			}
 		}
 
@@ -44,7 +42,7 @@ namespace Midnight.Instances.Germany.Orders
 		{
 			base.InitAbilities();
 
-			abilities.Add(new EachBattleAbility());
+			abilities.Add(new HelpForTheFrontAbility());
 		}
 	}
 }

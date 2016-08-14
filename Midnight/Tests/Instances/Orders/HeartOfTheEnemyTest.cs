@@ -23,8 +23,8 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.SetResources(player, 50);
 
-			var heart1 = player.cards.factory.Create<HeartOfTheEnemy>();
-			var heart2 = player.cards.factory.Create<HeartOfTheEnemy>();
+			var heart1 = player.cards.factory.Create<IlyaMuromets>();
+			var heart2 = player.cards.factory.Create<IlyaMuromets>();
 
 			var HQ = enemy.cards.factory.CreateDefaultHq<HqStrike>();
 			var tank = enemy.cards.factory.Create<TankMedium>();

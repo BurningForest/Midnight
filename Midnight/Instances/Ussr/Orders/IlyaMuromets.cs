@@ -7,12 +7,12 @@ using Sun.CardProtos;
 
 namespace Midnight.Instances.Ussr.Orders
 {
-    public class HeartOfTheEnemy : Order
+    public class IlyaMuromets : Order
 	{
         // Нанесите 2 повреждения выбранному штабу, технике или взводу.
 
         public static readonly Proto proto = new CardProtosRepository()
-            .GetParameterizedProto<HeartOfTheEnemy>("so_ilya_muromets");
+            .GetParameterizedProto<IlyaMuromets>("so_ilya_muromets");
 
 		public class HeartOfTheEnemyAbility : SpecificAbility
 		{

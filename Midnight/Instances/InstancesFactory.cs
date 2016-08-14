@@ -20,14 +20,14 @@ namespace Midnight.Instances
         {
             //Germany
             { Training.proto.ID, Training.proto },
-            { EachBattle.proto.ID, EachBattle.proto },
+            { ParisGun.proto.ID, ParisGun.proto },
             { A7V.proto.ID, A7V.proto },
-            { GrosstraktorII.proto.ID, GrosstraktorII.proto },
-            { LkII.proto.ID, LkII.proto },
+            { Grosstraktor2.proto.ID, Grosstraktor2.proto },
+            { Lk2.proto.ID, Lk2.proto },
             { Schlepper25PS.proto.ID, Schlepper25PS.proto },
             //USA
             { TrainingCamp.proto.ID, TrainingCamp.proto },
-            { HelpForTheFront.proto.ID, HelpForTheFront.proto },
+            { FordT.proto.ID, FordT.proto },
             { Liberty.proto.ID, Liberty.proto },
             { M1919.proto.ID, M1919.proto },
             { M1921.proto.ID, M1921.proto },
@@ -35,9 +35,9 @@ namespace Midnight.Instances
             { T1Light.proto.ID, T1Light.proto },
             //USSR
             { TrainingBase.proto.ID, TrainingBase.proto },
-            { HeartOfTheEnemy.proto.ID, HeartOfTheEnemy.proto },
+            { IlyaMuromets.proto.ID, IlyaMuromets.proto },
             { Ms1.proto.ID, Ms1.proto },
-            { RicardoTank.proto.ID, RicardoTank.proto },
+            { Ricardo.proto.ID, Ricardo.proto },
             { Su1.proto.ID, Su1.proto },
             { T24.proto.ID, T24.proto }
         };

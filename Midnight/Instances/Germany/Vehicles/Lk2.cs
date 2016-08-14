@@ -5,10 +5,10 @@ using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Germany.Vehicles
 {
-	public class LkII : LightVehicle
+	public class Lk2 : LightVehicle
 	{
         public static readonly Proto proto = new CardProtosRepository()
-            .GetParameterizedProto<LkII>("gv_lkII");
+            .GetParameterizedProto<Lk2>("gv_lk2");
 
 		public override Proto GetProto ()
 		{

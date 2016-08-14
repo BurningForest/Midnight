@@ -21,7 +21,7 @@ namespace Midnight.Tests.Instances.Orders
 			var player = engine.chiefs[0];
 
 			var HQ = player.cards.factory.CreateDefaultHq<HqStrike>();
-			var help = player.cards.factory.Create<HelpForTheFront>();
+			var help = player.cards.factory.Create<FordT>();
 			var tank = player.cards.factory.Create<TankMedium>();
 
 			manage.Draw(help);

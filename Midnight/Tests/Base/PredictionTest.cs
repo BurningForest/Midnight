@@ -25,7 +25,7 @@ namespace Midnight.Tests.Base
 			var strike = player.cards.factory.CreateDefaultHq<HqStrike>();
 			var Medium = player.cards.factory.Create<TankMedium>();
 			var Light  = player.cards.factory.Create<TankLight>();
-			var Order  = player.cards.factory.Create<EachBattle>();
+			var Order  = player.cards.factory.Create<ParisGun>();
 			var Platoon = player.cards.factory.Create<PlatoonEnforceArtillery>();
 
 			var guards = enemy.cards.factory.CreateDefaultHq<HqGuards>();

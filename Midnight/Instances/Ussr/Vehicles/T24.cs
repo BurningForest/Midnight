@@ -8,7 +8,7 @@ namespace Midnight.Instances.Ussr.Vehicles
 	public class T24 : HeavyVehicle
 	{
         public static readonly Proto proto = new CardProtosRepository()
-            .GetParameterizedProto<T24>("sv_t-24");
+            .GetParameterizedProto<T24>("sv_t24");
 
 		public override Proto GetProto ()
 		{

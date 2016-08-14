@@ -24,8 +24,8 @@ namespace Midnight.Tests.Instances.Orders
 			manage.SetResources(player, 50);
 
 			var myHq = player.cards.factory.CreateDefaultHq<HqGuards>();
-			var each1 = player.cards.factory.Create<EachBattle>();
-			var each2 = player.cards.factory.Create<EachBattle>();
+			var each1 = player.cards.factory.Create<ParisGun>();
+			var each2 = player.cards.factory.Create<ParisGun>();
 
 			var hisHq = enemy.cards.factory.CreateDefaultHq<HqGuards>();
 			var Spg1 = enemy.cards.factory.Create<TankSpg>();
@@ -82,7 +82,7 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.SetResources(player, 50);
 			
-			var each = player.cards.factory.Create<EachBattle>();
+			var each = player.cards.factory.Create<ParisGun>();
 			var Spg  = enemy.cards.factory.Create<TankSpg>();
 
 			manage.Position(Spg, field.GetCell(3, 2));
