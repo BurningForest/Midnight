@@ -9,72 +9,65 @@ namespace Midnight.ChiefOperations
 	{
 		public class Target
 		{
-			public int sourceId;
-			public int targetId;
+			public int SourceId { get; set; }
+			public int TargetId { get; set; }
 		}
 
 		public class SingleCard
 		{
-			public int cardId;
+			public int CardId { get; set; }
 		}
 
 		public class Position
 		{
-			public int cardId;
-			public int x;
-			public int y;
+			public int CardId { get; set; }
+			public int X { get; set; }
+			public int Y { get; set; }
 		}
 
-		private readonly Chief chief;
-		private Engine engine;
-		private Manage manage;
-		public readonly Options options;
+		private readonly Chief _chief;
+		private Engine _engine;
+		private Manage _manage;
+	    public Options Options { get; }
 
-		public Io (Chief chief)
+	    public Io (Chief chief)
 		{
-			this.chief = chief;
+			_chief = chief;
 
-			options = new Options(chief);
+			Options = new Options(chief);
 		}
 
 		private Card GetCard (int id)
 		{
 			return id == 0
 				? null
-				: engine.cache.Get(id);
+				: _engine.cache.Get(id);
 		}
 
 		public void SetEngine (Engine engine)
 		{
-			this.engine = engine;
-			manage = new Manage(engine);
+			this._engine = engine;
+			_manage = new Manage(engine);
 		}
 
 		private Status ValidateCards (int sourceId, int target)
 		{
-			if (!IsCardExists(target)) {
-				return Status.NoTargetCard;
-			}
-
-			return ValidateCard(sourceId);
+		    return !IsCardExists(target) ? Status.NoTargetCard : ValidateCard(sourceId);
 		}
 
-		private Status ValidateCard (int sourceId)
+	    private Status ValidateCard (int sourceId)
 		{
-			if (!IsCardExists(sourceId)) {
+			if (!IsCardExists(sourceId))
+            {
 				return Status.NoSourceCard;
 			}
 
-			if (!IsCardOwned(sourceId)) {
-				return Status.WrongCardOwner;
-			}
-
-			return Status.Success;
+			return !IsCardOwned(sourceId) ? Status.WrongCardOwner : Status.Success;
 		}
 
 		private Status ValidateCell (int x, int y)
 		{
-			return engine.field.IsSuitable(x, y) ? Status.Success : Status.NoSuchCell;
+			return _engine.field.IsSuitable(x, y) ? Status.Success : Status.NoSuchCell;
 		}
 
 		public bool IsCardExists (int id)
@@ -84,28 +77,24 @@ namespace Midnight.ChiefOperations
 
 		public bool IsCardOwned (int id)
 		{
-			return IsCardExists(id) && GetCard(id).IsControlledBy(chief);
+			return IsCardExists(id) && GetCard(id).IsControlledBy(_chief);
 		}
 
 		private Status ValidateCommand (Target command)
 		{
-			return ValidateCards(command.sourceId, command.targetId);
+			return ValidateCards(command.SourceId, command.TargetId);
 		}
 
 		private Status ValidateCommand (Position command)
 		{
-			var status = ValidateCard(command.cardId);
+			var status = ValidateCard(command.CardId);
 
-			if (status != Status.Success) {
-				return status;
-			}
-
-			return ValidateCell(command.x, command.y);
+			return status != Status.Success ? status : ValidateCell(command.X, command.Y);
 		}
 
 		private Status ValidateCommand (SingleCard command)
 		{
-			return ValidateCard(command.cardId);
+			return ValidateCard(command.CardId);
 		}
 
 		public Status Deploy (Position command)
@@ -116,30 +105,25 @@ namespace Midnight.ChiefOperations
 				return status;
 			}
 
-			var card = GetCard(command.cardId);
+			var card = GetCard(command.CardId);
 
-			if (card is FieldCard) {
-				return manage.Deploy((FieldCard)card, engine.field.GetCell(command.x, command.y)).GetStatus();
-			} else {
-				return Status.WrongCardType;
-			}
+		    var fieldCard = card as FieldCard;
+		    return fieldCard != null ? _manage.Deploy(fieldCard, _engine.field.GetCell(command.X, command.Y)).GetStatus() : Status.WrongCardType;
 		}
 
 		public Status Deploy (SingleCard command)
 		{
 			var status = ValidateCommand(command);
 
-			if (status != Status.Success) {
+			if (status != Status.Success)
+            {
 				return status;
 			}
 
-			var card = GetCard(command.cardId);
+			var card = GetCard(command.CardId);
 
-			if (card is Platoon) {
-				return manage.Deploy((Platoon)card).GetStatus();
-			} else {
-				return Status.WrongCardType;
-			}
+		    var platoon = card as Platoon;
+		    return platoon != null ? _manage.Deploy(platoon).GetStatus() : Status.WrongCardType;
 		}
 
 		public Status Move (Position command)
@@ -150,13 +134,10 @@ namespace Midnight.ChiefOperations
 				return status;
 			}
 
-			var card = GetCard(command.cardId);
+			var card = GetCard(command.CardId);
 
-			if (card is FieldCard) {
-				return manage.Move((FieldCard)card, engine.field.GetCell(command.x, command.y)).GetStatus();
-			} else {
-				return Status.WrongCardType;
-			}
+		    var fieldCard = card as FieldCard;
+		    return fieldCard != null ? _manage.Move(fieldCard, _engine.field.GetCell(command.X, command.Y)).GetStatus() : Status.WrongCardType;
 		}
 
 		public Status Attack (Target command)
@@ -167,64 +148,58 @@ namespace Midnight.ChiefOperations
 				return status;
 			}
 
-			var source = GetCard(command.sourceId);
-			var target = GetCard(command.targetId);
+			var source = GetCard(command.SourceId);
+			var target = GetCard(command.TargetId);
 
-			if (source is FieldCard && target is FieldCard) {
-				return manage.Fight((FieldCard)source, (FieldCard)target).GetStatus();
-			} else {
-				return Status.WrongCardType;
-			}
+		    var card = source as FieldCard;
+		    return card != null && target is FieldCard
+		        ? _manage.Fight(card, (FieldCard) target).GetStatus()
+		        : Status.WrongCardType;
 		}
 
 		public Status Order (Target command)
 		{
 			var status = ValidateCommand(command);
 
-			if (status != Status.Success) {
+			if (status != Status.Success)
+            {
 				return status;
 			}
 
-			var source = GetCard(command.sourceId);
-			var target = GetCard(command.targetId);
+			var source = GetCard(command.SourceId);
+			var target = GetCard(command.TargetId);
 
-			if (source is Order && target is FieldCard) {
-				return manage.Order((Order)source, (FieldCard)target).GetStatus();
-			} else {
-				return Status.WrongCardType;
-			}
+		    var order = source as Order;
+		    return order != null && target is FieldCard
+		        ? _manage.Order(order, (FieldCard) target).GetStatus()
+		        : Status.WrongCardType;
 		}
 
 		public Status Order (SingleCard command)
 		{
 			var status = ValidateCommand(command);
 
-			if (status != Status.Success) {
-				return status;
-			}
+			if (status != Status.Success) return status;
 
-			var source = GetCard(command.cardId);
+			var source = GetCard(command.CardId);
 
-			if (source is Order) {
-				return manage.Order((Order)source).GetStatus();
-			} else {
-				return Status.WrongCardType;
-			}
+		    var order = source as Order;
+		    return order != null ? _manage.Order(order).GetStatus() : Status.WrongCardType;
 		}
 
 		public Status StartGame ()
 		{
-			return manage.StartGame(chief).GetStatus();
+			return _manage.StartGame(_chief).GetStatus();
 		}
 
 		public Status EndTurn ()
 		{
-			return chief.IsTurnOwner() ? manage.EndTurn(chief).GetStatus() : Status.NotTurnOfSource;
+			return _chief.IsTurnOwner() ? _manage.EndTurn(_chief).GetStatus() : Status.NotTurnOfSource;
 		}
 
 		public Status Surrender ()
 		{
-			return manage.Surrender(chief).GetStatus();
+			return _manage.Surrender(_chief).GetStatus();
 		}
 
 

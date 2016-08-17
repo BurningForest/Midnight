@@ -54,8 +54,8 @@ namespace Midnight.Tests.Instances.Vehicles
 			enemy.io.StartGame();
 
 			Assert.AreEqual(attackStatus, enemy.io.Attack(new Io.Target() {
-				sourceId = Spg.id,
-				targetId = m2lt.id,
+				SourceId = Spg.id,
+				TargetId = m2lt.id,
 			}));
 		}
 

@@ -47,14 +47,14 @@ namespace Midnight.Tests.Base
 
 			emulated.Attack(
 				new Io.Target() {
-					sourceId = Medium.id,
-					targetId = Heavy.id
+					SourceId = Medium.id,
+					TargetId = Heavy.id
 				}
 			);
 			emulated.Order(
 				new Io.Target() {
-					sourceId = Order.id,
-					targetId = Heavy.id
+					SourceId = Order.id,
+					TargetId = Heavy.id
 				}
 			);
 
@@ -62,8 +62,8 @@ namespace Midnight.Tests.Base
 				Status.AbilityIsUsed,
 				emulated.Attack(
 					new Io.Target() {
-						sourceId = Medium.id,
-						targetId = Heavy.id
+						SourceId = Medium.id,
+						TargetId = Heavy.id
 					}
 				)
 			);
@@ -72,8 +72,8 @@ namespace Midnight.Tests.Base
 				Status.NotAtReserve,
 				emulated.Order(
 					new Io.Target() {
-						sourceId = Order.id,
-						targetId = Heavy.id
+						SourceId = Order.id,
+						TargetId = Heavy.id
 					}
 				)
 			);
@@ -92,26 +92,28 @@ namespace Midnight.Tests.Base
 
 			Assert.AreEqual(
 				Status.Success,
-				emulated.Deploy(new Io.Position() {
-					cardId = Light.id,
-					x = 1,
-					y = 0
+				emulated.Deploy(new Io.Position
+				{
+					CardId = Light.id,
+					X = 1,
+					Y = 0
 				})
 			);
 
 			Assert.AreEqual(
 				Status.Success,
-				emulated.Move(new Io.Position() {
-					cardId = Light.id,
-					x = 1,
-					y = 1
+				emulated.Move(new Io.Position
+				{
+					CardId = Light.id,
+					X = 1,
+					Y = 1
 				})
 			);
 
 			Assert.AreEqual(
 				Status.Success,
 				emulated.Deploy(new Io.SingleCard() {
-					cardId = Platoon.id
+					CardId = Platoon.id
 				})
 			);
 			Assert.AreEqual( Status.Success, emulated.EndTurn() );

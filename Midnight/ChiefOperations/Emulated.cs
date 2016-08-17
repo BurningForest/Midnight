@@ -128,7 +128,7 @@ namespace Midnight.ChiefOperations
             return CollectModifiersFrom(_actions);
         }
 
-        private static List<Modifier> CollectModifiersFrom(List<GameAction> actions)
+        private  List<Modifier> CollectModifiersFrom(List<GameAction> actions)
         {
             var list = new List<Modifier>();
 

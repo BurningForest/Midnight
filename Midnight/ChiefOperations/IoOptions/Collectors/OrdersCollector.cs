@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Midnight.Cards;
-using Midnight.Abilities.Positioning;
-using Midnight.Core;
-using Midnight.Battlefield;
+﻿using Midnight.Cards;
 using Midnight.Abilities.Activating;
 using System.Linq;
 
@@ -18,14 +13,13 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 			var option = new OrderOptions();
 			var targets = ability.GetPotentialTargets();
 
-			if (targets != null) {
-				option.type = TargetType.Card;
-				option.targets = targets
-					.Select(t => new TargetOption() { targetId = t.id })
-					.ToArray();
-			}
+		    if (targets == null) return option;
+		    option.Type = TargetType.Card;
+		    option.Targets = targets
+		        .Select(t => new TargetOption { TargetId = t.id })
+		        .ToArray();
 
-			return option;
+		    return option;
 		}
 	}
 }

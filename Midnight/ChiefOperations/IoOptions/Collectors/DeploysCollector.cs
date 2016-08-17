@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using Midnight.Cards;
 using Midnight.Abilities.Positioning;
-using Midnight.Core;
 using Midnight.Battlefield;
-using System;
 
 namespace Midnight.ChiefOperations.IoOptions.Collectors
 {
@@ -13,24 +11,25 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 
 		protected override DeployOptions GetOptions (Deployment ability)
 		{
-			if (ability.IsWithoutCell()) {
-				return new DeployOptions() {};
+			if (ability.IsWithoutCell()) 
+{
+				return new DeployOptions();
 			}
 
 			var cells = new List<CellOption>();
 
-			foreach (Cell cell in ability.GetAllowedCells()) {
-				cells.Add(new CellOption() { x = cell.x, y = cell.y });
+			foreach (Cell cell in ability.GetAllowedCells())
+            {
+				cells.Add(new CellOption() { X = cell.x, Y = cell.y });
 			}
 
-			if (cells.Count == 0) {
-				return null;
-			} else {
-				return new DeployOptions() {
-					type = TargetType.Cell,
-					cells = cells.ToArray()
-				};
-			}
+		    return cells.Count == 0
+		        ? null
+		        : new DeployOptions
+		        {
+		            Type = TargetType.Cell,
+		            Cells = cells.ToArray()
+		        };
 		}
 	}
 }

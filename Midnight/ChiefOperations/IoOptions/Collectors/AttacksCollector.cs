@@ -3,7 +3,6 @@ using Midnight.Cards;
 using Midnight.Abilities.Aggression;
 using Midnight.Core;
 using Midnight.Cards.Types;
-using System;
 using System.Linq;
 
 namespace Midnight.ChiefOperations.IoOptions.Collectors
@@ -16,15 +15,20 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 		{
 			var attacks = new List<TargetOption>();
 
-			foreach (var target in GetAllowedTargets()) {
-				attacks.Add(new TargetOption() { targetId = target.id });
+		    var emulated = card.GetChief().GetEmulated();
+
+            foreach (var target in GetAllowedTargets())
+            {
+                emulated.Attack(new Io.Target
+                {
+                    SourceId = card.id,
+                    TargetId = target.id
+                });
+				attacks.Add(new TargetOption { TargetId = target.id, Predictions = emulated.GetDamagePredictions()});
+                emulated.Clear();
 			}
 
-			if (attacks.Count == 0) {
-				return null;
-			} else {
-				return new AttackOptions() { targets = attacks.ToArray() };
-			}
+			return attacks.Count == 0 ? null : new AttackOptions { Targets = attacks.ToArray() };
 		}
 
 		private List<FieldCard> GetAllowedTargets ()

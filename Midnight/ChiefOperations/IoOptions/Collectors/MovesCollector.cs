@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Midnight.Cards;
 using Midnight.Abilities.Positioning;
-using Midnight.Core;
 using Midnight.Battlefield;
 
 namespace Midnight.ChiefOperations.IoOptions.Collectors
@@ -15,15 +13,12 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 		{
 			var cells = new List<CellOption>();
 
-			foreach (Cell cell in ability.GetAllowedCells()) {
-				cells.Add(new CellOption() { x = cell.x, y = cell.y });
+			foreach (Cell cell in ability.GetAllowedCells())
+            {
+				cells.Add(new CellOption() { X = cell.x, Y = cell.y });
 			}
 
-			if (cells.Count == 0) {
-				return null;
-			} else {
-				return new MoveOptions() { cells = cells.ToArray() };
-			}
+			return cells.Count == 0 ? null : new MoveOptions { Cells = cells.ToArray() };
 		}
 	}
 }

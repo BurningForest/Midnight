@@ -53,18 +53,20 @@ namespace Midnight.Tests.Instances.Vehicles
 
 			Assert.AreEqual(Location.Deck, Heavy.GetLocation().GetCurrent());
 
-			Assert.AreEqual(Status.Success, player.io.Deploy(new Io.Position() {
-				cardId = stPz2.id,
-				x = 1,
-				y = 1
+			Assert.AreEqual(Status.Success, player.io.Deploy(new Io.Position
+			{
+				CardId = stPz2.id,
+				X = 1,
+				Y = 1
 			}));
 			
 			Assert.AreEqual(HeavyLocation, Heavy.GetLocation().GetCurrent());
 			Assert.AreEqual(Location.Deck, Spatg.GetLocation().GetCurrent());
 
-			Assert.AreEqual(Status.Success, player.io.Attack(new Io.Target() {
-				sourceId = stPz2.id,
-				targetId = hisHq.id
+			Assert.AreEqual(Status.Success, player.io.Attack(new Io.Target
+			{
+				SourceId = stPz2.id,
+				TargetId = hisHq.id
 			}));
 
 			Assert.AreEqual(stPz2.GetPower(), hisHq.GetDamage());

@@ -44,7 +44,7 @@ namespace Midnight.Tests.Base
 
 			player.io.StartGame();
 
-			var options = player.io.options.GetAvailable();
+			var options = player.io.Options.GetAvailable();
 
 			Assert.AreEqual(3, options.Count); // 1 movement + 2 deployment
 
@@ -58,25 +58,26 @@ namespace Midnight.Tests.Base
 			Assert.AreEqual(null, LightOption.Moves);
 			Assert.AreEqual(null, LightOption.Orders);
 
-			Assert.AreEqual(TargetType.Cell, LightOption.Deploys.type);
-			Assert.AreEqual(2, LightOption.Deploys.cells.Length);
+			Assert.AreEqual(TargetType.Cell, LightOption.Deploys.Type);
+			Assert.AreEqual(2, LightOption.Deploys.Cells.Length);
 
-			Assert.AreEqual(1, LightOption.Deploys.cells[0].x);
-			Assert.AreEqual(0, LightOption.Deploys.cells[0].y);
+			Assert.AreEqual(1, LightOption.Deploys.Cells[0].X);
+			Assert.AreEqual(0, LightOption.Deploys.Cells[0].Y);
 
-			Assert.AreEqual(1, LightOption.Deploys.cells[1].x);
-			Assert.AreEqual(1, LightOption.Deploys.cells[1].y);
+			Assert.AreEqual(1, LightOption.Deploys.Cells[1].X);
+			Assert.AreEqual(1, LightOption.Deploys.Cells[1].Y);
 
-			Assert.AreEqual(TargetType.Global, medicOption.Deploys.type);
-			Assert.AreEqual(null, medicOption.Deploys.cells);
+			Assert.AreEqual(TargetType.Global, medicOption.Deploys.Type);
+			Assert.AreEqual(null, medicOption.Deploys.Cells);
 
-			player.io.Deploy(new Io.Position() {
-				cardId = Light.id,
-				x = 1,
-				y = 0
+			player.io.Deploy(new Io.Position
+			{
+				CardId = Light.id,
+				X = 1,
+				Y = 0
 			});
 
-			var newOptions = player.io.options.GetAvailable();
+			var newOptions = player.io.Options.GetAvailable();
 
 			Assert.AreEqual(2, newOptions.Count); // 2 movements
 			Assert.AreEqual(Light.id, newOptions[0].CardId);
@@ -101,7 +102,7 @@ namespace Midnight.Tests.Base
 
 			manage.StartGame(player);
 
-			var options = player.io.options.GetAvailable();
+			var options = player.io.Options.GetAvailable();
 
 			Assert.AreEqual(1, options.Count);
 			Assert.AreEqual(null, options[0].Deploys);
@@ -109,11 +110,11 @@ namespace Midnight.Tests.Base
 
 			var moves = options[0].Moves;
 
-			Assert.AreEqual(2, moves.cells.Length);
-			Assert.AreEqual(0, moves.cells[0].x);
-			Assert.AreEqual(1, moves.cells[0].y);
-			Assert.AreEqual(1, moves.cells[1].x);
-			Assert.AreEqual(1, moves.cells[1].y);
+			Assert.AreEqual(2, moves.Cells.Length);
+			Assert.AreEqual(0, moves.Cells[0].X);
+			Assert.AreEqual(1, moves.Cells[0].Y);
+			Assert.AreEqual(1, moves.Cells[1].X);
+			Assert.AreEqual(1, moves.Cells[1].Y);
 		}
 
 		[TestMethod]
@@ -136,7 +137,7 @@ namespace Midnight.Tests.Base
 
 			manage.StartGame(player);
 
-			var options = player.io.options.GetAvailable();
+			var options = player.io.Options.GetAvailable();
 
 			Assert.AreEqual(1, options.Count);
 			Assert.AreEqual(null, options[0].Deploys);
@@ -144,9 +145,9 @@ namespace Midnight.Tests.Base
 
 			var attacks = options[0].Attacks;
 
-			Assert.AreEqual(2, attacks.targets.Length);
-			Assert.AreEqual(Heavy.id, attacks.targets[0].targetId);
-			Assert.AreEqual(Spatg.id, attacks.targets[1].targetId);
+			Assert.AreEqual(2, attacks.Targets.Length);
+			Assert.AreEqual(Heavy.id, attacks.Targets[0].TargetId);
+			Assert.AreEqual(Spatg.id, attacks.Targets[1].TargetId);
 		}
 
 		[TestMethod]
@@ -170,7 +171,7 @@ namespace Midnight.Tests.Base
 
 			manage.StartGame(player);
 
-			var options = player.io.options.GetAvailable();
+			var options = player.io.Options.GetAvailable();
 
 			Assert.AreEqual(2, options.Count);
 
@@ -181,16 +182,16 @@ namespace Midnight.Tests.Base
 			Assert.AreEqual(null, frontOpt.Attacks);
 			Assert.AreEqual(null, frontOpt.Moves);
 
-			Assert.AreEqual(TargetType.Global, frontOpt.Orders.type);
-			Assert.AreEqual(null, frontOpt.Orders.targets);
+			Assert.AreEqual(TargetType.Global, frontOpt.Orders.Type);
+			Assert.AreEqual(null, frontOpt.Orders.Targets);
 
 			Assert.AreEqual(null, crushOpt.Deploys);
 			Assert.AreEqual(null, crushOpt.Attacks);
 			Assert.AreEqual(null, crushOpt.Moves);
 
-			Assert.AreEqual(TargetType.Card, crushOpt.Orders.type);
-			Assert.AreEqual(1, crushOpt.Orders.targets.Length);
-			Assert.AreEqual(Spatg.id, crushOpt.Orders.targets[0].targetId);
+			Assert.AreEqual(TargetType.Card, crushOpt.Orders.Type);
+			Assert.AreEqual(1, crushOpt.Orders.Targets.Length);
+			Assert.AreEqual(Spatg.id, crushOpt.Orders.Targets[0].TargetId);
 		}
 
 	}
