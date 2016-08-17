@@ -8,8 +8,8 @@ namespace Midnight.Abilities.Aggression
 	{
 		public Status Validate (FieldCard target)
 		{
-            //Console.WriteLine(target.GetProto().ID);
-			if (!target.GetFieldLocation().IsBattlefield()) {
+			if (!target.GetFieldLocation().IsBattlefield())
+            {
 				return Status.NotAtBattlefield;
 			}
 

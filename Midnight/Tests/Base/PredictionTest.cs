@@ -81,11 +81,11 @@ namespace Midnight.Tests.Base
 			var damages = emulated.GetDamagePredictions();
 			Assert.AreEqual(2, damages.Count);
 
-			Assert.AreEqual(damages[0].cardId, Heavy.id);
-			Assert.AreEqual(4, damages[0].value);
+			Assert.AreEqual(damages[0].CardId, Heavy.id);
+			Assert.AreEqual(4, damages[0].Value);
 
-			Assert.AreEqual(damages[1].cardId, strike.id);
-			Assert.AreEqual(-2, damages[1].value);
+			Assert.AreEqual(damages[1].CardId, strike.id);
+			Assert.AreEqual(-2, damages[1].Value);
 
 			Assert.AreEqual(0, Heavy.GetDamage());
 			Assert.AreEqual(3, strike.GetDamage());

@@ -31,7 +31,10 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 		{
 			var weapon = card.abilities.Get<Weapon>();
 
-		    return card.GetChief().GetOpponent().cards.GetAll().OfType<FieldCard>().Where(fieldCard => weapon.Validate(fieldCard) == Status.Success).ToList();
+		    return card.GetChief().GetOpponent().cards
+                .GetAll().OfType<FieldCard>()
+                .Where(fieldCard => weapon.Validate(fieldCard) == Status.Success)
+                .ToList();
 		}
 	}
 }

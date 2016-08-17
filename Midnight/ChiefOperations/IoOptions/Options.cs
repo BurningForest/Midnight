@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Midnight.Cards;
 using Midnight.ChiefOperations.IoOptions.Collectors;
@@ -8,16 +7,19 @@ namespace Midnight.ChiefOperations.IoOptions
 {
 	public class Options
 	{
-		private Chief chief;
+		private readonly Chief _chief;
 
 		public Options (Chief chief)
 		{
-			this.chief = chief;
+			_chief = chief;
 		}
 
 		public List<CardOption> GetAvailable ()
 		{
-		    return chief.cards.GetAll().Select(GetOption).Where(option => !option.IsEmpty()).ToList();
+		    return _chief.cards
+                .GetAll().Select(GetOption)
+                .Where(option => !option.IsEmpty())
+                .ToList();
 		}
 
 	    private static CardOption GetOption (Card card)
@@ -26,11 +28,13 @@ namespace Midnight.ChiefOperations.IoOptions
 		    {
 		        CardId = card.id
 		    };
+
 		    if (card.GetLocation().IsReserve())
 		    {
                 option.Deploys = new DeploysCollector(card).Collect();
                 option.Orders = new OrdersCollector(card).Collect();
             }
+
 		    if (card.GetLocation().IsBattlefield())
 		    {
                 option.Moves = new MovesCollector(card).Collect();
