@@ -48,7 +48,7 @@ namespace Midnight.Cards
 
 			if (source.IsBattlefield()) {
 				var cell = (source as CardFieldLocation).GetCell();
-				ToCell(card.GetChief().GetEngine().field.GetCell(cell.x, cell.y));
+				ToCell(card.GetChief().GetEngine().field.GetCell(cell.X, cell.Y));
 			}
 		}
 	}

@@ -19,8 +19,8 @@ namespace Midnight.Tests.Base
 		{
 			var field = CreateField();
 			Assert.AreEqual(15, field.GetCells().Count);
-			Assert.AreEqual(3, field.GetCell(3, 2).x);
-			Assert.AreEqual(2, field.GetCell(3, 2).y);
+			Assert.AreEqual(3, field.GetCell(3, 2).X);
+			Assert.AreEqual(2, field.GetCell(3, 2).Y);
 		}
 
 		[TestMethod]
@@ -71,8 +71,8 @@ namespace Midnight.Tests.Base
 			var corner = field.GetCell(0, 0).GetCornerCells();
 
 			Assert.AreEqual(1, corner.Count);
-			Assert.AreEqual(1, corner[0].x);
-			Assert.AreEqual(1, corner[0].y);
+			Assert.AreEqual(1, corner[0].X);
+			Assert.AreEqual(1, corner[0].Y);
 		}
 
 		[TestMethod]

@@ -34,8 +34,8 @@ namespace Midnight.Abilities.Positioning
 			var current = GetCard().GetFieldLocation().GetCell();
 
 			return Engine.field.GetCell(
-				(current.x + cell.x) / 2,
-				(current.y + cell.y) / 2
+				(current.X + cell.X) / 2,
+				(current.Y + cell.Y) / 2
 			);
 		}
 

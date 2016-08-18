@@ -1,60 +1,62 @@
 ﻿using System;
-using Midnight.Cards;
 using System.Collections.Generic;
+using System.Linq;
 using Midnight.Cards.Types;
 
 namespace Midnight.Battlefield
 {
 	public class Cell
 	{
-		private readonly Field field;
+		private readonly Field _field;
 
-		public readonly int x;
-		public readonly int y;
+        private FieldCard _card;
 
-		private FieldCard card;
+        public int X { get; }
+		public int Y { get; }
 
 		public Cell (Field field, int x, int y)
 		{
-			this.field = field;
-			this.x = x;
-			this.y = y;
+			_field = field;
+			X = x;
+			Y = y;
 		}
 
 		public bool IsBusy ()
 		{
-			return card != null;
+			return _card != null;
 		}
 
 		public FieldCard GetCard ()
 		{
-			return card;
+			return _card;
 		}
 
 		public void SetCard (FieldCard card)
 		{
-			if (IsBusy()) {
+			if (IsBusy())
+            {
 				throw new ArgumentException("Cell is not empty");
 			}
 
-			this.card = card;
+			_card = card;
 		}
 
 		public void RemoveCard (FieldCard card)
 		{
-			if (this.card != card) {
+			if (this._card != card) {
 				throw new ArgumentException("Try to remove wrong card");
 			}
 
-			this.card = null;
+			this._card = null;
 		}
 
 		// check for neighbors
 		public Offset DistanceTo (Cell cell)
 		{
-			return new Offset() {
-				x = Math.Abs(cell.x - x),
-				y = Math.Abs(cell.y - y)
+			return new Offset
+			{
+				X = Math.Abs(cell.X - X),
+				Y = Math.Abs(cell.Y - Y)
 			};
 		}
 
@@ -87,75 +89,69 @@ namespace Midnight.Battlefield
 			var distance = DistanceTo(cell);
 
 			return cell != this
-				&& distance.x <= 1
-				&& distance.y <= 1;
+				&& distance.X <= 1
+				&& distance.Y <= 1;
 		}
 
 		// getting neighbors
 
 		public struct Offset
 		{
-			public int x;
-			public int y;
+			public int X;
+			public int Y;
 
 			public bool IsEquals (int x, int y)
 			{
-				return this.x == x && this.y == y;
+				return X == x && Y == y;
 			}
 		}
 
-		private static Offset[] CLOSEST_OFFSETS = {
-			new Offset() { x =  1, y =  0 },
-			new Offset() { x = -1, y =  0 },
-			new Offset() { x =  0, y =  1 },
-			new Offset() { x =  0, y = -1 },
+		private static readonly Offset[] ClosestOffsets = {
+			new Offset { X =  1, Y =  0 },
+			new Offset { X = -1, Y =  0 },
+			new Offset { X =  0, Y =  1 },
+			new Offset { X =  0, Y = -1 },
 		};
 
-		private static Offset[] CORNER_OFFSETS = {
-			new Offset() { x =  1, y =  1 },
-			new Offset() { x = -1, y =  1 },
-			new Offset() { x =  1, y = -1 },
-			new Offset() { x = -1, y = -1 },
+		private static readonly Offset[] CornerOffsets = {
+			new Offset { X =  1, Y =  1 },
+			new Offset { X = -1, Y =  1 },
+			new Offset { X =  1, Y = -1 },
+			new Offset { X = -1, Y = -1 },
 		};
 
-		private static Offset[] RUN_OFFSETS = {
-			new Offset() { x =  2, y =  0 },
-			new Offset() { x = -2, y =  0 },
-			new Offset() { x =  0, y =  2 },
-			new Offset() { x =  0, y = -2 },
+		private static readonly Offset[] RunOffsets = {
+			new Offset { X =  2, Y =  0 },
+			new Offset { X = -2, Y =  0 },
+			new Offset { X =  0, Y =  2 },
+			new Offset { X =  0, Y = -2 },
 		};
 
 		private List<Cell> AppendCellsTo (List<Cell> source, Offset[] offsets)
 		{
-			foreach (var point in offsets) {
-				Cell cell = field.GetCell(x + point.x, y + point.y);
+		    source.AddRange(offsets.Select(point => _field.GetCell(X + point.X, Y + point.Y)).Where(cell => cell != null));
 
-				if (cell != null) {
-					source.Add(cell);
-				}
-			}
-
-			return source;
+		    return source;
 		}
 
-		public List<Cell> GetClosestCells () // 2 horisontal + 2 vertical closest cells
+	    public List<Cell> GetClosestCells () // 2 horisontal + 2 vertical closest cells
 		{
-			return AppendCellsTo(new List<Cell>(), CLOSEST_OFFSETS);
+			return AppendCellsTo(new List<Cell>(), ClosestOffsets);
 		}
 
 		public List<Cell> GetCornerCells () // 4 diagonal cells
 		{
-			return AppendCellsTo(new List<Cell>(), CORNER_OFFSETS);
+			return AppendCellsTo(new List<Cell>(), CornerOffsets);
 		}
 
 		public List<Cell> GetAdjoiningCells () // 8 adjoining cells
 		{
-			return AppendCellsTo(GetClosestCells(), CORNER_OFFSETS);
+			return AppendCellsTo(GetClosestCells(), CornerOffsets);
 		}
 
 		public List<Cell> GetRunCells () // 8 adjoining cells + 4 run cells
 		{
-			return AppendCellsTo(GetAdjoiningCells(), RUN_OFFSETS);
+			return AppendCellsTo(GetAdjoiningCells(), RunOffsets);
 		}
 	}
 }

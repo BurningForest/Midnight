@@ -27,7 +27,7 @@ namespace Midnight.Utils
 
 		public string LogCell (Cell cell)
 		{
-			return "{" + cell.x + ":" + cell.y + "}";
+			return "{" + cell.X + ":" + cell.Y + "}";
 		}
 
 		public string GetName (GameAction action)

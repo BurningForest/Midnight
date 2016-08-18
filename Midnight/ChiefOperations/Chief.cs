@@ -95,7 +95,7 @@ namespace Midnight.ChiefOperations
 			var HQs = cards.GetAliveHqs();
 
 			if (HQs.Count == 0) {
-				return engine.field.GetCellsByColumn(GetStartCell().x);
+				return engine.field.GetCellsByColumn(GetStartCell().X);
 			} else if (HQs.Count == 1) {
 				return HQs[0].GetFootholdCells();
 			} else {
