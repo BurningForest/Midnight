@@ -1,17 +1,15 @@
 ﻿using Midnight.Cards;
-using Midnight.Core;
-using Midnight.Emitter;
 
 namespace Midnight.Abilities
 {
 	public abstract class CardActiveAbility<TCard> : CardAbility<TCard>
 		where TCard : Card
 	{
-		protected int quantity = 0;
+		protected int Quantity = 0;
 
 		public int GetQuantity ()
 		{
-			return quantity;
+			return Quantity;
 		}
 
 		public virtual int GetMaxQuantity ()

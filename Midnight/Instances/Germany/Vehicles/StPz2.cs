@@ -27,7 +27,7 @@ namespace Midnight.Instances.Germany.Vehicles
 		{
 			public override bool IsActive ()
 			{
-				return chief.cards.HasHq(Country.Germany);
+				return Chief.cards.HasHq(Country.Germany);
 			}
 		}
 

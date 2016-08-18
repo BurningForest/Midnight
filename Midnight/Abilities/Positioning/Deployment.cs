@@ -1,6 +1,4 @@
-﻿using System;
-using Midnight.Cards;
-using Midnight.Core;
+﻿using Midnight.Core;
 using Midnight.Battlefield;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +12,7 @@ namespace Midnight.Abilities.Positioning
 
 		protected List<Cell> GetPotentialCells ()
 		{
-			return chief.GetFootholdCells();
+			return Chief.GetFootholdCells();
 		}
 
 		protected bool IsCorrectCell (Cell cell)
@@ -29,45 +27,42 @@ namespace Midnight.Abilities.Positioning
 
 		public Status Validate (Cell cell)
 		{
-			if (!chief.IsTurnOwner()) {
+			if (!Chief.IsTurnOwner())
+            {
 				return Status.NotTurnOfSource;
 			}
 
-			if (!card.GetLocation().IsReserve()) {
+			if (!Card.GetLocation().IsReserve())
+            {
 				return Status.NotAtReserve;
 			}
 
-			if (cell != null && !IsAllowedCell(cell)) {
+			if (cell != null && !IsAllowedCell(cell))
+            {
 				return Status.CellIsNotAllowed;
 			}
 
-			return PayResources.ForCard(card).Validation();
+			return PayResources.ForCard(Card).Validation();
 		}
 
 		public void Activate ()
 		{
-			var moveAbility = card.abilities.Get<Movement>();
+			var moveAbility = Card.abilities.Get<Movement>();
 
-			if (moveAbility != null) {
-				moveAbility.Activate(false);
-			}
+		    moveAbility?.Activate(false);
 		}
 
 		public bool IsWithoutCell ()
 		{
-			return card is Platoon;
-		}
+		    return Card.GetType() == typeof (Platoon);
+        }
 
-		public List<Cell> GetAllowedCells ()
-		{
-			if (IsWithoutCell()) {
-				return null;
-			}
+	    public List<Cell> GetAllowedCells ()
+	    {
+	        return IsWithoutCell() ? null : GetPotentialCells().Where(IsCorrectCell).ToList();
+	    }
 
-			return GetPotentialCells().Where(IsCorrectCell).ToList();
-		}
-
-		public bool IsAllowedCell (Cell cell)
+	    public bool IsAllowedCell (Cell cell)
 		{
 			return IsCorrectCell(cell) && GetPotentialCells().Contains(cell);
 		}

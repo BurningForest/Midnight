@@ -13,7 +13,7 @@ namespace Midnight.Abilities.Activating
 
 		public Search GetTargets ()
 		{
-			return Targets(new Search(chief));
+			return Targets(new Search(Chief));
 		}
 
 		public GameAction[] GetActions (ForefrontCard target)

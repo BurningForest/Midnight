@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Midnight.Cards.Types;
-using Midnight.Core;
-
-namespace Midnight.Abilities.Aggression
+﻿namespace Midnight.Abilities.Aggression
 {
 	public class CounterAttack : Aggression
 	{
@@ -15,7 +7,7 @@ namespace Midnight.Abilities.Aggression
 		{
 			private Attack GetJoinedAttack ()
 			{
-				return card.abilities.Get<Attack>();
+				return Card.abilities.Get<Attack>();
 			}
 
 			public override int GetMaxQuantity ()

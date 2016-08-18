@@ -8,15 +8,12 @@ namespace Midnight.Abilities.Aggression
 	{
 		public override Status ValidateRange (FieldCard target)
 		{
-			if (target.abilities.Has<Camouflage>()) {
+			if (target.abilities.Has<Camouflage>())
+            {
 				return Status.TargetIsUnderCamouflage;
 			}
 
-			if (!target.IsSpotted()) {
-				return Status.TargetIsNotSpotted;
-			}
-
-			return Status.Success;
+			return !target.IsSpotted() ? Status.TargetIsNotSpotted : Status.Success;
 		}
 	}
 }

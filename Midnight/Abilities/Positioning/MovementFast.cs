@@ -1,5 +1,4 @@
-﻿using System;
-using Midnight.Battlefield;
+﻿using Midnight.Battlefield;
 
 namespace Midnight.Abilities.Positioning
 {
@@ -12,31 +11,29 @@ namespace Midnight.Abilities.Positioning
 
 		public override bool CanMoveTo (Cell cell)
 		{
-			if (base.CanMoveTo(cell) == false) {
+		    if (base.CanMoveTo(cell) == false)
+            {
 				return false;
 			}
 
-			if (HasMiddleCell(cell)) {
-				return base.CanMoveTo(GetMiddleCell(cell));
-			} else {
-				return true;
-			}
+		    return !HasMiddleCell(cell) || base.CanMoveTo(GetMiddleCell(cell));
 		}
 
-		private bool HasMiddleCell (Cell cell)
+	    private bool HasMiddleCell (Cell cell)
 		{
 			return GetCard().GetFieldLocation().GetCell().IsRunTo(cell);
 		}
 
 		private Cell GetMiddleCell (Cell cell)
 		{
-			if (!HasMiddleCell(cell)) {
+			if (!HasMiddleCell(cell))
+            {
 				return null;
 			}
 
 			var current = GetCard().GetFieldLocation().GetCell();
 
-			return engine.field.GetCell(
+			return Engine.field.GetCell(
 				(current.x + cell.x) / 2,
 				(current.y + cell.y) / 2
 			);
@@ -44,11 +41,7 @@ namespace Midnight.Abilities.Positioning
 
 		public override Cell[] GetMovesTo (Cell cell)
 		{
-			if (HasMiddleCell(cell)) {
-				return new Cell[] { GetMiddleCell(cell), cell };
-			} else {
-				return new Cell[] { cell };
-			}
+		    return HasMiddleCell(cell) ? new[] { GetMiddleCell(cell), cell } : new[] { cell };
 		}
 	}
 }

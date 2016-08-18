@@ -1,5 +1,4 @@
-﻿using System;
-using Midnight.ActionManager.Events;
+﻿using Midnight.ActionManager.Events;
 using Midnight.Cards.Types;
 using Midnight.Emitter;
 using Midnight.Actions;
@@ -10,8 +9,9 @@ namespace Midnight.Abilities.Passive
 	{
 		public void On (Before<Deployed> ev)
 		{
-			if (IsActive() && ev.action.card == card) {
-				ev.action.AddChild(new DrawRandom(chief));
+			if (IsActive() && ev.action.card == Card)
+            {
+				ev.action.AddChild(new DrawRandom(Chief));
 			}
 		}
 	}

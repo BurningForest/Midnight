@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Midnight.ActionManager;
 using Midnight.ActionManager.Events;
 using Midnight.Actions;
@@ -15,15 +14,15 @@ namespace Midnight.Abilities.Activating
 
 		public SpecificAbility GetSpecificAbility ()
 		{
-			return card.abilities.Get<SpecificAbility>();
+			return Card.abilities.Get<SpecificAbility>();
 		}
 
-		public bool CanActivateOn (Card card)
+		public bool CanActivateOn (Card targetCard)
 		{
 			var ability = GetSpecificAbility();
 
 			return ability.CanTargetCards()
-				&& ability.GetTargets().IsValid(card);
+				&& ability.GetTargets().IsValid(targetCard);
 		}
 
 		public Card[] GetPotentialTargets ()
@@ -42,8 +41,8 @@ namespace Midnight.Abilities.Activating
 
 		public void On (Before<BeginTurn> ev)
 		{
-			if (card.IsControlledBy(ev.action.chief)) {
-				quantity = 0;
+			if (Card.IsControlledBy(ev.action.chief)) {
+				Quantity = 0;
 			}
 		}
 
@@ -54,29 +53,34 @@ namespace Midnight.Abilities.Activating
 
 		public Status Validate (ForefrontCard target)
 		{
-			if (!chief.IsTurnOwner()) {
+			if (!Chief.IsTurnOwner())
+            {
 				return Status.NotTurnOfSource;
 			}
 
-			if (!card.GetLocation().IsReserve()) {
+			if (!Card.GetLocation().IsReserve())
+            {
 				return Status.NotAtReserve;
 			}
 
-			if (!card.abilities.Has<SpecificAbility>()) {
+			if (!Card.abilities.Has<SpecificAbility>())
+            {
 				return Status.NoSpecificAbility;
 			}
 
 			var ability = GetSpecificAbility();
 
-			if (target == null && NoValidTargets()) {
+			if (target == null && NoValidTargets())
+            {
 				return Status.NoValidTargets;
 			}
 
-			if (target != null && !CanActivateOn(target)) {
+			if (target != null && !CanActivateOn(target))
+            {
 				return Status.TargetIsInvalid;
 			}
 
-			return PayResources.ForCard(card).Validation();
+			return PayResources.ForCard(Card).Validation();
 		}
 
 		private bool NoValidTargets ()

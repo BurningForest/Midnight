@@ -22,8 +22,8 @@ namespace Midnight.Instances.Usa.Orders
 			protected override GameAction[] Actions (ForefrontCard target)
 			{
 				return new GameAction[] {
-					new DrawRandom(chief),
-					new HealDamage(2, card, chief.cards.GetHq())
+					new DrawRandom(Chief),
+					new HealDamage(2, Card, Chief.cards.GetHq())
 				};
 			}
 

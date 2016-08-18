@@ -18,7 +18,7 @@ namespace Midnight.Instances.Ussr.Orders
 		{
 			protected override GameAction[] Actions (ForefrontCard target)
 			{
-				return new[] { new DealDamage(2, card, target) };
+				return new[] { new DealDamage(2, Card, target) };
 			}
 
 			protected override Search Targets (Search search)

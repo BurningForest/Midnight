@@ -1,5 +1,4 @@
-﻿using System;
-using Midnight.Cards.Types;
+﻿using Midnight.Cards.Types;
 using Midnight.Core;
 
 namespace Midnight.Abilities.Aggression
@@ -18,7 +17,7 @@ namespace Midnight.Abilities.Aggression
 				return Status.NotAtBattlefield;
 			}
 
-			return !card.IsEnemyOf(target) ? Status.TargetIsFriendly : ValidateRange(target);
+			return !Card.IsEnemyOf(target) ? Status.TargetIsFriendly : ValidateRange(target);
 		}
 
 		public abstract Status ValidateRange (FieldCard target);

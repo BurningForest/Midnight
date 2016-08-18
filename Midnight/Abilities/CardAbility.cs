@@ -9,23 +9,24 @@ namespace Midnight.Abilities
 
 	public abstract class CardAbility : IListener
 	{
-		protected Card card;
-		protected Chief chief;
-		protected Engine engine;
+		protected Card Card;
+		protected Chief Chief;
+		protected Engine Engine;
 
 		public void On (IEvent ev) { }
 
 		internal void SetOwner (Card owner)
 		{
-			if (!IsValidCard(owner)) {
+			if (!IsValidCard(owner))
+            {
 				throw new ArgumentException("Ability does not support this card");
 			}
 
-			card = owner;
-			chief = card.GetChief();
-			engine = chief.GetEngine();
+			Card = owner;
+			Chief = Card.GetChief();
+			Engine = Chief.GetEngine();
 
-			engine.emitter.Subscribe(this);
+			Engine.emitter.Subscribe(this);
 		}
 
 		protected abstract bool IsValidCard (Card card);
@@ -59,7 +60,7 @@ namespace Midnight.Abilities
 
 		public TCard GetCard ()
 		{
-			return (TCard)card;
+			return (TCard)Card;
 		}
 	}
 }

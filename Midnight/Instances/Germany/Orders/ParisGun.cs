@@ -20,8 +20,8 @@ namespace Midnight.Instances.Germany.Orders
 			protected override GameAction[] Actions (ForefrontCard target)
 			{
 				return new GameAction[] {
-					new DealDamage(2, card, target),
-					new HealDamage(2, card, chief.cards.GetHq())
+					new DealDamage(2, Card, target),
+					new HealDamage(2, Card, Chief.cards.GetHq())
 				};
 			}
 

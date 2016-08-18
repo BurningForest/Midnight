@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Midnight.Cards.Types;
-using Midnight.Core;
+﻿using Midnight.Core;
 
 namespace Midnight.Abilities.Aggression
 {
@@ -14,15 +8,12 @@ namespace Midnight.Abilities.Aggression
 		{
 			var status = base.Validate();
 
-			if (status != Status.Success) {
+			if (status != Status.Success)
+            {
 				return status;
 			}
 
-			if (!card.GetChief().IsTurnOwner()) {
-				return Status.NotTurnOfSource;
-			}
-
-			return Status.Success;
+			return !Card.GetChief().IsTurnOwner() ? Status.NotTurnOfSource : Status.Success;
 		}
 	}
 }

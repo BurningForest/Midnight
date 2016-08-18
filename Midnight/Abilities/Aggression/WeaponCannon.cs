@@ -1,6 +1,4 @@
-﻿using System;
-using Midnight.Battlefield;
-using Midnight.Cards.Types;
+﻿using Midnight.Cards.Types;
 using Midnight.Core;
 
 namespace Midnight.Abilities.Aggression

@@ -1,6 +1,4 @@
-﻿using System;
-using Midnight.Cards;
-using Midnight.Emitter;
+﻿using Midnight.Emitter;
 using Midnight.Battlefield;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,10 +37,11 @@ namespace Midnight.Abilities.Positioning
 
 		private void Pay (int cost)
 		{
-			quantity += cost;
+			Quantity += cost;
 
-			if (GetQuantity() > GetMaxQuantity()) {
-				quantity = GetMaxQuantity();
+			if (GetQuantity() > GetMaxQuantity())
+            {
+				Quantity = GetMaxQuantity();
 			}
 		}
 
@@ -50,31 +49,32 @@ namespace Midnight.Abilities.Positioning
 		{
 			var current = GetCard().GetFieldLocation().GetCell();
 
-			if (current.IsRunTo(cell)) {
+			if (current.IsRunTo(cell))
+            {
 				return GetRunMoveCost();
-			} else if (current.IsCornerTo(cell)) {
-				return GetCornerMoveCost();
-			} else if (current.IsCloseTo(cell)) {
-				return GetCloseMoveCost();
-			} else {
-				return 0;
 			}
+		    if (current.IsCornerTo(cell))
+            {
+		        return GetCornerMoveCost();
+		    }
+		    return current.IsCloseTo(cell) ? GetCloseMoveCost() : 0;
 		}
 
 		public virtual bool CanMoveTo (Cell cell)
 		{
-			if (cell.IsBusy()) {
+			if (cell.IsBusy())
+            {
 				return false;
 			}
 
 			int cost = GetMoveCost(cell);
 
-			return cost > 0 && (quantity + cost) <= GetMaxQuantity();
+			return cost > 0 && (Quantity + cost) <= GetMaxQuantity();
 		}
 
 		public virtual Cell[] GetMovesTo (Cell cell)
 		{
-			return new Cell[] { cell };
+			return new[] { cell };
 		}
 
 		public List<Cell> GetAllowedCells ()
@@ -94,11 +94,11 @@ namespace Midnight.Abilities.Positioning
 
 		public Status Validate (Cell cell)
 		{
-			if (!chief.IsTurnOwner()) {
+			if (!Chief.IsTurnOwner()) {
 				return Status.NotTurnOfSource;
 			}
 
-			if (!card.GetLocation().IsBattlefield()) {
+			if (!Card.GetLocation().IsBattlefield()) {
 				return Status.NotAtBattlefield;
 			}
 
@@ -115,8 +115,9 @@ namespace Midnight.Abilities.Positioning
 
 		public void On (Before<BeginTurn> ev)
 		{
-			if (card.IsControlledBy(ev.action.chief)) {
-				quantity = 0;
+			if (Card.IsControlledBy(ev.action.chief))
+            {
+				Quantity = 0;
 			}
 		}
 	}
