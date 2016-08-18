@@ -4,37 +4,39 @@ using System;
 
 namespace Midnight.Core
 {
-	public class Cache
-	{
-		Dictionary<int, Card> container = new Dictionary<int, Card>();
+    public class Cache
+    {
+        readonly Dictionary<int, Card> _container = new Dictionary<int, Card>();
 
-		int previous = 0;
+        int _previous;
 
-		internal int Register (Card card)
-		{
-			return ManualRegister(card, previous + 1);
-		}
+        internal int Register(Card card)
+        {
+            return ManualRegister(card, _previous + 1);
+        }
 
-		internal int ManualRegister (Card card, int id)
-		{
-			if (container.ContainsKey(id)) {
-				throw new ArgumentException("Id `" + id + "` is busy");
-			}
+        internal int ManualRegister(Card card, int id)
+        {
+            if (_container.ContainsKey(id))
+            {
+                throw new ArgumentException("Id `" + id + "` is busy");
+            }
 
-			if (id > previous) {
-				previous = id;
-			}
+            if (id > _previous)
+            {
+                _previous = id;
+            }
 
-			container.Add(id, card);
+            _container.Add(id, card);
 
-			return id;
-		}
+            return id;
+        }
 
-		public Card Get (int id)
-		{
-			return container.ContainsKey(id)
-				? container[id]
-				: null;
-		}
-	}
+        public Card Get(int id)
+        {
+            return _container.ContainsKey(id)
+                ? _container[id]
+                : null;
+        }
+    }
 }

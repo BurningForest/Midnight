@@ -1,25 +1,25 @@
-﻿using Midnight.Actions;
+﻿using System.Collections.Generic;
+using Midnight.ActionManager;
+using Midnight.Actions;
 using Midnight.Battlefield;
 using Midnight.Cards;
 using Midnight.Cards.Types;
 using Midnight.ChiefOperations;
-using System;
-using System.Collections.Generic;
 
 namespace Midnight.Core
 {
 	public class Manage
 	{
-		public readonly Engine engine;
+		public readonly Engine Engine;
 
 		public Manage (Engine engine)
 		{
-			this.engine = engine;
+			Engine = engine;
 		}
 
 		public StartGame StartGame ()
 		{
-			return StartGame(engine.chiefs[0]);
+			return StartGame(Engine.chiefs[0]);
 		}
 
 		public StartGame StartGame (Chief chief)
@@ -102,20 +102,20 @@ namespace Midnight.Core
 			return Launch(new SetResources(chief, value));
 		}
 
-		public GiveOrder Order (Order Order, FieldCard target)
+		public GiveOrder Order (Order order, FieldCard target)
 		{
-			return Launch(new GiveOrder(Order, target));
+			return Launch(new GiveOrder(order, target));
 		}
 
-		public GiveOrder Order (Order Order)
+		public GiveOrder Order (Order order)
 		{
-			return Launch(new GiveOrder(Order));
+			return Launch(new GiveOrder(order));
 		}
 
 		private TAction Launch<TAction> (TAction action)
-			where TAction : ActionManager.GameAction
+			where TAction : GameAction
 		{
-			engine.actions.Launch(action);
+			Engine.actions.Launch(action);
 			return action;
 		}
 	}

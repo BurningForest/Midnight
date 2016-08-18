@@ -4,7 +4,6 @@
 	{
 		Success,
 		Idle,
-
 		NotTurnOfSource,
 		NotAtReserve,
 		PointsAreUsed,
