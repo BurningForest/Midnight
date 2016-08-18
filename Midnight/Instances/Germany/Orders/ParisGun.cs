@@ -2,10 +2,8 @@
 using Midnight.ActionManager;
 using Midnight.Actions;
 using Midnight.Cards;
-using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
 using Sun.CardProtos;
-using Sun.CardProtos.Enums;
 
 namespace Midnight.Instances.Germany.Orders
 {
@@ -14,7 +12,7 @@ namespace Midnight.Instances.Germany.Orders
         // Нанесите 2 повреждения выбранной технике.
         // Восстановите 2 прочности вашему штабу.
 
-        public static readonly Proto proto = new CardProtosRepository()
+        public static readonly Proto Proto = new CardProtosRepository()
             .GetParameterizedProto<ParisGun>("go_paris_gun");
 
 		public class EachBattleAbility : SpecificAbility
@@ -37,7 +35,7 @@ namespace Midnight.Instances.Germany.Orders
 
 		public override Proto GetProto ()
 		{
-			return proto;
+			return Proto;
 		}
 
 		public override void InitAbilities ()

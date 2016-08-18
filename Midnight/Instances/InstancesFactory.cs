@@ -20,7 +20,7 @@ namespace Midnight.Instances
         {
             //Germany
             { Training.proto.ID, Training.proto },
-            { ParisGun.proto.ID, ParisGun.proto },
+            { ParisGun.Proto.ID, ParisGun.Proto },
             { A7V.proto.ID, A7V.proto },
             { Grosstraktor2.proto.ID, Grosstraktor2.proto },
             { Lk2.proto.ID, Lk2.proto },
