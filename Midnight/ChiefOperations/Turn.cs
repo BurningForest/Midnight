@@ -52,7 +52,7 @@ namespace Midnight.ChiefOperations
 		public void On (After<EndTurn> ev)
 		{
 			ChangeOwner();
-			engine.actions.Delay(new BeginTurn(GetOwner(), ev.action));
+			engine.actions.Delay(new BeginTurn(GetOwner(), ev.Action));
 		}
 	}
 }

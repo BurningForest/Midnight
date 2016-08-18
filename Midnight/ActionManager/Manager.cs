@@ -1,91 +1,92 @@
 ﻿using Midnight.Emitter;
 using System.Collections.Generic;
-using Midnight.ActionManager.Events;
-using Midnight.Actions;
-using System;
 
 namespace Midnight.ActionManager
 {
 	public class Manager
 	{
-		private List<GameAction> activeActions = new List<GameAction>();
-		private List<GameAction> delayedActions = new List<GameAction>();
-		public readonly EventEmitter emitter;
-		private readonly Engine engine;
+		private readonly List<GameAction> _activeActions = new List<GameAction>();
+		private readonly List<GameAction> _delayedActions = new List<GameAction>();
+		private readonly Engine _engine;
+        public EventEmitter Emitter { get; }
 
-		public Manager (Engine engine)
+        public Manager (Engine engine)
 		{
-			this.engine = engine;
-			emitter = engine.emitter;
+			_engine = engine;
+			Emitter = engine.emitter;
 		}
 
 		public void Delay<TAction> (TAction action)
 			where TAction : GameAction
 		{
-			if (IsIdle()) {
+			if (IsIdle())
+            {
 				Launch(action);
-			} else {
-				delayedActions.Add(action);
+			}
+            else
+            {
+				_delayedActions.Add(action);
 			}
 		}
 
 		internal void Register (GameAction action)
 		{
 			action.SetActionManager(this);
-			action.SetEngine(engine);
+			action.SetEngine(_engine);
 		}
 
 		public bool Launch<TAction> (TAction action)
 			where TAction : GameAction
 		{
-			if (IsIdle()) {
+		    if (IsIdle())
+            {
 				return ForceLaunch(action);
-			} else {
-				throw new System.Exception("Actions are running now");
 			}
+		    throw new System.Exception("Actions are running now");
 		}
 
-		private bool ForceLaunch<TAction> (TAction action)
+	    private bool ForceLaunch<TAction> (TAction action)
 			where TAction : GameAction
 		{
 			Register(action);
 			action.Validate();
 
-			if (action.IsValid()) {
-				activeActions.Add(action);
+			if (action.IsValid())
+            {
+				_activeActions.Add(action);
 				LaunchRec(action);
 				return true;
-			} else {
-				action.NotifyFailure(emitter);
-				return false;
 			}
+	        action.NotifyFailure(Emitter);
+	        return false;
 		}
 
 		public bool IsIdle ()
 		{
-			return activeActions.Count == 0;
+			return _activeActions.Count == 0;
 		}
 
 		private void LaunchRec<TAction> (TAction action)
 			where TAction : GameAction
 		{
-			action.NotifyBefore(emitter);
+			action.NotifyBefore(Emitter);
 
 			action.Configure();
 
-			action.NotifyInside(emitter);
+			action.NotifyInside(Emitter);
 
 			action.Close();
 
-			foreach (GameAction child in action.Children) {
+			foreach (var child in action.Children)
+            {
 				ForceLaunch(child);
 			}
 
 			action.Complete();
 
-			action.NotifyAfter(emitter);
+			action.NotifyAfter(Emitter);
 
-			activeActions.Remove(action);
+			_activeActions.Remove(action);
 
 			CheckFinish(action);
 		}
@@ -93,15 +94,19 @@ namespace Midnight.ActionManager
 		private void CheckFinish<TAction> (TAction action)
 			where TAction : GameAction
 		{
-			if (!IsIdle()) {
+			if (!IsIdle())
+            {
 				return;
 			}
-			if (delayedActions.Count > 0) {
-				var first = delayedActions[0];
-				delayedActions.Remove(first);
+			if (_delayedActions.Count > 0)
+            {
+				var first = _delayedActions[0];
+				_delayedActions.Remove(first);
 				Launch(first);
-			} else {
-				action.NotifyFinish(emitter);
+			}
+            else
+            {
+				action.NotifyFinish(Emitter);
 			}
 		}
 	}

@@ -33,12 +33,12 @@ namespace Midnight.Tests.Base
 
 			public void On (Before<FooAction> e)
 			{
-				qux = e.action.GetValue();
+				qux = e.Action.GetValue();
 			}
 
 			public void On (Before<BarAction> e)
 			{
-				qux = e.action.GetValue();
+				qux = e.Action.GetValue();
 			}
 		}
 

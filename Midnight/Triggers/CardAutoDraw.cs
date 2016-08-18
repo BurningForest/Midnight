@@ -20,7 +20,7 @@ namespace Midnight.Triggers
 
 		public void On (Before<BeginTurn> ev)
 		{
-			BeginTurn action = ev.action;
+			BeginTurn action = ev.Action;
 			
 			if (!action.IsInitial() && IsOwner(action.Chief)) {
 				action.AddChild(new DrawCount(action.Chief, count)); 

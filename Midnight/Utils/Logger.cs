@@ -22,11 +22,11 @@ namespace Midnight.Utils
 
 		public void On (Before<GameAction> e)
 		{
-			if (e.action.IsTop()) {
-				actions.Add(e.action);
+			if (e.Action.IsTop()) {
+				actions.Add(e.Action);
 			}
 
-			Log(e.action);
+			Log(e.Action);
 		}
 
 		private void Log (GameAction action)
@@ -70,8 +70,8 @@ namespace Midnight.Utils
 
 		public void On (Failure<GameAction> e)
 		{
-			failures.Add(e.action);
-			Log(e.action);
+			failures.Add(e.Action);
+			Log(e.Action);
 		}
 	}
 }

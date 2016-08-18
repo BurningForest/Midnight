@@ -41,7 +41,7 @@ namespace Midnight.Abilities.Activating
 
 		public void On (Before<BeginTurn> ev)
 		{
-			if (Card.IsControlledBy(ev.action.Chief)) {
+			if (Card.IsControlledBy(ev.Action.Chief)) {
 				Quantity = 0;
 			}
 		}

@@ -9,9 +9,9 @@ namespace Midnight.Abilities.Passive
 	{
 		public void On (Before<Deployed> ev)
 		{
-			if (IsActive() && ev.action.Card == Card)
+			if (IsActive() && ev.Action.Card == Card)
             {
-				ev.action.AddChild(new DrawRandom(Chief));
+				ev.Action.AddChild(new DrawRandom(Chief));
 			}
 		}
 	}

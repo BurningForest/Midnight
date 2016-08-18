@@ -21,7 +21,7 @@ namespace Midnight.Triggers
 
 		public void On (Before<EndTurn> ev)
 		{
-			EndTurn action = ev.action;
+			EndTurn action = ev.Action;
 
 			if (!IsOwner(action.Chief)) {
 				return;

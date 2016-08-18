@@ -31,9 +31,9 @@ namespace Midnight.ChiefOperations
 
         public void On(Before<GameAction> ev)
         {
-            if (ev.action.IsTop())
+            if (ev.Action.IsTop())
             {
-                _actions.Add(ev.action);
+                _actions.Add(ev.Action);
             }
         }
 

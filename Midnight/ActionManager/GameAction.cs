@@ -8,17 +8,17 @@ namespace Midnight.ActionManager
 {
 	public abstract class GameAction
 	{
-		private Status status = Status.Idle;
-		private List<GameAction> children = new List<GameAction>();
-		private bool isClosed = false;
-		private GameAction parent = null;
+		private Status _status = Status.Idle;
+		private readonly List<GameAction> _children = new List<GameAction>();
+		private bool _isClosed;
+		private GameAction _parent;
 
-		private Manager manager;
-		private Engine engine;
+		private Manager _manager;
+		private Engine _engine;
 
 		protected Engine GetEngine ()
 		{
-			return engine;
+			return _engine;
 		}
 
 		internal abstract void NotifyBefore (EventEmitter emitter);
@@ -29,51 +29,53 @@ namespace Midnight.ActionManager
 
 		public Status GetStatus ()
 		{
-			return status;
+			return _status;
 		}
 
 		public List<GameAction> Children
 		{
             get
             {
-                return children;
+                return _children;
             }
 		}
 
 		public GameAction AddChild (GameAction action)
 		{
-			if (isClosed) {
+			if (_isClosed)
+            {
 				throw new Exception("Cannot add child action to closed action");
 			}
 
-			children.Add(action);
+			_children.Add(action);
 			action.SetParent(this);
-			manager.Register(action);
+			_manager.Register(action);
 			return this;
 		}
 
 		private void SetParent (GameAction action)
 		{
-			if (parent != null) {
+			if (_parent != null)
+            {
 				throw new Exception("Parent is already set");
 			}
 
-			parent = action;
+			_parent = action;
 		}
 
 		public GameAction GetParent ()
 		{
-			return parent;
+			return _parent;
 		}
 
 		public bool IsTop ()
 		{
-			return parent == null;
+			return _parent == null;
 		}
 
 		public GameAction GetTop ()
 		{
-			return IsTop() ? this : parent.GetTop();
+			return IsTop() ? this : _parent.GetTop();
 		}
 
 		public bool HasAncestor<TAction> ()
@@ -81,9 +83,11 @@ namespace Midnight.ActionManager
 		{
 			var action = this;
 
-			while (action.IsTop() == false) {
+			while (action.IsTop() == false)
+            {
 				action = action.GetParent();
-				if (action is TAction) {
+				if (action is TAction)
+                {
 					return true;
 				}
 			}
@@ -93,7 +97,8 @@ namespace Midnight.ActionManager
 
 		public GameAction AddChildren (IEnumerable<GameAction> actions)
 		{
-			foreach (GameAction action in actions) {
+			foreach (var action in actions)
+            {
 				AddChild(action);
 			}
 			return this;
@@ -109,27 +114,27 @@ namespace Midnight.ActionManager
 
 		internal void SetActionManager (Manager manager)
 		{
-			this.manager = manager;
+			_manager = manager;
 		}
 
 		internal void SetEngine (Engine engine)
 		{
-			this.engine = engine;
+			_engine = engine;
 		}
 
 		internal bool IsValid ()
 		{
-			return status == Status.Success;
+			return _status == Status.Success;
 		}
 
 		internal void Validate ()
 		{
-			status = Validation();
+			_status = Validation();
 		}
 
 		internal void Close ()
 		{
-			isClosed = true;
+			_isClosed = true;
 		}
 
 	}

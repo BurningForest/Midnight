@@ -19,7 +19,7 @@ namespace Midnight.Tests.Triggers
 			++count;
 
 			if (action == null) {
-				action = ev.action;
+				action = ev.Action;
 			}
 		}
 	}

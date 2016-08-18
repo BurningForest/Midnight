@@ -10,7 +10,7 @@ namespace Midnight.Triggers
 	{
 		public void On (After<Death> ev)
 		{
-			var card = ev.action.Card;
+			var card = ev.Action.Card;
 			var chief = card.GetChief();
 
 			if (card is Hq && IsOwner(chief) && HasNoAliveHq(chief)) {
