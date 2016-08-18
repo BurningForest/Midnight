@@ -1,26 +1,24 @@
-﻿using Midnight.ActionManager.Events;
-using Midnight.Actions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Midnight.Emitter
 {
 	public class EventEmitter
 	{
-		private List<IListener> listeners = new List<IListener>();
+		private readonly List<IListener> _listeners = new List<IListener>();
 
 		public void Subscribe (IListener listener)
 		{
-			listeners.Add(listener);
+			_listeners.Add(listener);
 		}
 
 		public void Publish<TEvent> (TEvent e)
 			where TEvent : IEvent
 		{
-			foreach (var l in listeners) {
-				if (l is IListener<TEvent>) {
-					(l as IListener<TEvent>).On(e);
-				}
-			}
+		    foreach (var l in _listeners.OfType<IListener<TEvent>>())
+		    {
+		        l.On(e);
+		    }
 		}
 	}
 }
