@@ -2,36 +2,39 @@
 using Midnight.Actions;
 using Midnight.Cards.Enums;
 using Midnight.Emitter;
+
 namespace Midnight.Triggers
 {
-	public class ReserveCleanUp : Trigger, IListener<Before<EndTurn>>
-	{
-		protected int max = 6;
+    public class ReserveCleanUp : Trigger, IListener<Before<EndTurn>>
+    {
+        protected int Max = 6;
 
-		public ReserveCleanUp SetMax (int max)
-		{
-			this.max = max;
-			return this;
-		}
+        public ReserveCleanUp SetMax(int max)
+        {
+            Max = max;
+            return this;
+        }
 
-		public int GetMax ()
-		{
-			return max;
-		}
+        public int GetMax()
+        {
+            return Max;
+        }
 
-		public void On (Before<EndTurn> ev)
-		{
-			EndTurn action = ev.Action;
+        public void On(Before<EndTurn> ev)
+        {
+            var action = ev.Action;
 
-			if (!IsOwner(action.Chief)) {
-				return;
-			}
+            if (!IsOwner(action.Chief))
+            {
+                return;
+            }
 
-			var diff = action.Chief.Cards.CountLocation(Location.Reserve) - max;
+            var diff = action.Chief.Cards.CountLocation(Location.Reserve) - Max;
 
-			if (diff > 0) {
-				action.AddChild(new CleanUp(action.Chief, diff));
-			}
-		}
-	}
+            if (diff > 0)
+            {
+                action.AddChild(new CleanUp(action.Chief, diff));
+            }
+        }
+    }
 }

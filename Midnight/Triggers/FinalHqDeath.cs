@@ -13,8 +13,9 @@ namespace Midnight.Triggers
 			var card = ev.Action.Card;
 			var chief = card.GetChief();
 
-			if (card is Hq && IsOwner(chief) && HasNoAliveHq(chief)) {
-				engine.actions.Delay(new Final(chief, Final.Trigger.HqDeath));
+			if (card is Hq && IsOwner(chief) && HasNoAliveHq(chief))
+            {
+				Engine.actions.Delay(new Final(chief, Final.Trigger.HqDeath));
 			}
 		}
 
