@@ -42,7 +42,7 @@ namespace Midnight.Instances.Usa.Orders
 		{
 			base.InitAbilities();
 
-			abilities.Add(new HelpForTheFrontAbility());
+			Abilities.Add(new HelpForTheFrontAbility());
 		}
 	}
 }

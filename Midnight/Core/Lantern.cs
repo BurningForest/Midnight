@@ -35,8 +35,8 @@ namespace Midnight.Core
 
 		private GameAction Spotted (FieldCard card)
 		{
-			if (!cards.Contains(card.id)) {
-				cards.Add(card.id);
+			if (!cards.Contains(card.Id)) {
+				cards.Add(card.Id);
 				return new Spotted(card);
 			}
 
@@ -45,8 +45,8 @@ namespace Midnight.Core
 
 		private GameAction Unspotted (FieldCard card)
 		{
-			if (cards.Contains(card.id)) {
-				cards.Remove(card.id);
+			if (cards.Contains(card.Id)) {
+				cards.Remove(card.Id);
 				return new Unspotted(card);
 			}
 

@@ -4,67 +4,69 @@ namespace Midnight.Cards.Props
 {
 	public class Modifier
 	{
-		private Property property;
-		private Card target = null;
-		private Card source = null;
-		private int value = 0;
+		private readonly Property _property;
+		private Card _target;
+		private Card _source;
+		private int _value;
 
 		public Modifier (Property property)
 		{
-			this.property = property;
+			_property = property;
 		}
 
 		public Property GetProperty ()
 		{
-			return property;
+			return _property;
 		}
 
 		public Card GetTarget ()
 		{
-			return target;
+			return _target;
 		}
 
 		public Modifier SetTarget (Card target)
 		{
-			if (this.target != null) {
+			if (this._target != null)
+            {
 				throw new ArgumentException("Target cant be changed");
 			}
 
-			this.target = target;
+			_target = target;
 			return this;
 		}
 
 		public Card GetSource ()
 		{
-			return source;
+			return _source;
 		}
 
 		public Modifier SetSource (Card source)
 		{
-			if (this.source != null) {
+			if (_source != null)
+            {
 				throw new ArgumentException("Source cant be changed");
 			}
 
-			this.source = source;
+			_source = source;
 			return this;
 		}
 
 		public int GetValue ()
 		{
-			return value;
+			return _value;
 		}
 
 		internal Modifier CloneFor (Engine.ClonedEngine engine)
 		{
-			return new Modifier(property)
-				.SetValue(value)
-				.SetTarget(engine.cache.Get(target.id))
-				.SetSource(engine.cache.Get(source.id));
+			return new Modifier(_property)
+				.SetValue(_value)
+				.SetTarget(engine.cache.Get(_target.Id))
+				.SetSource(engine.cache.Get(_source.Id));
 		}
 
 		public Modifier SetValue (int value)
 		{
-			this.value = value;
+			_value = value;
 			return this;
 		}
 	}

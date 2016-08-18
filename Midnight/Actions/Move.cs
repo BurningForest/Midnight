@@ -19,7 +19,7 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			var moves = Card.abilities.Get<Movement>().GetMovesTo(Cell);
+			var moves = Card.Abilities.Get<Movement>().GetMovesTo(Cell);
 
 			foreach (var move in moves)
             {
@@ -29,7 +29,7 @@ namespace Midnight.Actions
 
 		public override Status Validation ()
 		{
-			var ability = Card.abilities.Get<Movement>();
+			var ability = Card.Abilities.Get<Movement>();
 
 			return ability?.Validate(Cell) ?? Status.NoMovementAbility;
 		}

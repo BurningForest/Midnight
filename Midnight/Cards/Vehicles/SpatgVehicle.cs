@@ -11,7 +11,7 @@ namespace Midnight.Cards.Vehicles
 		{
 			base.InitAbilities();
 
-			abilities.Add(
+			Abilities.Add(
 				new Deployment(),
 				new MovementMedium(),
 				new WeaponCannon(),

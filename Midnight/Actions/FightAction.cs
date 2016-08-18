@@ -24,12 +24,12 @@ namespace Midnight.Actions
 		{
 			Damage = new DealDamage.NonLethal(Source.GetPower(), Source, Target);
 
-			if (Source.abilities.Has<PlatoonEnforced>())
+			if (Source.Abilities.Has<PlatoonEnforced>())
             {
 				PlatoonsEnforce();
 			}
 
-			if (Target.abilities.Has<PlatoonProtected>())
+			if (Target.Abilities.Has<PlatoonProtected>())
             {
 				PlatoonsProtect();
 			}

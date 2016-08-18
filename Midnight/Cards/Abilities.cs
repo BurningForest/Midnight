@@ -1,29 +1,30 @@
-﻿using Midnight.Abilities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Midnight.Abilities;
 
 namespace Midnight.Cards
 {
 	public class Abilities
 	{
-		private readonly List<CardAbility> active = new List<CardAbility>();
-		private readonly Card card;
+		private readonly List<CardAbility> _active = new List<CardAbility>();
+		private readonly Card _card;
 
 		public Abilities (Card card)
 		{
-			this.card = card;
+			_card = card;
 		}
 
 		public Abilities (Card card, CardAbility[] abilities)
 		{
-			this.card = card;
+			_card = card;
 
 			Add(abilities);
 		}
 
 		public void Add (CardAbility ability)
 		{
-			ability.SetOwner(card);
-			active.Add(ability);
+			ability.SetOwner(_card);
+			_active.Add(ability);
 		}
 
 		public void Add (params CardAbility[] abilities)
@@ -36,16 +37,10 @@ namespace Midnight.Cards
 		public TAbility Get<TAbility> ()
 			where TAbility : CardAbility
 		{
-			foreach (var ability in active) {
-				if (ability is TAbility && ability.IsActive()) {
-					return (TAbility)ability;
-				}
-			}
-
-			return null;
+		    return _active.Where(ability => ability is TAbility && ability.IsActive()).Cast<TAbility>().FirstOrDefault();
 		}
 
-		public bool Has<TAbility> ()
+	    public bool Has<TAbility> ()
 			where TAbility : CardAbility
 		{
 			return Get<TAbility>() != null;
@@ -53,8 +48,9 @@ namespace Midnight.Cards
 
 		public void CloneFrom (Abilities source)
 		{
-			foreach (var ability in source.active) {
-				Add(ability.CloneFor(card));
+			foreach (var ability in source._active)
+            {
+				Add(ability.CloneFor(_card));
 			}
 		}
 	}

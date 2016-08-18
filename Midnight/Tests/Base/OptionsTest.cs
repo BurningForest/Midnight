@@ -51,8 +51,8 @@ namespace Midnight.Tests.Base
 			CardOption LightOption = options[0];
 			CardOption medicOption = options[2];
 
-			Assert.AreEqual(Light.id, LightOption.CardId);
-			Assert.AreEqual(medic.id, medicOption.CardId);
+			Assert.AreEqual(Light.Id, LightOption.CardId);
+			Assert.AreEqual(medic.Id, medicOption.CardId);
 
 			Assert.AreEqual(null, LightOption.Attacks);
 			Assert.AreEqual(null, LightOption.Moves);
@@ -72,7 +72,7 @@ namespace Midnight.Tests.Base
 
 			player.io.Deploy(new Io.Position
 			{
-				CardId = Light.id,
+				CardId = Light.Id,
 				X = 1,
 				Y = 0
 			});
@@ -80,8 +80,8 @@ namespace Midnight.Tests.Base
 			var newOptions = player.io.Options.GetAvailable();
 
 			Assert.AreEqual(2, newOptions.Count); // 2 movements
-			Assert.AreEqual(Light.id, newOptions[0].CardId);
-			Assert.AreEqual(Medium.id, newOptions[1].CardId);
+			Assert.AreEqual(Light.Id, newOptions[0].CardId);
+			Assert.AreEqual(Medium.Id, newOptions[1].CardId);
 		}
 
 		[TestMethod]
@@ -146,8 +146,8 @@ namespace Midnight.Tests.Base
 			var attacks = options[0].Attacks;
 
 			Assert.AreEqual(2, attacks.Targets.Length);
-			Assert.AreEqual(Heavy.id, attacks.Targets[0].TargetId);
-			Assert.AreEqual(Spatg.id, attacks.Targets[1].TargetId);
+			Assert.AreEqual(Heavy.Id, attacks.Targets[0].TargetId);
+			Assert.AreEqual(Spatg.Id, attacks.Targets[1].TargetId);
 		}
 
 		[TestMethod]
@@ -191,7 +191,7 @@ namespace Midnight.Tests.Base
 
 			Assert.AreEqual(TargetType.Card, crushOpt.Orders.Type);
 			Assert.AreEqual(1, crushOpt.Orders.Targets.Length);
-			Assert.AreEqual(Spatg.id, crushOpt.Orders.Targets[0].TargetId);
+			Assert.AreEqual(Spatg.Id, crushOpt.Orders.Targets[0].TargetId);
 		}
 
 	}

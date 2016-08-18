@@ -24,13 +24,13 @@ namespace Midnight.Actions
 		public override void Configure ()
 		{
 			AddChild(PayResources.ForCard(Source));
-			AddChildren(Source.abilities.Get<Ordering>().Activate(Target));
+			AddChildren(Source.Abilities.Get<Ordering>().Activate(Target));
 			AddChild(new Death.Forced(Source));
 		}
 
 		public override Status Validation ()
 		{
-			var ability = Source.abilities.Get<Ordering>();
+			var ability = Source.Abilities.Get<Ordering>();
 
 			return ability?.Validate(Target) ?? Status.NoOrderingAbility;
 		}

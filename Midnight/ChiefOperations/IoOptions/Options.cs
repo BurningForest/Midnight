@@ -26,7 +26,7 @@ namespace Midnight.ChiefOperations.IoOptions
 		{
 		    var option = new CardOption
 		    {
-		        CardId = card.id
+		        CardId = card.Id
 		    };
 
 		    if (card.GetLocation().IsReserve())

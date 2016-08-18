@@ -26,7 +26,7 @@ namespace Midnight.Abilities.Aggression
 				return Status.NotAtBattlefield;
 			}
 
-			return Card.abilities.Get<Weapon>().Validate(target);
+			return Card.Abilities.Get<Weapon>().Validate(target);
 		}
 
 		internal void Activate ()

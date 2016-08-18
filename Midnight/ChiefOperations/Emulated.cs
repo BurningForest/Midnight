@@ -100,7 +100,7 @@ namespace Midnight.ChiefOperations
             foreach (var modifier in CollectModifiers())
             {
                 if (property != modifier.GetProperty()) continue;
-                var target = modifier.GetTarget().id;
+                var target = modifier.GetTarget().Id;
 
                 if (predictions.ContainsKey(target))
                 {

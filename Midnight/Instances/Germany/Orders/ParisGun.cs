@@ -42,7 +42,7 @@ namespace Midnight.Instances.Germany.Orders
 		{
 			base.InitAbilities();
 
-			abilities.Add(new EachBattleAbility());
+			Abilities.Add(new EachBattleAbility());
 		}
 	}
 }

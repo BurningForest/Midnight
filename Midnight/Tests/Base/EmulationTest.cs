@@ -75,15 +75,15 @@ namespace Midnight.Tests.Base
 			Assert.AreNotSame(source.Heavy, cloned.Heavy);
 			Assert.AreNotSame(source.Spatg, cloned.Spatg);
 
-			Assert.AreEqual(source.HQ.id, cloned.HQ.id);
-			Assert.AreEqual(source.Spatg.id, cloned.Spatg.id);
+			Assert.AreEqual(source.HQ.Id, cloned.HQ.Id);
+			Assert.AreEqual(source.Spatg.Id, cloned.Spatg.Id);
 
-			Assert.AreSame(source.HQ, source.engine.cache.Get(source.HQ.id));
-			Assert.AreSame(cloned.HQ, cloned.engine.cache.Get(cloned.HQ.id));
+			Assert.AreSame(source.HQ, source.engine.cache.Get(source.HQ.Id));
+			Assert.AreSame(cloned.HQ, cloned.engine.cache.Get(cloned.HQ.Id));
 
 			Assert.AreNotSame(source.HQ.GetLocation(), cloned.HQ.GetLocation());
-			Assert.AreNotSame(source.HQ.abilities, cloned.HQ.abilities);
-			Assert.AreNotSame(source.HQ.modifiers, cloned.HQ.modifiers);
+			Assert.AreNotSame(source.HQ.Abilities, cloned.HQ.Abilities);
+			Assert.AreNotSame(source.HQ.Modifiers, cloned.HQ.Modifiers);
 		}
 
 		[TestMethod]
@@ -96,12 +96,12 @@ namespace Midnight.Tests.Base
 				
 			manage.Damage(2, cloned.HQ, cloned.HQ);
 
-			cloned.HQ.abilities.Add(new FirstStrike());
+			cloned.HQ.Abilities.Add(new FirstStrike());
 
 			Assert.AreEqual(2, cloned.HQ.GetDamage());
 			Assert.AreEqual(0, source.HQ.GetDamage());
-			Assert.IsTrue (cloned.HQ.abilities.Has<FirstStrike>());
-			Assert.IsFalse(source.HQ.abilities.Has<FirstStrike>());
+			Assert.IsTrue (cloned.HQ.Abilities.Has<FirstStrike>());
+			Assert.IsFalse(source.HQ.Abilities.Has<FirstStrike>());
 
 			manage.Kill(cloned.HQ);
 
@@ -119,12 +119,12 @@ namespace Midnight.Tests.Base
 
 			manage.Damage(2, source.HQ, source.HQ);
 
-			source.HQ.abilities.Add(new FirstStrike());
+			source.HQ.Abilities.Add(new FirstStrike());
 
 			Assert.AreEqual(2, source.HQ.GetDamage());
 			Assert.AreEqual(0, cloned.HQ.GetDamage());
-			Assert.IsTrue(source.HQ.abilities.Has<FirstStrike>());
-			Assert.IsFalse(cloned.HQ.abilities.Has<FirstStrike>());
+			Assert.IsTrue(source.HQ.Abilities.Has<FirstStrike>());
+			Assert.IsFalse(cloned.HQ.Abilities.Has<FirstStrike>());
 
 			manage.Kill(source.HQ);
 

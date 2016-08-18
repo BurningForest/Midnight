@@ -19,10 +19,10 @@ namespace Midnight.Tests.Base
 			var Medium = engine.chiefs[1].cards.factory.Create<TankMedium>();
 			var HQ = engine.chiefs[0].cards.factory.CreateDefaultHq<HqConsol>();
 
-			Assert.AreEqual(1, Spg.id);
-			Assert.AreEqual(2, Light.id);
-			Assert.AreEqual(3, Medium.id);
-			Assert.AreEqual(4, HQ.id);
+			Assert.AreEqual(1, Spg.Id);
+			Assert.AreEqual(2, Light.Id);
+			Assert.AreEqual(3, Medium.Id);
+			Assert.AreEqual(4, HQ.Id);
 		}
 
 		[TestMethod]

@@ -14,7 +14,7 @@ namespace Midnight.Abilities.Activating
 
 		public SpecificAbility GetSpecificAbility ()
 		{
-			return Card.abilities.Get<SpecificAbility>();
+			return Card.Abilities.Get<SpecificAbility>();
 		}
 
 		public bool CanActivateOn (Card targetCard)
@@ -63,7 +63,7 @@ namespace Midnight.Abilities.Activating
 				return Status.NotAtReserve;
 			}
 
-			if (!Card.abilities.Has<SpecificAbility>())
+			if (!Card.Abilities.Has<SpecificAbility>())
             {
 				return Status.NoSpecificAbility;
 			}

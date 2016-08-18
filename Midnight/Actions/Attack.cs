@@ -18,7 +18,7 @@ namespace Midnight.Actions
 
 		public override Status Validation ()
 		{
-			return Source.abilities.Get<AttackAbility>().ValidateTarget(Target);
+			return Source.Abilities.Get<AttackAbility>().ValidateTarget(Target);
 		}
 	}
 }

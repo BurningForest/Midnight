@@ -18,7 +18,7 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			Card.abilities.Get<Deployment>().Activate();
+			Card.Abilities.Get<Deployment>().Activate();
 
 		    var card = Card as Platoon;
 		    if (card != null)

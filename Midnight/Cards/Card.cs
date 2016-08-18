@@ -1,5 +1,4 @@
-﻿using Midnight.Cards.Enums;
-using Midnight.Cards.Props;
+﻿using Midnight.Cards.Props;
 using Midnight.ChiefOperations;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
@@ -8,25 +7,27 @@ namespace Midnight.Cards
 {
 	public abstract class Card
 	{
-		public int id { get; private set; }
-		private CardLocation location;
+        private const int MaxPropValue = 99;
 
-		public Abilities abilities { get; protected set; }
-		public ModifierContainer modifiers { get; protected set; }
+        private Chief _chief;
+		private CardLocation _location;
 
-		private Chief chief;
+        public int Id { get; private set; }
+        public Abilities Abilities { get; protected set; }
+		public ModifierContainer Modifiers { get; protected set; }
 
 		public virtual CardLocation GetLocation ()
 		{
-			if (location == null) {
+			if (_location == null)
+            {
 				CreateLocation();
 			}
-			return location;
+			return _location;
 		}
 
 		public virtual void CreateLocation ()
 		{
-			location = new CardLocation(this);
+			_location = new CardLocation(this);
 		}
 
 		public abstract Proto GetProto ();
@@ -38,23 +39,23 @@ namespace Midnight.Cards
 
 		public void SetId (int id)
 		{
-			this.id = id;
+			Id = id;
 		}
 
 		public void SetChief (Chief chief)
 		{
-			this.chief = chief;
+			_chief = chief;
 		}
 
 		public Chief GetChief ()
 		{
-			return chief;
+			return _chief;
 		}
 
 		public void Reset ()
 		{
-			abilities = new Abilities(this);
-			modifiers = new ModifierContainer();
+			Abilities = new Abilities(this);
+			Modifiers = new ModifierContainer();
 		}
 
 		public virtual void InitAbilities ()
@@ -63,12 +64,12 @@ namespace Midnight.Cards
 
 		public bool IsControlledBy (Chief chief)
 		{
-			return this.chief == chief;
+			return _chief == chief;
 		}
 
 		public bool IsEnemyOf (Card target)
 		{
-			return !target.IsControlledBy(chief);
+			return !target.IsControlledBy(_chief);
 		}
 
 		public bool Is (Country country)
@@ -88,10 +89,9 @@ namespace Midnight.Cards
 
 		public void Modify (Modifier modifier)
 		{
-			modifiers.Add(modifier);
+			Modifiers.Add(modifier);
 		}
 
-		private const int MAX_PROP_VALUE = 99;
 
 		public static int Limit (int num, int max)
 		{
@@ -106,7 +106,7 @@ namespace Midnight.Cards
 		public int GetPropertyValue<TProperty> (TProperty property)
 			where TProperty : Property
 		{
-			return Limit(property.GetProtoValue(GetProto()) + modifiers.GetPropertySum(property), MAX_PROP_VALUE);
+			return Limit(property.GetProtoValue(GetProto()) + Modifiers.GetPropertySum(property), MaxPropValue);
 		}
 
 		public int GetCost ()
@@ -136,7 +136,7 @@ namespace Midnight.Cards
 
 		public int GetDamage ()
 		{
-			return modifiers.GetPropertySum(Property.damage);
+			return Modifiers.GetPropertySum(Property.damage);
 		}
 
 		public int GetLives ()

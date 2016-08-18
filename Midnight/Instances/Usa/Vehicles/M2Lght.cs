@@ -39,7 +39,7 @@ namespace Midnight.Instances.Usa.Vehicles
 		{
 			base.InitAbilities();
 
-			abilities.Add(new UsaCamouflage());
+			Abilities.Add(new UsaCamouflage());
 		}
 	}
 }

@@ -46,7 +46,7 @@ namespace Midnight.Instances.Ussr.Orders
 		{
 			base.InitAbilities();
 
-			abilities.Add(new SteelFistAbility());
+			Abilities.Add(new SteelFistAbility());
 		}
 	}
 }

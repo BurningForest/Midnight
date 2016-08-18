@@ -22,7 +22,7 @@ namespace Midnight.Utils
 				return "null";
 			} 
 
-			return card.GetType().Name + "(" + card.GetChief().index + ", " + card.id + ")";
+			return card.GetType().Name + "(" + card.GetChief().index + ", " + card.Id + ")";
 		}
 
 		public string LogCell (Cell cell)

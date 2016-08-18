@@ -40,7 +40,7 @@ namespace Midnight.Instances.Germany.Vehicles
 		{
 			base.InitAbilities();
 
-			abilities.Add(new GermanySupply());
+			Abilities.Add(new GermanySupply());
 		}
 	}
 }

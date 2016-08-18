@@ -16,7 +16,7 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 		    if (targets == null) return option;
 		    option.Type = TargetType.Card;
 		    option.Targets = targets
-		        .Select(t => new TargetOption { TargetId = t.id })
+		        .Select(t => new TargetOption { TargetId = t.Id })
 		        .ToArray();
 
 		    return option;

@@ -16,7 +16,7 @@ namespace Midnight.Cards.Types
 		{
 			base.InitAbilities();
 
-			abilities.Add(
+			Abilities.Add(
 				new WeaponArtillery(),
 				new Attack(),
 				new PlatoonEnforced(),

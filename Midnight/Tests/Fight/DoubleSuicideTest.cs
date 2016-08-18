@@ -28,8 +28,8 @@ namespace Midnight.Tests.Fight
 			manage.StartGame();
 
 			player.io.Attack(new Io.Target() {
-				SourceId = Spatg1.id,
-				TargetId = Spatg2.id
+				SourceId = Spatg1.Id,
+				TargetId = Spatg2.Id
 			});
 
 			Assert.IsTrue(Spatg1.IsDead());

@@ -21,7 +21,7 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			Source.abilities.Get<AttackAbility>().Activate();
+			Source.Abilities.Get<AttackAbility>().Activate();
 
 			_rounds[0] = new FightRound();
 			_rounds[1] = new FightRound();
@@ -43,18 +43,18 @@ namespace Midnight.Actions
 
 		private bool HasFirstStrike (FieldCard card)
 		{
-			return card.abilities.Has<FirstStrike>();
+			return card.Abilities.Has<FirstStrike>();
 		}
 
 		private bool CanPreventCounter (FieldCard source)
 		{
-			return source.abilities.Has<WeaponArtillery>()
-				|| source.abilities.Has<Cover>();
+			return source.Abilities.Has<WeaponArtillery>()
+				|| source.Abilities.Has<Cover>();
 		}
 
 		public override Status Validation ()
 		{
-		    return !Source.abilities.Has<AttackAbility>() ? Status.NoAttackAbility : Source.abilities.Get<AttackAbility>().Validate(Target);
+		    return !Source.Abilities.Has<AttackAbility>() ? Status.NoAttackAbility : Source.Abilities.Get<AttackAbility>().Validate(Target);
 		}
 	}
 }

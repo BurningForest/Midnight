@@ -8,7 +8,7 @@ namespace Midnight.Cards.Types
 		{
 			base.InitAbilities();
 			
-			abilities.Add(new Ordering());
+			Abilities.Add(new Ordering());
 		}
 	}
 }

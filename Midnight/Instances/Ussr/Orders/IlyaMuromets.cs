@@ -38,7 +38,7 @@ namespace Midnight.Instances.Ussr.Orders
 		{
 			base.InitAbilities();
 
-			abilities.Add(new HeartOfTheEnemyAbility());
+			Abilities.Add(new HeartOfTheEnemyAbility());
 		}
 	}
 }

@@ -18,7 +18,7 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 
 		internal TOption Collect ()
 		{
-			var ability = card.abilities.Get<TAbility>();
+			var ability = card.Abilities.Get<TAbility>();
 
 			if (ability != null && ability.Validate() == Status.Success) {
 				return GetOptions(ability);

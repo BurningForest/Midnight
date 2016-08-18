@@ -18,7 +18,7 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			Card.abilities.Get<Movement>().Activate(Cell);
+			Card.Abilities.Get<Movement>().Activate(Cell);
 			Card.GetFieldLocation().ToCell(Cell);
 			GetEngine().lantern.RecountTo(this);
 		}

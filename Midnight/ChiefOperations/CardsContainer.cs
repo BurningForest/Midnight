@@ -112,7 +112,7 @@ namespace Midnight.ChiefOperations
 		{
 			var Platoons = new List<Platoon>();
 
-			foreach (var subtype in Platoon.subtypeOrder) {
+			foreach (var subtype in Platoon.SubtypeOrder) {
 				var item = GetPlatoonBySubtype(subtype);
 
 				if (item != null) {

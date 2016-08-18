@@ -35,14 +35,14 @@ namespace Midnight.Core
 		private void PostCloneCardsList (List<Card> list)
 		{
 			foreach (Card source in list) {
-				PostCloneCard(engine.cache.Get(source.id), source);
+				PostCloneCard(engine.cache.Get(source.Id), source);
 			}
 		}
 
 		private void PostCloneCard (Card target, Card source)
 		{
-			target.abilities.CloneFrom(source.abilities);
-			target.modifiers.CloneFrom(source.modifiers, engine);
+			target.Abilities.CloneFrom(source.Abilities);
+			target.Modifiers.CloneFrom(source.Modifiers, engine);
 		}
 
 		private void PreCloneChief (Chief source, Chief target)
@@ -58,7 +58,7 @@ namespace Midnight.Core
 		{
 			var clone = card.CloneFor(chief);
 
-			engine.cache.ManualRegister(clone, card.id);
+			engine.cache.ManualRegister(clone, card.Id);
 			chief.cards.Add(clone);
 		}
 	}

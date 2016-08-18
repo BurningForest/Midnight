@@ -47,7 +47,7 @@ namespace Midnight.Abilities.Positioning
 
 		public void Activate ()
 		{
-			var moveAbility = Card.abilities.Get<Movement>();
+			var moveAbility = Card.Abilities.Get<Movement>();
 
 		    moveAbility?.Activate(false);
 		}

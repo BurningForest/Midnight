@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Midnight.Cards.Props
 {
 	public class ModifierContainer
 	{
-		private List<Modifier> modifiers = new List<Modifier>();
+		private readonly List<Modifier> _modifiers = new List<Modifier>();
 
 		public void Add(Modifier modifier)
 		{
-			modifiers.Add(modifier);
+			_modifiers.Add(modifier);
 		}
 
 		public List<Modifier> GetAll ()
 		{
-			return modifiers;
+			return _modifiers;
 		}
 
 		public List<Modifier> GetPropertyModifiers<TProperty> (TProperty property)
 			where TProperty : Property
 		{
-			return modifiers
+			return _modifiers
 				.Where(m => m.GetProperty() == property)
 				.ToList();
 		}

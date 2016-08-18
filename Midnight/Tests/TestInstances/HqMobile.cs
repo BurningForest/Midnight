@@ -29,7 +29,7 @@ namespace Midnight.Tests.TestInstances
 
 		public override void InitAbilities ()
 		{
-			abilities.Add(
+			Abilities.Add(
 				new MovementSlow(),
 				new WeaponCannon(),
 				new Attack(),

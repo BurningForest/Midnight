@@ -32,7 +32,7 @@ namespace Midnight.Actions
 
 		public override Status Validation ()
 		{
-			var ability = Card.abilities.Get<Deployment>();
+			var ability = Card.Abilities.Get<Deployment>();
 
 			return ability?.Validate(Cell) ?? Status.NoDeploymentAbility;
 		}

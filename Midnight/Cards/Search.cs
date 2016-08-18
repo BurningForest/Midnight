@@ -1,173 +1,178 @@
-﻿using Midnight.Cards.Enums;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Midnight.Cards.Enums;
 using Midnight.ChiefOperations;
 using Sun.CardProtos.Enums;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Midnight.Cards
 {
-	public class Search
-	{
-		private bool IsPlayer = false;
-		private bool IsEnemy = false;
+    public class Search
+    {
+        private bool _isPlayer;
+        private bool _isEnemy;
 
-		private HashSet<Type> types = new HashSet<Type>();
-		private HashSet<Subtype> subtypes = new HashSet<Subtype>();
-		private HashSet<Location?> locations = new HashSet<Location?>();
+        private readonly HashSet<Type> _types = new HashSet<Type>();
+        private readonly HashSet<Subtype> _subtypes = new HashSet<Subtype>();
+        private readonly HashSet<Location?> _locations = new HashSet<Location?>();
 
-		private readonly Chief chief;
+        private readonly Chief _chief;
 
-		public Search (Chief chief)
-		{
-			this.chief = chief;
-		}
+        public Search(Chief chief)
+        {
+            _chief = chief;
+        }
 
-		public bool IsValid (Card card)
-		{
-			// Player only
-			if (IsPlayer && !IsEnemy && card.IsControlledBy(chief.GetOpponent())) {
-				return false;
-			}
+        public bool IsValid(Card card)
+        {
+            // Player only
+            if (_isPlayer && !_isEnemy && card.IsControlledBy(_chief.GetOpponent()))
+            {
+                return false;
+            }
 
-			// Enemy only
-			if (!IsPlayer && IsEnemy && card.IsControlledBy(chief)) {
-				return false;
-			}
+            // Enemy only
+            if (!_isPlayer && _isEnemy && card.IsControlledBy(_chief))
+            {
+                return false;
+            }
 
-			if (types.Count > 0 && !types.Contains(card.GetProto().Type)) {
-				return false;
-			}
+            if (_types.Count > 0 && !_types.Contains(card.GetProto().Type))
+            {
+                return false;
+            }
 
-			if (subtypes.Count > 0 && !subtypes.Contains(card.GetProto().Subtype)) {
-				return false;
-			}
+            if (_subtypes.Count > 0 && !_subtypes.Contains(card.GetProto().Subtype))
+            {
+                return false;
+            }
 
-			if (locations.Count > 0 && !locations.Contains(card.GetLocation().GetCurrent())) {
-				return false;
-			}
+            if (_locations.Count > 0 && !_locations.Contains(card.GetLocation().GetCurrent()))
+            {
+                return false;
+            }
 
-			return true;
-		}
+            return true;
+        }
 
-		public bool IsValidExists ()
-		{
-			return GetAllCards().Any(IsValid);
-		}
+        public bool IsValidExists()
+        {
+            return GetAllCards().Any(IsValid);
+        }
 
-		public Card[] GetAll ()
-		{
-			return GetAllCards().Where(IsValid).ToArray();
-		}
+        public Card[] GetAll()
+        {
+            return GetAllCards().Where(IsValid).ToArray();
+        }
 
-		private IEnumerable<Card> GetAllCards ()
-		{
-			return new Card[0]
-				.Union(chief.cards.GetAll())
-				.Union(chief.GetOpponent().cards.GetAll());
-		}
+        private IEnumerable<Card> GetAllCards()
+        {
+            return new Card[0]
+                .Union(_chief.cards.GetAll())
+                .Union(_chief.GetOpponent().cards.GetAll());
+        }
 
-		public Search Player ()
-		{
-			IsPlayer = true;
-			return this;
-		}
+        public Search Player()
+        {
+            _isPlayer = true;
+            return this;
+        }
 
-		public Search Enemy ()
-		{
-			IsEnemy = true;
-			return this;
-		}
+        public Search Enemy()
+        {
+            _isEnemy = true;
+            return this;
+        }
 
-		// type
-		public Search Hq ()
-		{
-			types.Add(Type.HQ);
-			return this;
-		}
+        // type
+        public Search Hq()
+        {
+            _types.Add(Type.HQ);
+            return this;
+        }
 
-		public Search Vehicle ()
-		{
-			types.Add(Type.Vehicle);
-			return this;
-		}
+        public Search Vehicle()
+        {
+            _types.Add(Type.Vehicle);
+            return this;
+        }
 
-		public Search Platoon ()
-		{
-			types.Add(Type.Platoon);
-			return this;
-		}
+        public Search Platoon()
+        {
+            _types.Add(Type.Platoon);
+            return this;
+        }
 
-		public Search Order ()
-		{
-			types.Add(Type.Order);
-			return this;
-		}
+        public Search Order()
+        {
+            _types.Add(Type.Order);
+            return this;
+        }
 
-		// subtype
-		public Search Light ()
-		{
-			subtypes.Add(Subtype.Light);
-			return this;
-		}
+        // subtype
+        public Search Light()
+        {
+            _subtypes.Add(Subtype.Light);
+            return this;
+        }
 
-		public Search Medium ()
-		{
-			subtypes.Add(Subtype.Medium);
-			return this;
-		}
+        public Search Medium()
+        {
+            _subtypes.Add(Subtype.Medium);
+            return this;
+        }
 
-		public Search Heavy ()
-		{
-			subtypes.Add(Subtype.Heavy);
-			return this;
-		}
+        public Search Heavy()
+        {
+            _subtypes.Add(Subtype.Heavy);
+            return this;
+        }
 
-		public Search Spatg ()
-		{
-			subtypes.Add(Subtype.Spatg);
-			return this;
-		}
+        public Search Spatg()
+        {
+            _subtypes.Add(Subtype.Spatg);
+            return this;
+        }
 
-		public Search Spg ()
-		{
-			subtypes.Add(Subtype.Spg);
-			return this;
-		}
+        public Search Spg()
+        {
+            _subtypes.Add(Subtype.Spg);
+            return this;
+        }
 
-		// location
-		public Search Forefront ()
-		{
-			return Battlefield().Support();
-		}
+        // location
+        public Search Forefront()
+        {
+            return Battlefield().Support();
+        }
 
-		public Search Battlefield ()
-		{
-			locations.Add(Location.Battlefield);
-			return this;
-		}
+        public Search Battlefield()
+        {
+            _locations.Add(Location.Battlefield);
+            return this;
+        }
 
-		public Search Reserve ()
-		{
-			locations.Add(Location.Reserve);
-			return this;
-		}
+        public Search Reserve()
+        {
+            _locations.Add(Location.Reserve);
+            return this;
+        }
 
-		public Search Graveyard ()
-		{
-			locations.Add(Location.Graveyard);
-			return this;
-		}
+        public Search Graveyard()
+        {
+            _locations.Add(Location.Graveyard);
+            return this;
+        }
 
-		public Search Support ()
-		{
-			locations.Add(Location.Support);
-			return this;
-		}
+        public Search Support()
+        {
+            _locations.Add(Location.Support);
+            return this;
+        }
 
-		public Search Deck ()
-		{
-			locations.Add(Location.Deck);
-			return this;
-		}
-	}
+        public Search Deck()
+        {
+            _locations.Add(Location.Deck);
+            return this;
+        }
+    }
 }

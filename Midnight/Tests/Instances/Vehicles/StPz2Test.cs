@@ -55,7 +55,7 @@ namespace Midnight.Tests.Instances.Vehicles
 
 			Assert.AreEqual(Status.Success, player.io.Deploy(new Io.Position
 			{
-				CardId = stPz2.id,
+				CardId = stPz2.Id,
 				X = 1,
 				Y = 1
 			}));
@@ -65,8 +65,8 @@ namespace Midnight.Tests.Instances.Vehicles
 
 			Assert.AreEqual(Status.Success, player.io.Attack(new Io.Target
 			{
-				SourceId = stPz2.id,
-				TargetId = hisHq.id
+				SourceId = stPz2.Id,
+				TargetId = hisHq.Id
 			}));
 
 			Assert.AreEqual(stPz2.GetPower(), hisHq.GetDamage());

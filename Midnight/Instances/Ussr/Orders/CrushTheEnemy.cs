@@ -46,7 +46,7 @@ namespace Midnight.Instances.Ussr.Orders
 		{
 			base.InitAbilities();
 
-			abilities.Add(new CrushTheEnemyAbility());
+			Abilities.Add(new CrushTheEnemyAbility());
 		}
 	}
 }

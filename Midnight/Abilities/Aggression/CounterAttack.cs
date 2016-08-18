@@ -7,7 +7,7 @@
 		{
 			private Attack GetJoinedAttack ()
 			{
-				return Card.abilities.Get<Attack>();
+				return Card.Abilities.Get<Attack>();
 			}
 
 			public override int GetMaxQuantity ()
