@@ -1,31 +1,26 @@
 ﻿using Midnight.ActionManager;
 using Midnight.ChiefOperations;
-using Midnight.Cards;
 using Midnight.Core;
 
 namespace Midnight.Actions
 {
 	public class DrawRandom : GameAction<DrawRandom>
 	{
-		public readonly Chief chief;
+		public readonly Chief Chief;
 
 		public DrawRandom (Chief chief)
 		{
-			this.chief = chief;
+			Chief = chief;
 		}
 
 		public override void Configure ()
 		{
-			AddChild(new Draw(chief.cards.GetRandomDeckCard()));
+			AddChild(new Draw(Chief.cards.GetRandomDeckCard()));
 		}
 
 		public override Status Validation ()
 		{
-			if (chief.cards.GetRandomDeckCard() == null) {
-				return Status.DeckIsEmpty;
-			}
-
-			return Status.Success;
+		    return Chief.cards.GetRandomDeckCard() == null ? Status.DeckIsEmpty : Status.Success;
 		}
 	}
 }

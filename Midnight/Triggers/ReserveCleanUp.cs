@@ -23,14 +23,14 @@ namespace Midnight.Triggers
 		{
 			EndTurn action = ev.action;
 
-			if (!IsOwner(action.chief)) {
+			if (!IsOwner(action.Chief)) {
 				return;
 			}
 
-			var diff = action.chief.cards.CountLocation(Location.Reserve) - max;
+			var diff = action.Chief.cards.CountLocation(Location.Reserve) - max;
 
 			if (diff > 0) {
-				action.AddChild(new CleanUp(action.chief, diff));
+				action.AddChild(new CleanUp(action.Chief, diff));
 			}
 		}
 	}

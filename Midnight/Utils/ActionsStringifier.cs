@@ -3,7 +3,6 @@ using Midnight.Actions;
 using Midnight.Battlefield;
 using Midnight.Cards;
 using Midnight.Cards.Types;
-using Midnight.Core;
 using System.Linq;
 
 namespace Midnight.Utils
@@ -18,7 +17,8 @@ namespace Midnight.Utils
 
 		public string LogCard (Card card)
 		{
-			if (card == null) {
+			if (card == null)
+            {
 				return "null";
 			} 
 
@@ -47,108 +47,109 @@ namespace Midnight.Utils
 
 		public string[] GetDynamicArgs (StartGame action)
 		{
-			return Group(action.chief.index);
+			return Group(action.Chief.index);
 		}
 
 		public string[] GetDynamicArgs (BeginTurn action)
 		{
-			return Group(action.chief.index);
+			return Group(action.Chief.index);
 		}
 
 		public string[] GetDynamicArgs (EndTurn action)
 		{
-			return Group(action.chief.index);
+			return Group(action.Chief.index);
 		}
 
 		public string[] GetDynamicArgs (Position action)
 		{
-			return Group(LogCard(action.card), LogCell(action.cell));
+			return Group(LogCard(action.Card), LogCell(action.Cell));
 		}
 
 		public string[] GetDynamicArgs (Move action)
 		{
-			return Group(LogCard(action.card), LogCell(action.cell));
+			return Group(LogCard(action.Card), LogCell(action.Cell));
 		}
 
 		public string[] GetDynamicArgs (Step action)
 		{
-			return Group(LogCard(action.card), LogCell(action.cell));
+			return Group(LogCard(action.Card), LogCell(action.Cell));
 		}
 
 		public string[] GetDynamicArgs (Deploy action)
 		{
-			return (action.card is FieldCard)
-				? Group(LogCard(action.card), LogCell(action.cell))
-				: Group(LogCard(action.card));
+		    var card = action.Card as FieldCard;
+		    return (card != null)
+				? Group(LogCard(card), LogCell(action.Cell))
+				: Group(LogCard(action.Card));
 		}
 
-		public string[] GetDynamicArgs (Fight action)
+	    public string[] GetDynamicArgs (Fight action)
 		{
-			return Group(LogCard(action.source), LogCard(action.target));
+			return Group(LogCard(action.Source), LogCard(action.Target));
 		}
 
 		public string[] GetDynamicArgs (Attack action)
 		{
-			return Group(LogCard(action.source), LogCard(action.target));
+			return Group(LogCard(action.Source), LogCard(action.Target));
 		}
 
 		public string[] GetDynamicArgs (CounterAttack action)
 		{
-			return Group( LogCard(action.source), LogCard(action.target) );
+			return Group( LogCard(action.Source), LogCard(action.Target) );
 		}
 
 		public string[] GetDynamicArgs (AddModifier action)
 		{
 			return Group(
-				LogCard(action.modifier.GetTarget()),
-				action.modifier.GetProperty(),
-				action.modifier.GetValue()
+				LogCard(action.Modifier.GetTarget()),
+				action.Modifier.GetProperty(),
+				action.Modifier.GetValue()
 			);
 		}
 
 		public string[] GetDynamicArgs (DealDamage action)
 		{
-			return Group(LogCard(action.target), action.value);
+			return Group(LogCard(action.Target), action.Value);
 		}
 
 		public string[] GetDynamicArgs (HealDamage action)
 		{
-			return Group(LogCard(action.target), action.value);
+			return Group(LogCard(action.Target), action.Value);
 		}
 
 		public string[] GetDynamicArgs (Death action)
 		{
-			return Group( LogCard(action.card) );
+			return Group( LogCard(action.Card) );
 		}
 
 		public string[] GetDynamicArgs (PayResources action)
 		{
-			return Group( action.chief.index, action.value );
+			return Group( action.Chief.index, action.Value );
 		}
 
 		public string[] GetDynamicArgs (SetResources action)
 		{
-			return Group(action.chief.index, action.value);
+			return Group(action.Chief.index, action.Value);
 		}
 
 		public string[] GetDynamicArgs (Draw action)
 		{
-			return Group(LogCard(action.card));
+			return Group(LogCard(action.Card));
 		}
 
 		public string[] GetDynamicArgs (DrawRandom action)
 		{
-			return Group(action.chief.index);
+			return Group(action.Chief.index);
 		}
 
 		public string[] GetDynamicArgs (DrawCount action)
 		{
-			return Group(action.chief.index, action.count);
+			return Group(action.Chief.index, action.Count);
 		}
 
 		public string[] GetDynamicArgs (DrawList action)
 		{
-			return Group(action.cards.Count());
+			return Group(action.Cards.Count());
 		}
 	}
 }

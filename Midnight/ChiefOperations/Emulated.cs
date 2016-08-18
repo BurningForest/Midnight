@@ -137,7 +137,7 @@ namespace Midnight.ChiefOperations
                 var modifier = action as AddModifier;
                 if (modifier != null)
                 {
-                    list.Add(modifier.modifier);
+                    list.Add(modifier.Modifier);
                 }
 
                 list.AddRange(CollectModifiersFrom(action.Children));

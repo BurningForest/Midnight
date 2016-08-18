@@ -60,7 +60,7 @@ namespace Midnight.Tests.Triggers
 			Assert.AreNotEqual(null, final.action);
 			Assert.AreEqual(1, final.count);
 			Assert.AreEqual(Final.Trigger.DeckOut, final.action.trigger);
-			Assert.AreSame(enemy, final.action.winner);
+			Assert.AreSame(enemy, final.action.Winner);
 		}
 	}
 }

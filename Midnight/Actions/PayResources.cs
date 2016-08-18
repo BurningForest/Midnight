@@ -7,8 +7,8 @@ namespace Midnight.Actions
 {
 	public class PayResources : GameAction<PayResources>
 	{
-		public readonly Chief chief;
-		public readonly int value;
+		public readonly Chief Chief;
+		public readonly int Value;
 
 		public static PayResources ForCard (Card card)
 		{
@@ -17,22 +17,18 @@ namespace Midnight.Actions
 
 		public PayResources (Chief chief, int value)
 		{
-			this.chief = chief;
-			this.value = value;
+			Chief = chief;
+			Value = value;
 		}
 
 		public override void Configure ()
 		{
-			chief.PayResources( value );
+			Chief.PayResources( Value );
 		}
 
 		public override Status Validation ()
 		{
-			if (chief.GetResources() < value) {
-				return Status.NotEnoughResources;
-			}
-
-			return Status.Success;
+		    return Chief.GetResources() < Value ? Status.NotEnoughResources : Status.Success;
 		}
 	}
 }

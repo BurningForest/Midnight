@@ -1,22 +1,22 @@
 ﻿using Midnight.ActionManager;
 using Midnight.Cards;
-using Midnight.ChiefOperations;
 using System.Collections.Generic;
 
 namespace Midnight.Actions
 {
 	public class DrawList : GameAction<DrawList>
 	{
-		public readonly IEnumerable<Card> cards;
+		public readonly IEnumerable<Card> Cards;
 
 		public DrawList (IEnumerable<Card> cards)
 		{
-			this.cards = cards;
+			Cards = cards;
 		}
 
 		public override void Configure ()
 		{
-			foreach (var card in cards) {
+			foreach (var card in Cards)
+            {
 				AddChild(new Draw(card));
 			}
 		}

@@ -8,33 +8,30 @@ namespace Midnight.Actions
 {
 	public class Move : GameAction<Move>
 	{
-		public readonly FieldCard card;
-		public readonly Cell cell;
+		public readonly FieldCard Card;
+		public readonly Cell Cell;
 
 		public Move (FieldCard card, Cell cell)
 		{
-			this.card = card;
-			this.cell = cell;
+			Card = card;
+			Cell = cell;
 		}
 
 		public override void Configure ()
 		{
-			var moves = card.abilities.Get<Movement>().GetMovesTo(cell);
+			var moves = Card.abilities.Get<Movement>().GetMovesTo(Cell);
 
-			foreach (var move in moves) {
-				AddChild(new Step(card, move));
+			foreach (var move in moves)
+            {
+				AddChild(new Step(Card, move));
 			}
 		}
 
 		public override Status Validation ()
 		{
-			var ability = card.abilities.Get<Movement>();
+			var ability = Card.abilities.Get<Movement>();
 
-			if (ability == null) {
-				return Status.NoMovementAbility;
-			}
-
-			return ability.Validate(cell);
+			return ability?.Validate(Cell) ?? Status.NoMovementAbility;
 		}
 	}
 }

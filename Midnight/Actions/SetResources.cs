@@ -5,18 +5,18 @@ namespace Midnight.Actions
 {
 	public class SetResources : GameAction<SetResources>
 	{
-		public readonly Chief chief;
-		public readonly int value;
+		public readonly Chief Chief;
+		public readonly int Value;
 
 		public SetResources (Chief chief, int value)
 		{
-			this.chief = chief;
-			this.value = value;
+			Chief = chief;
+			Value = value;
 		}
 
 		public override void Configure ()
 		{
-			chief.SetResources( value );
+			Chief.SetResources( Value );
 		}
 	}
 }

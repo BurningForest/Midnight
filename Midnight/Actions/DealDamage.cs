@@ -8,8 +8,11 @@ namespace Midnight.Actions
 {
 	public class DealDamage : GameAction<DealDamage>
 	{
-
-		public class NonLethal : DealDamage
+        public readonly Modifier Modifier;
+        public readonly Card Source;
+        public readonly ForefrontCard Target;
+        public int Value { get; private set; }
+        public class NonLethal : DealDamage
 		{
 			public NonLethal (int value, Card source, ForefrontCard target) : base(value, source, target)
 			{
@@ -17,67 +20,58 @@ namespace Midnight.Actions
 
 			public override void Configure ()
 			{
-				modifier
+				Modifier
 					.SetValue(GetFinalDamage())
-					.SetTarget(target)
-					.SetSource(source);
+					.SetTarget(Target)
+					.SetSource(Source);
 
-				AddChild(new AddModifier(modifier));
+				AddChild(new AddModifier(Modifier));
 			}
 		} 
-
-		public readonly Modifier modifier;
-		public readonly Card source;
-		public readonly ForefrontCard target;
-		public int value { get; private set; }
-
 		public DealDamage (int value, Card source, ForefrontCard target)
 		{
-			this.value = value;
-			this.source = source;
-			this.target = target;
+			Value = value;
+			Source = source;
+			Target = target;
 
-			modifier = new Modifier(Property.damage);
+			Modifier = new Modifier(Property.damage);
 		}
 
 		public int GetFinalDamage ()
 		{
-			return Card.Limit(value, target.GetLives());
+			return Card.Limit(Value, Target.GetLives());
 		}
 
 		public int GetDamage ()
 		{
-			return Card.Limit(value);
+			return Card.Limit(Value);
 		}
 
 		public void ModifyDamage (int diff)
 		{
-			value += diff;
-			modifier.SetValue(GetFinalDamage());
+			Value += diff;
+			Modifier.SetValue(GetFinalDamage());
 		}
 
 		public override void Configure ()
 		{
-			modifier
+			Modifier
 				.SetValue(GetFinalDamage())
-				.SetTarget(target)
-				.SetSource(source);
+				.SetTarget(Target)
+				.SetSource(Source);
 
-			AddChild(new AddModifier(modifier));
-			AddChild(new Death(target));
+			AddChild(new AddModifier(Modifier));
+			AddChild(new Death(Target));
 		}
 
 		public override Status Validation ()
 		{
-			if (target == null) {
+			if (Target == null)
+            {
 				return Status.NoCard;
 			}
 
-			if (!target.GetLocation().IsForefront()) {
-				return Status.NotAtForefront;
-			}
-
-			return Status.Success;
+			return !Target.GetLocation().IsForefront() ? Status.NotAtForefront : Status.Success;
 		}
 	}
 }

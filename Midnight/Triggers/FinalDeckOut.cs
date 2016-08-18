@@ -9,7 +9,7 @@ namespace Midnight.Triggers
 	{
 		public void On (Failure<DrawRandom> ev)
 		{
-			var chief = ev.action.chief.GetOpponent();
+			var chief = ev.action.Chief.GetOpponent();
 
 			if (IsOwner(chief)) {
 				engine.actions.Delay(new Final(chief, Final.Trigger.DeckOut));

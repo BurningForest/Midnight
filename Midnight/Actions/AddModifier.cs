@@ -6,24 +6,21 @@ namespace Midnight.Actions
 {
 	public class AddModifier : GameAction<AddModifier>
 	{
-		public readonly Modifier modifier;
+		public readonly Modifier Modifier;
 
-		public AddModifier (Modifier modifier) {
-			this.modifier = modifier;
+		public AddModifier (Modifier modifier)
+        {
+			Modifier = modifier;
 		}
 
 		public override void Configure ()
 		{
-			modifier.GetTarget().Modify(modifier);
+			Modifier.GetTarget().Modify(Modifier);
 		}
 
 		public override Status Validation ()
 		{
-			if (modifier.GetTarget().IsDead()) {
-				return Status.TargetIsDead;
-			}
-
-			return Status.Success;
+		    return Modifier.GetTarget().IsDead() ? Status.TargetIsDead : Status.Success;
 		}
 	}
 }

@@ -1,26 +1,25 @@
 ﻿using Midnight.Abilities.Positioning;
 using Midnight.ActionManager;
 using Midnight.Battlefield;
-using Midnight.Cards;
 using Midnight.Cards.Types;
 
 namespace Midnight.Actions
 {
 	public class Step : GameAction<Step>
 	{
-		public readonly FieldCard card;
-		public readonly Cell cell;
+		public readonly FieldCard Card;
+		public readonly Cell Cell;
 
 		public Step (FieldCard card, Cell cell)
 		{
-			this.card = card;
-			this.cell = cell;
+			Card = card;
+			Cell = cell;
 		}
 
 		public override void Configure ()
 		{
-			card.abilities.Get<Movement>().Activate(cell);
-			card.GetFieldLocation().ToCell(cell);
+			Card.abilities.Get<Movement>().Activate(Cell);
+			Card.GetFieldLocation().ToCell(Cell);
 			GetEngine().lantern.RecountTo(this);
 		}
 	}

@@ -6,29 +6,26 @@ namespace Midnight.Actions
 {
 	public class Draw : GameAction<Draw>
 	{
-		public readonly Card card;
+		public readonly Card Card;
 
 		public Draw (Card card)
 		{
-			this.card = card;
+			Card = card;
 		}
 
 		public override void Configure ()
 		{
-			card.GetLocation().ToReserve();
+			Card.GetLocation().ToReserve();
 		}
 
 		public override Status Validation ()
 		{
-			if (card == null) {
+			if (Card == null)
+            {
 				return Status.NoCard;
 			}
 
-			if (!card.GetLocation().IsDeck()) {
-				return Status.NotInDeck;
-			}
-
-			return Status.Success;
+			return !Card.GetLocation().IsDeck() ? Status.NotInDeck : Status.Success;
 		}
 	}
 }

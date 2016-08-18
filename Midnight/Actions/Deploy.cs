@@ -8,37 +8,33 @@ namespace Midnight.Actions
 {
 	public class Deploy : GameAction<Deploy>
 	{
-		public readonly ForefrontCard card;
-		public readonly Cell cell;
+		public readonly ForefrontCard Card;
+		public readonly Cell Cell;
 
 		public Deploy (ForefrontCard card, Cell cell)
 		{
-			this.card = card;
-			this.cell = cell;
+			Card = card;
+			Cell = cell;
 		}
 
 		public override void Configure ()
 		{
-			if (card is Platoon) {
-				var previous = card.GetChief().cards.GetPlatoonBySubtype(card.GetProto().Subtype);
+		    var platoon = Card as Platoon;
+		    var previous = platoon?.GetChief().cards.GetPlatoonBySubtype(platoon.GetProto().Subtype);
 
-				if (previous != null) {
-					AddChild(new Death.Forced(previous));
-				}
-			}
+		    if (previous != null)
+		    {
+		        AddChild(new Death.Forced(previous));
+		    }
 
-			AddChild(new Deployed(card, cell));
+		    AddChild(new Deployed(Card, Cell));
 		}
 
 		public override Status Validation ()
 		{
-			var ability = card.abilities.Get<Deployment>();
+			var ability = Card.abilities.Get<Deployment>();
 
-			if (ability == null) {
-				return Status.NoDeploymentAbility;
-			}
-
-			return ability.Validate(cell);
+			return ability?.Validate(Cell) ?? Status.NoDeploymentAbility;
 		}
 	}
 }

@@ -22,8 +22,8 @@ namespace Midnight.Triggers
 		{
 			BeginTurn action = ev.action;
 			
-			if (!action.IsInitial() && IsOwner(action.chief)) {
-				action.AddChild(new DrawCount(action.chief, count)); 
+			if (!action.IsInitial() && IsOwner(action.Chief)) {
+				action.AddChild(new DrawCount(action.Chief, count)); 
 			}
 		}
 	}

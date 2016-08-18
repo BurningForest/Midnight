@@ -6,11 +6,11 @@ namespace Midnight.Actions
 {
 	public class EndTurn : GameAction<EndTurn>
 	{
-		public readonly Chief chief;
+		public readonly Chief Chief;
 
 		public EndTurn (Chief chief)
 		{
-			this.chief = chief;
+			Chief = chief;
 		}
 
 		public override void Configure ()
@@ -21,7 +21,6 @@ namespace Midnight.Actions
 		public override Status Validation ()
 		{
 			// todo isTurnOwner
-
 			return Status.Success;
 		}
 	}

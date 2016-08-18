@@ -13,17 +13,15 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			source.abilities.Get<CounterAttackAbility>().Activate();
+			Source.abilities.Get<CounterAttackAbility>().Activate();
 			CreateDamageAction();
 		}
 
 		public override Status Validation ()
 		{
-			if (!source.abilities.Has<CounterAttackAbility>()) {
-				return Status.NoCounterAttackAbility;
-			}
-
-			return source.abilities.Get<CounterAttackAbility>().Validate(target);
+		    return !Source.abilities.Has<CounterAttackAbility>() ? 
+                Status.NoCounterAttackAbility : 
+                Source.abilities.Get<CounterAttackAbility>().Validate(Target);
 		}
 	}
 }

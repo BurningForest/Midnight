@@ -36,7 +36,7 @@ namespace Midnight.Abilities.Aggression
 
 		public void On (Before<BeginTurn> ev)
 		{
-			if (Card.IsControlledBy(ev.action.chief))
+			if (Card.IsControlledBy(ev.action.Chief))
             {
 				Quantity = 0;
 			}

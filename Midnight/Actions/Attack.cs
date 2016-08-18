@@ -1,5 +1,4 @@
 ﻿using AttackAbility = Midnight.Abilities.Aggression.Attack;
-using Midnight.ActionManager;
 using Midnight.Cards.Types;
 using Midnight.Core;
 
@@ -19,7 +18,7 @@ namespace Midnight.Actions
 
 		public override Status Validation ()
 		{
-			return source.abilities.Get<AttackAbility>().ValidateTarget(target);
+			return Source.abilities.Get<AttackAbility>().ValidateTarget(Target);
 		}
 	}
 }

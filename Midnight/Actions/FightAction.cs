@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Midnight.ActionManager;
 using Midnight.Cards.Types;
 using Midnight.Abilities.Passive;
@@ -9,49 +10,54 @@ namespace Midnight.Actions
 	public abstract class FightAction<TAction> : GameAction<TAction>
 		where TAction : FightAction<TAction>
 	{
-		public readonly FieldCard source;
-		public readonly FieldCard target;
-		public DealDamage damage { get; protected set; }
+		public readonly FieldCard Source;
+		public readonly FieldCard Target;
+		public DealDamage Damage { get; protected set; }
 
-		public FightAction (FieldCard source, FieldCard target)
+	    public FightAction (FieldCard source, FieldCard target)
 		{
-			this.source = source;
-			this.target = target;
+			Source = source;
+			Target = target;
 		}
 
 		protected DealDamage CreateDamageAction ()
 		{
-			damage = new DealDamage.NonLethal(source.GetPower(), source, target);
+			Damage = new DealDamage.NonLethal(Source.GetPower(), Source, Target);
 
-			if (source.abilities.Has<PlatoonEnforced>()) {
+			if (Source.abilities.Has<PlatoonEnforced>())
+            {
 				PlatoonsEnforce();
 			}
-			if (target.abilities.Has<PlatoonProtected>()) {
+
+			if (Target.abilities.Has<PlatoonProtected>())
+            {
 				PlatoonsProtect();
 			}
 
-			AddChild(damage);
-			return damage;
+			AddChild(Damage);
+			return Damage;
 		}
 
 		private void PlatoonsEnforce ()
 		{
-			foreach (var Platoon in source.GetChief().cards.GetOrderedPlatoons()) {
-				if (Platoon is Enforce) {
-					damage.ModifyDamage(Platoon.GetPower());
-					AddChild(new ActivatePlatoon(Platoon, Platoon.GetPower()));
-				}
-			}
+		    foreach (var platoon in Source.GetChief().cards.GetOrderedPlatoons().OfType<Enforce>())
+		    {
+		        Damage.ModifyDamage(platoon.GetPower());
+		        AddChild(new ActivatePlatoon(platoon, platoon.GetPower()));
+		    }
 		}
 
-		private void PlatoonsProtect ()
+	    private void PlatoonsProtect ()
 		{
-			foreach (var Platoon in target.GetChief().cards.GetOrderedPlatoons()) {
-				if (Platoon is Protect && damage.GetDamage() > 0) {
-					var value = Math.Min(damage.GetDamage(), Platoon.GetDefense());
+			foreach (var platoon in Target.GetChief().cards.GetOrderedPlatoons())
+			{
+			    var protect = platoon as Protect;
+			    if (protect != null && Damage.GetDamage() > 0)
+                {
+					var value = Math.Min(Damage.GetDamage(), protect.GetDefense());
 
-					damage.ModifyDamage(-value);
-					AddChild(new ActivatePlatoon(Platoon, value));
+					Damage.ModifyDamage(-value);
+					AddChild(new ActivatePlatoon(platoon, value));
 				}
 			}
 		}

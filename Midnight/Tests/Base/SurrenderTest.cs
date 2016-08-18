@@ -22,7 +22,7 @@ namespace Midnight.Tests.Base
 
 			Assert.AreNotEqual(null, engine.final);
 			Assert.AreEqual(Final.Trigger.Surrender, engine.final.trigger);
-			Assert.AreSame(enemy, engine.final.winner);
+			Assert.AreSame(enemy, engine.final.Winner);
 		}
 	}
 }

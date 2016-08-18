@@ -9,35 +9,36 @@ namespace Midnight.Actions
 {
 	public class Fight : GameAction<Fight>
 	{
-		public readonly FieldCard source;
-		public readonly FieldCard target;
-		private FightRound[] rounds = new FightRound[2];
+		public readonly FieldCard Source;
+		public readonly FieldCard Target;
+		private readonly FightRound[] _rounds = new FightRound[2];
 
 		public Fight (FieldCard source, FieldCard target)
 		{
-			this.source = source;
-			this.target = target;
+			Source = source;
+			Target = target;
 		}
 
 		public override void Configure ()
 		{
-			source.abilities.Get<AttackAbility>().Activate();
+			Source.abilities.Get<AttackAbility>().Activate();
 
-			rounds[0] = new FightRound();
-			rounds[1] = new FightRound();
+			_rounds[0] = new FightRound();
+			_rounds[1] = new FightRound();
 
-			GetRoundFor(source).AddFightAction(new Attack(source, target), target);
+			GetRoundFor(Source).AddFightAction(new Attack(Source, Target), Target);
 
-			if (!CanPreventCounter(source)) {
-				GetRoundFor(target).AddFightAction(new CounterAttack(target, source), source);
+			if (!CanPreventCounter(Source))
+            {
+				GetRoundFor(Target).AddFightAction(new CounterAttack(Target, Source), Source);
 			}
 
-			AddChildren(rounds);
+			AddChildren(_rounds);
 		}
 
 		private FightRound GetRoundFor (FieldCard card)
 		{
-			return rounds[HasFirstStrike(card) ? 0 : 1];
+			return _rounds[HasFirstStrike(card) ? 0 : 1];
 		}
 
 		private bool HasFirstStrike (FieldCard card)
@@ -53,11 +54,7 @@ namespace Midnight.Actions
 
 		public override Status Validation ()
 		{
-			if (!source.abilities.Has<AttackAbility>()) {
-				return Status.NoAttackAbility;
-			}
-
-			return source.abilities.Get<AttackAbility>().Validate(target);
+		    return !Source.abilities.Has<AttackAbility>() ? Status.NoAttackAbility : Source.abilities.Get<AttackAbility>().Validate(Target);
 		}
 	}
 }

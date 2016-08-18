@@ -6,7 +6,8 @@ namespace Midnight.Actions
 {
 	public class Death : GameAction<Death>
 	{
-		public class Forced : Death
+        public readonly Card Card;
+        public class Forced : Death
 		{
 			public Forced (Card card) : base(card) {}
 
@@ -15,28 +16,21 @@ namespace Midnight.Actions
 				return Status.Success;
 			}
 		}
-
-		public readonly Card card;
-
 		public Death (Card card)
 		{
-			this.card = card;
+			Card = card;
 		}
 
 		public override void Configure ()
 		{
-			card.GetLocation().ToGraveyard();
+			Card.GetLocation().ToGraveyard();
 
 			GetEngine().lantern.RecountTo(this);
 		}
 
 		public override Status Validation ()
 		{
-			if (card.GetLives() > 0) {
-				return Status.CardHasLives;
-			}
-
-			return Status.Success;
+		    return Card.GetLives() > 0 ? Status.CardHasLives : Status.Success;
 		}
 	}
 }

@@ -6,24 +6,24 @@ namespace Midnight.Actions
 {
 	public class BeginTurn : GameAction<BeginTurn>
 	{
-		public readonly Chief chief;
-		public readonly EndTurn turnEnd;
+		public readonly Chief Chief;
+		public readonly EndTurn TurnEnd;
 
 		public BeginTurn (Chief chief)
 		{
-			this.chief = chief;
-			this.turnEnd = null;
+			Chief = chief;
+			TurnEnd = null;
 		}
 
 		public BeginTurn (Chief chief, EndTurn turnEnd)
 		{
-			this.chief = chief;
-			this.turnEnd = turnEnd;
+			Chief = chief;
+			TurnEnd = turnEnd;
 		}
 
 		public bool IsInitial ()
 		{
-			return turnEnd == null;
+			return TurnEnd == null;
 		}
 
 		public override void Configure ()

@@ -7,26 +7,30 @@ namespace Midnight.Actions
 {
 	public class Deployed : GameAction<Deployed>
 	{
-		public readonly ForefrontCard card;
-		public readonly Cell cell;
+		public readonly ForefrontCard Card;
+		public readonly Cell Cell;
 
 		public Deployed (ForefrontCard card, Cell cell)
 		{
-			this.card = card;
-			this.cell = cell;
+			Card = card;
+			Cell = cell;
 		}
 
 		public override void Configure ()
 		{
-			card.abilities.Get<Deployment>().Activate();
+			Card.abilities.Get<Deployment>().Activate();
 
-			if (card is Platoon) {
-				((Platoon)card).GetLocation().ToSupport();
-			} else {
-				((FieldCard)card).GetFieldLocation().ToCell(cell);
+		    var card = Card as Platoon;
+		    if (card != null)
+            {
+				card.GetLocation().ToSupport();
+			}
+            else
+            {
+				((FieldCard)Card).GetFieldLocation().ToCell(Cell);
 			}
 
-			AddChild(PayResources.ForCard(card));
+			AddChild(PayResources.ForCard(Card));
 			GetEngine().lantern.RecountTo(this);
 		}
 	}

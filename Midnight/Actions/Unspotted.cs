@@ -5,11 +5,11 @@ namespace Midnight.Actions
 {
 	public class Unspotted : GameAction<Unspotted>
 	{
-		public readonly FieldCard card;
+		public readonly FieldCard Card;
 
 		public Unspotted (FieldCard card)
 		{
-			this.card = card;
+			Card = card;
 		}
 	}
 }
