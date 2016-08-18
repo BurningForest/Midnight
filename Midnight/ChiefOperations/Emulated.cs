@@ -145,10 +145,5 @@ namespace Midnight.ChiefOperations
 
             return list;
         }
-
-        public void Clear()
-        {
-            _actions.Clear();
-        }
     }
 }

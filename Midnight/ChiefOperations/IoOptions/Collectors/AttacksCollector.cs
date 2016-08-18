@@ -15,17 +15,15 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 		{
 			var attacks = new List<TargetOption>();
 
-		    var emulated = card.GetChief().GetEmulated();
-
             foreach (var target in GetAllowedTargets())
             {
+                var emulated = card.GetChief().GetEmulated();
                 emulated.Attack(new Io.Target
                 {
                     SourceId = card.id,
                     TargetId = target.id
                 });
 				attacks.Add(new TargetOption { TargetId = target.id, Predictions = emulated.GetDamagePredictions()});
-                emulated.Clear();
 			}
 
 			return attacks.Count == 0 ? null : new AttackOptions { Targets = attacks.ToArray() };
