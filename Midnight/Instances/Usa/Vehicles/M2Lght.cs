@@ -1,5 +1,4 @@
 ﻿using Midnight.Abilities.Passive;
-using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
@@ -8,7 +7,8 @@ namespace Midnight.Instances.Usa.Vehicles
 {
 	public class M2Light : LightVehicle
 	{
-		public static readonly Proto proto = new ParameterizedProto<M2Light>() {
+		public static readonly Proto Proto = new ParameterizedProto<M2Light>
+		{
 			ID = "uv_m2lt",
 			Level = 2,
 			Type = Type.Vehicle,
@@ -32,7 +32,7 @@ namespace Midnight.Instances.Usa.Vehicles
 
 		public override Proto GetProto ()
 		{
-			return proto;
+			return Proto;
 		}
 
 		public override void InitAbilities ()

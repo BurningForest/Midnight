@@ -11,14 +11,14 @@ namespace Midnight.Instances.Ussr.Orders
 	{
         // Нанесите 2 повреждения выбранному штабу, технике или взводу.
 
-        public static readonly Proto proto = new CardProtosRepository()
+        public static readonly Proto Proto = new CardProtosRepository()
             .GetParameterizedProto<IlyaMuromets>("so_ilya_muromets");
 
 		public class HeartOfTheEnemyAbility : SpecificAbility
 		{
 			protected override GameAction[] Actions (ForefrontCard target)
 			{
-				return new[] { new DealDamage(2, Card, target) };
+				return new GameAction[] { new DealDamage(2, Card, target) };
 			}
 
 			protected override Search Targets (Search search)
@@ -31,7 +31,7 @@ namespace Midnight.Instances.Ussr.Orders
 
 		public override Proto GetProto ()
 		{
-			return proto;
+			return Proto;
 		}
 
 		public override void InitAbilities ()

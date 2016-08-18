@@ -1,5 +1,4 @@
 ﻿using Midnight.Abilities.Passive;
-using Midnight.Cards.Enums;
 using Midnight.Cards.Vehicles;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
@@ -9,7 +8,7 @@ namespace Midnight.Instances.Germany.Vehicles
 	public class StPz2 : SpgVehicle
 	{
 
-		public static readonly Proto proto = new ParameterizedProto<StPz2>() {
+		public static readonly Proto Proto = new ParameterizedProto<StPz2>() {
 			ID = "gv_sturmpanzerII",
 			Level = 5,
 			Type = Type.Vehicle,
@@ -33,7 +32,7 @@ namespace Midnight.Instances.Germany.Vehicles
 
 		public override Proto GetProto ()
 		{
-			return proto;
+			return Proto;
 		}
 
 		public override void InitAbilities ()

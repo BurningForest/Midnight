@@ -1,5 +1,4 @@
-﻿using Midnight.Cards.Enums;
-using Midnight.Cards.Types;
+﻿using Midnight.Cards.Types;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
@@ -7,7 +6,7 @@ namespace Midnight.Instances.Germany.Platoons
 {
 	public class ScoutsM : Platoon.Protect
 	{
-		public static readonly Proto proto = new ParameterizedProto<ScoutsM>() {
+		public static readonly Proto Proto = new ParameterizedProto<ScoutsM>() {
 			ID = "gp_auskundschaftersderpdmuncheberg",
 			Level = 1,
 			Type = Type.Platoon,
@@ -23,7 +22,7 @@ namespace Midnight.Instances.Germany.Platoons
 
 		public override Proto GetProto ()
 		{
-			return proto;
+			return Proto;
 		}
 	}
 }

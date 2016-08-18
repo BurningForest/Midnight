@@ -1,5 +1,4 @@
-﻿using Midnight.Cards.Enums;
-using Midnight.Cards.Vehicles;
+﻿using Midnight.Cards.Vehicles;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
 
@@ -7,7 +6,7 @@ namespace Midnight.Instances.Ussr.Vehicles
 {
 	public class Su18 : HeavyVehicle
 	{
-		public static readonly Proto proto = new ParameterizedProto<Su18>() {
+		public static readonly Proto Proto = new ParameterizedProto<Su18>() {
 			ID = "sv_su18",
 			Level = 1,
 			Type = Type.Vehicle,
@@ -23,7 +22,7 @@ namespace Midnight.Instances.Ussr.Vehicles
 
 		public override Proto GetProto ()
 		{
-			return proto;
+			return Proto;
 		}
 	}
 }

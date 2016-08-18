@@ -16,30 +16,30 @@ namespace Midnight.Instances
 {
     public class InstancesFactory
     {
-        private Dictionary<string, Proto> protosMap = new Dictionary<string, Proto>()
+        private readonly Dictionary<string, Proto> _protosMap = new Dictionary<string, Proto>()
         {
             //Germany
-            { Training.proto.ID, Training.proto },
+            { Training.Proto.ID, Training.Proto },
             { ParisGun.Proto.ID, ParisGun.Proto },
-            { A7V.proto.ID, A7V.proto },
-            { Grosstraktor2.proto.ID, Grosstraktor2.proto },
-            { Lk2.proto.ID, Lk2.proto },
-            { Schlepper25PS.proto.ID, Schlepper25PS.proto },
+            { A7V.Proto.ID, A7V.Proto },
+            { Grosstraktor2.Proto.ID, Grosstraktor2.Proto },
+            { Lk2.Proto.ID, Lk2.Proto },
+            { Schlepper25PS.Proto.ID, Schlepper25PS.Proto },
             //USA
-            { TrainingCamp.proto.ID, TrainingCamp.proto },
-            { FordT.proto.ID, FordT.proto },
-            { Liberty.proto.ID, Liberty.proto },
-            { M1919.proto.ID, M1919.proto },
-            { M1921.proto.ID, M1921.proto },
-            { M2A1_AT.proto.ID, M2A1_AT.proto },
-            { T1Light.proto.ID, T1Light.proto },
+            { TrainingCamp.Proto.ID, TrainingCamp.Proto },
+            { FordT.Proto.ID, FordT.Proto },
+            { Liberty.Proto.ID, Liberty.Proto },
+            { M1919.Proto.ID, M1919.Proto },
+            { M1921.Proto.ID, M1921.Proto },
+            { M2A1_AT.Proto.ID, M2A1_AT.Proto },
+            { T1Light.Proto.ID, T1Light.Proto },
             //USSR
-            { TrainingBase.proto.ID, TrainingBase.proto },
-            { IlyaMuromets.proto.ID, IlyaMuromets.proto },
-            { Ms1.proto.ID, Ms1.proto },
-            { Ricardo.proto.ID, Ricardo.proto },
-            { Su1.proto.ID, Su1.proto },
-            { T24.proto.ID, T24.proto }
+            { TrainingBase.Proto.ID, TrainingBase.Proto },
+            { IlyaMuromets.Proto.ID, IlyaMuromets.Proto },
+            { Ms1.Proto.ID, Ms1.Proto },
+            { Ricardo.Proto.ID, Ricardo.Proto },
+            { Su1.Proto.ID, Su1.Proto },
+            { T24.Proto.ID, T24.Proto }
         };
 
         private InstancesFactory()
@@ -65,12 +65,12 @@ namespace Midnight.Instances
             }
         }
 
-        public Proto GetProto(string protoID)
+        public Proto GetProto(string protoId)
         {
             Proto proto;
-            bool validID = protosMap.TryGetValue(protoID, out proto);
+            var validId = _protosMap.TryGetValue(protoId, out proto);
 
-            return validID ? proto : null;
+            return validId ? proto : null;
         }
     }
 }

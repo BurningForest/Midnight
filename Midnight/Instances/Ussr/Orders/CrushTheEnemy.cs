@@ -2,7 +2,6 @@
 using Midnight.ActionManager;
 using Midnight.Actions;
 using Midnight.Cards;
-using Midnight.Cards.Enums;
 using Midnight.Cards.Types;
 using Sun.CardProtos;
 using Sun.CardProtos.Enums;
@@ -13,7 +12,8 @@ namespace Midnight.Instances.Ussr.Orders
 	{
 		// Нанесите 1 повреждение выбранному штабу или технике
 
-		public static readonly Proto proto = new ParameterizedProto<CrushTheEnemy>() {
+		public static readonly Proto Proto = new ParameterizedProto<CrushTheEnemy>
+		{
 			ID = "so_takbilotakbudet",
 			Level = 1,
 			Type = Type.Order,
@@ -26,7 +26,7 @@ namespace Midnight.Instances.Ussr.Orders
 		{
 			protected override GameAction[] Actions (ForefrontCard target)
 			{
-				return new[] { new DealDamage(1, Card, target) };
+				return new GameAction[] { new DealDamage(1, Card, target) };
 			}
 
 			protected override Search Targets (Search search)
@@ -39,7 +39,7 @@ namespace Midnight.Instances.Ussr.Orders
 
 		public override Proto GetProto ()
 		{
-			return proto;
+			return Proto;
 		}
 
 		public override void InitAbilities ()
