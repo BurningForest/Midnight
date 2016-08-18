@@ -40,20 +40,20 @@ namespace Midnight.Tests.Instances.Vehicles
 
 			manage.SetResources(player, 50);
 
-			var myHq = player.cards.factory.CreateDefaultHq<TCard>();
-			var stPz2 = player.cards.factory.Create<StPz2>();
-			var Heavy = player.cards.factory.Create<TankHeavy>();
+			var myHq = player.Cards.Factory.CreateDefaultHq<TCard>();
+			var stPz2 = player.Cards.Factory.Create<StPz2>();
+			var Heavy = player.Cards.Factory.Create<TankHeavy>();
 
-			var hisHq = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var Spatg = enemy.cards.factory.Create<TankSpatg>();
+			var hisHq = enemy.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var Spatg = enemy.Cards.Factory.Create<TankSpatg>();
 
 			manage.Draw(stPz2);
 
-			player.io.StartGame();
+			player.Io.StartGame();
 
 			Assert.AreEqual(Location.Deck, Heavy.GetLocation().GetCurrent());
 
-			Assert.AreEqual(Status.Success, player.io.Deploy(new Io.Position
+			Assert.AreEqual(Status.Success, player.Io.Deploy(new Io.Position
 			{
 				CardId = stPz2.Id,
 				X = 1,
@@ -63,7 +63,7 @@ namespace Midnight.Tests.Instances.Vehicles
 			Assert.AreEqual(HeavyLocation, Heavy.GetLocation().GetCurrent());
 			Assert.AreEqual(Location.Deck, Spatg.GetLocation().GetCurrent());
 
-			Assert.AreEqual(Status.Success, player.io.Attack(new Io.Target
+			Assert.AreEqual(Status.Success, player.Io.Attack(new Io.Target
 			{
 				SourceId = stPz2.Id,
 				TargetId = hisHq.Id

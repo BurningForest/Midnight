@@ -23,12 +23,12 @@ namespace Midnight.Tests.Headquarters
 			var enemy  = engine.chiefs[1];
 			var field  = engine.field;
 
-			var strike = player.cards.factory.CreateDefaultHq<HqStrike>(); // 3/20
-			var Spg    = player.cards.factory.Create<TankBigSpg>(); // 8/4
+			var strike = player.Cards.Factory.CreateDefaultHq<HqStrike>(); // 3/20
+			var Spg    = player.Cards.Factory.Create<TankBigSpg>(); // 8/4
 
-			var consol = enemy.cards.factory.CreateDefaultHq<HqConsol>(); // 2/25
-			var medic  = enemy.cards.factory.Create<PlatoonProtectMedic>(); // 2/7
-			var intend = enemy.cards.factory.Create<PlatoonProtectIntendancy>(); // 3/3
+			var consol = enemy.Cards.Factory.CreateDefaultHq<HqConsol>(); // 2/25
+			var medic  = enemy.Cards.Factory.Create<PlatoonProtectMedic>(); // 2/7
+			var intend = enemy.Cards.Factory.Create<PlatoonProtectIntendancy>(); // 3/3
 
 			manage.Position(Spg, field.GetCell(4, 1));
 

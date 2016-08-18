@@ -17,10 +17,10 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 
             foreach (var target in GetAllowedTargets())
             {
-                var emulated = card.GetChief().GetEmulated();
+                var emulated = Card.GetChief().GetEmulated();
                 emulated.Attack(new Io.Target
                 {
-                    SourceId = card.Id,
+                    SourceId = Card.Id,
                     TargetId = target.Id
                 });
 				attacks.Add(new TargetOption { TargetId = target.Id, Predictions = emulated.GetDamagePredictions()});
@@ -31,9 +31,9 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 
 		private List<FieldCard> GetAllowedTargets ()
 		{
-			var weapon = card.Abilities.Get<Weapon>();
+			var weapon = Card.Abilities.Get<Weapon>();
 
-		    return card.GetChief().GetOpponent().cards
+		    return Card.GetChief().GetOpponent().Cards
                 .GetAll().OfType<FieldCard>()
                 .Where(fieldCard => weapon.Validate(fieldCard) == Status.Success)
                 .ToList();

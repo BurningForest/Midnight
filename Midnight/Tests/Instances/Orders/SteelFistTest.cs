@@ -21,10 +21,10 @@ namespace Midnight.Tests.Instances.Orders
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
 
-			var crush = player.cards.factory.Create<SteelFist>();
+			var crush = player.Cards.Factory.Create<SteelFist>();
 
-			var HQ = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var tm = enemy.cards.factory.Create<TankMedium>();
+			var HQ = enemy.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var tm = enemy.Cards.Factory.Create<TankMedium>();
 
 			manage.SetResources(player, 20);
 			manage.Position(tm, field.GetCell(2, 2));

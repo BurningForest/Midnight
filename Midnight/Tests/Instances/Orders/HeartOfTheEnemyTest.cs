@@ -23,11 +23,11 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.SetResources(player, 50);
 
-			var heart1 = player.cards.factory.Create<IlyaMuromets>();
-			var heart2 = player.cards.factory.Create<IlyaMuromets>();
+			var heart1 = player.Cards.Factory.Create<IlyaMuromets>();
+			var heart2 = player.Cards.Factory.Create<IlyaMuromets>();
 
-			var HQ = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var tank = enemy.cards.factory.Create<TankMedium>();
+			var HQ = enemy.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var tank = enemy.Cards.Factory.Create<TankMedium>();
 
 			manage.Position(tank, field.GetCell(2, 2));
 			manage.Draw(player, 2);

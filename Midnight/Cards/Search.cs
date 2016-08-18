@@ -67,8 +67,8 @@ namespace Midnight.Cards
         private IEnumerable<Card> GetAllCards()
         {
             return new Card[0]
-                .Union(_chief.cards.GetAll())
-                .Union(_chief.GetOpponent().cards.GetAll());
+                .Union(_chief.Cards.GetAll())
+                .Union(_chief.GetOpponent().Cards.GetAll());
         }
 
         public Search Player()

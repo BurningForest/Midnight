@@ -16,7 +16,7 @@ namespace Midnight.ChiefOperations.IoOptions
 
 		public List<CardOption> GetAvailable ()
 		{
-		    return _chief.cards
+		    return _chief.Cards
                 .GetAll().Select(GetOption)
                 .Where(option => !option.IsEmpty())
                 .ToList();

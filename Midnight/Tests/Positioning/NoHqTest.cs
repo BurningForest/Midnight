@@ -23,17 +23,17 @@ namespace Midnight.Tests.Positioning
 			var enemy = engine.chiefs[1];
 
 			var plCards = new FieldCard[] {
-				player.cards.factory.Create<TankLight>(),
-				player.cards.factory.Create<TankMedium>(),
-				player.cards.factory.Create<TankHeavy>(),
-				player.cards.factory.Create<TankSpg>()
+				player.Cards.Factory.Create<TankLight>(),
+				player.Cards.Factory.Create<TankMedium>(),
+				player.Cards.Factory.Create<TankHeavy>(),
+				player.Cards.Factory.Create<TankSpg>()
 			};
 
 			var enCards = new FieldCard[] {
-				enemy.cards.factory.Create<TankLight>(),
-				enemy.cards.factory.Create<TankMedium>(),
-				enemy.cards.factory.Create<TankHeavy>(),
-				enemy.cards.factory.Create<TankSpatg>()
+				enemy.Cards.Factory.Create<TankLight>(),
+				enemy.Cards.Factory.Create<TankMedium>(),
+				enemy.Cards.Factory.Create<TankHeavy>(),
+				enemy.Cards.Factory.Create<TankSpatg>()
 			};
 
 			manage.SetResources(player, 50);

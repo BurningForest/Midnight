@@ -42,18 +42,18 @@ namespace Midnight.Tests.Instances.Vehicles
 
 			manage.SetResources(player, 50);
 
-			var myHq = player.cards.factory.CreateDefaultHq<TCard>();
-			var m2lt = player.cards.factory.Create<M2Light>();
+			var myHq = player.Cards.Factory.CreateDefaultHq<TCard>();
+			var m2lt = player.Cards.Factory.Create<M2Light>();
 
-			var hisHq = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var Spg = enemy.cards.factory.Create<TankSpg>();
+			var hisHq = enemy.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var Spg = enemy.Cards.Factory.Create<TankSpg>();
 
 			manage.Position(m2lt, field.GetCell(1, 1));
 			manage.Position(Spg, field.GetCell(2, 1));
 
-			enemy.io.StartGame();
+			enemy.Io.StartGame();
 
-			Assert.AreEqual(attackStatus, enemy.io.Attack(new Io.Target() {
+			Assert.AreEqual(attackStatus, enemy.Io.Attack(new Io.Target() {
 				SourceId = Spg.Id,
 				TargetId = m2lt.Id,
 			}));

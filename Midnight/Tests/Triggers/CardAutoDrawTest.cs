@@ -23,20 +23,20 @@ namespace Midnight.Tests.Triggers
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			player.cards.SetShuffleOff();
+			player.Cards.SetShuffleOff();
 			
 			var plCards = new FieldCard[] {
-				player.cards.factory.Create<TankLight>(),
-				player.cards.factory.Create<TankMedium>(),
-				player.cards.factory.Create<TankHeavy>(),
-				player.cards.factory.Create<TankSpg>()
+				player.Cards.Factory.Create<TankLight>(),
+				player.Cards.Factory.Create<TankMedium>(),
+				player.Cards.Factory.Create<TankHeavy>(),
+				player.Cards.Factory.Create<TankSpg>()
 			};
 
 			var enCards = new FieldCard[] {
-				enemy.cards.factory.Create<TankLight>(),
-				enemy.cards.factory.Create<TankMedium>(),
-				enemy.cards.factory.Create<TankHeavy>(),
-				enemy.cards.factory.Create<TankSpatg>()
+				enemy.Cards.Factory.Create<TankLight>(),
+				enemy.Cards.Factory.Create<TankMedium>(),
+				enemy.Cards.Factory.Create<TankHeavy>(),
+				enemy.Cards.Factory.Create<TankSpatg>()
 			};
 
 			Assert.AreEqual(1, autoDraw.GetCount());
@@ -47,37 +47,37 @@ namespace Midnight.Tests.Triggers
 			
 			manage.StartGame(enemy);
 
-			Assert.AreEqual(0, player.cards.CountLocation(Location.Reserve));
-			Assert.AreEqual(0, enemy.cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(0, player.Cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(0, enemy.Cards.CountLocation(Location.Reserve));
 
 			manage.EndTurn(enemy);
 
-			Assert.AreEqual(1, player.cards.CountLocation(Location.Reserve));
-			Assert.AreEqual(0, enemy.cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(1, player.Cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(0, enemy.Cards.CountLocation(Location.Reserve));
 			Assert.IsTrue(plCards[0].GetLocation().IsReserve());
 
 			manage.EndTurn(player);
 
-			Assert.AreEqual(1, player.cards.CountLocation(Location.Reserve));
-			Assert.AreEqual(1, enemy.cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(1, player.Cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(1, enemy.Cards.CountLocation(Location.Reserve));
 			
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
 
-			Assert.AreEqual(2, player.cards.CountLocation(Location.Reserve));
-			Assert.AreEqual(2, enemy.cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(2, player.Cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(2, enemy.Cards.CountLocation(Location.Reserve));
 
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
 
-			Assert.AreEqual(3, player.cards.CountLocation(Location.Reserve));
-			Assert.AreEqual(3, enemy.cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(3, player.Cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(3, enemy.Cards.CountLocation(Location.Reserve));
 
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
 
-			Assert.AreEqual(4, player.cards.CountLocation(Location.Reserve));
-			Assert.AreEqual(4, enemy.cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(4, player.Cards.CountLocation(Location.Reserve));
+			Assert.AreEqual(4, enemy.Cards.CountLocation(Location.Reserve));
 
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
@@ -86,8 +86,8 @@ namespace Midnight.Tests.Triggers
 			manage.EndTurn(enemy);
 			manage.EndTurn(player);
 
-			Utils.ArrayAreEqual(plCards, player.cards.FromLocation(Location.Reserve));
-			Utils.ArrayAreEqual(enCards, enemy.cards.FromLocation(Location.Reserve));
+			Utils.ArrayAreEqual(plCards, player.Cards.FromLocation(Location.Reserve));
+			Utils.ArrayAreEqual(enCards, enemy.Cards.FromLocation(Location.Reserve));
 		}
 	}
 }

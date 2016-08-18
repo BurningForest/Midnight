@@ -32,8 +32,8 @@ namespace Midnight.Tests.Triggers
 			engine.triggers.Register<FinalHqDeath>(enemy);
 
 			for (int i = 0; i < 10; i++) {
-				player.cards.factory.Create<TankLight>();
-				enemy .cards.factory.Create<TankLight>();
+				player.Cards.Factory.Create<TankLight>();
+				enemy .Cards.Factory.Create<TankLight>();
 			}
 
 			manage.Draw(player, 8);
@@ -48,12 +48,12 @@ namespace Midnight.Tests.Triggers
 			manage.EndTurn(enemy);
 
 			Assert.AreEqual(null, final.action);
-			Assert.AreEqual(0, player.cards.CountLocation(Location.Deck));
+			Assert.AreEqual(0, player.Cards.CountLocation(Location.Deck));
 
 			manage.EndTurn(player);
 
 			Assert.AreEqual(null, final.action);
-			Assert.AreEqual(0, player.cards.CountLocation(Location.Deck));
+			Assert.AreEqual(0, player.Cards.CountLocation(Location.Deck));
 
 			manage.EndTurn(enemy);
 

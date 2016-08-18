@@ -20,7 +20,7 @@ namespace Midnight.ChiefOperations.IoOptions.Collectors
 
 			foreach (Cell cell in ability.GetAllowedCells())
             {
-				cells.Add(new CellOption() { X = cell.X, Y = cell.Y });
+				cells.Add(new CellOption { X = cell.X, Y = cell.Y });
 			}
 
 		    return cells.Count == 0

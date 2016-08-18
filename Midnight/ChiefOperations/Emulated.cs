@@ -24,7 +24,7 @@ namespace Midnight.ChiefOperations
 
         public Emulated(Chief chief)
         {
-            _chiefIndex = chief.index;
+            _chiefIndex = chief.Index;
             _engine = chief.GetEngine().Clone();
             _engine.emitter.Subscribe(this);
         }
@@ -49,42 +49,42 @@ namespace Midnight.ChiefOperations
 
         public Status Attack(Io.Target command)
         {
-            return GetChief().io.Attack(command);
+            return GetChief().Io.Attack(command);
         }
 
         public Status Deploy(Io.SingleCard command)
         {
-            return GetChief().io.Deploy(command);
+            return GetChief().Io.Deploy(command);
         }
 
         public Status Deploy(Io.Position command)
         {
-            return GetChief().io.Deploy(command);
+            return GetChief().Io.Deploy(command);
         }
 
         public Status Move(Io.Position command)
         {
-            return GetChief().io.Move(command);
+            return GetChief().Io.Move(command);
         }
 
         public Status Order(Io.Target command)
         {
-            return GetChief().io.Order(command);
+            return GetChief().Io.Order(command);
         }
 
         public Status Order(Io.SingleCard command)
         {
-            return GetChief().io.Order(command);
+            return GetChief().Io.Order(command);
         }
 
         public Status EndTurn()
         {
-            return GetChief().io.EndTurn();
+            return GetChief().Io.EndTurn();
         }
 
         public Status Surrender()
         {
-            return GetChief().io.Surrender();
+            return GetChief().Io.Surrender();
         }
 
         public List<Prediction> GetDamagePredictions()

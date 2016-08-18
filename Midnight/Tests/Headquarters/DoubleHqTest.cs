@@ -19,8 +19,8 @@ namespace Midnight.Tests.Headquarters
 			var field  = engine.field;
 			var player = engine.chiefs[0];
 
-			var strike = player.cards.factory.Create<HqStrike>();
-			var guards = player.cards.factory.Create<HqGuards>();
+			var strike = player.Cards.Factory.Create<HqStrike>();
+			var guards = player.Cards.Factory.Create<HqGuards>();
 
 			manage.Position(strike, field.GetCell(0, 0));
 			manage.Position(guards, field.GetCell(0, 2));

@@ -1,58 +1,59 @@
 ﻿using System;
 using Midnight.ActionManager.Events;
-using Midnight.Emitter;
 using Midnight.Actions;
+using Midnight.Emitter;
 
 namespace Midnight.ChiefOperations
 {
-	public class Turn : IListener<After<EndTurn>>
-	{
-		private readonly Engine engine;
-		private int number = 0;
-		private Chief owner;
+    public class Turn : IListener<After<EndTurn>>
+    {
+        private readonly Engine _engine;
+        private int _number;
+        private Chief _owner;
 
-		public Turn (Engine engine)
-		{
-			this.engine = engine;
+        public Turn(Engine engine)
+        {
+            _engine = engine;
 
-			engine.emitter.Subscribe(this);
-		}
+            engine.emitter.Subscribe(this);
+        }
 
-		public int GetNumber ()
-		{
-			return number;
-		}
+        public int GetNumber()
+        {
+            return _number;
+        }
 
-		public void StartWith (Chief chief)
-		{
-			if (owner != null) {
-				throw new Exception("Already started");
-			}
+        public void StartWith(Chief chief)
+        {
+            if (_owner != null)
+            {
+                throw new Exception("Already started");
+            }
 
-			owner = chief;
-		}
+            _owner = chief;
+        }
 
-		public void StartWith (Chief chief, int number)
-		{
-			this.number = number;
-			StartWith(chief);
-		}
+        public void StartWith(Chief chief, int number)
+        {
+            _number = number;
+            StartWith(chief);
+        }
 
-		private void ChangeOwner ()
-		{
-			owner = owner.GetOpponent();
-			++number;
-		}
+        private void ChangeOwner()
+        {
+            _owner = _owner.GetOpponent();
+            ++_number;
+        }
 
-		public Chief GetOwner ()
-		{
-			return owner;
-		}
+        public Chief GetOwner()
+        {
+            return _owner;
+        }
 
-		public void On (After<EndTurn> ev)
-		{
-			ChangeOwner();
-			engine.actions.Delay(new BeginTurn(GetOwner(), ev.Action));
-		}
-	}
+        public void On(After<EndTurn> ev)
+        {
+            ChangeOwner();
+            _engine.actions.Delay(new BeginTurn(GetOwner(), ev.Action));
+        }
+    }
 }

@@ -23,15 +23,15 @@ namespace Midnight.Tests.Base
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			var HQ     = player.cards.factory.CreateDefaultHq<HqStrike>(); // increase = 4
-			var Light  = player.cards.factory.Create<TankLight>();  // cost = 2
-			var Spatg  = player.cards.factory.Create<TankSpatg>();  // cost = 2
-			var Medium = player.cards.factory.Create<TankMedium>(); // cost = 4
-			var Heavy  = player.cards.factory.Create<TankHeavy>();  // cost = 6
-			var Spg    = player.cards.factory.Create<TankSpg>();    // cost = 0
-			var medic  = player.cards.factory.Create<PlatoonProtectIntendancy>(); // cost = 1
+			var HQ     = player.Cards.Factory.CreateDefaultHq<HqStrike>(); // increase = 4
+			var Light  = player.Cards.Factory.Create<TankLight>();  // cost = 2
+			var Spatg  = player.Cards.Factory.Create<TankSpatg>();  // cost = 2
+			var Medium = player.Cards.Factory.Create<TankMedium>(); // cost = 4
+			var Heavy  = player.Cards.Factory.Create<TankHeavy>();  // cost = 6
+			var Spg    = player.Cards.Factory.Create<TankSpg>();    // cost = 0
+			var medic  = player.Cards.Factory.Create<PlatoonProtectIntendancy>(); // cost = 1
 
-			var hisSpg = enemy.cards.factory.Create<TankSpg>(); // cost = 0, enemy
+			var hisSpg = enemy.Cards.Factory.Create<TankSpg>(); // cost = 0, enemy
 
 			manage.SetResources(player, 2);
 
@@ -42,9 +42,9 @@ namespace Midnight.Tests.Base
 
 			manage.Position(Medium, engine.field.GetCell(0, 1));
 
-			player.io.StartGame();
+			player.Io.StartGame();
 
-			var options = player.io.Options.GetAvailable();
+			var options = player.Io.Options.GetAvailable();
 
 			Assert.AreEqual(3, options.Count); // 1 movement + 2 deployment
 
@@ -70,14 +70,14 @@ namespace Midnight.Tests.Base
 			Assert.AreEqual(TargetType.Global, medicOption.Deploys.Type);
 			Assert.AreEqual(null, medicOption.Deploys.Cells);
 
-			player.io.Deploy(new Io.Position
+			player.Io.Deploy(new Io.Position
 			{
 				CardId = Light.Id,
 				X = 1,
 				Y = 0
 			});
 
-			var newOptions = player.io.Options.GetAvailable();
+			var newOptions = player.Io.Options.GetAvailable();
 
 			Assert.AreEqual(2, newOptions.Count); // 2 movements
 			Assert.AreEqual(Light.Id, newOptions[0].CardId);
@@ -94,15 +94,15 @@ namespace Midnight.Tests.Base
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
 
-			var Medium = player.cards.factory.Create<TankMedium>();
-			var Spg = enemy.cards.factory.Create<TankSpg>();
+			var Medium = player.Cards.Factory.Create<TankMedium>();
+			var Spg = enemy.Cards.Factory.Create<TankSpg>();
 
 			manage.Position(Medium, engine.field.GetCell(0, 2));
 			manage.Position(Spg, engine.field.GetCell(1, 2));
 
 			manage.StartGame(player);
 
-			var options = player.io.Options.GetAvailable();
+			var options = player.Io.Options.GetAvailable();
 
 			Assert.AreEqual(1, options.Count);
 			Assert.AreEqual(null, options[0].Deploys);
@@ -127,9 +127,9 @@ namespace Midnight.Tests.Base
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
 
-			var Light = player.cards.factory.Create<TankLight>();
-			var Heavy = enemy.cards.factory.Create<TankHeavy>();
-			var Spatg = enemy.cards.factory.Create<TankSpatg>();
+			var Light = player.Cards.Factory.Create<TankLight>();
+			var Heavy = enemy.Cards.Factory.Create<TankHeavy>();
+			var Spatg = enemy.Cards.Factory.Create<TankSpatg>();
 
 			manage.Position(Light, engine.field.GetCell(2, 2));
 			manage.Position(Heavy, engine.field.GetCell(1, 2));
@@ -137,7 +137,7 @@ namespace Midnight.Tests.Base
 
 			manage.StartGame(player);
 
-			var options = player.io.Options.GetAvailable();
+			var options = player.Io.Options.GetAvailable();
 
 			Assert.AreEqual(1, options.Count);
 			Assert.AreEqual(null, options[0].Deploys);
@@ -160,9 +160,9 @@ namespace Midnight.Tests.Base
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
 
-			var front = player.cards.factory.Create<FordT>();
-			var crush = player.cards.factory.Create<CrushTheEnemy>();
-			var Spatg = enemy.cards.factory.Create<TankSpatg>();
+			var front = player.Cards.Factory.Create<FordT>();
+			var crush = player.Cards.Factory.Create<CrushTheEnemy>();
+			var Spatg = enemy.Cards.Factory.Create<TankSpatg>();
 
 			manage.SetResources(player, 10);
 			manage.Draw(crush);
@@ -171,7 +171,7 @@ namespace Midnight.Tests.Base
 
 			manage.StartGame(player);
 
-			var options = player.io.Options.GetAvailable();
+			var options = player.Io.Options.GetAvailable();
 
 			Assert.AreEqual(2, options.Count);
 

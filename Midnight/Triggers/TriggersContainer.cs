@@ -42,7 +42,7 @@ namespace Midnight.Triggers
 		public void CloneFrom (TriggersContainer source)
 		{
 			foreach (var trigger in source.triggers) {
-				var chief = trigger.chief == null ? null : engine.chiefs[trigger.chief.index];
+				var chief = trigger.chief == null ? null : engine.chiefs[trigger.chief.Index];
 				Register(trigger.CloneFor(engine, chief));
 			}
 		}

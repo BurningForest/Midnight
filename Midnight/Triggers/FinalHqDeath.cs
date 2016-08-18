@@ -20,7 +20,7 @@ namespace Midnight.Triggers
 
 		private bool HasNoAliveHq (Chief chief)
 		{
-			return chief.cards.GetAliveHqs().Count == 0;
+			return chief.Cards.GetAliveHqs().Count == 0;
 		}
 	}
 }

@@ -22,14 +22,14 @@ namespace Midnight.Tests.Base
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 			
-			var strike = player.cards.factory.CreateDefaultHq<HqStrike>();
-			var Medium = player.cards.factory.Create<TankMedium>();
-			var Light  = player.cards.factory.Create<TankLight>();
-			var Order  = player.cards.factory.Create<ParisGun>();
-			var Platoon = player.cards.factory.Create<PlatoonEnforceArtillery>();
+			var strike = player.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var Medium = player.Cards.Factory.Create<TankMedium>();
+			var Light  = player.Cards.Factory.Create<TankLight>();
+			var Order  = player.Cards.Factory.Create<ParisGun>();
+			var Platoon = player.Cards.Factory.Create<PlatoonEnforceArtillery>();
 
-			var guards = enemy.cards.factory.CreateDefaultHq<HqGuards>();
-			var Heavy  = enemy.cards.factory.Create<TankHeavy>();
+			var guards = enemy.Cards.Factory.CreateDefaultHq<HqGuards>();
+			var Heavy  = enemy.Cards.Factory.Create<TankHeavy>();
 
 			manage.Position(Heavy , field.GetCell(0, 1));
 			manage.Position(Medium, field.GetCell(0, 2));

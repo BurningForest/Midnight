@@ -22,7 +22,7 @@ namespace Midnight.Utils
 				return "null";
 			} 
 
-			return card.GetType().Name + "(" + card.GetChief().index + ", " + card.Id + ")";
+			return card.GetType().Name + "(" + card.GetChief().Index + ", " + card.Id + ")";
 		}
 
 		public string LogCell (Cell cell)
@@ -47,17 +47,17 @@ namespace Midnight.Utils
 
 		public string[] GetDynamicArgs (StartGame action)
 		{
-			return Group(action.Chief.index);
+			return Group(action.Chief.Index);
 		}
 
 		public string[] GetDynamicArgs (BeginTurn action)
 		{
-			return Group(action.Chief.index);
+			return Group(action.Chief.Index);
 		}
 
 		public string[] GetDynamicArgs (EndTurn action)
 		{
-			return Group(action.Chief.index);
+			return Group(action.Chief.Index);
 		}
 
 		public string[] GetDynamicArgs (Position action)
@@ -124,12 +124,12 @@ namespace Midnight.Utils
 
 		public string[] GetDynamicArgs (PayResources action)
 		{
-			return Group( action.Chief.index, action.Value );
+			return Group( action.Chief.Index, action.Value );
 		}
 
 		public string[] GetDynamicArgs (SetResources action)
 		{
-			return Group(action.Chief.index, action.Value);
+			return Group(action.Chief.Index, action.Value);
 		}
 
 		public string[] GetDynamicArgs (Draw action)
@@ -139,12 +139,12 @@ namespace Midnight.Utils
 
 		public string[] GetDynamicArgs (DrawRandom action)
 		{
-			return Group(action.Chief.index);
+			return Group(action.Chief.Index);
 		}
 
 		public string[] GetDynamicArgs (DrawCount action)
 		{
-			return Group(action.Chief.index, action.Count);
+			return Group(action.Chief.Index, action.Count);
 		}
 
 		public string[] GetDynamicArgs (DrawList action)

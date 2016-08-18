@@ -30,10 +30,10 @@ namespace Midnight.Tests.Base
 			bank.engine = new Engine();
 			bank.player = bank.engine.chiefs[0];
 			bank.enemy  = bank.engine.chiefs[1];
-			bank.HQ     = bank.player.cards.factory.CreateDefaultHq<HqGuards>();
-			bank.Light  = bank.player.cards.factory.Create<TankLight>();
-			bank.Heavy  = bank.enemy .cards.factory.Create<TankHeavy>();
-			bank.Spatg  = bank.enemy .cards.factory.Create<TankSpatg>();
+			bank.HQ     = bank.player.Cards.Factory.CreateDefaultHq<HqGuards>();
+			bank.Light  = bank.player.Cards.Factory.Create<TankLight>();
+			bank.Heavy  = bank.enemy .Cards.Factory.Create<TankHeavy>();
+			bank.Spatg  = bank.enemy .Cards.Factory.Create<TankSpatg>();
 			bank.engine.turn.StartWith(bank.player);
 			return bank;
 		}
@@ -44,10 +44,10 @@ namespace Midnight.Tests.Base
 			bank.engine = source.engine.Clone();
 			bank.player = bank.engine.chiefs[0];
 			bank.enemy  = bank.engine.chiefs[1];
-			bank.HQ     = bank.player.cards.GetHq();
-			bank.Light  = bank.player.cards.GetAll().Find(c => c is TankLight);
-			bank.Heavy  = bank.enemy .cards.GetAll().Find(c => c is TankHeavy);
-			bank.Spatg  = bank.enemy .cards.GetAll().Find(c => c is TankSpatg);
+			bank.HQ     = bank.player.Cards.GetHq();
+			bank.Light  = bank.player.Cards.GetAll().Find(c => c is TankLight);
+			bank.Heavy  = bank.enemy .Cards.GetAll().Find(c => c is TankHeavy);
+			bank.Spatg  = bank.enemy .Cards.GetAll().Find(c => c is TankSpatg);
 			return bank;
 		}
 
@@ -61,7 +61,7 @@ namespace Midnight.Tests.Base
 			Assert.AreNotSame(source.player, cloned.player);
 			Assert.AreNotSame(source.enemy, cloned.enemy);
 			Assert.AreNotSame(source.engine.turn.GetOwner(), cloned.engine.turn.GetOwner());
-			Assert.AreEqual(source.engine.turn.GetOwner().index, cloned.engine.turn.GetOwner().index);
+			Assert.AreEqual(source.engine.turn.GetOwner().Index, cloned.engine.turn.GetOwner().Index);
 		}
 
 		[TestMethod]

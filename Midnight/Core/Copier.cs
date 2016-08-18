@@ -14,7 +14,7 @@ namespace Midnight.Core
 
 			if (source.turn.GetOwner() != null) {
 				engine.turn.StartWith(
-					engine.chiefs[source.turn.GetOwner().index],
+					engine.chiefs[source.turn.GetOwner().Index],
 					source.turn.GetNumber()
 				);
 			}
@@ -23,8 +23,8 @@ namespace Midnight.Core
 
 			PreCloneChief(source.chiefs[0], engine.chiefs[0]);
 			PreCloneChief(source.chiefs[1], engine.chiefs[1]);
-			PostCloneCardsList(source.chiefs[0].cards.GetAll());
-			PostCloneCardsList(source.chiefs[1].cards.GetAll());
+			PostCloneCardsList(source.chiefs[0].Cards.GetAll());
+			PostCloneCardsList(source.chiefs[1].Cards.GetAll());
 		}
 
 		internal Engine.ClonedEngine GetClone ()
@@ -49,7 +49,7 @@ namespace Midnight.Core
 		{
 			target.SetResources(source.GetResources());
 
-			foreach (Card card in source.cards.GetAll()) {
+			foreach (Card card in source.Cards.GetAll()) {
 				PreCloneCard(card, target);
 			}
 		}
@@ -59,7 +59,7 @@ namespace Midnight.Core
 			var clone = card.CloneFor(chief);
 
 			engine.cache.ManualRegister(clone, card.Id);
-			chief.cards.Add(clone);
+			chief.Cards.Add(clone);
 		}
 	}
 }

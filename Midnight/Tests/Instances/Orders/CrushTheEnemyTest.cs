@@ -21,11 +21,11 @@ namespace Midnight.Tests.Instances.Orders
 			var player = engine.chiefs[0];
 			var enemy = engine.chiefs[1];
 
-			var crush1 = player.cards.factory.Create<CrushTheEnemy>();
-			var crush2 = player.cards.factory.Create<CrushTheEnemy>();
+			var crush1 = player.Cards.Factory.Create<CrushTheEnemy>();
+			var crush2 = player.Cards.Factory.Create<CrushTheEnemy>();
 
-			var HQ = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var tm = enemy.cards.factory.Create<TankMedium>();
+			var HQ = enemy.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var tm = enemy.Cards.Factory.Create<TankMedium>();
 
 			manage.Position(tm, field.GetCell(2, 2));
 			manage.Draw(player, 2);

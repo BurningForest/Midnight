@@ -20,9 +20,9 @@ namespace Midnight.Tests.Instances.Orders
 			var field = engine.field;
 			var player = engine.chiefs[0];
 
-			var HQ = player.cards.factory.CreateDefaultHq<HqStrike>();
-			var help = player.cards.factory.Create<FordT>();
-			var tank = player.cards.factory.Create<TankMedium>();
+			var HQ = player.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var help = player.Cards.Factory.Create<FordT>();
+			var tank = player.Cards.Factory.Create<TankMedium>();
 
 			manage.Draw(help);
 			manage.Damage(6, HQ, HQ);

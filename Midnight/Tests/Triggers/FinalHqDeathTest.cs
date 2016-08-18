@@ -29,9 +29,9 @@ namespace Midnight.Tests.Triggers
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			var HQ = player.cards.factory.CreateDefaultHq<HqGuards>();
-			var Spg1 = enemy.cards.factory.Create<TankBigSpg>();
-			var Spg2 = enemy.cards.factory.Create<TankBigSpg>();
+			var HQ = player.Cards.Factory.CreateDefaultHq<HqGuards>();
+			var Spg1 = enemy.Cards.Factory.Create<TankBigSpg>();
+			var Spg2 = enemy.Cards.Factory.Create<TankBigSpg>();
 
 			manage.Position(Spg1, engine.field.GetCell(2, 2));
 			manage.Position(Spg2, engine.field.GetCell(1, 2));

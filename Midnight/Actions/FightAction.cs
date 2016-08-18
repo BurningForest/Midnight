@@ -40,7 +40,7 @@ namespace Midnight.Actions
 
 		private void PlatoonsEnforce ()
 		{
-		    foreach (var platoon in Source.GetChief().cards.GetOrderedPlatoons().OfType<Enforce>())
+		    foreach (var platoon in Source.GetChief().Cards.GetOrderedPlatoons().OfType<Enforce>())
 		    {
 		        Damage.ModifyDamage(platoon.GetPower());
 		        AddChild(new ActivatePlatoon(platoon, platoon.GetPower()));
@@ -49,7 +49,7 @@ namespace Midnight.Actions
 
 	    private void PlatoonsProtect ()
 		{
-			foreach (var platoon in Target.GetChief().cards.GetOrderedPlatoons())
+			foreach (var platoon in Target.GetChief().Cards.GetOrderedPlatoons())
 			{
 			    var protect = platoon as Protect;
 			    if (protect != null && Damage.GetDamage() > 0)

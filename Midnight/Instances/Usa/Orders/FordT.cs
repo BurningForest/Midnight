@@ -23,7 +23,7 @@ namespace Midnight.Instances.Usa.Orders
 			{
 				return new GameAction[] {
 					new DrawRandom(Chief),
-					new HealDamage(2, Card, Chief.cards.GetHq())
+					new HealDamage(2, Card, Chief.Cards.GetHq())
 				};
 			}
 

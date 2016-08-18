@@ -18,7 +18,7 @@ namespace Midnight.Tests.Base
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			player.io.Surrender();
+			player.Io.Surrender();
 
 			Assert.AreNotEqual(null, engine.final);
 			Assert.AreEqual(Final.Trigger.Surrender, engine.final.trigger);

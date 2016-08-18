@@ -22,12 +22,12 @@ namespace Midnight.Tests.Headquarters
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 			
-			var mobile = player.cards.factory.CreateDefaultHq<HqMobile>();
-			var Light  = player.cards.factory.Create<TankLight>();
-			var Spatg  = player.cards.factory.Create<TankSpatg>();
+			var mobile = player.Cards.Factory.CreateDefaultHq<HqMobile>();
+			var Light  = player.Cards.Factory.Create<TankLight>();
+			var Spatg  = player.Cards.Factory.Create<TankSpatg>();
 
-			var strike = enemy.cards.factory.CreateDefaultHq<HqStrike>();
-			var Heavy  = enemy.cards.factory.Create<TankHeavy>();
+			var strike = enemy.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var Heavy  = enemy.Cards.Factory.Create<TankHeavy>();
 
 			manage.Draw(Light);
 			manage.Draw(Spatg);

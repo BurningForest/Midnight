@@ -8,165 +8,138 @@ using System.Linq;
 
 namespace Midnight.ChiefOperations
 {
-	public class CardsContainer
-	{
-		private readonly List<Card> cards = new List<Card>();
-		public readonly CardFactory factory;
-		private Chief chief;
-		private bool isShuffle = true;
+    public class CardsContainer
+    {
+        private readonly List<Card> _cards = new List<Card>();
+        public CardFactory Factory { get; }
+        private readonly Chief _chief;
+        private bool _isShuffle = true;
 
-		private static Random random = new Random();
+        private static readonly Random Random = new Random();
 
-		public CardsContainer (Chief chief)
-		{
-			this.chief = chief;
-			factory = new CardFactory(chief);
-		}
+        public CardsContainer(Chief chief)
+        {
+            this._chief = chief;
+            Factory = new CardFactory(chief);
+        }
 
-		public List<Card> GetAll ()
-		{
-			return cards;
-		}
+        public List<Card> GetAll()
+        {
+            return _cards;
+        }
 
-		public CardsContainer Add (Card card)
-		{
-			cards.Add(card);
-			card.SetChief(chief);
-			return this;
-		}
+        public CardsContainer Add(Card card)
+        {
+            _cards.Add(card);
+            card.SetChief(_chief);
+            return this;
+        }
 
-		public void SetShuffleOn ()
-		{
-			isShuffle = true;
-		}
+        public void SetShuffleOn()
+        {
+            _isShuffle = true;
+        }
 
-		public void SetShuffleOff ()
-		{
-			isShuffle = false;
-		}
+        public void SetShuffleOff()
+        {
+            _isShuffle = false;
+        }
 
-		public bool IsShuffleOn ()
-		{
-			return isShuffle;
-		}
+        public bool IsShuffleOn()
+        {
+            return _isShuffle;
+        }
 
-		public int CountLocation (Location location)
-		{
-			var count = 0;
+        public int CountLocation(Location location)
+        {
+            return _cards.Count(card => card.GetLocation().Is(location));
+        }
 
-			foreach (var card in cards) {
-				if (card.GetLocation().Is(location)) {
-					++count;
-				}
-			}
+        public List<Card> FromLocation(Location location)
+        {
+            return _cards.Where(card => card.GetLocation().Is(location)).ToList();
+        }
 
-			return count;
-		}
+        public List<Card> FromLocationShuffled(Location location)
+        {
+            var cards = FromLocation(location);
 
-		public List<Card> FromLocation (Location location)
-		{
-			return cards.Where(card => card.GetLocation().Is(location)).ToList();
-		}
+            if (IsShuffleOn())
+            {
+                Shuffle(cards);
+            }
 
-		public List<Card> FromLocationShuffled (Location location)
-		{
-			var cards = FromLocation(location);
+            return cards;
+        }
 
-			if (IsShuffleOn()) {
-				Shuffle(cards);
-			}
+        public Card GetRandomDeckCard()
+        {
+            var deck = FromLocation(Location.Deck);
 
-			return cards;
-		}
+            if (deck.Count == 0)
+            {
+                return null;
+            }
 
-		public Card GetRandomDeckCard ()
-		{
-			var deck = FromLocation(Location.Deck);
+            return IsShuffleOn()
+                ? deck[Random.Next(0, deck.Count)]
+                : deck[0];
+        }
 
-			if (deck.Count == 0) {
-				return null;
-			}
+        public List<Card> GetShuffledDeck()
+        {
+            return FromLocationShuffled(Location.Deck);
+        }
 
-			return IsShuffleOn()
-				? deck[random.Next(0, deck.Count)]
-				: deck[0];
-		}
+        public Platoon GetPlatoonBySubtype(Subtype subtype)
+        {
+            return _cards.Where(card => card.IsActive<Platoon>() && card.Is(subtype)).Cast<Platoon>().FirstOrDefault();
+        }
 
-		public List<Card> GetShuffledDeck ()
-		{
-			return FromLocationShuffled(Location.Deck);
-		}
+        public List<Platoon> GetOrderedPlatoons()
+        {
+            return Platoon.SubtypeOrder.Select(GetPlatoonBySubtype).Where(item => item != null).ToList();
+        }
 
-		public Platoon GetPlatoonBySubtype (Subtype subtype)
-		{
-			foreach (var card in cards) {
-				if (card.IsActive<Platoon>() && card.Is(subtype)) {
-					return (Platoon)card;
-				}
-			}
+        public List<Hq> GetAliveHqs()
+        {
+            return _cards
+                .Where(card => card.IsActive<Hq>())
+                .Cast<Hq>()
+                .ToList();
+        }
 
-			return null;
-		}
+        public Hq GetHq()
+        {
+            return _cards.Where(card => card.IsActive<Hq>()).Cast<Hq>().FirstOrDefault();
+        }
 
-		public List<Platoon> GetOrderedPlatoons ()
-		{
-			var Platoons = new List<Platoon>();
+        public bool HasHq(Country country)
+        {
+            return GetAliveHqs().Any(HQ => HQ.Is(country));
+        }
 
-			foreach (var subtype in Platoon.SubtypeOrder) {
-				var item = GetPlatoonBySubtype(subtype);
+        public bool HasHq(Subtype subtype)
+        {
+            return GetAliveHqs().Any(hq => hq.Is(subtype));
+        }
 
-				if (item != null) {
-					Platoons.Add(item);
-				}
-			}
+        public bool HasHq(Country country, Subtype subtype)
+        {
+            return GetAliveHqs().Any(hq => hq.Is(country) && hq.Is(subtype));
+        }
 
-			return Platoons;
-		}
+        private void Shuffle<T>(List<T> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                int r = Random.Next(i, list.Count);
 
-		public List<Hq> GetAliveHqs ()
-		{
-			return cards
-				.Where(card => card.IsActive<Hq>())
-				.Cast<Hq>()
-				.ToList();
-		}
-
-		public Hq GetHq ()
-		{
-			foreach (var card in cards) {
-				if (card.IsActive<Hq>()) {
-					return (Hq)card;
-				}
-			}
-
-			return null;
-		}
-
-		public bool HasHq (Country country)
-		{
-			return GetAliveHqs().Any(HQ => HQ.Is(country));
-		}
-
-		public bool HasHq (Subtype subtype)
-		{
-			return GetAliveHqs().Any(HQ => HQ.Is(subtype));
-		}
-
-		public bool HasHq (Country country, Subtype subtype)
-		{
-			return GetAliveHqs().Any(HQ => HQ.Is(country) && HQ.Is(subtype));
-		}
-
-		private void Shuffle<T> (List<T> list)
-		{
-			for (int i = 0; i < list.Count; i++) {
-				int r = random.Next(i, list.Count);
-
-				// Swap cards
-				var temp = list[i];
-				list[i] = list[r];
-				list[r] = temp;
-			}
-		}
-	}
+                // Swap cards
+                var temp = list[i];
+                list[i] = list[r];
+                list[r] = temp;
+            }
+        }
+    }
 }

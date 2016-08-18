@@ -28,8 +28,8 @@ namespace Midnight.Tests.Headquarters
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			var strike = player.cards.factory.CreateDefaultHq<HqStrike>();
-			var guards = enemy .cards.factory.CreateDefaultHq<HqGuards>();
+			var strike = player.Cards.Factory.CreateDefaultHq<HqStrike>();
+			var guards = enemy .Cards.Factory.CreateDefaultHq<HqGuards>();
 
 			manage.StartGame(player);
 

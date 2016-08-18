@@ -12,7 +12,7 @@ namespace Midnight.Tests.Base
 		{
 			var chief = new Chief(1);
 
-			Assert.AreEqual(1, chief.index);
+			Assert.AreEqual(1, chief.Index);
 		}
 
 		[TestMethod]

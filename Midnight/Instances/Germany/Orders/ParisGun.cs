@@ -21,7 +21,7 @@ namespace Midnight.Instances.Germany.Orders
 			{
 				return new GameAction[] {
 					new DealDamage(2, Card, target),
-					new HealDamage(2, Card, Chief.cards.GetHq())
+					new HealDamage(2, Card, Chief.Cards.GetHq())
 				};
 			}
 

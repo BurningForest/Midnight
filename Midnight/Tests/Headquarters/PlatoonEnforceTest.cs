@@ -24,20 +24,20 @@ namespace Midnight.Tests.Headquarters
 			var player = engine.chiefs[0];
 			var enemy  = engine.chiefs[1];
 
-			var guards = player.cards.factory.CreateDefaultHq(HqGuards.proto);
-			var artill = (Platoon) player.cards.factory.Create(PlatoonEnforceArtillery.proto);
-			var scout1 = (Platoon) player.cards.factory.Create(PlatoonEnforceScout.proto);
-			var scout2 = (Platoon) player.cards.factory.Create(PlatoonEnforceScout.proto);
+			var guards = player.Cards.Factory.CreateDefaultHq(HqGuards.proto);
+			var artill = (Platoon) player.Cards.Factory.Create(PlatoonEnforceArtillery.proto);
+			var scout1 = (Platoon) player.Cards.Factory.Create(PlatoonEnforceScout.proto);
+			var scout2 = (Platoon) player.Cards.Factory.Create(PlatoonEnforceScout.proto);
 
-			var consol = enemy.cards.factory.CreateDefaultHq(HqConsol.proto);
+			var consol = enemy.Cards.Factory.CreateDefaultHq(HqConsol.proto);
 
 			manage.Draw(player, 3);
 			manage.StartGame(player);
 
 			Assert.IsTrue(manage.Deploy(artill).IsValid());
 
-			Assert.AreSame(artill, player.cards.GetPlatoonBySubtype(Subtype.Artillery));
-			Utils.ArrayAreEqual(player.cards.GetOrderedPlatoons(), new[]{ artill });
+			Assert.AreSame(artill, player.Cards.GetPlatoonBySubtype(Subtype.Artillery));
+			Utils.ArrayAreEqual(player.Cards.GetOrderedPlatoons(), new[]{ artill });
 
 			Assert.IsTrue(manage.Fight(guards, consol).IsValid());
 			Assert.AreEqual(1, artill.GetDamage());

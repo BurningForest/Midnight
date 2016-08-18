@@ -1,32 +1,31 @@
-﻿using System;
+﻿using Midnight.Abilities;
 using Midnight.Cards;
 using Midnight.Core;
-using Midnight.Abilities;
 
 namespace Midnight.ChiefOperations.IoOptions.Collectors
 {
-	internal abstract class Collector<TAbility, TOption>
-		where TAbility : CardAbility
-		where TOption : SpecificOptions
-	{
-		protected readonly Card card;
+    internal abstract class Collector<TAbility, TOption>
+        where TAbility : CardAbility
+        where TOption : SpecificOptions
+    {
+        protected readonly Card Card;
 
-		internal Collector (Card card)
-		{
-			this.card = card;
-		}
+        internal Collector(Card card)
+        {
+            Card = card;
+        }
 
-		internal TOption Collect ()
-		{
-			var ability = card.Abilities.Get<TAbility>();
+        internal TOption Collect()
+        {
+            var ability = Card.Abilities.Get<TAbility>();
 
-			if (ability != null && ability.Validate() == Status.Success) {
-				return GetOptions(ability);
-			} else {
-				return null;
-			}
-		}
+            if (ability != null && ability.Validate() == Status.Success)
+            {
+                return GetOptions(ability);
+            }
+            return null;
+        }
 
-		protected abstract TOption GetOptions (TAbility ability);
-	}
+        protected abstract TOption GetOptions(TAbility ability);
+    }
 }

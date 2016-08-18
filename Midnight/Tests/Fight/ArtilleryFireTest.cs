@@ -17,9 +17,9 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 
-			var Spg = engine.chiefs[0].cards.factory.Create<TankSpg>();
-			var Light = engine.chiefs[0].cards.factory.Create<TankLight>();
-			var Medium = engine.chiefs[1].cards.factory.Create<TankMedium>();
+			var Spg = engine.chiefs[0].Cards.Factory.Create<TankSpg>();
+			var Light = engine.chiefs[0].Cards.Factory.Create<TankLight>();
+			var Medium = engine.chiefs[1].Cards.Factory.Create<TankMedium>();
 
 			manage.Position(Spg, engine.field.GetCell(0, 1));
 			manage.Position(Light, engine.field.GetCell(2, 1));
@@ -35,8 +35,8 @@ namespace Midnight.Tests.Fight
 			Assert.AreEqual(0, Spg.GetDamage());
 			Assert.AreEqual(1, Medium.GetDamage());
 
-			engine.chiefs[0].io.EndTurn();
-			engine.chiefs[1].io.EndTurn();
+			engine.chiefs[0].Io.EndTurn();
+			engine.chiefs[1].Io.EndTurn();
 			
 			manage.Move(Light, engine.field.GetCell(2, 1));
 			Assert.AreEqual(Status.TargetIsNotSpotted, manage.Fight(Spg, Medium).GetStatus());

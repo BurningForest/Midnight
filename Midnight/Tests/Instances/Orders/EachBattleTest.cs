@@ -23,14 +23,14 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.SetResources(player, 50);
 
-			var myHq = player.cards.factory.CreateDefaultHq<HqGuards>();
-			var each1 = player.cards.factory.Create<ParisGun>();
-			var each2 = player.cards.factory.Create<ParisGun>();
+			var myHq = player.Cards.Factory.CreateDefaultHq<HqGuards>();
+			var each1 = player.Cards.Factory.Create<ParisGun>();
+			var each2 = player.Cards.Factory.Create<ParisGun>();
 
-			var hisHq = enemy.cards.factory.CreateDefaultHq<HqGuards>();
-			var Spg1 = enemy.cards.factory.Create<TankSpg>();
-			var Spg2 = enemy.cards.factory.Create<TankSpg>();
-			var Spg3 = enemy.cards.factory.Create<TankSpg>();
+			var hisHq = enemy.Cards.Factory.CreateDefaultHq<HqGuards>();
+			var Spg1 = enemy.Cards.Factory.Create<TankSpg>();
+			var Spg2 = enemy.Cards.Factory.Create<TankSpg>();
+			var Spg3 = enemy.Cards.Factory.Create<TankSpg>();
 
 			manage.Position(Spg1, field.GetCell(3, 0));
 			manage.Position(Spg2, field.GetCell(3, 1));
@@ -82,8 +82,8 @@ namespace Midnight.Tests.Instances.Orders
 
 			manage.SetResources(player, 50);
 			
-			var each = player.cards.factory.Create<ParisGun>();
-			var Spg  = enemy.cards.factory.Create<TankSpg>();
+			var each = player.Cards.Factory.Create<ParisGun>();
+			var Spg  = enemy.Cards.Factory.Create<TankSpg>();
 
 			manage.Position(Spg, field.GetCell(3, 2));
 

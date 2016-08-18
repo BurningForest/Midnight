@@ -15,12 +15,12 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			AddChild(new Draw(Chief.cards.GetRandomDeckCard()));
+			AddChild(new Draw(Chief.Cards.GetRandomDeckCard()));
 		}
 
 		public override Status Validation ()
 		{
-		    return Chief.cards.GetRandomDeckCard() == null ? Status.DeckIsEmpty : Status.Success;
+		    return Chief.Cards.GetRandomDeckCard() == null ? Status.DeckIsEmpty : Status.Success;
 		}
 	}
 }

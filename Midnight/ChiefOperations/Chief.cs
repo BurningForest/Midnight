@@ -1,123 +1,113 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-using Midnight.Cards;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Midnight.Battlefield;
 using Midnight.Cards.Types;
 
 namespace Midnight.ChiefOperations
 {
-	public class Chief
-	{
-		private Engine engine;
+    public class Chief
+    {
+        private Engine _engine;
+        private int _resources;
+        public int Index { get; }
+        public Io Io { get; }
+        public CardsContainer Cards { get; }
 
-		public readonly int index;
-		public readonly Io io;
+        public Chief(int index)
+        {
+            Index = index;
+            Io = new Io(this);
+            Cards = new CardsContainer(this);
+        }
 
-		public readonly CardsContainer cards;
+        public Emulated GetEmulated()
+        {
+            return new Emulated(this);
+        }
 
-		private int resources = 0;
+        public Chief SetEngine(Engine engine)
+        {
+            _engine = engine;
+            Io.SetEngine(engine);
+            return this;
+        }
 
-		public Chief (int index)
-		{
-			this.index = index;
-			io = new Io(this);
-			cards = new CardsContainer(this);
-		}
+        public Engine GetEngine()
+        {
+            return _engine;
+        }
 
-		public Emulated GetEmulated ()
-		{
-			return new Emulated(this);
-		}
+        public Chief GetOpponent()
+        {
+            return _engine.chiefs[1] == this
+                ? _engine.chiefs[0]
+                : _engine.chiefs[1];
+        }
 
-		public Chief SetEngine (Engine engine)
-		{
-			this.engine = engine;
-			io.SetEngine(engine);
-			return this;
-		}
+        public void PayResources(int value)
+        {
+            if (value > _resources)
+            {
+                _resources = 0;
+            }
+            else
+            {
+                _resources -= value;
+            }
+        }
 
-		public Engine GetEngine ()
-		{
-			return engine;
-		}
+        public void GiveResources(int value)
+        {
+            _resources += value;
+        }
 
-		public Chief GetOpponent ()
-		{
-			return engine.chiefs[1] == this
-				? engine.chiefs[0]
-				: engine.chiefs[1];
-		}
+        public int GetResources()
+        {
+            return _resources;
+        }
 
-		public void PayResources (int value)
-		{
-			if (value > resources) {
-				resources = 0;
-			} else {
-				resources -= value;
-			}
-		}
+        public void SetResources(int value)
+        {
+            _resources = value;
+        }
 
-		public void GiveResources (int value)
-		{
-			resources += value;
-		}
+        public int GetTotalIncrease()
+        {
+            return Cards.GetAll().Where(card => card.GetLocation().IsForefront()).Sum(card => card.GetIncrease());
+        }
 
-		public int GetResources ()
-		{
-			return resources;
-		}
+        public Cell GetStartCell()
+        {
+            return _engine.field.GetCornerCell(Index == 1);
+        }
 
-		public void SetResources (int value)
-		{
-			resources = value;
-		}
+        public List<Cell> GetFootholdCells()
+        {
+            var hQs = Cards.GetAliveHqs();
 
-		public int GetTotalIncrease ()
-		{
-			int increase = 0;
+            switch (hQs.Count)
+            {
+                case 0:
+                    return _engine.field.GetCellsByColumn(GetStartCell().X);
+                case 1:
+                    return hQs[0].GetFootholdCells();
+            }
+            return CompileFootholdCells(hQs);
+        }
 
-			foreach (Card card in cards.GetAll()) {
-				if (card.GetLocation().IsForefront()) {
-					increase += card.GetIncrease();
-				}
-			}
+        private List<Cell> CompileFootholdCells(List<Hq> HQs)
+        {
+            IEnumerable<Cell> cells = new List<Cell>();
 
-			return increase;
-		}
+            cells = HQs.Aggregate(cells, (current, HQ) => current.Union(HQ.GetFootholdCells()));
 
-		public Cell GetStartCell ()
-		{
-			return engine.field.GetCornerCell(index == 1);
-		}
+            return cells.ToList();
+        }
 
-		public List<Cell> GetFootholdCells ()
-		{
-			var HQs = cards.GetAliveHqs();
+        public bool IsTurnOwner()
+        {
 
-			if (HQs.Count == 0) {
-				return engine.field.GetCellsByColumn(GetStartCell().X);
-			} else if (HQs.Count == 1) {
-				return HQs[0].GetFootholdCells();
-			} else {
-				return CompileFootholdCells(HQs);
-			}
-		}
-
-		private List<Cell> CompileFootholdCells (List<Hq> HQs)
-		{
-			IEnumerable<Cell> cells = new List<Cell>();
-
-			foreach (Hq HQ in HQs) {
-				cells = cells.Union(HQ.GetFootholdCells());
-			}
-
-			return cells.ToList();
-		}
-
-		public bool IsTurnOwner ()
-		{
-
-			return engine.turn.GetOwner() == this;
-		}
-	}
+            return _engine.turn.GetOwner() == this;
+        }
+    }
 }
