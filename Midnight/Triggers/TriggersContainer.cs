@@ -44,7 +44,7 @@ namespace Midnight.Triggers
         {
             foreach (var trigger in source._triggers)
             {
-                var chief = trigger.Chief == null ? null : _engine.chiefs[trigger.Chief.Index];
+                var chief = trigger.Chief == null ? null : _engine.Chiefs[trigger.Chief.Index];
                 Register(trigger.CloneFor(_engine, chief));
             }
         }

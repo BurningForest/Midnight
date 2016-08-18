@@ -22,18 +22,18 @@ namespace Midnight.Tests.Headquarters
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			engine.triggers.Register<TurnAddResources>();
+			engine.Triggers.Register<TurnAddResources>();
 
-			var field  = engine.field;
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var field  = engine.Field;
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 
 			var strike = player.Cards.Factory.CreateDefaultHq<HqStrike>();
 			var guards = enemy .Cards.Factory.CreateDefaultHq<HqGuards>();
 
 			manage.StartGame(player);
 
-			Assert.AreEqual(0, engine.turn.GetNumber());
+			Assert.AreEqual(0, engine.Turn.GetNumber());
 
 			Utils.ArrayAreEqual(player.GetFootholdCells(), new[] {
 				field.GetCell(0, 1),
@@ -57,15 +57,15 @@ namespace Midnight.Tests.Headquarters
 
 			manage.EndTurn(player);
 
-			Assert.AreEqual(1, engine.turn.GetNumber());
+			Assert.AreEqual(1, engine.Turn.GetNumber());
 
 			manage.EndTurn(enemy);
 			
-			Assert.AreEqual(2, engine.turn.GetNumber());
+			Assert.AreEqual(2, engine.Turn.GetNumber());
 
 			manage.EndTurn(player);
 
-			Assert.AreEqual(3, engine.turn.GetNumber());
+			Assert.AreEqual(3, engine.Turn.GetNumber());
 
 			Assert.IsFalse(manage.Fight(strike, guards).IsValid());
 

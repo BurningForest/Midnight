@@ -18,7 +18,7 @@ namespace Midnight.ChiefOperations
         {
             _chief.Cards.Add(card);
             card.SetChief(_chief);
-            card.SetId(_chief.GetEngine().cache.Register(card));
+            card.SetId(_chief.GetEngine().Cache.Register(card));
             card.Reset();
             card.InitAbilities();
             return card;

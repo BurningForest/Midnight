@@ -19,7 +19,7 @@ namespace Midnight.Core
 
 		public StartGame StartGame ()
 		{
-			return StartGame(Engine.chiefs[0]);
+			return StartGame(Engine.Chiefs[0]);
 		}
 
 		public StartGame StartGame (Chief chief)
@@ -115,7 +115,7 @@ namespace Midnight.Core
 		private TAction Launch<TAction> (TAction action)
 			where TAction : GameAction
 		{
-			Engine.actions.Launch(action);
+			Engine.Actions.Launch(action);
 			return action;
 		}
 	}

@@ -32,7 +32,7 @@ namespace Midnight.Cards.Types
 		{
 			var cells = _location.GetCell().GetAdjoiningCells();
 
-			return GetChief().GetEngine().field.GetCardsOf(cells);
+			return GetChief().GetEngine().Field.GetCardsOf(cells);
 		}
 
 		public abstract bool IsSpotted ();

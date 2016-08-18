@@ -17,11 +17,11 @@ namespace Midnight.Tests.Headquarters
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			engine.triggers.Register<TurnAddResources>();
+			engine.Triggers.Register<TurnAddResources>();
 
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
-			var field  = engine.field;
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
+			var field  = engine.Field;
 
 			var strike = player.Cards.Factory.CreateDefaultHq<HqStrike>(); // 3/20
 			var Spg    = player.Cards.Factory.Create<TankBigSpg>(); // 8/4

@@ -17,9 +17,9 @@ namespace Midnight.Tests.Instances.Orders
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 
-			var field = engine.field;
-			var player = engine.chiefs[0];
-			var enemy = engine.chiefs[1];
+			var field = engine.Field;
+			var player = engine.Chiefs[0];
+			var enemy = engine.Chiefs[1];
 
 			var crush = player.Cards.Factory.Create<SteelFist>();
 

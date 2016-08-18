@@ -14,7 +14,7 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			GetEngine().turn.StartWith(Chief);
+			GetEngine().Turn.StartWith(Chief);
 			AddChild(new BeginTurn(Chief));
 		}
 	}

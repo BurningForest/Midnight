@@ -15,7 +15,7 @@ namespace Midnight.ChiefOperations
         {
             _engine = engine;
 
-            engine.emitter.Subscribe(this);
+            engine.Emitter.Subscribe(this);
         }
 
         public int GetNumber()
@@ -53,7 +53,7 @@ namespace Midnight.ChiefOperations
         public void On(After<EndTurn> ev)
         {
             ChangeOwner();
-            _engine.actions.Delay(new BeginTurn(GetOwner(), ev.Action));
+            _engine.Actions.Delay(new BeginTurn(GetOwner(), ev.Action));
         }
     }
 }

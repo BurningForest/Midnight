@@ -41,7 +41,7 @@ namespace Midnight.ChiefOperations
         {
             return id == 0
                 ? null
-                : _engine.cache.Get(id);
+                : _engine.Cache.Get(id);
         }
 
         public void SetEngine(Engine engine)
@@ -67,7 +67,7 @@ namespace Midnight.ChiefOperations
 
         private Status ValidateCell(int x, int y)
         {
-            return _engine.field.IsSuitable(x, y) ? Status.Success : Status.NoSuchCell;
+            return _engine.Field.IsSuitable(x, y) ? Status.Success : Status.NoSuchCell;
         }
 
         public bool IsCardExists(int id)
@@ -109,7 +109,7 @@ namespace Midnight.ChiefOperations
             var card = GetCard(command.CardId);
 
             var fieldCard = card as FieldCard;
-            return fieldCard != null ? _manage.Deploy(fieldCard, _engine.field.GetCell(command.X, command.Y)).GetStatus() : Status.WrongCardType;
+            return fieldCard != null ? _manage.Deploy(fieldCard, _engine.Field.GetCell(command.X, command.Y)).GetStatus() : Status.WrongCardType;
         }
 
         public Status Deploy(SingleCard command)
@@ -139,7 +139,7 @@ namespace Midnight.ChiefOperations
             var card = GetCard(command.CardId);
 
             var fieldCard = card as FieldCard;
-            return fieldCard != null ? _manage.Move(fieldCard, _engine.field.GetCell(command.X, command.Y)).GetStatus() : Status.WrongCardType;
+            return fieldCard != null ? _manage.Move(fieldCard, _engine.Field.GetCell(command.X, command.Y)).GetStatus() : Status.WrongCardType;
         }
 
         public Status Attack(Target command)

@@ -23,13 +23,13 @@ namespace Midnight.Tests.Triggers
 
 			var final = new FinalListener(engine);
 
-			var player = engine.chiefs[0];
-			var enemy = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy = engine.Chiefs[1];
 
-			engine.triggers.Register<CardAutoDraw>();
-			engine.triggers.Register<FinalDeckOut>();
-			engine.triggers.Register<FinalHqDeath>(player);
-			engine.triggers.Register<FinalHqDeath>(enemy);
+			engine.Triggers.Register<CardAutoDraw>();
+			engine.Triggers.Register<FinalDeckOut>();
+			engine.Triggers.Register<FinalHqDeath>(player);
+			engine.Triggers.Register<FinalHqDeath>(enemy);
 
 			for (int i = 0; i < 10; i++) {
 				player.Cards.Factory.Create<TankLight>();

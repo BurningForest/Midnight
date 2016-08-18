@@ -17,11 +17,11 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 
-			var Medium = engine.chiefs[0].Cards.Factory.Create<TankMedium>();
-			var Heavy  = engine.chiefs[1].Cards.Factory.Create<TankHeavy>();
+			var Medium = engine.Chiefs[0].Cards.Factory.Create<TankMedium>();
+			var Heavy  = engine.Chiefs[1].Cards.Factory.Create<TankHeavy>();
 
-			manage.Position(Medium, engine.field.GetCell(1, 1));
-			manage.Position(Heavy , engine.field.GetCell(2, 1));
+			manage.Position(Medium, engine.Field.GetCell(1, 1));
+			manage.Position(Heavy , engine.Field.GetCell(2, 1));
 
 			manage.Fight(Medium, Heavy);
 

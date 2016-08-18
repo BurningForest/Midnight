@@ -20,7 +20,7 @@ namespace Midnight.Actions
 		{
 			Card.Abilities.Get<Movement>().Activate(Cell);
 			Card.GetFieldLocation().ToCell(Cell);
-			GetEngine().lantern.RecountTo(this);
+			GetEngine().Lantern.RecountTo(this);
 		}
 	}
 }

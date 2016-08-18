@@ -15,14 +15,14 @@ namespace Midnight.Tests.Base
 			var engine = new Engine();
 			var logger = new Logger(engine);
 
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 
 			player.Io.Surrender();
 
-			Assert.AreNotEqual(null, engine.final);
-			Assert.AreEqual(Final.Trigger.Surrender, engine.final.trigger);
-			Assert.AreSame(enemy, engine.final.Winner);
+			Assert.AreNotEqual(null, engine.Final);
+			Assert.AreEqual(Final.Trigger.Surrender, engine.Final.trigger);
+			Assert.AreSame(enemy, engine.Final.Winner);
 		}
 	}
 }

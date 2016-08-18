@@ -39,9 +39,9 @@ namespace Midnight.ChiefOperations
 
         public Chief GetOpponent()
         {
-            return _engine.chiefs[1] == this
-                ? _engine.chiefs[0]
-                : _engine.chiefs[1];
+            return _engine.Chiefs[1] == this
+                ? _engine.Chiefs[0]
+                : _engine.Chiefs[1];
         }
 
         public void PayResources(int value)
@@ -78,7 +78,7 @@ namespace Midnight.ChiefOperations
 
         public Cell GetStartCell()
         {
-            return _engine.field.GetCornerCell(Index == 1);
+            return _engine.Field.GetCornerCell(Index == 1);
         }
 
         public List<Cell> GetFootholdCells()
@@ -88,7 +88,7 @@ namespace Midnight.ChiefOperations
             switch (hQs.Count)
             {
                 case 0:
-                    return _engine.field.GetCellsByColumn(GetStartCell().X);
+                    return _engine.Field.GetCellsByColumn(GetStartCell().X);
                 case 1:
                     return hQs[0].GetFootholdCells();
             }
@@ -107,7 +107,7 @@ namespace Midnight.ChiefOperations
         public bool IsTurnOwner()
         {
 
-            return _engine.turn.GetOwner() == this;
+            return _engine.Turn.GetOwner() == this;
         }
     }
 }

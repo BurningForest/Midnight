@@ -20,10 +20,10 @@ namespace Midnight.Tests.Triggers
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 
-			var cleanUp = engine.triggers.Register<ReserveCleanUp>();
+			var cleanUp = engine.Triggers.Register<ReserveCleanUp>();
 
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 
 			for (int i = 0; i < 10; i++) {
 				player.Cards.Factory.Create<TankLight>();

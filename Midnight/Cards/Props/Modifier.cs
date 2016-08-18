@@ -60,8 +60,8 @@ namespace Midnight.Cards.Props
 		{
 			return new Modifier(_property)
 				.SetValue(_value)
-				.SetTarget(engine.cache.Get(_target.Id))
-				.SetSource(engine.cache.Get(_source.Id));
+				.SetTarget(engine.Cache.Get(_target.Id))
+				.SetSource(engine.Cache.Get(_source.Id));
 		}
 
 		public Modifier SetValue (int value)

@@ -26,7 +26,7 @@ namespace Midnight.ChiefOperations
         {
             _chiefIndex = chief.Index;
             _engine = chief.GetEngine().Clone();
-            _engine.emitter.Subscribe(this);
+            _engine.Emitter.Subscribe(this);
         }
 
         public void On(Before<GameAction> ev)
@@ -44,7 +44,7 @@ namespace Midnight.ChiefOperations
 
         public Chief GetChief()
         {
-            return _engine.chiefs[_chiefIndex];
+            return _engine.Chiefs[_chiefIndex];
         }
 
         public Status Attack(Io.Target command)

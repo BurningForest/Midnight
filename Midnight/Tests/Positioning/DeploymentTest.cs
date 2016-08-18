@@ -17,11 +17,11 @@ namespace Midnight.Tests.Positioning
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 			
-			engine.triggers.Register<TurnAddResources>();
+			engine.Triggers.Register<TurnAddResources>();
 
-			var field  = engine.field;
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var field  = engine.Field;
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 
 			player.Cards.Factory.CreateDefaultHq<HqConsol>();
 			enemy .Cards.Factory.CreateDefaultHq<HqStrike>();

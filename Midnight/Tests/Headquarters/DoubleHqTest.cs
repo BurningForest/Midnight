@@ -16,8 +16,8 @@ namespace Midnight.Tests.Headquarters
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			var field  = engine.field;
-			var player = engine.chiefs[0];
+			var field  = engine.Field;
+			var player = engine.Chiefs[0];
 
 			var strike = player.Cards.Factory.Create<HqStrike>();
 			var guards = player.Cards.Factory.Create<HqGuards>();

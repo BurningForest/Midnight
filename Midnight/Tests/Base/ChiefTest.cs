@@ -20,8 +20,8 @@ namespace Midnight.Tests.Base
 		public void DoubleStartGame ()
 		{
 			var engine = new Engine();
-			engine.turn.StartWith(engine.chiefs[0]);
-			engine.turn.StartWith(engine.chiefs[1]);
+			engine.Turn.StartWith(engine.Chiefs[0]);
+			engine.Turn.StartWith(engine.Chiefs[1]);
 		}
 	}
 }

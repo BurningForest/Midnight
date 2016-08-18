@@ -13,7 +13,7 @@ namespace Midnight.ActionManager
         public Manager (Engine engine)
 		{
 			_engine = engine;
-			Emitter = engine.emitter;
+			Emitter = engine.Emitter;
 		}
 
 		public void Delay<TAction> (TAction action)

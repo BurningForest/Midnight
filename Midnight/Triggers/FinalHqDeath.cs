@@ -15,7 +15,7 @@ namespace Midnight.Triggers
 
 			if (card is Hq && IsOwner(chief) && HasNoAliveHq(chief))
             {
-				Engine.actions.Delay(new Final(chief, Final.Trigger.HqDeath));
+				Engine.Actions.Delay(new Final(chief, Final.Trigger.HqDeath));
 			}
 		}
 

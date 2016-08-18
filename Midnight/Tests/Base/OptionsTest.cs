@@ -20,8 +20,8 @@ namespace Midnight.Tests.Base
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 
 			var HQ     = player.Cards.Factory.CreateDefaultHq<HqStrike>(); // increase = 4
 			var Light  = player.Cards.Factory.Create<TankLight>();  // cost = 2
@@ -40,7 +40,7 @@ namespace Midnight.Tests.Base
 			manage.Draw(Heavy); // too expensive
 			manage.Draw(hisSpg); // enemies
 
-			manage.Position(Medium, engine.field.GetCell(0, 1));
+			manage.Position(Medium, engine.Field.GetCell(0, 1));
 
 			player.Io.StartGame();
 
@@ -91,14 +91,14 @@ namespace Midnight.Tests.Base
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			var player = engine.chiefs[0];
-			var enemy = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy = engine.Chiefs[1];
 
 			var Medium = player.Cards.Factory.Create<TankMedium>();
 			var Spg = enemy.Cards.Factory.Create<TankSpg>();
 
-			manage.Position(Medium, engine.field.GetCell(0, 2));
-			manage.Position(Spg, engine.field.GetCell(1, 2));
+			manage.Position(Medium, engine.Field.GetCell(0, 2));
+			manage.Position(Spg, engine.Field.GetCell(1, 2));
 
 			manage.StartGame(player);
 
@@ -124,16 +124,16 @@ namespace Midnight.Tests.Base
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			var player = engine.chiefs[0];
-			var enemy = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy = engine.Chiefs[1];
 
 			var Light = player.Cards.Factory.Create<TankLight>();
 			var Heavy = enemy.Cards.Factory.Create<TankHeavy>();
 			var Spatg = enemy.Cards.Factory.Create<TankSpatg>();
 
-			manage.Position(Light, engine.field.GetCell(2, 2));
-			manage.Position(Heavy, engine.field.GetCell(1, 2));
-			manage.Position(Spatg, engine.field.GetCell(3, 2));
+			manage.Position(Light, engine.Field.GetCell(2, 2));
+			manage.Position(Heavy, engine.Field.GetCell(1, 2));
+			manage.Position(Spatg, engine.Field.GetCell(3, 2));
 
 			manage.StartGame(player);
 
@@ -157,8 +157,8 @@ namespace Midnight.Tests.Base
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			var player = engine.chiefs[0];
-			var enemy = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy = engine.Chiefs[1];
 
 			var front = player.Cards.Factory.Create<FordT>();
 			var crush = player.Cards.Factory.Create<CrushTheEnemy>();
@@ -167,7 +167,7 @@ namespace Midnight.Tests.Base
 			manage.SetResources(player, 10);
 			manage.Draw(crush);
 			manage.Draw(front);
-			manage.Position(Spatg, engine.field.GetCell(3, 2));
+			manage.Position(Spatg, engine.Field.GetCell(3, 2));
 
 			manage.StartGame(player);
 

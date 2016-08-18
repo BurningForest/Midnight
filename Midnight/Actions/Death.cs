@@ -25,7 +25,7 @@ namespace Midnight.Actions
 		{
 			Card.GetLocation().ToGraveyard();
 
-			GetEngine().lantern.RecountTo(this);
+			GetEngine().Lantern.RecountTo(this);
 		}
 
 		public override Status Validation ()

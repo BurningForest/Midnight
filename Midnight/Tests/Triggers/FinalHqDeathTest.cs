@@ -21,20 +21,20 @@ namespace Midnight.Tests.Triggers
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 
-			engine.triggers.Register<FinalDeckOut>();
-			engine.triggers.Register<FinalHqDeath>();
+			engine.Triggers.Register<FinalDeckOut>();
+			engine.Triggers.Register<FinalHqDeath>();
 
 			var final = new FinalListener(engine);
 
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 
 			var HQ = player.Cards.Factory.CreateDefaultHq<HqGuards>();
 			var Spg1 = enemy.Cards.Factory.Create<TankBigSpg>();
 			var Spg2 = enemy.Cards.Factory.Create<TankBigSpg>();
 
-			manage.Position(Spg1, engine.field.GetCell(2, 2));
-			manage.Position(Spg2, engine.field.GetCell(1, 2));
+			manage.Position(Spg1, engine.Field.GetCell(2, 2));
+			manage.Position(Spg2, engine.Field.GetCell(1, 2));
 
 			manage.StartGame(enemy);
 

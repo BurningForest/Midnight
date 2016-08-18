@@ -11,7 +11,7 @@ namespace Midnight.Tests.Triggers
 
 		public FinalListener (Engine engine)
 		{
-			engine.emitter.Subscribe(this);
+			engine.Emitter.Subscribe(this);
 		}
 
 		public void On (After<Final> ev)

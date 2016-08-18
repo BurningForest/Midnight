@@ -19,10 +19,10 @@ namespace Midnight.Tests.Headquarters
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			engine.triggers.Register<TurnAddResources>();
+			engine.Triggers.Register<TurnAddResources>();
 
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 
 			var guards = player.Cards.Factory.CreateDefaultHq(HqGuards.proto);
 			var artill = (Platoon) player.Cards.Factory.Create(PlatoonEnforceArtillery.proto);

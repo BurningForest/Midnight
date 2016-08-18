@@ -18,10 +18,10 @@ namespace Midnight.Tests.Triggers
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 
-			var autoDraw = engine.triggers.Register<CardAutoDraw>();
+			var autoDraw = engine.Triggers.Register<CardAutoDraw>();
 			
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 
 			player.Cards.SetShuffleOff();
 			

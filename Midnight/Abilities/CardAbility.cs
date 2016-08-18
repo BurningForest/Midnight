@@ -26,7 +26,7 @@ namespace Midnight.Abilities
 			Chief = Card.GetChief();
 			Engine = Chief.GetEngine();
 
-			Engine.emitter.Subscribe(this);
+			Engine.Emitter.Subscribe(this);
 		}
 
 		protected abstract bool IsValidCard (Card card);

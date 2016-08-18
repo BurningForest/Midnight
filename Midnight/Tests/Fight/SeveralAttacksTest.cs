@@ -17,13 +17,13 @@ namespace Midnight.Tests.Fight
 
 			manage.StartGame();
 			
-			var Medium1 = engine.chiefs[0].Cards.Factory.Create<TankMedium>();
-			var Medium2 = engine.chiefs[0].Cards.Factory.Create<TankMedium>();
-			var Heavy   = engine.chiefs[1].Cards.Factory.Create<TankHeavy>();
+			var Medium1 = engine.Chiefs[0].Cards.Factory.Create<TankMedium>();
+			var Medium2 = engine.Chiefs[0].Cards.Factory.Create<TankMedium>();
+			var Heavy   = engine.Chiefs[1].Cards.Factory.Create<TankHeavy>();
 
-			manage.Position(Medium1, engine.field.GetCell(0, 0));
-			manage.Position(Heavy, engine.field.GetCell(0, 1));
-			manage.Position(Medium2, engine.field.GetCell(0, 2));
+			manage.Position(Medium1, engine.Field.GetCell(0, 0));
+			manage.Position(Heavy, engine.Field.GetCell(0, 1));
+			manage.Position(Medium2, engine.Field.GetCell(0, 2));
 			
 			manage.Fight(Medium1, Heavy);
 			manage.Fight(Medium2, Heavy);
@@ -32,13 +32,13 @@ namespace Midnight.Tests.Fight
 			Assert.AreEqual(0, Medium2.GetDamage());
 			Assert.AreEqual(4, Heavy.GetDamage());
 
-			manage.EndTurn(engine.chiefs[0]);
+			manage.EndTurn(engine.Chiefs[0]);
 
 			manage.Fight(Heavy, Medium2);
 			Assert.AreEqual(3, Medium2.GetDamage());
 			Assert.AreEqual(6, Heavy.GetDamage());
 
-			manage.EndTurn(engine.chiefs[1]);
+			manage.EndTurn(engine.Chiefs[1]);
 			
 			manage.Fight(Medium1, Heavy);
 			Assert.AreEqual(3, Medium1.GetDamage());

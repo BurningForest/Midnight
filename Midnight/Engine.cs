@@ -1,60 +1,61 @@
-﻿using System;
-using Midnight.Actions;
+﻿using Midnight.Actions;
 using Midnight.ChiefOperations;
 using Midnight.Core;
 using Midnight.Triggers;
 
 namespace Midnight
 {
-	public class Engine
-	{
+    public class Engine
+    {
 
-		public class ClonedEngine : Engine {
-		}
+        public class ClonedEngine : Engine
+        {
+        }
 
-		public static void Main (string[] args) {}
+        public static void Main(string[] args) { }
 
-		public readonly Emitter.EventEmitter emitter;
-		public readonly ActionManager.Manager actions;
-		public readonly Battlefield.Field field;
-		public readonly Chief[] chiefs;
-		public readonly Turn turn;
-		public readonly Lantern lantern;
-		public readonly Cache cache;
-		public readonly TriggersContainer triggers;
+        public readonly Emitter.EventEmitter Emitter;
+        public readonly ActionManager.Manager Actions;
+        public readonly Battlefield.Field Field;
+        public readonly Chief[] Chiefs;
+        public readonly Turn Turn;
+        public readonly Lantern Lantern;
+        public readonly Cache Cache;
+        public readonly TriggersContainer Triggers;
 
-		public Final final { get; private set; }
+        public Final Final { get; private set; }
 
-		public Engine ()
-		{
-			emitter = new Emitter.EventEmitter();
-			actions = new ActionManager.Manager(this);
+        public Engine()
+        {
+            Emitter = new Emitter.EventEmitter();
+            Actions = new ActionManager.Manager(this);
 
-			cache = new Cache();
-			triggers = new TriggersContainer(this);
+            Cache = new Cache();
+            Triggers = new TriggersContainer(this);
 
-			field = new Battlefield.Field().SetSize(5, 3);
+            Field = new Battlefield.Field().SetSize(5, 3);
 
-			chiefs = new Chief[]{
-				new Chief(0).SetEngine(this),
-				new Chief(1).SetEngine(this),
-			};
+            Chiefs = new Chief[]{
+                new Chief(0).SetEngine(this),
+                new Chief(1).SetEngine(this),
+            };
 
-			turn = new Turn(this);
-			lantern = new Lantern(this);
-		}
+            Turn = new Turn(this);
+            Lantern = new Lantern(this);
+        }
 
-		public ClonedEngine Clone ()
-		{
-			return new Copier(this).GetClone();
-		}
+        public ClonedEngine Clone()
+        {
+            return new Copier(this).GetClone();
+        }
 
-		internal void Finish (Final final)
-		{
-			if (this.final == null) {
-				this.final = final;
-			}
-		}
+        internal void Finish(Final final)
+        {
+            if (Final == null)
+            {
+                Final = final;
+            }
+        }
 
-	}
+    }
 }

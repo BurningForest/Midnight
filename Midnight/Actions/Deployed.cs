@@ -31,7 +31,7 @@ namespace Midnight.Actions
 			}
 
 			AddChild(PayResources.ForCard(Card));
-			GetEngine().lantern.RecountTo(this);
+			GetEngine().Lantern.RecountTo(this);
 		}
 	}
 }

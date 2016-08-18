@@ -12,20 +12,20 @@ namespace Midnight.Core
         {
             _engine = new Engine.ClonedEngine();
 
-            if (source.turn.GetOwner() != null)
+            if (source.Turn.GetOwner() != null)
             {
-                _engine.turn.StartWith(
-                    _engine.chiefs[source.turn.GetOwner().Index],
-                    source.turn.GetNumber()
+                _engine.Turn.StartWith(
+                    _engine.Chiefs[source.Turn.GetOwner().Index],
+                    source.Turn.GetNumber()
                 );
             }
-            _engine.triggers.CloneFrom(source.triggers);
-            _engine.lantern.CloneFrom(source.lantern);
+            _engine.Triggers.CloneFrom(source.Triggers);
+            _engine.Lantern.CloneFrom(source.Lantern);
 
-            PreCloneChief(source.chiefs[0], _engine.chiefs[0]);
-            PreCloneChief(source.chiefs[1], _engine.chiefs[1]);
-            PostCloneCardsList(source.chiefs[0].Cards.GetAll());
-            PostCloneCardsList(source.chiefs[1].Cards.GetAll());
+            PreCloneChief(source.Chiefs[0], _engine.Chiefs[0]);
+            PreCloneChief(source.Chiefs[1], _engine.Chiefs[1]);
+            PostCloneCardsList(source.Chiefs[0].Cards.GetAll());
+            PostCloneCardsList(source.Chiefs[1].Cards.GetAll());
         }
 
         internal Engine.ClonedEngine GetClone()
@@ -37,7 +37,7 @@ namespace Midnight.Core
         {
             foreach (var source in list)
             {
-                PostCloneCard(_engine.cache.Get(source.Id), source);
+                PostCloneCard(_engine.Cache.Get(source.Id), source);
             }
         }
 
@@ -61,7 +61,7 @@ namespace Midnight.Core
         {
             var clone = card.CloneFor(chief);
 
-            _engine.cache.ManualRegister(clone, card.Id);
+            _engine.Cache.ManualRegister(clone, card.Id);
             chief.Cards.Add(clone);
         }
     }

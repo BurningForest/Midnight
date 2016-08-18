@@ -14,9 +14,9 @@ namespace Midnight.Tests.Positioning
 			Engine engine = new Engine();
 			var logger = new Logger(engine);
 
-			var field = engine.field;
-			var player = engine.chiefs[0];
-			var enemy = engine.chiefs[1];
+			var field = engine.Field;
+			var player = engine.Chiefs[0];
+			var enemy = engine.Chiefs[1];
 
 			var Light  = player.Cards.Factory.Create<TankLight>();
 			var Medium = player.Cards.Factory.Create<TankMedium>();

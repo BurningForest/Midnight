@@ -28,7 +28,7 @@ namespace Midnight.Actions
 
 		public override void Configure ()
 		{
-			GetEngine().lantern.RecountTo(this);
+			GetEngine().Lantern.RecountTo(this);
 		}
 
 		public override Status Validation ()

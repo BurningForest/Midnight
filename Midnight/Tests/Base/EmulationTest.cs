@@ -28,13 +28,13 @@ namespace Midnight.Tests.Base
 		{
 			var bank = new Bank();
 			bank.engine = new Engine();
-			bank.player = bank.engine.chiefs[0];
-			bank.enemy  = bank.engine.chiefs[1];
+			bank.player = bank.engine.Chiefs[0];
+			bank.enemy  = bank.engine.Chiefs[1];
 			bank.HQ     = bank.player.Cards.Factory.CreateDefaultHq<HqGuards>();
 			bank.Light  = bank.player.Cards.Factory.Create<TankLight>();
 			bank.Heavy  = bank.enemy .Cards.Factory.Create<TankHeavy>();
 			bank.Spatg  = bank.enemy .Cards.Factory.Create<TankSpatg>();
-			bank.engine.turn.StartWith(bank.player);
+			bank.engine.Turn.StartWith(bank.player);
 			return bank;
 		}
 
@@ -42,8 +42,8 @@ namespace Midnight.Tests.Base
 		{
 			var bank = new Bank();
 			bank.engine = source.engine.Clone();
-			bank.player = bank.engine.chiefs[0];
-			bank.enemy  = bank.engine.chiefs[1];
+			bank.player = bank.engine.Chiefs[0];
+			bank.enemy  = bank.engine.Chiefs[1];
 			bank.HQ     = bank.player.Cards.GetHq();
 			bank.Light  = bank.player.Cards.GetAll().Find(c => c is TankLight);
 			bank.Heavy  = bank.enemy .Cards.GetAll().Find(c => c is TankHeavy);
@@ -60,8 +60,8 @@ namespace Midnight.Tests.Base
 			Assert.AreNotSame(source.engine, cloned.engine);
 			Assert.AreNotSame(source.player, cloned.player);
 			Assert.AreNotSame(source.enemy, cloned.enemy);
-			Assert.AreNotSame(source.engine.turn.GetOwner(), cloned.engine.turn.GetOwner());
-			Assert.AreEqual(source.engine.turn.GetOwner().Index, cloned.engine.turn.GetOwner().Index);
+			Assert.AreNotSame(source.engine.Turn.GetOwner(), cloned.engine.Turn.GetOwner());
+			Assert.AreEqual(source.engine.Turn.GetOwner().Index, cloned.engine.Turn.GetOwner().Index);
 		}
 
 		[TestMethod]
@@ -78,8 +78,8 @@ namespace Midnight.Tests.Base
 			Assert.AreEqual(source.HQ.Id, cloned.HQ.Id);
 			Assert.AreEqual(source.Spatg.Id, cloned.Spatg.Id);
 
-			Assert.AreSame(source.HQ, source.engine.cache.Get(source.HQ.Id));
-			Assert.AreSame(cloned.HQ, cloned.engine.cache.Get(cloned.HQ.Id));
+			Assert.AreSame(source.HQ, source.engine.Cache.Get(source.HQ.Id));
+			Assert.AreSame(cloned.HQ, cloned.engine.Cache.Get(cloned.HQ.Id));
 
 			Assert.AreNotSame(source.HQ.GetLocation(), cloned.HQ.GetLocation());
 			Assert.AreNotSame(source.HQ.Abilities, cloned.HQ.Abilities);

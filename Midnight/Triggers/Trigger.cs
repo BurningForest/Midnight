@@ -12,7 +12,7 @@ namespace Midnight.Triggers
         {
             Engine = engine;
 
-            engine.emitter.Subscribe(this);
+            engine.Emitter.Subscribe(this);
         }
 
         public void SetChief(Chief chief)

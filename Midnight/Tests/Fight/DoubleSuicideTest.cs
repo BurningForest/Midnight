@@ -16,14 +16,14 @@ namespace Midnight.Tests.Fight
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 			
 			var Spatg1 = player.Cards.Factory.Create<TankSpatg>();
 			var Spatg2 = enemy .Cards.Factory.Create<TankSpatg>();
 
-			manage.Position(Spatg1, engine.field.GetCell(0, 1));
-			manage.Position(Spatg2, engine.field.GetCell(1, 1));
+			manage.Position(Spatg1, engine.Field.GetCell(0, 1));
+			manage.Position(Spatg2, engine.Field.GetCell(1, 1));
 
 			manage.StartGame();
 

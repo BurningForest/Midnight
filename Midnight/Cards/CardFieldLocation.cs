@@ -49,7 +49,7 @@ namespace Midnight.Cards
 		    var cardFieldLocation = source as CardFieldLocation;
 		    if (cardFieldLocation == null) return;
 		    var cell = cardFieldLocation.GetCell();
-		    ToCell(Card.GetChief().GetEngine().field.GetCell(cell.X, cell.Y));
+		    ToCell(Card.GetChief().GetEngine().Field.GetCell(cell.X, cell.Y));
 		}
 	}
 }

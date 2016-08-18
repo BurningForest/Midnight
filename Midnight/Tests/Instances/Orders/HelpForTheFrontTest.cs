@@ -17,8 +17,8 @@ namespace Midnight.Tests.Instances.Orders
 			Logger logger = new Logger(engine);
 			Manage manage = new Manage(engine);
 
-			var field = engine.field;
-			var player = engine.chiefs[0];
+			var field = engine.Field;
+			var player = engine.Chiefs[0];
 
 			var HQ = player.Cards.Factory.CreateDefaultHq<HqStrike>();
 			var help = player.Cards.Factory.Create<FordT>();

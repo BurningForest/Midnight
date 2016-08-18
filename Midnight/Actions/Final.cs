@@ -28,7 +28,7 @@ namespace Midnight.Actions
 
 		public override Status Validation ()
 		{
-		    return Winner.GetEngine().final != null ? Status.GameIsFinished : Status.Success;
+		    return Winner.GetEngine().Final != null ? Status.GameIsFinished : Status.Success;
 		}
 	}
 }

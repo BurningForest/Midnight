@@ -12,7 +12,7 @@ namespace Midnight.Triggers
 
             if (IsOwner(opponent))
             {
-                Engine.actions.Delay(new Final(opponent, Final.Trigger.DeckOut));
+                Engine.Actions.Delay(new Final(opponent, Final.Trigger.DeckOut));
             }
         }
     }

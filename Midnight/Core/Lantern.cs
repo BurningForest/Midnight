@@ -18,7 +18,7 @@ namespace Midnight.Core
 
         public void RecountTo(GameAction action)
         {
-            foreach (var change in _engine.field.GetAllCards().Select(GetChange).Where(change => change != null))
+            foreach (var change in _engine.Field.GetAllCards().Select(GetChange).Where(change => change != null))
             {
                 action.AddChild(change);
             }

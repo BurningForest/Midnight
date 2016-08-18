@@ -18,9 +18,9 @@ namespace Midnight.Tests.Base
 			var logger = new Logger(engine);
 			var manage = new Manage(engine);
 
-			var field  = engine.field;
-			var player = engine.chiefs[0];
-			var enemy  = engine.chiefs[1];
+			var field  = engine.Field;
+			var player = engine.Chiefs[0];
+			var enemy  = engine.Chiefs[1];
 			
 			var strike = player.Cards.Factory.CreateDefaultHq<HqStrike>();
 			var Medium = player.Cards.Factory.Create<TankMedium>();
