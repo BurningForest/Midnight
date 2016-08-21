@@ -1,4 +1,5 @@
-﻿using Midnight.Cards;
+﻿using System;
+using Midnight.Cards;
 using Midnight.Cards.Types;
 using Midnight.ChiefOperations.IoOptions;
 using Midnight.Core;
@@ -187,7 +188,6 @@ namespace Midnight.ChiefOperations
             if (status != Status.Success) return status;
 
             var source = GetCard(command.CardId);
-
             var order = source as Order;
             return order != null ? _manage.Order(order).GetStatus() : Status.WrongCardType;
         }

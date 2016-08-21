@@ -39,5 +39,6 @@ namespace Midnight.ChiefOperations.IoOptions
 	{
 		public TargetType Type = TargetType.Global;
 		public TargetOption[] Targets { get; set; }
-	}
+        public List<Prediction> Predictions { get; set; }
+    }
 }

@@ -1,4 +1,5 @@
-﻿using Midnight.ActionManager;
+﻿using System;
+using Midnight.ActionManager;
 using Midnight.ActionManager.Events;
 using Midnight.Core;
 using Midnight.Emitter;
