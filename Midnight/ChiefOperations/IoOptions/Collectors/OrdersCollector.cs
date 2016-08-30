@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Midnight.Cards;
 using Midnight.Abilities.Activating;
-using System.Linq;
 
 namespace Midnight.ChiefOperations.IoOptions.Collectors
 {

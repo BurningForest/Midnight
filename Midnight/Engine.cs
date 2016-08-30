@@ -35,7 +35,8 @@ namespace Midnight
 
             Field = new Battlefield.Field().SetSize(5, 3);
 
-            Chiefs = new Chief[]{
+            Chiefs = new[]
+			{
                 new Chief(0).SetEngine(this),
                 new Chief(1).SetEngine(this),
             };

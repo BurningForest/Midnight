@@ -13,7 +13,8 @@ namespace Midnight.Actions
 		{
 			HqDeath,
 			DeckOut,
-			Surrender
+			Surrender,
+			GlobalTimerExpired
 		};
 		public Final (Chief winner, Trigger trigger)
 		{

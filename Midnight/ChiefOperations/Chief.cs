@@ -9,6 +9,7 @@ namespace Midnight.ChiefOperations
     {
         private Engine _engine;
         private int _resources;
+	    private readonly GameTimer _timer;
         public int Index { get; }
         public Io Io { get; }
         public CardsContainer Cards { get; }
@@ -18,6 +19,7 @@ namespace Midnight.ChiefOperations
             Index = index;
             Io = new Io(this);
             Cards = new CardsContainer(this);
+			_timer = new GameTimer(this);
         }
 
         public Emulated GetEmulated()
@@ -28,7 +30,8 @@ namespace Midnight.ChiefOperations
         public Chief SetEngine(Engine engine)
         {
             _engine = engine;
-            Io.SetEngine(engine);
+			_timer.SetEngine(engine);
+			Io.SetEngine(engine);
             return this;
         }
 
@@ -106,8 +109,12 @@ namespace Midnight.ChiefOperations
 
         public bool IsTurnOwner()
         {
-
             return _engine.Turn.GetOwner() == this;
         }
+
+	    public TimeLeft GetTimeLeft()
+	    {
+		    return _timer.GetTimeLeft();
+	    }
     }
 }

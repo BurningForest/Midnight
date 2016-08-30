@@ -1,5 +1,4 @@
-﻿using System;
-using Midnight.Cards;
+﻿using Midnight.Cards;
 using Midnight.Cards.Types;
 using Midnight.ChiefOperations.IoOptions;
 using Midnight.Core;
@@ -47,7 +46,7 @@ namespace Midnight.ChiefOperations
 
         public void SetEngine(Engine engine)
         {
-            this._engine = engine;
+            _engine = engine;
             _manage = new Manage(engine);
         }
 

@@ -133,6 +133,7 @@
     <Compile Include="ChiefOperations\CardsContainer.cs" />
     <Compile Include="ChiefOperations\Chief.cs" />
     <Compile Include="ChiefOperations\Emulated.cs" />
+    <Compile Include="ChiefOperations\GameTimer.cs" />
     <Compile Include="ChiefOperations\IIo.cs" />
     <Compile Include="ChiefOperations\Io.cs" />
     <Compile Include="ChiefOperations\IoOptions\CardOption.cs" />
